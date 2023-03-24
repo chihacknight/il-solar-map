@@ -9,7 +9,7 @@ for row in reader_zips:
 f_zips.close()
 print('zipcodes:', len(il_zips))
 
-fieldnames = ['zipcode','cs','dg_large','dg_small','nonprofit_public','utility','grand_total']
+fieldnames = ['zipcode','cs','cs_count','dg_large','dg_large_count','dg_small','dg_small_count','utility','utility_count','grand_total','grand_total_count']
 
 f_pivot = open('data/il-solar-by-zip-pivot.csv', 'r')
 reader_pivot = csv.DictReader(f_pivot, fieldnames=fieldnames)
@@ -28,9 +28,13 @@ for z in il_zips:
         'cs': 0,
         'dg_large': 0,
         'dg_small': 0,
-        'nonprofit_public': 0,
         'utility': 0,
-        'grand_total': 0
+        'grand_total': 0,
+        'cs_count': 0,
+        'dg_large_count': 0,
+        'dg_small_count': 0,
+        'utility_count': 0,
+        'grand_total_count': 0
     }
 
     # print('checking', z['zipcode'])
