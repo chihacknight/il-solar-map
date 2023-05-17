@@ -7,7 +7,7 @@ ac_kwh_index = 8
 with open('data/report-3-census-tract-rev.csv', "r") as csvfile:
     datareader = csv.reader(csvfile)
     for row in datareader:
-        # print(row)
+        
         if(row[county_index]=="County"):
             continue
 
