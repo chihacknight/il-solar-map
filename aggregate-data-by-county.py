@@ -1,8 +1,11 @@
 import csv
+import json
 
 data = {}
 county_index = 15
 ac_kwh_index = 8
+
+jsonreader = ""
 
 with open('data/report-3-census-tract-rev.csv', "r") as csvfile:
     datareader = csv.reader(csvfile)
@@ -21,4 +24,15 @@ with open('data/report-3-census-tract-rev.csv', "r") as csvfile:
         else:
             data[county_name] = [1, float(row[ac_kwh_index])]
 
-print(data)
+
+with open("data/boundaries/il_counties.geojson") as jsonfile:
+    jsonreader = json.load(jsonfile)
+
+    for key, arr in data.items():
+        for county in jsonreader["features"]:
+            if county["properties"]["COUNTY_NAM"] == key:
+                county["properties"]["NUM_SOLAR"] = arr[0]
+                county["properties"]["TOTAL_KWH"] = arr[1]
+
+with open("data/boundaries/il_counties_with_solar_info.geojson", "w") as outfile:
+    json.dump(jsonreader, outfile)
