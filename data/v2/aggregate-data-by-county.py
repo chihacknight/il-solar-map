@@ -7,7 +7,7 @@ ac_kwh_index = 8
 
 jsonreader = ""
 
-with open('data/report-3-census-tract-rev.csv', "r") as csvfile:
+with open('data/raw/report-3-census-tract-rev.csv', "r") as csvfile:
     datareader = csv.reader(csvfile)
     for row in datareader:
 
@@ -25,7 +25,7 @@ with open('data/report-3-census-tract-rev.csv', "r") as csvfile:
             data[county_name] = [1, float(row[ac_kwh_index])]
 
 
-with open("data/boundaries/il_counties.geojson") as jsonfile:
+with open("data/raw/il_counties.geojson") as jsonfile:
     jsonreader = json.load(jsonfile)
 
     for key, arr in data.items():
@@ -34,5 +34,5 @@ with open("data/boundaries/il_counties.geojson") as jsonfile:
                 county["properties"]["NUM_SOLAR"] = arr[0]
                 county["properties"]["TOTAL_KWH"] = arr[1]
 
-with open("data/boundaries/il_counties_with_solar_info.geojson", "w") as outfile:
+with open("data/final/il_counties_with_solar_info.geojson", "w") as outfile:
     json.dump(jsonreader, outfile)
