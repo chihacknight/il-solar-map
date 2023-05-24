@@ -1,5 +1,6 @@
 import csv
 import json
+import requests
 
 data = {}
 projects_dict = {}
@@ -18,6 +19,20 @@ def get_category(size_str):
         return "Small_DG"
     else:
         return "Large_DG"
+
+
+def get_census_tract(lat, long):
+    print("getting census tract", lat, long)
+    try:
+        r = requests.get(
+            f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")
+
+        json_val = r.json()
+        return json_val["result"]["geographies"]["Census Tracts"][0]["GEOID"]
+
+    except TypeError:
+        print("Failed to find census tract")
+        return "00000"
 
 
 projects = []
@@ -68,12 +83,14 @@ with open("raw/solar-eia-plants_1677797680150.geojson") as eiafile:
         if row["properties"]["StateName"] != "Illinois":
             continue
 
+        lat, long = row["geometry"]["coordinates"]
+
         cur_project["source_file"] = "solar-eia-plants_1677797680150.geojson"
         cur_project["kw"] = row["properties"]["Total_MW"]
-        cur_project["census_tract"] = ""
-        cur_project["county"] = ""
+        cur_project["census_tract"] = get_census_tract(lat, long)
+        cur_project["county"] = cur_project["census_tract"][2:5]
         cur_project["category"] = "Utility"
 
         projects.append(cur_project)
 
-
+print(projects)
