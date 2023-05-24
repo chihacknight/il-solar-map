@@ -1,12 +1,11 @@
 import csv
 import json
 import requests
+import requests_cache
 
 data = {}
 projects_dict = {}
-
-# key: type (ilsfa, eia, report-3) value: array of projects
-# project id, source file, kw, census tract, category, county
+session = requests_cache.CachedSession('demo_cache')
 
 
 def get_category(size_str):
@@ -24,7 +23,7 @@ def get_category(size_str):
 def get_census_tract(lat, long):
     print("getting census tract", lat, long)
     try:
-        r = requests.get(
+        r = session.get(
             f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")
 
         json_val = r.json()
@@ -46,7 +45,7 @@ with open('raw/report-3-census-tract-rev.csv', "r") as report_3_file:
         cur_project = {}
 
         cur_project["source_file"] = "report-3-census-tract-rev.csv"
-        cur_project["kw"] = row["Project Size AC kW"]
+        cur_project["kw"] = float(row["Project Size AC kW"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["category"] = row["CEJA Category"]
 
@@ -55,7 +54,7 @@ with open('raw/report-3-census-tract-rev.csv', "r") as report_3_file:
         else:
             cur_project["category"] = get_category(row["Project Size AC kW"])
 
-        cur_project["county"] = row["County FIPS"]
+        cur_project["county"] = row["County FIPS"][2:]
 
         projects.append(cur_project)
 
@@ -66,7 +65,7 @@ with open('raw/ilsfa-2023-05-07.csv', "r") as ilsfa_file:
         cur_project = {}
 
         cur_project["source_file"] = "ilsfa-2023-05-07.csv"
-        cur_project["kw"] = row["Project Size (AC kW) (P2F)"]
+        cur_project["kw"] = float(row["Project Size (AC kW) (P2F)"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["county"] = row["Census Tract"][2:5]
         cur_project["category"] = get_category(
@@ -93,4 +92,11 @@ with open("raw/solar-eia-plants_1677797680150.geojson") as eiafile:
 
         projects.append(cur_project)
 
-print(projects)
+for project in projects:
+    if project["county"] not in data:
+        data[project["county"]] = [1, project["kw"]]
+    else:
+        data[project["county"]][0] += 1
+        data[project["county"]][1] += project["kw"]
+
+print(data)
