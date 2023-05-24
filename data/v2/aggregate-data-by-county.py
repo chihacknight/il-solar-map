@@ -22,7 +22,7 @@ def get_category(size_str):
 
 projects = []
 
-jsonreader = ""
+jsonreader_eia = ""
 
 with open('raw/report-3-census-tract-rev.csv', "r") as report_3_file:
     datareader_report_3 = csv.DictReader(report_3_file)
@@ -59,15 +59,21 @@ with open('raw/ilsfa-2023-05-07.csv', "r") as ilsfa_file:
 
         projects.append(cur_project)
 
-print(projects.__len__())
-# with open("data/raw/il_counties.geojson") as jsonfile:
-#     jsonreader = json.load(jsonfile)
+with open("raw/solar-eia-plants_1677797680150.geojson") as eiafile:
+    jsonreader_eia = json.load(eiafile)
 
-#     for key, arr in data.items():
-#         for county in jsonreader["features"]:
-#             if county["properties"]["COUNTY_NAM"] == key:
-#                 county["properties"]["NUM_SOLAR"] = arr[0]
-#                 county["properties"]["TOTAL_KWH"] = arr[1]
+    for row in jsonreader_eia["features"]:
+        cur_project = {}
 
-# with open("data/final/il_counties_with_solar_info.geojson", "w") as outfile:
-#     json.dump(jsonreader, outfile)
+        if row["properties"]["StateName"] != "Illinois":
+            continue
+
+        cur_project["source_file"] = "solar-eia-plants_1677797680150.geojson"
+        cur_project["kw"] = row["properties"]["Total_MW"]
+        cur_project["census_tract"] = ""
+        cur_project["county"] = ""
+        cur_project["category"] = "Utility"
+
+        projects.append(cur_project)
+
+
