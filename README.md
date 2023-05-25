@@ -6,6 +6,13 @@ Read more about ILSolarMap.com here: https://docs.google.com/document/d/1V4BLQhh
 
 ![IlSolarMap.com](images/ilsolarmap.jpg)
 
+## Setup
+Install the base package requirements: ```pip install -r requirements.txt```
+
+## Running the Script
+First cd into the v2 folder with ```cd data/v2/ ```
+Then run ```python3 aggregate-data-by-county.py```
+
 ## Data sources
 
 Boundary sources
