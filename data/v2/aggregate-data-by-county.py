@@ -1,6 +1,5 @@
 import csv
 import json
-import requests
 import requests_cache
 
 data = {}
