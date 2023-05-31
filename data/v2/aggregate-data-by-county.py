@@ -3,7 +3,6 @@ import json
 import requests_cache
 
 data = {}
-projects_dict = {}
 session = requests_cache.CachedSession('demo_cache')
 
 
@@ -98,6 +97,13 @@ for project in projects:
         data[project["county"]][1] += round(project["kw"])
 
 print(data)
+
+with open("raw/all-projects.csv", "w") as projectfile:
+    fields = ["source_file", "kw", "census_tract", "county", "category"]
+    writer = csv.DictWriter(projectfile, fieldnames=fields)
+    writer.writeheader()
+    for vals in projects:
+        writer.writerow(vals)
 
 with open("final/solar-projects-by-county.csv", "w") as outfile:
     fields = ["County", "Num Projects", "Total KW"]
