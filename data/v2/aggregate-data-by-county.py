@@ -99,7 +99,7 @@ for project in projects:
 
 print(data)
 
-with open("final/solar-projects.csv", "w") as outfile:
+with open("final/solar-projects-by-county.csv", "w") as outfile:
     fields = ["County", "Num Projects", "Total KW"]
     writer = csv.writer(outfile)
     # writer.writeheader()
