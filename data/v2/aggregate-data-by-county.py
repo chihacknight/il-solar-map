@@ -20,7 +20,6 @@ def get_category(size_str):
 
 
 def get_census_tract(lat, long):
-    print("getting census tract", lat, long)
     try:
         r = session.get(
             f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")
@@ -93,9 +92,17 @@ with open("raw/solar-eia-plants_1677797680150.geojson") as eiafile:
 
 for project in projects:
     if project["county"] not in data:
-        data[project["county"]] = [1, project["kw"]]
+        data[project["county"]] = [1, round(project["kw"])]
     else:
         data[project["county"]][0] += 1
-        data[project["county"]][1] += project["kw"]
+        data[project["county"]][1] += round(project["kw"])
 
 print(data)
+
+with open("final/solar-projects.csv", "w") as outfile:
+    fields = ["County", "Num Projects", "Total KW"]
+    writer = csv.writer(outfile)
+    # writer.writeheader()
+    writer.writerow(fields)
+    for key in data.keys():
+        writer.writerow([key, data[key][0], data[key][1]])
