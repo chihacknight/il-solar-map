@@ -11,7 +11,8 @@ Install the base package requirements: ```pip install -r requirements.txt```
 
 ## Running the Script
 First cd into the v2 folder with ```cd data/v2/ ```
-Then run ```python3 aggregate-data-by-county.py```
+Then run ```python3 combine-projects.py``` to update and generate a file containing all the projects
+To see aggregates by county, run ```python3 aggregate-by-county.py```
 
 ## Data sources
 
