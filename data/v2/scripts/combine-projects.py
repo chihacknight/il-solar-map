@@ -81,7 +81,7 @@ with open("../raw/solar-eia-plants_1677797680150.geojson") as eiafile:
         lat, long = row["geometry"]["coordinates"]
 
         cur_project["source_file"] = "solar-eia-plants_1677797680150.geojson"
-        cur_project["kw"] = row["properties"]["Total_MW"]
+        cur_project["kw"] = round(float(row["properties"]["Total_MW"])) * 1000 # Convert MW to kW
         cur_project["census_tract"] = get_census_tract(lat, long)
         cur_project["county"] = cur_project["census_tract"][2:5]
         cur_project["category"] = "Utility"
