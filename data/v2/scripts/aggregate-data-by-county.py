@@ -1,6 +1,54 @@
 import csv
 import json
 
+def init_aggregate(row):
+    agg = {}
+    agg["dg_small_kw"] = 0
+    agg["dg_small_count"] = 0
+    agg["dg_large_kw"] = 0
+    agg["dg_large_count"] = 0
+    agg["cs_kw"] = 0
+    agg["cs_count"] = 0
+    agg["utility_kw"] = 0
+    agg["utility_count"] = 0
+    
+    if row["category"] == "Small_DG":
+        agg["dg_small_kw"] = round(float(row["kw"]))
+        agg["dg_small_count"] = 1
+    elif row["category"] == "Large_DG":
+        agg["dg_large_kw"] = round(float(row["kw"]))
+        agg["dg_large_count"] = 1
+    elif row["category"] == "CS":
+        agg["cs_kw"] = round(float(row["kw"]))
+        agg["cs_count"] = 1
+    elif row["category"] == "Utility":
+        agg["utility_kw"] = round(float(row["kw"]))
+        agg["utility_count"] = 1
+    
+    agg["total_kw"] = round(float(row["kw"]))
+    agg["total_count"] = 1
+
+    return agg
+
+def increment_aggregate(agg, row):
+    if row["category"] == "Small_DG":
+        agg["dg_small_kw"] += round(float(row["kw"]))
+        agg["dg_small_count"] += 1
+    elif row["category"] == "Large_DG":
+        agg["dg_large_kw"] += round(float(row["kw"]))
+        agg["dg_large_count"] += 1
+    elif row["category"] == "CS":
+        agg["cs_kw"] += round(float(row["kw"]))
+        agg["cs_count"] += 1
+    elif row["category"] == "Utility":
+        agg["utility_kw"] += round(float(row["kw"]))
+        agg["utility_count"] += 1
+    
+    agg["total_kw"] += round(float(row["kw"]))
+    agg["total_count"] += 1
+
+    return agg
+
 counties = {}
 
 with open("../final/all-projects.csv", 'r') as csvfile:
@@ -11,56 +59,16 @@ with open("../final/all-projects.csv", 'r') as csvfile:
         except ValueError:
             continue
         if county_index not in counties:
-            county = {}
+            county = init_aggregate(row)
             county["county_fips"] = county_index
-            county["dg_small_kw"] = 0
-            county["dg_small_count"] = 0
-            county["dg_large_kw"] = 0
-            county["dg_large_count"] = 0
-            county["cs_kw"] = 0
-            county["cs_count"] = 0
-            county["utility_kw"] = 0
-            county["utility_count"] = 0
-            
-            if row["category"] == "Small_DG":
-                county["dg_small_kw"] = round(float(row["kw"]))
-                county["dg_small_count"] = 1
-            elif row["category"] == "Large_DG":
-                county["dg_large_kw"] = round(float(row["kw"]))
-                county["dg_large_count"] = 1
-            elif row["category"] == "CS":
-                county["cs_kw"] = round(float(row["kw"]))
-                county["cs_count"] = 1
-            elif row["category"] == "Utility":
-                county["utility_kw"] = round(float(row["kw"]))
-                county["utility_count"] = 1
-            
-            county["total_kw"] = round(float(row["kw"]))
-            county["total_count"] = 1
-
             counties[county_index] = county
         else:
             c = counties[county_index]
-
-            if row["category"] == "Small_DG":
-                c["dg_small_kw"] += round(float(row["kw"]))
-                c["dg_small_count"] += 1
-            elif row["category"] == "Large_DG":
-                c["dg_large_kw"] += round(float(row["kw"]))
-                c["dg_large_count"] += 1
-            elif row["category"] == "CS":
-                c["cs_kw"] += round(float(row["kw"]))
-                c["cs_count"] += 1
-            elif row["category"] == "Utility":
-                c["utility_kw"] += round(float(row["kw"]))
-                c["utility_count"] += 1
-            
-            c["total_kw"] += round(float(row["kw"]))
-            c["total_count"] += 1
+            c = increment_aggregate(c, row)
             continue
 
 
-# save to csv
+# save counties to csv
 with open("../final/solar-projects-by-county.csv", "w") as outfile:    
     fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
     writer = csv.writer(outfile)
@@ -68,7 +76,7 @@ with open("../final/solar-projects-by-county.csv", "w") as outfile:
     for key, value in counties.items():
         writer.writerow([value[field] for field in fields])
 
-# save to geojson
+# save counties to geojson
 county_geojson = { 
     "type": "FeatureCollection",
     "features": [] }
@@ -87,8 +95,5 @@ with open("../raw/il_counties.geojson", "r") as geojsonfile:
             }
             county_features.append(feature)
 
-    
 with open("../final/solar-projects-by-county.geojson", "w") as outfile:
     json.dump(county_geojson, outfile)
-
-      
