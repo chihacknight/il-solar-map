@@ -50,14 +50,18 @@ def increment_aggregate(agg, row):
     return agg
 
 counties = {}
+tracts = {}
 
 with open("../final/all-projects.csv", 'r') as csvfile:
     projects = csv.DictReader(csvfile)
     for row in projects:
         try:
             county_index = int(row["county"])
+            tract_index = row["census_tract"]
         except ValueError:
             continue
+        
+        # aggregate by county
         if county_index not in counties:
             county = init_aggregate(row)
             county["county_fips"] = county_index
@@ -65,6 +69,16 @@ with open("../final/all-projects.csv", 'r') as csvfile:
         else:
             c = counties[county_index]
             c = increment_aggregate(c, row)
+            continue
+
+        # aggregate by tract
+        if tract_index not in tracts:
+            tract = init_aggregate(row)
+            tract["census_tract"] = tract_index
+            tracts[tract_index] = tract
+        else:
+            t = tracts[tract_index]
+            t = increment_aggregate(t, row)
             continue
 
 
@@ -75,6 +89,8 @@ with open("../final/solar-projects-by-county.csv", "w") as outfile:
     writer.writerow(fields)
     for key, value in counties.items():
         writer.writerow([value[field] for field in fields])
+
+print('saved counties to csv')
 
 # save counties to geojson
 county_geojson = { 
@@ -97,3 +113,40 @@ with open("../raw/il_counties.geojson", "r") as geojsonfile:
 
 with open("../final/solar-projects-by-county.geojson", "w") as outfile:
     json.dump(county_geojson, outfile)
+
+print('saved counties to geojson')
+
+# save tracts to csv
+with open("../final/solar-projects-by-tract.csv", "w") as outfile:    
+    fields = ["census_tract", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+    writer = csv.writer(outfile)
+    writer.writerow(fields)
+    for key, value in tracts.items():
+        writer.writerow([value[field] for field in fields])
+
+print('saved tracts to csv')
+
+# save tracts to geojson
+tract_geojson = { 
+    "type": "FeatureCollection",
+    "features": [] }
+tract_features = tract_geojson['features']
+
+with open("../raw/il_2020_census_tracts.geojson", "r") as geojsonfile: 
+    tract_geojson_src = json.load(geojsonfile)["features"]
+    for t in tract_geojson_src:
+        tract = t["properties"]["GEOID10"]
+        if tract in tracts:
+            tract_data = tracts[tract]
+            feature = { 
+                "type": "Feature",
+                "geometry": c["geometry"],
+                "properties": tract_data
+            }
+            tract_features.append(feature)
+
+with open("../final/solar-projects-by-tract.geojson", "w") as outfile:
+    json.dump(tract_geojson, outfile)
+
+print('saved tracts to geojson')
+print('done!')
