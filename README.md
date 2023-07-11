@@ -21,6 +21,7 @@ Boundary sources
 * Illinois Counties - https://clearinghouse.isgs.illinois.edu/data/reference/illinois-county-boundaries-polygons-and-lines
 * Illinois State Senate Districts (2023) - https://www.elections.il.gov/shape/
 * Illinois State House Districts (2023) - https://www.elections.il.gov/shape/
+* Illinois Census Tracts - https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/17_ILLINOIS/17/
 
 Solar project sources
 

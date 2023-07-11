@@ -38,6 +38,9 @@ with open('../raw/report-3-census-tract-rev.csv', "r") as report_3_file:
     datareader_report_3 = csv.DictReader(report_3_file)
 
     for row in datareader_report_3:
+        if row["Census Tract"] == "N/A":
+            continue
+        
         cur_project = {}
 
         cur_project["source_file"] = "report-3-census-tract-rev.csv"
