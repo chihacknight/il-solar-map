@@ -50,14 +50,12 @@ def increment_aggregate(agg, row):
     return agg
 
 counties = {}
-tracts = {}
 
 with open("../final/all-projects.csv", 'r') as csvfile:
     projects = csv.DictReader(csvfile)
     for row in projects:
         try:
             county_index = int(row["county"])
-            tract_index = row["census_tract"]
         except ValueError:
             continue
         
@@ -71,6 +69,15 @@ with open("../final/all-projects.csv", 'r') as csvfile:
             c = increment_aggregate(c, row)
             continue
 
+print("aggregated", len(counties), "counties")
+
+tracts = {}
+
+with open("../final/all-projects.csv", 'r') as csvfile:
+    projects = csv.DictReader(csvfile)
+    for row in projects:
+        tract_index = row["census_tract"]
+
         # aggregate by tract
         if tract_index not in tracts:
             tract = init_aggregate(row)
@@ -81,6 +88,7 @@ with open("../final/all-projects.csv", 'r') as csvfile:
             t = increment_aggregate(t, row)
             continue
 
+print("aggregated", len(tracts), "tracts")
 
 # save counties to csv
 with open("../final/solar-projects-by-county.csv", "w") as outfile:    
