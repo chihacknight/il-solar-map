@@ -146,12 +146,15 @@ with open("../raw/il_2020_census_tracts.geojson", "r") as geojsonfile:
         tract = t["properties"]["GEOID10"]
         if tract in tracts:
             tract_data = tracts[tract]
-            feature = { 
-                "type": "Feature",
-                "geometry": c["geometry"],
-                "properties": tract_data
-            }
-            tract_features.append(feature)
+        else:
+            tract_data = init_aggregate({"kw": 0, "category": "None"})
+        
+        feature = { 
+            "type": "Feature",
+            "geometry": t["geometry"],
+            "properties": tract_data
+        }
+        tract_features.append(feature)
 
 with open("../final/solar-projects-by-tract.geojson", "w") as outfile:
     json.dump(tract_geojson, outfile)
