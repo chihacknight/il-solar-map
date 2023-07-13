@@ -1,16 +1,10 @@
 import csv
-import json
 import requests_cache
 import tqdm
 
 session = requests_cache.CachedSession('geocoding_cache')
 
-data = {}
-
-tract_geojson = { 
-    "type": "FeatureCollection",
-    "features": [] }
-features = tract_geojson['features']
+centroids = []
 
 with open("../raw/unique-tracts.csv", 'r') as csvfile:
     tracts = csv.DictReader(csvfile)
@@ -24,17 +18,9 @@ with open("../raw/unique-tracts.csv", 'r') as csvfile:
 
         try:
           centroid = data['features'][0]['attributes']
+          centroids.append(centroid)
         except IndexError:
           print(f"Error looking up: {tract_id}")
           continue
 
-        feature = { 
-          "type": "Feature",
-          "geometry": {"type": "Point", "coordinates": [float(centroid['CENTLON']), float(centroid['CENTLAT'])]},
-          "properties": {"census_tract": tract_id}
-          }
-
-        features.append(feature)
-
-with open("../final/census_tract_centroids.geojson", 'w') as f:
-    json.dump(tract_geojson, f)
+print(len(centroids,"centroids found"))
