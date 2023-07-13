@@ -58,7 +58,7 @@ def write_csv(items, fields, filename):
 
 counties = {}
 
-with open("../final/all-projects.csv", 'r') as csvfile:
+with open("../final/all-projects-w-districts.csv", 'r') as csvfile:
     projects = csv.DictReader(csvfile)
     for row in projects:
         try:
