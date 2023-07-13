@@ -49,6 +49,13 @@ def increment_aggregate(agg, row):
 
     return agg
 
+def write_csv(items, fields, filename):
+    with open(filename, "w") as outfile:    
+        writer = csv.writer(outfile)
+        writer.writerow(fields)
+        for key, value in items.items():
+            writer.writerow([value[field] for field in fields])
+
 counties = {}
 
 with open("../final/all-projects.csv", 'r') as csvfile:
@@ -91,13 +98,8 @@ with open("../final/all-projects.csv", 'r') as csvfile:
 print("aggregated", len(tracts), "tracts")
 
 # save counties to csv
-with open("../final/solar-projects-by-county.csv", "w") as outfile:    
-    fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
-    writer = csv.writer(outfile)
-    writer.writerow(fields)
-    for key, value in counties.items():
-        writer.writerow([value[field] for field in fields])
-
+fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+write_csv(counties, fields, "../final/solar-projects-by-county.csv")
 print('saved counties to csv')
 
 # save counties to geojson
@@ -125,13 +127,8 @@ with open("../final/solar-projects-by-county.geojson", "w") as outfile:
 print('saved counties to geojson')
 
 # save tracts to csv
-with open("../final/solar-projects-by-tract.csv", "w") as outfile:    
-    fields = ["census_tract", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
-    writer = csv.writer(outfile)
-    writer.writerow(fields)
-    for key, value in tracts.items():
-        writer.writerow([value[field] for field in fields])
-
+fields = ["census_tract", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+write_csv(tracts, fields, "../final/solar-projects-by-tract.csv")
 print('saved tracts to csv')
 
 # save tracts to geojson
