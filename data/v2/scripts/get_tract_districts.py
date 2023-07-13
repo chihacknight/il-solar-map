@@ -25,6 +25,8 @@ with open("../raw/unique-tracts.csv", 'r') as csvfile:
           centroids.append(centroid)
         except IndexError:
           print(f"Error looking up: {tract_id}")
+          centroid = {'CENTLON': 0, 'CENTLAT': 0, 'GEOID': tract_id}
+          centroids.append(centroid)
           continue
 
 print(len(centroids),"centroids found")

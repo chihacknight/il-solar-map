@@ -49,6 +49,11 @@ Boundary sources
 
 Solar project sources
 
-* Illinois Adjustable Block Program projects (Illinois Power Agency)
+* Illinois Adjustable Block Program projects (Illinois Power Agency) - https://illinoisabp.com/project-application-reports/
 * Illinois Solar for All program (Illinois Power Agency)
-* Utility solar projects (US EIA Energy Atlas)
+* Utility solar projects (US EIA-860M) - https://www.eia.gov/electricity/data/eia860m/
+
+Legislator info
+
+* Illinois State Senate Members - https://ballotpedia.org/Illinois_State_Senate
+* Illinois State House Members - https://ballotpedia.org/Illinois_House_of_Representatives
