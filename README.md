@@ -7,12 +7,36 @@ Read more about ILSolarMap.com here: https://docs.google.com/document/d/1V4BLQhh
 ![IlSolarMap.com](images/ilsolarmap.jpg)
 
 ## Setup
-Install the base package requirements: ```pip install -r requirements.txt```
+We recommend using [virtualenv](http://virtualenv.readthedocs.org/en/latest/virtualenv.html) and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html) for working in a virtualized development environment. [Read how to set up virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
+
+Once you have virtualenvwrapper set up, do this:
+
+```bash
+mkvirtualenv il-solar-map -p /path/to/your/python3
+pip install -r requirements.txt
+```
 
 ## Running the Script
-First cd into the v2 folder with ```cd data/v2/ ```
-Then run ```python3 combine-projects.py``` to update and generate a file containing all the projects
-To see aggregates by county, run ```python3 aggregate-by-county.py```
+
+To run everything:
+
+```bash
+cd data/v2/scripts
+bash run_all.sh
+```
+
+You can also run each script individually from the `data/v2/scripts` folder:
+
+```bash
+# combine 3 source files into one
+python combine_projects.py
+
+# assign il house and senate districts based on tract centroids
+python get_tract_districts.py
+
+# aggregate data by county, tract and legilsative districts
+python aggregate_data.py
+```
 
 ## Data sources
 

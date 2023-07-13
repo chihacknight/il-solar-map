@@ -49,6 +49,27 @@ def increment_aggregate(agg, row):
 
     return agg
 
+def aggregate_projects(items, index, index_name):
+    with open("../final/all-projects-w-districts.csv", 'r') as csvfile:
+        projects = csv.DictReader(csvfile)
+        for row in projects:
+            if index == "county":
+                try:
+                    idx = int(row["county"])
+                except ValueError:
+                    continue
+            else:
+                idx = row[index]
+            
+            if idx not in items:
+                i = init_aggregate(row)
+                i[index_name] = idx
+                items[idx] = i
+            else:
+                i = items[idx]
+                i = increment_aggregate(i, row)
+                continue
+
 def write_csv(items, fields, filename):
     with open(filename, "w") as outfile:    
         writer = csv.writer(outfile)
@@ -56,46 +77,44 @@ def write_csv(items, fields, filename):
         for key, value in items.items():
             writer.writerow([value[field] for field in fields])
 
+def write_geojson(geosource, key, items, geoout):
+    out_geojson = { 
+        "type": "FeatureCollection",
+        "features": [] }
+    out_features = out_geojson['features']
+
+    with open(geosource, "r") as geojsonfile: 
+        geojson_src = json.load(geojsonfile)["features"]
+        for g in geojson_src:
+            item = g["properties"][key]
+            if item in items:
+                item_data = items[item]
+                feature = { 
+                    "type": "Feature",
+                    "geometry": g["geometry"],
+                    "properties": item_data
+                }
+                out_features.append(feature)
+
+    with open(geoout, "w") as outfile:
+        json.dump(out_geojson, outfile)
+
+# aggregate projects by each geography
 counties = {}
-
-with open("../final/all-projects.csv", 'r') as csvfile:
-    projects = csv.DictReader(csvfile)
-    for row in projects:
-        try:
-            county_index = int(row["county"])
-        except ValueError:
-            continue
-        
-        # aggregate by county
-        if county_index not in counties:
-            county = init_aggregate(row)
-            county["county_fips"] = county_index
-            counties[county_index] = county
-        else:
-            c = counties[county_index]
-            c = increment_aggregate(c, row)
-            continue
-
+aggregate_projects(counties, "county", "county_fips")
 print("aggregated", len(counties), "counties")
 
 tracts = {}
-
-with open("../final/all-projects.csv", 'r') as csvfile:
-    projects = csv.DictReader(csvfile)
-    for row in projects:
-        tract_index = row["census_tract"]
-
-        # aggregate by tract
-        if tract_index not in tracts:
-            tract = init_aggregate(row)
-            tract["census_tract"] = tract_index
-            tracts[tract_index] = tract
-        else:
-            t = tracts[tract_index]
-            t = increment_aggregate(t, row)
-            continue
-
+aggregate_projects(tracts, "census_tract", "census_tract")
 print("aggregated", len(tracts), "tracts")
+
+house_districts = {}
+aggregate_projects(house_districts, "house_district", "house_district")
+print("aggregated", len(house_districts), "house districts")
+
+senate_districts = {}
+aggregate_projects(senate_districts, "senate_district", "senate_district")
+print("aggregated", len(senate_districts), "senate districts")
 
 # save counties to csv
 fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
@@ -103,27 +122,7 @@ write_csv(counties, fields, "../final/solar-projects-by-county.csv")
 print('saved counties to csv')
 
 # save counties to geojson
-county_geojson = { 
-    "type": "FeatureCollection",
-    "features": [] }
-county_features = county_geojson['features']
-
-with open("../raw/il_counties.geojson", "r") as geojsonfile: 
-    counties_geojson_src = json.load(geojsonfile)["features"]
-    for c in counties_geojson_src:
-        county = c["properties"]["CO_FIPS"]
-        if county in counties:
-            county_data = counties[county]
-            feature = { 
-                "type": "Feature",
-                "geometry": c["geometry"],
-                "properties": county_data
-            }
-            county_features.append(feature)
-
-with open("../final/solar-projects-by-county.geojson", "w") as outfile:
-    json.dump(county_geojson, outfile)
-
+write_geojson("../raw/il_counties.geojson", "CO_FIPS", counties, "../final/solar-projects-by-county.geojson")
 print('saved counties to geojson')
 
 # save tracts to csv
@@ -157,4 +156,23 @@ with open("../final/solar-projects-by-tract.geojson", "w") as outfile:
     json.dump(tract_geojson, outfile)
 
 print('saved tracts to geojson')
+
+# save house to csv
+fields = ["house_district", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+write_csv(house_districts, fields, "../final/solar-projects-by-il-house.csv")
+print('saved house districts to csv')
+
+# save house to geojson
+write_geojson("../raw/il_house_2023.geojson", "DISTRICT", house_districts, "../final/solar-projects-by-il-house.geojson")
+print('saved house districts to geojson')
+
+# save senate to csv
+fields = ["senate_district", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+write_csv(senate_districts, fields, "../final/solar-projects-by-il-senate.csv")
+print('saved senate districts to csv')
+
+# save senate to geojson
+write_geojson("../raw/il_senate_2023.geojson", "DISTRICT", senate_districts, "../final/solar-projects-by-il-senate.geojson")
+print('saved senate districts to geojson')
+
 print('done!')
