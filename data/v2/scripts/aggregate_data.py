@@ -89,12 +89,15 @@ def write_geojson(geosource, key, items, geoout):
             item = g["properties"][key]
             if item in items:
                 item_data = items[item]
-                feature = { 
-                    "type": "Feature",
-                    "geometry": g["geometry"],
-                    "properties": item_data
-                }
-                out_features.append(feature)
+            else:
+                item_data = init_aggregate({"kw": 0, "category": "None"})
+            
+            feature = { 
+                "type": "Feature",
+                "geometry": g["geometry"],
+                "properties": item_data
+            }
+            out_features.append(feature)
 
     with open(geoout, "w") as outfile:
         json.dump(out_geojson, outfile)
@@ -131,30 +134,7 @@ write_csv(tracts, fields, "../final/solar-projects-by-tract.csv")
 print('saved tracts to csv')
 
 # save tracts to geojson
-tract_geojson = { 
-    "type": "FeatureCollection",
-    "features": [] }
-tract_features = tract_geojson['features']
-
-with open("../raw/il_2020_census_tracts.geojson", "r") as geojsonfile: 
-    tract_geojson_src = json.load(geojsonfile)["features"]
-    for t in tract_geojson_src:
-        tract = t["properties"]["GEOID10"]
-        if tract in tracts:
-            tract_data = tracts[tract]
-        else:
-            tract_data = init_aggregate({"kw": 0, "category": "None"})
-        
-        feature = { 
-            "type": "Feature",
-            "geometry": t["geometry"],
-            "properties": tract_data
-        }
-        tract_features.append(feature)
-
-with open("../final/solar-projects-by-tract.geojson", "w") as outfile:
-    json.dump(tract_geojson, outfile)
-
+write_geojson("../raw/il_2020_census_tracts.geojson", "GEOID10", tracts, "../final/solar-projects-by-tract.geojson")
 print('saved tracts to geojson')
 
 # save house to csv
