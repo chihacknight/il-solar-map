@@ -38,6 +38,9 @@ with open('../raw/report-3-census-tract-rev.csv', "r") as report_3_file:
     datareader_report_3 = csv.DictReader(report_3_file)
 
     for row in datareader_report_3:
+        if row["Census Tract"] == "N/A":
+            continue
+        
         cur_project = {}
 
         cur_project["source_file"] = "report-3-census-tract-rev.csv"
@@ -81,7 +84,7 @@ with open("../raw/solar-eia-plants_1677797680150.geojson") as eiafile:
         lat, long = row["geometry"]["coordinates"]
 
         cur_project["source_file"] = "solar-eia-plants_1677797680150.geojson"
-        cur_project["kw"] = row["properties"]["Total_MW"]
+        cur_project["kw"] = round(float(row["properties"]["Total_MW"])) * 1000 # Convert MW to kW
         cur_project["census_tract"] = get_census_tract(lat, long)
         cur_project["county"] = cur_project["census_tract"][2:5]
         cur_project["category"] = "Utility"
