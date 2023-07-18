@@ -47,6 +47,7 @@ with open('../raw/report-3-census-tract-rev.csv', "r") as report_3_file:
         cur_project["kw"] = float(row["Project Size AC kW"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["category"] = row["CEJA Category"]
+        cur_project["energization_date"] = row["Part II Application Verification/ Energization Date"]
 
         if row["CEJA Category"] == "CS":
             cur_project["category"] = "CS"
@@ -69,6 +70,7 @@ with open('../raw/ilsfa-2023-05-07.csv', "r") as ilsfa_file:
         cur_project["county"] = row["Census Tract"][2:5]
         cur_project["category"] = get_category(
             row["Project Size (AC kW) (P2F)"])
+        cur_project["energization_date"] = row["Date of System Energization"]
 
         projects.append(cur_project)
 
@@ -84,12 +86,27 @@ with open("../raw/EIA-860M-2023-may-solar-IL.csv") as eiafile:
         cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
         cur_project["county"] = cur_project["census_tract"][2:5]
         cur_project["category"] = "Utility"
+        cur_project["energization_date"] = f"{row['Operating Month']}/1/{row['Operating Year']}"
 
         projects.append(cur_project)
 
 with open("../final/all-projects.csv", "w") as projectfile:
-    fields = ["source_file", "kw", "census_tract", "county", "category"]
+    fields = ["source_file", "kw", "census_tract", "county", "category", "energization_date"]
     writer = csv.DictWriter(projectfile, fieldnames=fields)
     writer.writeheader()
     for vals in projects:
         writer.writerow(vals)
+
+# search for duplicates
+print("Searching for duplicates...")
+for p in projects:
+    if p["category"] in ["CS", "Utility"]:
+        for p2 in projects:
+            if p2["category"] in ["CS", "Utility"]:
+                if p["census_tract"] == p2["census_tract"] \
+                and p["kw"] == p2["kw"] \
+                and p["energization_date"] == p2["energization_date"] \
+                and p["source_file"] != p2["source_file"]:
+                    print("Potential duplicate:", p, p2)
+
+print("Done combining files")
