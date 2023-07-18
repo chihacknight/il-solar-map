@@ -91,6 +91,9 @@ def write_geojson(geosource, key, items, geoout):
                 item_data = items[item]
             else:
                 item_data = init_aggregate({"kw": 0, "category": "None"})
+                item_data["total_count"] = 0
+                if key == "GEOID10":
+                    item_data["census_tract"] = item
             
             feature = { 
                 "type": "Feature",
