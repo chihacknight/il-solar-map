@@ -107,6 +107,16 @@ counties = {}
 aggregate_projects(counties, "county", "county_fips")
 print("aggregated", len(counties), "counties")
 
+# create list of County / FIPS lookups and add them to counties
+county_fips = {}
+with open("../raw/il_counties.geojson", "r") as geojsonfile: 
+    geojson_src = json.load(geojsonfile)["features"]
+    for g in geojson_src:
+        county_fips[g["properties"]["CO_FIPS"]] = g["properties"]["COUNTY_NAM"]
+
+for c in counties:
+    counties[c]["county_name"] = county_fips[c]
+
 tracts = {}
 aggregate_projects(tracts, "census_tract", "census_tract")
 print("aggregated", len(tracts), "tracts")
@@ -115,12 +125,40 @@ house_districts = {}
 aggregate_projects(house_districts, "house_district", "house_district")
 print("aggregated", len(house_districts), "house districts")
 
+# populate house districts with legislators
+with open("../raw/il_house_2023_members.csv", "r") as housefile: 
+    district_info = csv.DictReader(housefile)
+    for h in house_districts:
+        house_districts[h]["legislator"] = ""
+        house_districts[h]["party"] = ""
+        house_districts[h]["date_assumed_office"] = ""
+        for di in district_info:
+            if di['Office'] == f"Illinois House of Representatives District {h}":
+                house_districts[h]["legislator"] = di['Name']
+                house_districts[h]["party"] = di['Party']
+                house_districts[h]["date_assumed_office"] = di['Date assumed office']
+        housefile.seek(0)
+
 senate_districts = {}
 aggregate_projects(senate_districts, "senate_district", "senate_district")
 print("aggregated", len(senate_districts), "senate districts")
 
+# populate senate districts with legislators
+with open("../raw/il_senate_2023_members.csv", "r") as senatefile: 
+    district_info = csv.DictReader(senatefile)
+    for s in senate_districts:
+        senate_districts[s]["legislator"] = ""
+        senate_districts[s]["party"] = ""
+        senate_districts[s]["date_assumed_office"] = ""
+        for di in district_info:
+            if di['Office'] == f"Illinois State Senate District {h}":
+                senate_districts[s]["legislator"] = di['Name']
+                senate_districts[s]["party"] = di['Party']
+                senate_districts[s]["date_assumed_office"] = di['Date assumed office']
+        senatefile.seek(0)
+
 # save counties to csv
-fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["county_name", "county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
 write_csv(counties, fields, "../final/solar-projects-by-county.csv")
 print('saved counties to csv')
 
@@ -138,7 +176,7 @@ write_geojson("../raw/il_2020_census_tracts.geojson", "GEOID10", tracts, "../fin
 print('saved tracts to geojson')
 
 # save house to csv
-fields = ["house_district", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["house_district", "legislator", "party", "date_assumed_office", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
 write_csv(house_districts, fields, "../final/solar-projects-by-il-house.csv")
 print('saved house districts to csv')
 
@@ -147,7 +185,7 @@ write_geojson("../raw/il_house_2023.geojson", "DISTRICT", house_districts, "../f
 print('saved house districts to geojson')
 
 # save senate to csv
-fields = ["senate_district", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["senate_district", "legislator", "party", "date_assumed_office", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
 write_csv(senate_districts, fields, "../final/solar-projects-by-il-senate.csv")
 print('saved senate districts to csv')
 
