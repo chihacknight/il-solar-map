@@ -25,8 +25,8 @@ def get_census_tract(lat, long):
         json_val = r.json()
         return json_val["result"]["geographies"]["Census Tracts"][0]["GEOID"]
 
-    except TypeError:
-        print("Failed to find census tract")
+    except KeyError:
+        print("Failed to find census tract", lat, long)
         return "00000"
 
 
@@ -72,20 +72,16 @@ with open('../raw/ilsfa-2023-05-07.csv', "r") as ilsfa_file:
 
         projects.append(cur_project)
 
-with open("../raw/solar-eia-plants_1677797680150.geojson") as eiafile:
-    jsonreader_eia = json.load(eiafile)
+with open("../raw/EIA-860M-2023-may-solar-IL.csv") as eiafile:
+    datareader_eia = csv.DictReader(eiafile)
 
-    for row in tqdm.tqdm(jsonreader_eia["features"]):
+    for row in datareader_eia:
         cur_project = {}
 
-        if row["properties"]["StateName"] != "Illinois":
-            continue
-
-        lat, long = row["geometry"]["coordinates"]
-
-        cur_project["source_file"] = "solar-eia-plants_1677797680150.geojson"
-        cur_project["kw"] = round(float(row["properties"]["Total_MW"])) * 1000 # Convert MW to kW
-        cur_project["census_tract"] = get_census_tract(lat, long)
+        cur_project["source_file"] = "EIA-860M-2023-may-solar-IL.csv"
+        cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"])) * 1000 # Convert MW to kW
+        # note that the EIA data has lat/long columns swapped
+        cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
         cur_project["county"] = cur_project["census_tract"][2:5]
         cur_project["category"] = "Utility"
 
