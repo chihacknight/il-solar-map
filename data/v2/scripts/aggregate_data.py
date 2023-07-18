@@ -102,10 +102,21 @@ def write_geojson(geosource, key, items, geoout):
     with open(geoout, "w") as outfile:
         json.dump(out_geojson, outfile)
 
+# create list of County / FIPS lookups
+county_fips = {}
+with open("../raw/il_counties.geojson", "r") as geojsonfile: 
+    geojson_src = json.load(geojsonfile)["features"]
+    for g in geojson_src:
+        county_fips[g["properties"]["CO_FIPS"]] = g["properties"]["COUNTY_NAM"]
+
 # aggregate projects by each geography
 counties = {}
 aggregate_projects(counties, "county", "county_fips")
 print("aggregated", len(counties), "counties")
+
+# add county names to counties
+for c in counties:
+    counties[c]["county_name"] = county_fips[c]
 
 tracts = {}
 aggregate_projects(tracts, "census_tract", "census_tract")
@@ -120,7 +131,7 @@ aggregate_projects(senate_districts, "senate_district", "senate_district")
 print("aggregated", len(senate_districts), "senate districts")
 
 # save counties to csv
-fields = ["county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["county_name", "county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
 write_csv(counties, fields, "../final/solar-projects-by-county.csv")
 print('saved counties to csv')
 
