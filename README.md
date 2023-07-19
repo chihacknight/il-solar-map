@@ -56,7 +56,7 @@ Also update the meta tags for the site for custom title, description and image:
 <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
 
 <!-— facebook open graph tags -->
-<meta property="og:url" content="http://kepler.gl/" />
+<meta property="og:url" content="http://ilsolarmap.com/" />
 <meta property="og:title" content="Illinois Solar Map - Chi Hack Night / ICJC" />
 <meta property="og:description" content="See how and where the 1,484,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
 <meta property="og:site_name" content="kepler.gl" />
