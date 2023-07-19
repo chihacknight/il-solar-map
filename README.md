@@ -44,6 +44,25 @@ The interactive map is powered with [kepler.gl](https://kepler.gl/), an open sou
 
 The project is managed in kepler.gl and exported as an HTML page. This page is then renamed to `index.html` and [this patch is applied](https://github.com/keplergl/kepler.gl/pull/2292/files#r1268629776) to load the appropriate version of kepler.gl (2.5.5).
 
+Also update the meta tags for the site for custom title, description and image:
+
+```html
+<title>Illinois Solar Map - Chi Hack Night / ICJC</title>
+
+<!--Uber Font-->
+<link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+
+<!--MapBox css-->
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
+
+<!-— facebook open graph tags -->
+<meta property="og:url" content="http://kepler.gl/" />
+<meta property="og:title" content="Illinois Solar Map - Chi Hack Night / ICJC" />
+<meta property="og:description" content="See how and where the 1,484,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
+<meta property="og:site_name" content="kepler.gl" />
+<meta property="og:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
+```
+
 The site is then published with GitHub Pages.
 
 ## Data sources
