@@ -4,7 +4,7 @@ Data prep for ILSolarMap.com.
 
 Read more about ILSolarMap.com here: https://docs.google.com/document/d/1V4BLQhhcFK38FIupAo-gKgJXOfpIzCbdwdtMYjgMeBI/edit
 
-![IlSolarMap.com](images/ilsolarmap.jpg)
+![IlSolarMap.com](images/il-solar-map-x4.jpg)
 
 ## Setup
 We recommend using [virtualenv](http://virtualenv.readthedocs.org/en/latest/virtualenv.html) and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html) for working in a virtualized development environment. [Read how to set up virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
@@ -37,6 +37,14 @@ python get_tract_districts.py
 # aggregate data by county, tract and legilsative districts
 python aggregate_data.py
 ```
+
+## Publishing data with kepler.gl
+
+The interactive map is powered with [kepler.gl](https://kepler.gl/), an open source geospatial analysis tool.
+
+The project is managed in kepler.gl and exported as an HTML page. This page is then renamed to `index.html` and [this patch is applied](https://github.com/keplergl/kepler.gl/pull/2292/files#r1268629776) to load the appropriate version of kepler.gl (2.5.5).
+
+The site is then published with GitHub Pages.
 
 ## Data sources
 

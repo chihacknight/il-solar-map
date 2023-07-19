@@ -154,7 +154,7 @@ with open("../raw/il_senate_2023_members.csv", "r") as senatefile:
         senate_districts[s]["party"] = ""
         senate_districts[s]["date_assumed_office"] = ""
         for di in district_info:
-            if di['Office'] == f"Illinois State Senate District {h}":
+            if di['Office'] == f"Illinois State Senate District {s}":
                 senate_districts[s]["legislator"] = di['Name']
                 senate_districts[s]["party"] = di['Party']
                 senate_districts[s]["date_assumed_office"] = di['Date assumed office']
