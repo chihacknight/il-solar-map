@@ -44,23 +44,48 @@ The interactive map is powered with [kepler.gl](https://kepler.gl/), an open sou
 
 The project is managed in kepler.gl and exported as an HTML page. This page is then renamed to `index.html` and [this patch is applied](https://github.com/keplergl/kepler.gl/pull/2292/files#r1268629776) to load the appropriate version of kepler.gl (2.5.5).
 
-Also update the meta tags for the site for custom title, description and image:
+We replace part of the html header meta tags for the site for custom title, description and image:
 
 ```html
-<title>Illinois Solar Map - Chi Hack Night / ICJC</title>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <title>Illinois Solar Map - Chi Hack Night / ICJC</title>
 
-<!--Uber Font-->
-<link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+        <!--Uber Font-->
+        <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
 
-<!--MapBox css-->
-<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
+        <!--MapBox css-->
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
 
-<!-— facebook open graph tags -->
-<meta property="og:url" content="http://ilsolarmap.com/" />
-<meta property="og:title" content="Illinois Solar Map - Chi Hack Night / ICJC" />
-<meta property="og:description" content="See how and where the 1,484,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
-<meta property="og:site_name" content="kepler.gl" />
-<meta property="og:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
+        <!-— facebook open graph tags -->
+        <meta property="og:url" content="http://ilsolarmap.com/" />
+        <meta property="og:title" content="Illinois Solar Map - Chi Hack Night / ICJC" />
+        <meta property="og:description" content="See how and where the 1,484,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
+        <meta property="og:site_name" content="Illinois Solar Map" />
+        <meta property="og:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
+
+        <!-— twitter card tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="Illinois Solar Map">
+        <meta name="twitter:creator" content="Chi Hack Night / ICJC">
+        <meta name="twitter:title" content="Illinois Solar Map - Chi Hack Night / ICJC">
+        <meta name="twitter:description" content="See how and where the 1,484,000 kilowatts of solar have been installed in the State of Illinois">
+        <meta name="twitter:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
+
+        <!-- Load React/Redux -->
+        <script src="https://unpkg.com/react@16.8.4/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/redux@3.7.2/dist/redux.js" crossorigin></script>
+        <script src="https://unpkg.com/react-redux@7.1.3/dist/react-redux.min.js" crossorigin></script>
+        <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js" crossorigin></script>
+
+        <!-- Load Kepler.gl -->
+        <script src="https://unpkg.com/kepler.gl@2.5.5/umd/keplergl.min.js" crossorigin></script>
 ```
 
 The site is then published with GitHub Pages.
