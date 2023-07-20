@@ -81,7 +81,7 @@ with open("../raw/EIA-860M-2023-may-solar-IL.csv") as eiafile:
         cur_project = {}
 
         cur_project["source_file"] = "EIA-860M-2023-may-solar-IL.csv"
-        cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"])) * 1000 # Convert MW to kW
+        cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"]) * 1000) # Convert MW to kW
         # note that the EIA data has lat/long columns swapped
         cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
         cur_project["county"] = cur_project["census_tract"][2:5]
