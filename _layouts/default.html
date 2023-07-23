@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Starter Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+      <span class="fs-4">Starter template</span>
+    </a>
+  </header>
+
+  <main>
+    <h1>Get started with Bootstrap</h1>
+    <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
+
+    <div class="mb-5">
+      <a href="../examples/" class="btn btn-primary btn-lg px-4">Download examples</a>
+    </div>
+
+    <hr class="col-3 col-md-2 mb-5">
+
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h2>Starter projects</h2>
+        <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
+        <ul class="icon-list">
+          <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Bootstrap npm starter</a></li>
+          <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Guides</h2>
+        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+        <ul class="icon-list">
+          <li><a href="../getting-started/introduction/">Bootstrap quick start guide</a></li>
+          <li><a href="../getting-started/webpack/">Bootstrap Webpack guide</a></li>
+          <li><a href="../getting-started/parcel/">Bootstrap Parcel guide</a></li>
+          <li><a href="../getting-started/build-tools/">Contributing to Bootstrap</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="pt-5 my-5 text-muted border-top">
+    Created by the Bootstrap team &middot; &copy; 2021
+  </footer>
+</div>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>
+      {% if page.title %}
+        {{page.title}} -
+      {% endif %}
+      {{site.name}}
+    </title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.description %}
+      <meta content="{{ page.description }}" name='description' />
+    {% else %}
+      <meta content="{{ site.description }}" name='description' />
+    {% endif %}
+    <meta content="{{ site.name }}" name='author' />
+
+    <!-- Facebook metadata -->
+    <meta content="{{ site.name }}" property="og:site_name">
+    {% if page.title %}
+      <meta content="{{ page.title }} - {{ site.name }}" property="og:title">
+    {% else %}
+      <meta content="{{ site.name }}" property="og:title">
+    {% endif %}
+    {% if page.title %}
+      <meta content="article" property="og:type">
+    {% else %}
+      <meta content="website" property="og:type">
+    {% endif %}
+    {% if page.description %}
+      <meta content="{{ page.description }}" property="og:description">
+    {% else %}
+      <meta content="{{ site.description }}" property="og:description">
+    {% endif %}
+    {% if page.url %}
+      <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+    {% endif %}
+    {% if page.date %}
+      <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+    {% endif %}
+    <meta content="{{ site.url }}/images/dedupe-io-grid.jpg" property="og:image">
+    {% if page.categories %}
+      {% for category in page.categories limit:1 %}
+      <meta content="{{ category }}" property="article:section">
+      {% endfor %}
+    {% endif %}
+    {% if page.tags %}
+      {% for tag in page.tags %}
+      <meta content="{{ tag }}" property="article:tag">
+      {% endfor %}
+    {% endif %}
+
+    <!-- Twitter metadata -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ site.title }}">
+    <meta name="twitter:creator" content="{{ site.title }}">
+    {% if page.title %}
+      <meta name="twitter:title" content="{{ page.title }}">
+    {% else %}
+      <meta name="twitter:title" content="{{ site.title }}">
+    {% endif %}
+    {% if page.url %}
+      <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+    {% endif %}
+    {% if page.description %}
+      <meta name="twitter:description" content="{{ page.description }}">
+    {% else %}
+      <meta name="twitter:description" content="{{ site.description }}">
+    {% endif %}
+    <meta name="twitter:image:src" content="{{ site.url }}/images/dedupe-io-grid.jpg">
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="/css/bootstrap.simplex.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--     <link rel="stylesheet" href="https://app.dedupe.io/static/css/custom.css"> -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+    <script src="/lib/bootstrap.min.js"></script>
+
+  </head>
+  <body data-target=".navbar" data-offset="50">
+    <div class="navbar navbar-default navbar-static" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-left" href="/"><img src='/images/dedupeio-logo.png' class='navbar-logo' alt='Dedupe.io' title='Dedupe.io' /></a>
+        </div>
+        <div class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a href="/consulting/">Consulting</a></li>
+            <li><a href="/tutorials/">Tutorials</a></li>
+            <li><a href="/developers/">Developers</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+      <div class='row'>
+        <div class='col-sm-8 col-sm-offset-2'>
+          <p>
+            <strong>Dedupe.io was shut down Jan 31, 2023.</strong>
+          </p>
+
+          <p>The Dedupe.io team has decided to dedicate our focus to our consulting practice at <a href='https://datamade.us/'>DataMade</a> and work on projects more aligned with our mission to support our clients in working toward democracy, justice, and equity.</p>
+
+          <p>We are continuing our <a href='/consulting/'>consulting practice around the open source dedupe library</a> and would be happy to consult with you on setting up a solution based on it. <a href='mailto:info@datamade.us?subject=dedupe library consulting'>Contact us to get started ></a></p>
+        </div>
+      </div>
+    </div>
+
+    {{content}}
+
+    <footer class='footer'>
+        <div class='container-fluid'>
+          <div class='row'>
+            <div class='col-sm-2 col-sm-offset-1'>
+              <small>
+                <strong><a href="/">Home</a></strong><br />
+                <a href="/consulting">Consulting</a>
+                <a href="/documentation/how-it-works.html">How it works</a>
+              </small>
+            </div>
+            <div class='col-sm-2'>
+              <small>
+                <strong><a href="/tutorials/">Tutorials</a></strong><br />
+                <a href="/documentation/faq.html">FAQ</a><br />
+                <a href="/developers">Developers</a><br />
+                <a href="http://eepurl.com/gybVWH" target="_blank">Newsletter</a>
+              </small>
+            </div>
+            <div class='col-sm-2'>
+              <small>
+                <strong><a href='/about'>About</a></strong><br />
+                <a href='/terms-of-service'>Terms of Service</a><br />
+                <a href='/privacy-policy'>Privacy Policy</a><br />
+              </small>
+            </div>
+            <div class='col-sm-2'>
+              <small>
+                <strong>Contact us</strong><br />
+                <i class='fa fa-fw fa-envelope'></i> <a href='mailto:info@datamade.us'>info@datamade.us</a><br />
+              </small>
+            </div>
+            <div class='col-sm-2'>
+              &copy; {{ site.time | date: '%Y' }} Dedupe.io LLC
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <script src="/lib/analytics_lib.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcSapcUAAAAAG-S_C7uNhSdAymqr62qHIMIvCvl"></script>
+    <script type="text/javascript">
+      // Send homepage data to reCAPTCHA to improve bot scoring.
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LcSapcUAAAAAG-S_C7uNhSdAymqr62qHIMIvCvl', {action: 'homepage'});
+      });
+    </script>
+  </body>
+</html>

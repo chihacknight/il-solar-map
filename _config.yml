@@ -1,0 +1,11 @@
+port:  3000
+markdown: kramdown
+name: "Dedupe.io - De-duplicate and find matches in your Excel spreadsheet or database"
+title: "Dedupe.io - De-duplicate and find matches in your Excel spreadsheet or database"
+url: https://dedupe.io
+encoding: utf-8
+timezone: America/Chicago
+description: "Dedupe.io is a powerful tool that learns the best way to match similar rows in your Excel spreadsheet or database. Using cutting-edge research in machine learning we will quickly, accurately, and easily clean up your data—saving you time and money."
+permalink: none
+gems:
+  - jekyll-redirect-from
