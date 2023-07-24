@@ -1,90 +1,157 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Starter Template · Bootstrap v5.0</title>
+---
+layout: default
+---
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+<h1>Illinois Solar Map</h1>
 
-    
+<p class="fs-5">
+  With the passage of the <a href="https://www.nrdc.org/bio/jc-kibbey/illinois-passes-nation-leading-equitable-climate-bill">Clean and Equitable Jobs Act</a> (CEJA) in 2021, Illinois is on a path to 100% renewable energy by 2050 and has enabled the rapid expansion of clean energy installations. This map is a first pass at creating a statewide aggregate tracking the status of the <strong>state’s rapid expansion of solar projects</strong>. 
+</p>
+<p class="fs-5">
+  As of May 2023, <strong>1,622,000 kilowatts</strong> of solar have been installed in the State of Illinois. This is about 3.5% of Illinois total power generation. For comparison, <a href="https://www.gem.wiki/Baldwin_Energy_Station">Baldwin Energy Complex</a>, the State’s largest coal power plant, is 1,894,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
+</p>
 
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<p>
+  <strong>Table of contents</strong>
+</p>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<h3 id="map-explorer">Map explorer</h3>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+<p>
+You can browse all 34,909 solar projects in Illinois by geography and category at <a href="/map.html">ilsolarmap.com</a>:
+</p>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
-  </head>
-  <body>
-    
-<div class="col-lg-8 mx-auto p-3 py-md-5">
-  <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-      <span class="fs-4">Starter template</span>
-    </a>
-  </header>
+<ul>
+  <li><span style="text-decoration:underline;">Geographies</span>: US Census Tracts, Counties, State Senate Districts and State House Districts
+  <li><span style="text-decoration:underline;">Categories</span>: Utility, Community Solar, Large Distributed Generation, Small Distributed Generation
+  <li><span style="text-decoration:underline;">Units</span>: Kilowatts or number of projects</li>
+</ul>
 
-  <main>
-    <h1>Get started with Bootstrap</h1>
-    <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
+<p>
+The map is powered by kepler.gl, an open source geospatial analysis tool. This tool has a lot of features, including layer toggling, custom map shading, 3D mode and address search. Read the tutorial on using it here: <a href="https://docs.kepler.gl/docs/user-guides">https://docs.kepler.gl/docs/user-guides</a> 
+</p>
+<p>
+  <a href="/map.html">
+    <img src="/images/il-solar-map-kepler.jpg" class="img-fluid img-thumbnail" alt="IL Solar Map" title="IL Solar Map">
+  </a>
+</p>
+<p class="text-center my-4">
+  <a href="/map.html" class="btn btn-primary btn-lg px-4">Open map</a>
+</p>
 
-    <div class="mb-5">
-      <a href="../examples/" class="btn btn-primary btn-lg px-4">Download examples</a>
-    </div>
-
-    <hr class="col-3 col-md-2 mb-5">
-
-    <div class="row g-5">
-      <div class="col-md-6">
-        <h2>Starter projects</h2>
-        <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
-        <ul class="icon-list">
-          <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Bootstrap npm starter</a></li>
-          <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
-        </ul>
-      </div>
-
-      <div class="col-md-6">
-        <h2>Guides</h2>
-        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
-        <ul class="icon-list">
-          <li><a href="../getting-started/introduction/">Bootstrap quick start guide</a></li>
-          <li><a href="../getting-started/webpack/">Bootstrap Webpack guide</a></li>
-          <li><a href="../getting-started/parcel/">Bootstrap Parcel guide</a></li>
-          <li><a href="../getting-started/build-tools/">Contributing to Bootstrap</a></li>
-        </ul>
-      </div>
-    </div>
-  </main>
-  <footer class="pt-5 my-5 text-muted border-top">
-    Created by the Bootstrap team &middot; &copy; 2021
-  </footer>
-</div>
+<h3 id="categories-of-solar-projects">Categories of solar projects</h3>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<p>
+All units of power measurement are in kilowatt (KW), specifically alternating current (KWAC).
+</p>
+<p>
+Solar installations are divided up into 4 categories:
+</p>
+<ul>
 
-      
-  </body>
-</html>
+<li><strong>Utility</strong>: Utility Scale Solar projects built by energy utilities
+
+<li><strong>CS</strong>: Community Solar projects whose electricity is shared by more than a single property
+
+<li><strong>DG_Small</strong>: Small Distributed Generation (DG) for systems 25 kW and below
+
+<li><strong>DG_Large</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size
+</li>
+</ul>
+<h3 id="top-level-solar-project-numbers">Top level solar project numbers</h3>
+  
+  
+  
+  <table class="table">
+    <tr>
+     <td><strong>Category</strong>
+     </td>
+     <td><strong>KW installed</strong>
+     </td>
+     <td><strong>KW percent</strong>
+     </td>
+     <td><strong>Project count</strong>
+     </td>
+    </tr>
+    <tr>
+     <td>Utility
+     </td>
+     <td><p style="text-align: right">
+  925,300</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  57.03%</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  138</p>
+  
+     </td>
+    </tr>
+    <tr>
+     <td>Large_DG
+     </td>
+     <td><p style="text-align: right">
+  263,456</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  16.24%</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  987</p>
+  
+     </td>
+    </tr>
+    <tr>
+     <td>Small_DG
+     </td>
+     <td><p style="text-align: right">
+  248,708</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  15.33%</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  33,689</p>
+  
+     </td>
+    </tr>
+    <tr>
+     <td>CS
+     </td>
+     <td><p style="text-align: right">
+  184,984</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  11.40%</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  95</p>
+  
+     </td>
+    </tr>
+    <tr>
+     <td>Grand Total
+     </td>
+     <td><p style="text-align: right">
+  1,622,448</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  100.00%</p>
+  
+     </td>
+     <td><p style="text-align: right">
+  34,909</p>
+  
+     </td>
+    </tr>
+  </table>
