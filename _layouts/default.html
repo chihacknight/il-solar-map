@@ -72,6 +72,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.zephyr.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
     
     <!-- Custom styles for this template -->
     <link href="/css/custom.css" rel="stylesheet">
@@ -79,11 +80,19 @@
   <body>
     
     <div class="col-lg-8 mx-auto p-3 py-md-5">
-      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <span class="fs-4">Illinois Solar Map</span>
+      <header>
+        <a href="/" class="text-dark text-decoration-none">
+          <span class="fs-4"><i class="fa fa-sun fa-spin"></i> Illinois Solar Map</span>
         </a>
+        <span class="float-end custom-nav">
+          <a href="/">About</a>
+          <a href="/map.html">Map</a>
+          <a href="/by-county.html">By County</a>
+          <a href="/by-il-house.html">By IL House</a>
+          <a href="/by-il-senate.html">By IL Senate</a>
+        </span>
       </header>
+      <hr class="mb-5"/>
 
       <main>
         
@@ -96,6 +105,7 @@
     </div>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/fontawesome.min.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7WESE4Z2K"></script>

@@ -1,3 +1,7 @@
 body, p, table {
   font-size: 1.25rem !important;
 }
+
+.custom-nav a {
+  padding-right: 20px;
+}

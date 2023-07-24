@@ -1,0 +1,50 @@
+---
+layout: default
+title: Solar projects by county
+---
+
+<h1>Solar projects by county</h1>
+
+<p>
+  <a href="/map.html">
+    <img src="/images/by-county.png" class="img-fluid img-thumbnail" alt="IL Solar Projects by County" title="IL Solar Projects by County">
+  </a>
+</p>
+
+<div id="table-container"></div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="js/jquery.csv.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/csv_to_html_table.js"></script>
+
+<script>
+  function format_number(val) {
+      const parsed = parseInt(val);
+      if (isNaN(parsed)) { return 0 }
+      return parseInt(val).toLocaleString("en-US")
+  }
+  
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/solar-projects-by-county-formatted.csv",
+      element: "table-container",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[1, 'desc']]
+      },
+      custom_formatting: [
+          [1, format_number],
+          [2, format_number],
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+      ]
+  });
+</script>
