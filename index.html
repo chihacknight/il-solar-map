@@ -4,10 +4,10 @@ layout: default
 
 <h1>Illinois Solar Map</h1>
 
-<p class="fs-5">
+<p>
   With the passage of the <a href="https://www.nrdc.org/bio/jc-kibbey/illinois-passes-nation-leading-equitable-climate-bill">Clean and Equitable Jobs Act</a> (CEJA) in 2021, Illinois is on a path to 100% renewable energy by 2050 and has enabled the rapid expansion of clean energy installations. This map is a first pass at creating a statewide aggregate tracking the status of the <strong>state’s rapid expansion of solar projects</strong>. 
 </p>
-<p class="fs-5">
+<p>
   As of May 2023, <strong>1,622,000 kilowatts</strong> of solar have been installed in the State of Illinois. This is about 3.5% of Illinois total power generation. For comparison, <a href="https://www.gem.wiki/Baldwin_Energy_Station">Baldwin Energy Complex</a>, the State’s largest coal power plant, is 1,894,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
 </p>
 
@@ -15,10 +15,19 @@ layout: default
   <strong>Table of contents</strong>
 </p>
 
-<h3 id="map-explorer">Map explorer</h3>
+<ul>
+  <li><a href="#map-explorer">Map explorer</a></li>
+  <li><a href="#categories-of-solar-projects">Categories of solar projects</a></li>
+  <li><a href="#top-level-solar-project-numbers">Top level solar project numbers</a></li>
+  <li><a href="#solar-installations-over-time">Solar installations over time</a></li>
+  <li><a href="#data-sources">Data sources</a></li>
+  <li><a href="#team-and-collaborators">Team and collaborators</a></li>
+</ul>
+
+<h2 id="map-explorer" class="mt-4">Map explorer</h2>
 
 <p>
-You can browse all 34,909 solar projects in Illinois by geography and category at <a href="/map.html">ilsolarmap.com</a>:
+You can browse all 34,909 solar projects in Illinois by geography and category on our <a href="/map.html">map page</a>:
 </p>
 
 <ul>
@@ -39,8 +48,7 @@ The map is powered by kepler.gl, an open source geospatial analysis tool. This t
   <a href="/map.html" class="btn btn-primary btn-lg px-4">Open map</a>
 </p>
 
-<h3 id="categories-of-solar-projects">Categories of solar projects</h3>
-
+<h2 id="categories-of-solar-projects" class="mt-4">Categories of solar projects</h2>
 
 <p>
 All units of power measurement are in kilowatt (KW), specifically alternating current (KWAC).
@@ -49,109 +57,130 @@ All units of power measurement are in kilowatt (KW), specifically alternating cu
 Solar installations are divided up into 4 categories:
 </p>
 <ul>
-
-<li><strong>Utility</strong>: Utility Scale Solar projects built by energy utilities
-
-<li><strong>CS</strong>: Community Solar projects whose electricity is shared by more than a single property
-
-<li><strong>DG_Small</strong>: Small Distributed Generation (DG) for systems 25 kW and below
-
-<li><strong>DG_Large</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size
-</li>
+  <li><strong>Utility</strong>: Utility Scale Solar projects built by energy utilities</li>
+  <li><strong>Community Solar (CS)</strong>: Community Solar projects whose electricity is shared by more than a single property</li>
+  <li><strong>Large Distributed Generation (Large_DG)</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size</li>
+  <li><strong>Small Distributed Generation (Small_DG)</strong>: Small Distributed Generation (DG) for systems 25 kW and below</li>
 </ul>
-<h3 id="top-level-solar-project-numbers">Top level solar project numbers</h3>
-  
-  
-  
-  <table class="table">
-    <tr>
-     <td><strong>Category</strong>
-     </td>
-     <td><strong>KW installed</strong>
-     </td>
-     <td><strong>KW percent</strong>
-     </td>
-     <td><strong>Project count</strong>
-     </td>
-    </tr>
-    <tr>
-     <td>Utility
-     </td>
-     <td><p style="text-align: right">
-  925,300</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  57.03%</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  138</p>
-  
-     </td>
-    </tr>
-    <tr>
-     <td>Large_DG
-     </td>
-     <td><p style="text-align: right">
-  263,456</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  16.24%</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  987</p>
-  
-     </td>
-    </tr>
-    <tr>
-     <td>Small_DG
-     </td>
-     <td><p style="text-align: right">
-  248,708</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  15.33%</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  33,689</p>
-  
-     </td>
-    </tr>
-    <tr>
-     <td>CS
-     </td>
-     <td><p style="text-align: right">
-  184,984</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  11.40%</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  95</p>
-  
-     </td>
-    </tr>
-    <tr>
-     <td>Grand Total
-     </td>
-     <td><p style="text-align: right">
-  1,622,448</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  100.00%</p>
-  
-     </td>
-     <td><p style="text-align: right">
-  34,909</p>
-  
-     </td>
-    </tr>
-  </table>
+
+<h2 id="top-level-solar-project-numbers" class="mt-4">Top level solar project numbers</h2>
+
+<div class="row">
+  <div class="col-md-7">
+    <table class="table">
+      <thead>
+        <tr>
+        <th>Category</th>
+        <th>KW installed</th>
+        <th>Percent</th>
+        <th>Project count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Utility</td>
+          <td>925,300 kw</td>
+          <td>57.0%</td>
+          <td>138</td>
+        </tr>
+        <tr>
+          <td>Community Solar (CS)</td>
+          <td>184,984 kw</td>
+          <td>11.4%</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>Large Distributed Generation (Large_DG)</td>
+          <td>263,456 kw</td>
+          <td>16.2%</td>
+          <td>987</td>
+        </tr>
+        <tr>
+          <td>Small Distributed Generation (Small_DG)</td>
+          <td>248,708 kw</td>
+          <td>15.3%</td>
+          <td>33,689</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+        <td>Grand Total</td>
+        <td>1,622,448 kw</td>
+        <td>100.0%</td>
+        <td>34,909</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="col-md-5">
+    <img src="/images/solar-category-pie.png" class="img-fluid" alt="Pie chart of solar installed by category">
+  </div>
+</div>
+
+<h2 id="solar-installations-over-time" class="mt-4">Solar installations over time</h2>
+
+<img src="/images/solar-over-time-all.png" class="img-fluid" alt="Area chart of all solar projects installed over time">
+
+<div class="row">
+  <div class="col-md-6">
+    <img src="/images/solar-over-time-utility.png" class="img-fluid" alt="Area chart of utility solar projects installed over time">
+  </div>
+  <div class="col-md-6">
+    <img src="/images/solar-over-time-cs.png" class="img-fluid" alt="Area chart of community solar projects installed over time">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <img src="/images/solar-over-time-large-dg.png" class="img-fluid" alt="Area chart of large distributed generation solar projects installed over time">
+  </div>
+  <div class="col-md-6">
+    <img src="/images/solar-over-time-small-dg.png" class="img-fluid" alt="Area chart of small distributed generation solar projects installed over time">
+  </div>
+</div>
+
+<h2 id="data-sources" class="mt-4">Data sources</h2>
+<p>The raw data for this map is available to <a href="https://github.com/chihacknight/il-solar-map/tree/main/data/v2/final">view and download here</a>.</p>
+
+<p>Solar project sources</p>
+<ul>
+  <li><a href="https://illinoisabp.com/project-application-reports/">Illinois Adjustable Block Program Project Applications published by the Illinois Power Agency (IPA)</a></li>
+  <li><a href="https://elevate.maps.arcgis.com/apps/webappviewer/index.html?id=c37a6a8914ec4bc5861159175f9dfbcd">Illinois Solar for All Projects administered by Elevate and IPA</a></li>
+  <li><a href="https://www.eia.gov/electricity/data/eia860m/">Utility solar projects (US EIA-860M)</a></li>
+</ul>
+
+<p>Boundary sources</p>
+<ul>
+  <li><a href="https://clearinghouse.isgs.illinois.edu/data/reference/illinois-county-boundaries-polygons-and-lines">Illinois Counties</a></li>
+  <li><a href="https://www.elections.il.gov/shape/">Illinois State Senate Districts (2023)</a></li>
+  <li><a href="https://www.elections.il.gov/shape/">Illinois State House Districts (2023)</a></li>
+  <li><a href="https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/17_ILLINOIS/17/">Illinois Census Tracts (2020)</a></li>
+</ul>
+
+<p>Legislator info</p>
+<ul>
+  <li><a href="https://ballotpedia.org/Illinois_State_Senate">Illinois State Senate Members</a></li>
+  <li><a href="https://ballotpedia.org/Illinois_House_of_Representatives">Illinois State House Members</a></li>
+</ul>
+
+<h2 id="team-and-collaborators" class="mt-4">Team and collaborators</h2>
+
+<p>
+This map and the data were created in collaboration with the <a href="https://ilcleanjobs.org/">Illinois Clean Jobs Coalition</a> Renewables Subcommittee and civic tech volunteers at <a href="https://chihacknight.org/">Chi Hack Night</a>.
+</p>
+<ul>
+  <li><a href="https://derekeder.com/">Derek Eder</a> - Project and development lead
+  <li><a href="https://www.linkedin.com/in/surag-nuthulapaty-a72822254/">Surag Nuthulapaty</a> - Data aggregation
+  <li><a href="https://chihacknight.org/board-of-directors/eric-sherman.html">Eric Sherman</a> - Mapping and consulting</li>
+</ul>
+<p>Questions? Email Derek at <a href="mailto:derek@derekeder.com">derek@derekeder.com</a> 
+</p>
+
+<div class="row">
+  <div class="col-md-2">
+    <img src="/images/il_clean_jobs_logo.svg" class="img-fluid" alt="Illinois Clean Jobs Coalition" title="Illinois Clean Jobs Coalition">
+  </div>
+  <div class="col-md-3">
+    <img src="/images/chn-logo.png" class="img-fluid" alt="Chi Hack Night" title="Chi Hack Night">
+  </div>
+</div>
