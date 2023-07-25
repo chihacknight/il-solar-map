@@ -1,8 +1,6 @@
 # il-solar-map
 
-Data prep for ILSolarMap.com. 
-
-Read more about ILSolarMap.com here: https://docs.google.com/document/d/1V4BLQhhcFK38FIupAo-gKgJXOfpIzCbdwdtMYjgMeBI/edit
+Website and data prep for ILSolarMap.com. 
 
 ![IlSolarMap.com](images/il-solar-map-x4.jpg)
 
@@ -16,7 +14,7 @@ mkvirtualenv il-solar-map -p /path/to/your/python3
 pip install -r requirements.txt
 ```
 
-## Running the Script
+## Running the data aggregation scripts
 
 To run everything:
 
@@ -114,7 +112,40 @@ We replace part of the html header meta tags for the site for custom title, desc
       </head>
 ```
 
-The site is then published with GitHub Pages.
+## Setting up and running the website 
+
+This site uses Jekyll to serve several static pages and images. The site is published to GitHub Pages.
+### Dependencies
+
+* [Jekyll](http://jekyllrb.com/) - Static site generator built in Ruby
+* [Bootstrap 5](http://getbootstrap.com) - HTML and CSS layouts
+* [DataTables](http://datatables.net) - for searching and sorting tables
+* [CSV to HTML Table](https://github.com/derekeder/csv-to-html-table) - for sortable rollup tables
+
+### Running locally
+
+Requirements:
+
+* ruby-2.6.2
+* jekyll 3.1.6
+
+We recommend using [rvm](https://rvm.io/) to manage your Ruby versions.
+
+Initial setup
+```console
+git clone https://github.com/chihacknight/il-solar-map.git
+cd il-solar-map
+rvm install ruby-2.6.2
+bundle install jekyll -v 3.1.6
+bundle install
+```
+
+Running locally
+```console
+jekyll serve -w
+```
+
+Then open your web browser and navigate to http://localhost:3000
 
 ## Data sources
 
