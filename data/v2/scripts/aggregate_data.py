@@ -98,6 +98,7 @@ def write_geojson(geosource, key, items, geoout):
             feature = { 
                 "type": "Feature",
                 "geometry": g["geometry"],
+                "id": item,
                 "properties": item_data
             }
             out_features.append(feature)
