@@ -40,6 +40,7 @@ function getTooltip(props){
   `
 }
 
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -57,20 +58,20 @@ map.on('load', () => {
       data: '/data/v2/final/solar-projects-by-tract.geojson'
   });
 
-  // map.addSource('counties', {
-  //     type: 'geojson',
-  //     data: '/data/v2/final/solar-projects-by-county.geojson'
-  // });
+  map.addSource('counties', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-county.geojson'
+  });
 
-  // map.addSource('il-house', {
-  //     type: 'geojson',
-  //     data: '/data/v2/final/solar-projects-by-il-house.geojson'
-  // });
+  map.addSource('il-house', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-il-house.geojson'
+  });
 
-  // map.addSource('il-senate', {
-  //     type: 'geojson',
-  //     data: '/data/v2/final/solar-projects-by-il-senate.geojson'
-  // });
+  map.addSource('il-senate', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-il-senate.geojson'
+  });
 
   map.addLayer({
     'id': 'tract-fills',
@@ -83,12 +84,12 @@ map.on('load', () => {
         ['linear'],
         ['get', 'total_kw'],
         0, '#FFFFFF',
-        88, '#ECF0F6',
-        177, '#B2C2DB',
-        279, '#9BB0D0',
-        469, '#849EC5',
-        886, '#6182B5',
-        2254, '#4E71A6',
+        100, '#ECF0F6',
+        250, '#B2C2DB',
+        300, '#9BB0D0',
+        500, '#849EC5',
+        1000, '#6182B5',
+        2000, '#4E71A6',
         210000, '#43618F',
       ],
       'fill-opacity': 0.5,
