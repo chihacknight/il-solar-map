@@ -124,6 +124,10 @@ tracts = {}
 aggregate_projects(tracts, "census_tract", "census_tract")
 print("aggregated", len(tracts), "tracts")
 
+places = {}
+aggregate_projects(places, "place", "place")
+print("aggregated", len(tracts), "places")
+
 house_districts = {}
 aggregate_projects(house_districts, "house_district", "house_district")
 print("aggregated", len(house_districts), "house districts")
@@ -177,6 +181,15 @@ print('saved tracts to csv')
 # save tracts to geojson
 write_geojson("../raw/il_2020_census_tracts.geojson", "GEOID10", tracts, "../final/solar-projects-by-tract.geojson")
 print('saved tracts to geojson')
+
+# save places to csv
+fields = ["place", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+write_csv(places, fields, "../final/solar-projects-by-place.csv")
+print('saved places to csv')
+
+# save places to geojson
+write_geojson("../raw/il_places.geojson", "NAMELSAD20", places, "../final/solar-projects-by-place.geojson")
+print('saved places to geojson')
 
 # save house to csv
 fields = ["house_district", "legislator", "party", "date_assumed_office", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]

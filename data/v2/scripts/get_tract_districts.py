@@ -45,7 +45,15 @@ with open("../raw/il_senate_2023.geojson", "r") as geojsonfile:
     for h in senate_geojson_src:
         senate_districts[h["properties"]["DISTRICT"]] = shape(h["geometry"])
 
-print(len(senate_districts), "house districts found")
+print(len(senate_districts), "senate districts found")
+
+census_places = {}
+with open("../raw/il_places.geojson", "r") as geojsonfile: 
+    places_geojson_src = json.load(geojsonfile)["features"]
+    for p in places_geojson_src:
+        census_places[p["properties"]["NAMELSAD20"]] = shape(p["geometry"])
+
+print(len(census_places), "census places found")
 
 for centroid in centroids:
     point = (centroid['CENTLON'], centroid['CENTLAT'])
@@ -56,6 +64,10 @@ for centroid in centroids:
     for district in senate_districts:
         if senate_districts[district].contains(Point([point])):
             centroid['senate_district'] = district
+            break
+    for place in census_places:
+        if census_places[place].contains(Point([point])):
+            centroid['place'] = place
             break
 
 output = []
@@ -69,6 +81,7 @@ with open("../final/all-projects.csv", 'r') as csvfile:
                 o = dict(row)
                 o['house_district'] = centroid.get('house_district',None)
                 o['senate_district'] = centroid.get('senate_district',None)
+                o['place'] = centroid.get('place',None)
                 output.append(o)
                 break
 
