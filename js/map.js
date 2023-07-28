@@ -1,4 +1,6 @@
 const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+let selectedLayer = 'tracts-fills'
+let selectedCategory = 'total_kw'
 
 function getTooltip(props){
   let header = ''
@@ -61,7 +63,7 @@ function getTooltip(props){
   `
 }
 
-function getFillColor(layerSource){
+function getFillColor(layerSource, category){
   let buckets = []
   switch(layerSource) {
     case 'tracts':
@@ -83,7 +85,7 @@ function getFillColor(layerSource){
       buckets = [0, 100, 250, 500, 1000, 2000]
   } 
 
-  let fillColor = ['interpolate', ['linear'], ['get', 'total_kw']]
+  let fillColor = ['interpolate', ['linear'], ['get', category]]
   for (var i = 0; i < buckets.length; i++) {
     fillColor.push(buckets[i], colors[i])
   }
@@ -100,7 +102,7 @@ function addLayer(map, layerSource, visible = 'none'){
       'visibility': visible
       },
     'paint': {
-      'fill-color': getFillColor(layerSource),
+      'fill-color': getFillColor(layerSource, 'total_kw'),
       'fill-opacity': 0.5,
       'fill-outline-color': [
         'case',
@@ -191,7 +193,6 @@ map.on('load', () => {
   addLayer(map, 'il-house')
 
   $('#geography-select button').click(function(e){
-    
     // reset layers
     map.setLayoutProperty('tracts-fills', 'visibility', 'none')
     map.setLayoutProperty('places-fills', 'visibility', 'none')
@@ -200,12 +201,21 @@ map.on('load', () => {
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
     $('#geography-select button').removeClass('active')
     
-    const clickedLayer = this.value + '-fills'
+    selectedLayer = this.value
     this.classList.add('active')
-    map.setLayoutProperty(
-      clickedLayer,
-      'visibility',
-      'visible'
-    )
+    map.setLayoutProperty(selectedLayer + '-fills', 'visibility', 'visible')
+    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
+
+    console.log(selectedLayer, selectedCategory)
+  })
+
+  $('#category-select button').click(function(e){
+    $('#category-select button').removeClass('active')
+    
+    selectedCategory = this.value
+    this.classList.add('active')
+    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
+
+    console.log(selectedLayer, selectedCategory)
   })
 })
