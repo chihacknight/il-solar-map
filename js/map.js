@@ -1,7 +1,7 @@
-const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'];
+const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
 
 function getTooltip(props){
-  let header = '';
+  let header = ''
   if (props.census_tract !== undefined) {
     header = `<strong>Tract ${props.census_tract}</strong><br />`
   } else if (props.place !== undefined) {
@@ -66,14 +66,19 @@ function getFillColor(layerSource){
   switch(layerSource) {
     case 'tracts':
       buckets = [0, 100, 250, 500, 1000, 2000]
+      break
     case 'places':
-      buckets = [0, 100, 250, 500, 1000, 2000]
+      buckets = [0, 300, 1200, 3000, 6000, 10000]
+      break
     case 'counties':
-      buckets = [0, 100, 250, 500, 1000, 2000]
+      buckets = [0, 7000, 23000, 43000, 70000, 150000]
+      break
     case 'il-house':
-      buckets = [0, 100, 250, 500, 1000, 2000]
+      buckets = [0, 6000, 20000, 40000, 80000, 150000]
+      break
     case 'il-senate':
-      buckets = [0, 100, 250, 500, 1000, 2000]
+      buckets = [0, 9000, 20000, 40000, 70000, 130000]
+      break
     default:
       buckets = [0, 100, 250, 500, 1000, 2000]
   } 
@@ -104,18 +109,18 @@ function addLayer(map, layerSource, visible = 'none'){
         '#CCCCCC'
       ]
     }
-  });
+  })
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
-  });
+  })
   
   map.on('mousemove', `${layerSource}-fills`, (e) => {
     // populate tooltip
-    map.getCanvas().style.cursor = 'pointer';
-    const coordinates = e.lngLat;
-    popup.setLngLat(coordinates).setHTML(getTooltip(e.features[0].properties)).addTo(map);
+    map.getCanvas().style.cursor = 'pointer'
+    const coordinates = e.lngLat
+    popup.setLngLat(coordinates).setHTML(getTooltip(e.features[0].properties)).addTo(map)
 
     // highlight tract
     if (e.features.length > 0) {
@@ -123,84 +128,84 @@ function addLayer(map, layerSource, visible = 'none'){
         map.setFeatureState(
           { source: 'tracts', id: hoveredPolygonId },
           { hover: false }
-        );
+        )
       }
 
       // geojson data must have a unique id property (outside of properties)
-      hoveredPolygonId = e.features[0].id;
+      hoveredPolygonId = e.features[0].id
       map.setFeatureState(
         { source: 'tracts', id: hoveredPolygonId },
         { hover: true }
-      );
+      )
     }
-  });
+  })
   
   map.on('mouseleave', `${layerSource}-fills`, () => {
-    map.getCanvas().style.cursor = '';
-    popup.remove();
-  });
+    map.getCanvas().style.cursor = ''
+    popup.remove()
+  })
 }
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA'
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: [-89.189799, 40.166281], // starting position [lng, lat]
     zoom: 6, // starting zoom
-});
+})
 
-let hoveredPolygonId = null;
+let hoveredPolygonId = null
 
 map.on('load', () => {
   // load our 4 main data sources
   map.addSource('tracts', {
       type: 'geojson',
       data: '/data/v2/final/solar-projects-by-tract.geojson'
-  });
+  })
 
   map.addSource('places', {
     type: 'geojson',
     data: '/data/v2/final/solar-projects-by-place.geojson'
-  });
+  })
 
   map.addSource('counties', {
       type: 'geojson',
       data: '/data/v2/final/solar-projects-by-county.geojson'
-  });
+  })
 
   map.addSource('il-house', {
       type: 'geojson',
       data: '/data/v2/final/solar-projects-by-il-house.geojson'
-  });
+  })
 
   map.addSource('il-senate', {
       type: 'geojson',
       data: '/data/v2/final/solar-projects-by-il-senate.geojson'
-  });
+  })
 
-  addLayer(map, 'tracts', 'visible');
-  addLayer(map, 'places');
-  addLayer(map, 'counties');
-  addLayer(map, 'il-senate');
-  addLayer(map, 'il-house');
+  addLayer(map, 'tracts', 'visible')
+  addLayer(map, 'places')
+  addLayer(map, 'counties')
+  addLayer(map, 'il-senate')
+  addLayer(map, 'il-house')
 
   $('#geography-select button').click(function(e){
     
     // reset layers
-    map.setLayoutProperty('tracts-fills', 'visibility', 'none');
-    map.setLayoutProperty('places-fills', 'visibility', 'none');
-    map.setLayoutProperty('counties-fills', 'visibility', 'none');
-    map.setLayoutProperty('il-senate-fills', 'visibility', 'none');
-    map.setLayoutProperty('il-house-fills', 'visibility', 'none');
-    $('#geography-select button').removeClass('active');
+    map.setLayoutProperty('tracts-fills', 'visibility', 'none')
+    map.setLayoutProperty('places-fills', 'visibility', 'none')
+    map.setLayoutProperty('counties-fills', 'visibility', 'none')
+    map.setLayoutProperty('il-senate-fills', 'visibility', 'none')
+    map.setLayoutProperty('il-house-fills', 'visibility', 'none')
+    $('#geography-select button').removeClass('active')
     
-    const clickedLayer = this.value + '-fills';
-    this.classList.add('active');
+    const clickedLayer = this.value + '-fills'
+    this.classList.add('active')
     map.setLayoutProperty(
       clickedLayer,
       'visibility',
       'visible'
-    );
-  });
-});
+    )
+  })
+})
