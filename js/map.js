@@ -1,6 +1,27 @@
+const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'];
+
 function getTooltip(props){
+  let header = '';
+  if (props.census_tract !== undefined) {
+    header = `<strong>Tract ${props.census_tract}</strong><br />`
+  } else if (props.place !== undefined) {
+    header = `<strong>${props.place}</strong><br />`
+  } else if (props.county_name !== undefined) {
+    header = `<strong>${props.county_name} County</strong><br />`
+  } else if (props.house_district !== undefined) {
+    header = `
+    <strong>IL House District ${props.house_district}</strong><br />
+      <strong>Rep. ${props.legislator} (${props.party})</strong><br />
+      `
+  } else if (props.senate_district !== undefined) {
+    header = `
+      <strong>IL Senate District ${props.senate_district}</strong><br />
+      <strong>Sen. ${props.legislator} (${props.party})</strong><br />
+      `
+  }
+
   return `
-    <h4>Tract ${props.census_tract}</h4>
+    ${header}
     <table class='table table-sm map-tooltip'>
       <thead>
         <tr>
@@ -40,58 +61,41 @@ function getTooltip(props){
   `
 }
 
+function getFillColor(layerSource){
+  let buckets = []
+  switch(layerSource) {
+    case 'tracts':
+      buckets = [0, 100, 250, 500, 1000, 2000]
+    case 'places':
+      buckets = [0, 100, 250, 500, 1000, 2000]
+    case 'counties':
+      buckets = [0, 100, 250, 500, 1000, 2000]
+    case 'il-house':
+      buckets = [0, 100, 250, 500, 1000, 2000]
+    case 'il-senate':
+      buckets = [0, 100, 250, 500, 1000, 2000]
+    default:
+      buckets = [0, 100, 250, 500, 1000, 2000]
+  } 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA';
-const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/light-v11', // style URL
-    center: [-89.189799, 40.166281], // starting position [lng, lat]
-    zoom: 6, // starting zoom
-});
+  let fillColor = ['interpolate', ['linear'], ['get', 'total_kw']]
+  for (var i = 0; i < buckets.length; i++) {
+    fillColor.push(buckets[i], colors[i])
+  }
+  return fillColor
+}
 
-let hoveredPolygonId = null;
-
-map.on('load', () => {
-  // load our 4 main data sources
-  map.addSource('tracts', {
-      type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-tract.geojson'
-  });
-
-  map.addSource('counties', {
-      type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-county.geojson'
-  });
-
-  map.addSource('il-house', {
-      type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-il-house.geojson'
-  });
-
-  map.addSource('il-senate', {
-      type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-il-senate.geojson'
-  });
-
+function addLayer(map, layerSource, visible = 'none'){
   map.addLayer({
-    'id': 'tract-fills',
+    'id': `${layerSource}-fills`,
     'type': 'fill',
-    'source': 'tracts', // reference the data source
-    'layout': {},
+    'source': layerSource, // reference the data source
+    'layout': {
+      // Make the layer not visible by default.
+      'visibility': visible
+      },
     'paint': {
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ['get', 'total_kw'],
-        0, '#FFFFFF',
-        100, '#ECF0F6',
-        250, '#B2C2DB',
-        300, '#9BB0D0',
-        500, '#849EC5',
-        1000, '#6182B5',
-        2000, '#4E71A6',
-        210000, '#43618F',
-      ],
+      'fill-color': getFillColor(layerSource),
       'fill-opacity': 0.5,
       'fill-outline-color': [
         'case',
@@ -107,7 +111,7 @@ map.on('load', () => {
     closeOnClick: false
   });
   
-  map.on('mousemove', 'tract-fills', (e) => {
+  map.on('mousemove', `${layerSource}-fills`, (e) => {
     // populate tooltip
     map.getCanvas().style.cursor = 'pointer';
     const coordinates = e.lngLat;
@@ -131,9 +135,72 @@ map.on('load', () => {
     }
   });
   
-  map.on('mouseleave', 'tract-fills', () => {
+  map.on('mouseleave', `${layerSource}-fills`, () => {
     map.getCanvas().style.cursor = '';
     popup.remove();
   });
+}
 
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA';
+const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/light-v11', // style URL
+    center: [-89.189799, 40.166281], // starting position [lng, lat]
+    zoom: 6, // starting zoom
+});
+
+let hoveredPolygonId = null;
+
+map.on('load', () => {
+  // load our 4 main data sources
+  map.addSource('tracts', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-tract.geojson'
+  });
+
+  map.addSource('places', {
+    type: 'geojson',
+    data: '/data/v2/final/solar-projects-by-place.geojson'
+  });
+
+  map.addSource('counties', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-county.geojson'
+  });
+
+  map.addSource('il-house', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-il-house.geojson'
+  });
+
+  map.addSource('il-senate', {
+      type: 'geojson',
+      data: '/data/v2/final/solar-projects-by-il-senate.geojson'
+  });
+
+  addLayer(map, 'tracts', 'visible');
+  addLayer(map, 'places');
+  addLayer(map, 'counties');
+  addLayer(map, 'il-senate');
+  addLayer(map, 'il-house');
+
+  $('#geography-select button').click(function(e){
+    
+    // reset layers
+    map.setLayoutProperty('tracts-fills', 'visibility', 'none');
+    map.setLayoutProperty('places-fills', 'visibility', 'none');
+    map.setLayoutProperty('counties-fills', 'visibility', 'none');
+    map.setLayoutProperty('il-senate-fills', 'visibility', 'none');
+    map.setLayoutProperty('il-house-fills', 'visibility', 'none');
+    $('#geography-select button').removeClass('active');
+    
+    const clickedLayer = this.value + '-fills';
+    this.classList.add('active');
+    map.setLayoutProperty(
+      clickedLayer,
+      'visibility',
+      'visible'
+    );
+  });
 });
