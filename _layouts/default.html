@@ -75,31 +75,36 @@
     <link href="/css/bootstrap.zephyr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
     
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    
     <!-- Custom styles for this template -->
     <link href="/css/custom.css" rel="stylesheet">
   </head>
   <body>
-    
-    <div class="col-lg-8 mx-auto p-3 py-md-5">
-      <header>
-        <a href="/" class="text-dark text-decoration-none">
+    <div class="container-fluid">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
           <span class="fs-4"><i class="fa fa-sun fa-spin"></i> Illinois Solar Map</span>
         </a>
-        <span class="float-end custom-nav">
-          <a href="/">About</a>
-          <a href="/map.html">Map</a>
-          <a href="/by-county.html">By County</a>
-          <a href="/by-il-house.html">By IL House</a>
-          <a href="/by-il-senate.html">By IL Senate</a>
-        </span>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="/map.html" class="nav-link">Map</a></li>
+          <li class="nav-item"><a href="/by-county.html" class="nav-link">By County</a></li>
+          <li class="nav-item"><a href="/by-il-house.html" class="nav-link">By IL House</a></li>
+          <li class="nav-item"><a href="/by-il-senate.html" class="nav-link">By IL Senate</a></li>
+        </ul>
       </header>
-      <hr class="mb-5"/>
-
+    </div>
+    
+    <div class="container-fluid">
       <main>
-        
         {{content}}
-        
       </main>
+      
       <footer class="pt-5 my-5 text-muted border-top">
         Created by <a href='https://chihacknight.org'>Chi Hack Night</a> and the <a href='https://ilcleanjobs.org/'>Illinois Clean Jobs Coalition</a> &copy; 2023
       </footer>

@@ -2,6 +2,14 @@ body, p, table {
   font-size: 1.25rem !important;
 }
 
+.map-tooltip td, .map-tooltip th {
+  font-size: 0.8rem !important;
+}
+
+.mapboxgl-popup-content {
+  width: 300px !important;
+}
+
 .custom-nav a {
   padding-right: 20px;
 }
