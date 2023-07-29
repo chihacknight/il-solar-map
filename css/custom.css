@@ -13,3 +13,9 @@ body, p, table {
 .custom-nav a {
   padding-right: 20px;
 }
+
+.sun-spin {
+  -webkit-animation: fa-spin 6s infinite linear;
+  animation: fa-spin 6s infinite linear;
+  color: #FEB52D;
+}
