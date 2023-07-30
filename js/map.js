@@ -1,4 +1,13 @@
 const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+
+const geography_buckets = {
+  'tracts': [0, 100, 250, 500, 1000, 2000],
+  'places': [0, 300, 1200, 3000, 6000, 10000],
+  'counties': [0, 7000, 23000, 43000, 70000, 150000],
+  'il-house': [0, 6000, 20000, 40000, 80000, 150000],
+  'il-senate': [0, 9000, 20000, 40000, 70000, 130000]
+}
+
 let selectedLayer = 'tracts-fills'
 let selectedCategory = 'total_kw'
 
@@ -63,28 +72,20 @@ function getTooltip(props){
   `
 }
 
-function getFillColor(layerSource, category){
-  let buckets = []
-  switch(layerSource) {
-    case 'tracts':
-      buckets = [0, 100, 250, 500, 1000, 2000]
-      break
-    case 'places':
-      buckets = [0, 300, 1200, 3000, 6000, 10000]
-      break
-    case 'counties':
-      buckets = [0, 7000, 23000, 43000, 70000, 150000]
-      break
-    case 'il-house':
-      buckets = [0, 6000, 20000, 40000, 80000, 150000]
-      break
-    case 'il-senate':
-      buckets = [0, 9000, 20000, 40000, 70000, 130000]
-      break
-    default:
-      buckets = [0, 100, 250, 500, 1000, 2000]
-  } 
+function updateLegend(layerSource, category){
+  console.log(layerSource, category)
+  let legendText = `<h4>${layerSource}, ${category}</h4>`
+  let buckets = geography_buckets[layerSource]
 
+  for (var i = 0; i < buckets.length; i++) {
+    legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()}</div>`
+  }
+
+  $('#solar-legend').html(legendText)
+}
+
+function getFillColor(layerSource, category){
+  let buckets = geography_buckets[layerSource]
   let fillColor = ['interpolate', ['linear'], ['get', category]]
   for (var i = 0; i < buckets.length; i++) {
     fillColor.push(buckets[i], colors[i])
@@ -191,6 +192,7 @@ map.on('load', () => {
   addLayer(map, 'counties')
   addLayer(map, 'il-senate')
   addLayer(map, 'il-house')
+  updateLegend('tracts', 'total_kw')
 
   $('#geography-select button').click(function(e){
     // reset layers
@@ -205,8 +207,7 @@ map.on('load', () => {
     this.classList.add('active')
     map.setLayoutProperty(selectedLayer + '-fills', 'visibility', 'visible')
     map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-
-    console.log(selectedLayer, selectedCategory)
+    updateLegend(selectedLayer, selectedCategory)
   })
 
   $('#category-select button').click(function(e){
@@ -215,7 +216,6 @@ map.on('load', () => {
     selectedCategory = this.value
     this.classList.add('active')
     map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-
-    console.log(selectedLayer, selectedCategory)
+    updateLegend(selectedLayer, selectedCategory)
   })
 })
