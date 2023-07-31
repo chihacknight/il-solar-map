@@ -5,24 +5,36 @@ title: Map
 
 <div class="row">
   <div class="col-md-4">
-    <h1>Map</h1>
+    <div class="card">
+      <div class="card-body">
+        <h2>Illinois Solar Map</h2>
 
-    <h4>Geography</h4>
-    <div id="geography-select" class="btn-group" role="group" aria-label="Geography">
-      <button value="tracts" type="button" class="btn btn-light active">Census Tracts</button>
-      <button value="places" type="button" class="btn btn-light">Places</button>
-      <button value="counties" type="button" class="btn btn-light">Counties</button>
-      <button value="il-house" type="button" class="btn btn-light">State House</button>
-      <button value="il-senate" type="button" class="btn btn-light">State Senate</button>
-    </div>
-    <br /><br />
-    <h4>Category</h4>
-    <div id="category-select" class="btn-group" role="group" aria-label="Category">
-      <button value="total_kw" type="button" class="btn btn-light active">Total</button>
-      <button value="utility_kw" type="button" class="btn btn-light">Utility</button>
-      <button value="cs_kw" type="button" class="btn btn-light">Community Solar</button>
-      <button value="dg_large_kw" type="button" class="btn btn-light">Large DG</button>
-      <button value="dg_small_kw" type="button" class="btn btn-light">Small DG</button>
+        <p>As of May 2023, 1,622,000 kilowatts of operating solar capacity have been installed in the State of Illinois.</p> 
+        
+        <p>This map allows you to explore solar projects by Census Tract, Place, County, and State Congressional Districts, as well as by <a href='/#categories-of-solar-projects'>category of project</a>.</p>
+
+
+        <h4 class="mt-4">Geography</h4>
+        <div id="geography-select" class="btn-group" role="group" aria-label="Geography">
+          <button value="tracts" type="button" class="btn btn-light active">Census Tracts</button>
+          <button value="places" type="button" class="btn btn-light">Places</button>
+          <button value="counties" type="button" class="btn btn-light">Counties</button>
+          <button value="il-house" type="button" class="btn btn-light">State House</button>
+          <button value="il-senate" type="button" class="btn btn-light">State Senate</button>
+        </div>
+        <br /><br />
+        <h4>Category</h4>
+        <div id="category-select" class="btn-group" role="group" aria-label="Category">
+          <button value="total_kw" type="button" class="btn btn-light active">Total</button>
+          <button value="utility_kw" type="button" class="btn btn-light">Utility</button>
+          <button value="cs_kw" type="button" class="btn btn-light">Community Solar</button>
+          <button value="dg_large_kw" type="button" class="btn btn-light">Large DG</button>
+          <button value="dg_small_kw" type="button" class="btn btn-light">Small DG</button>
+        </div>
+        <br /><br />
+        <hr class="mt-4"/>
+        <p class="fst-italic fs-6"><a href='/#data-sources'>Data comes</a> from the Illinois Power Agency (IPA) and US Energy Information Agency (EIA). Last updated May 2023</p>
+      </div>
     </div>
   </div>
   <div class="col-md-8">
