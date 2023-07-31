@@ -1,4 +1,4 @@
-const colors = ['#ffffff', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+const colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
 
 const geography_buckets = {
   'tracts': [0, 100, 250, 500, 1000, 2000],
@@ -8,7 +8,23 @@ const geography_buckets = {
   'il-senate': [0, 9000, 20000, 40000, 70000, 130000]
 }
 
-let selectedLayer = 'tracts-fills'
+const friendly_geography_names = {
+  'tracts': 'Census Tract',
+  'places': 'Place',
+  'counties': 'County',
+  'il-house': 'IL House District',
+  'il-senate': 'IL Senate District'
+}
+
+const friendly_category_names = {
+  'total_kw': 'Total',
+  'utility_kw': 'Utility',
+  'cs_kw': 'Community Solar',
+  'dg_large_kw': 'Large DG',
+  'dg_small_kw': 'Small DG'
+}
+
+let selectedLayer = 'tracts'
 let selectedCategory = 'total_kw'
 
 function getTooltip(props){
@@ -74,11 +90,15 @@ function getTooltip(props){
 
 function updateLegend(layerSource, category){
   console.log(layerSource, category)
-  let legendText = `<h4>${layerSource}, ${category}</h4>`
+  let legendText = `<strong>${friendly_category_names[category]} kW of solar installed<br />by ${friendly_geography_names[layerSource]}</strong>`
   let buckets = geography_buckets[layerSource]
 
   for (var i = 0; i < buckets.length; i++) {
-    legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()}</div>`
+    if (i == buckets.length - 1) {
+      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()}+ kW</div>`
+    } else {
+      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()} - ${(buckets[i+1] - 1).toLocaleString()} kW</div>`
+    }
   }
 
   $('#solar-legend').html(legendText)
