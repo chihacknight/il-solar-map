@@ -17,7 +17,7 @@ const friendly_geography_names = {
 }
 
 const friendly_category_names = {
-  'total_kw': 'Total',
+  'total_kw': 'All',
   'utility_kw': 'Utility',
   'cs_kw': 'Community Solar',
   'dg_large_kw': 'Large DG',
