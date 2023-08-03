@@ -39,6 +39,7 @@ body, p, table {
 }
 
 .sun-spin {
-
+  -webkit-animation: fa-spin 6s infinite linear;
+  animation: fa-spin 6s infinite linear;
   color: #FEB52D;
 }
