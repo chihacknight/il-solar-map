@@ -1,5 +1,6 @@
 import csv
 import json
+import hashlib
 
 def init_aggregate(row):
     agg = {}
@@ -87,6 +88,11 @@ def write_geojson(geosource, key, items, geoout):
         geojson_src = json.load(geojsonfile)["features"]
         for g in geojson_src:
             item = g["properties"][key]
+            id_key = item
+            # for places, convert the NAMELSAD20 field to a number id
+            if key == "NAMELSAD20":
+                id_key = abs(hash(item)) % (10 ** 8)
+
             if item in items:
                 item_data = items[item]
             else:
@@ -94,11 +100,11 @@ def write_geojson(geosource, key, items, geoout):
                 item_data["total_count"] = 0
                 if key == "GEOID10":
                     item_data["census_tract"] = item
-            
+
             feature = { 
                 "type": "Feature",
                 "geometry": g["geometry"],
-                "id": item,
+                "id": id_key,
                 "properties": item_data
             }
             out_features.append(feature)

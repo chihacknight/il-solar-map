@@ -89,7 +89,6 @@ function getTooltip(props){
 }
 
 function updateLegend(layerSource, category){
-  console.log(layerSource, category)
   let legendText = `<strong>${friendly_category_names[category]} kW of solar installed<br />by ${friendly_geography_names[layerSource]}</strong>`
   let buckets = geography_buckets[layerSource]
 
@@ -149,7 +148,7 @@ function addLayer(map, layerSource, visible = 'none'){
     if (e.features.length > 0) {
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
-          { source: 'tracts', id: hoveredPolygonId },
+          { source: layerSource, id: hoveredPolygonId },
           { hover: false }
         )
       }
@@ -157,7 +156,7 @@ function addLayer(map, layerSource, visible = 'none'){
       // geojson data must have a unique id property (outside of properties)
       hoveredPolygonId = e.features[0].id
       map.setFeatureState(
-        { source: 'tracts', id: hoveredPolygonId },
+        { source: layerSource, id: hoveredPolygonId },
         { hover: true }
       )
     }
