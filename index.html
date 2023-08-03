@@ -1,198 +1,48 @@
 ---
-layout: narrow
+layout: default
+title: Map
 ---
 
-<h1>Illinois Solar Map</h1>
-
-<p>
-  With the passage of the <a href="https://www.nrdc.org/bio/jc-kibbey/illinois-passes-nation-leading-equitable-climate-bill">Climate and Equitable Jobs Act</a> (CEJA) in 2021, Illinois is on a path to 100% carbon-free energy by 2050 and has enabled the rapid expansion of clean energy installations. This map is a first pass at creating a statewide aggregate tracking the status of the <strong>state’s rapid expansion of solar projects</strong>. 
-</p>
-<p>
-  As of May 2023, <strong>1,622,000 kilowatts</strong> of operating solar capacity have been installed in the State of Illinois. For comparison, <a href="https://prairiestateenergycampus.com/">Prairie State</a>, the State’s largest coal power plant, is 1,630,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
-</p>
-
-<p>There are nearly 35,000 solar projects throughout the state, ranging in size from a single 0.6 kW solar panel to the 200,000 kW (200 megawatts) <a href='https://pv-magazine-usa.com/2021/12/17/prairie-wolf-solar-project-begins-operation-in-illinois/'>Prairie Wolf Solar project</a> in Coles County.</p>
-
-<p class="text-center">
-  <img src="/images/prarie-wolf-solar.jpg" class="img-fluid img-thumbnail" alt="The Prarie Wolf Solar Project in Coles County">
-  <br /><em>The Prarie Wolf Solar Project in Coles County</em>
-</p>
-<hr/>
-
-<p>
-  <strong>Table of contents</strong>
-</p>
-
-<ul>
-  <li><a href="#map-explorer">Map explorer</a></li>
-  <li><a href="#categories-of-solar-projects">Categories of solar projects</a></li>
-  <li><a href="#top-level-solar-project-numbers">Top level solar project numbers</a></li>
-  <li><a href="#solar-installations-over-time">Solar installations over time</a></li>
-  <li><a href="#data-sources">Data sources</a></li>
-  <li><a href="#team-and-collaborators">Team and collaborators</a></li>
-</ul>
-
-<h2 id="map-explorer" class="mt-4">Map explorer</h2>
-
-<p>
-You can browse all solar projects in Illinois by geography and category on our <a href="/map.html">map page</a>:
-</p>
-
-<ul>
-  <li><span style="text-decoration:underline;">Geographies</span>: US Census Tracts, Counties, State Senate Districts and State House Districts
-  <li><span style="text-decoration:underline;">Categories</span>: Utility, Community Solar, Large Distributed Generation, Small Distributed Generation
-  <li><span style="text-decoration:underline;">Units</span>: Kilowatts or number of projects</li>
-</ul>
-
-<p>
-The map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an open source geospatial analysis tool. This tool has a lot of features, including layer toggling, custom map shading, 3D mode and address search. Read the tutorial on using it here: <a href="https://docs.kepler.gl/docs/user-guides">https://docs.kepler.gl/docs/user-guides</a> 
-</p>
-<p>
-  <a href="/map.html">
-    <img src="/images/il-solar-map-kepler.jpg" class="img-fluid img-thumbnail" alt="IL Solar Map" title="IL Solar Map">
-  </a>
-</p>
-<p class="text-center my-4">
-  <a href="/map.html" class="btn btn-primary btn-lg px-4">Open map</a>
-</p>
-
-<h2 id="categories-of-solar-projects" class="mt-4">Categories of solar projects</h2>
-
-<p>
-All units of power measurement are in kilowatt (KW), specifically alternating current (KWAC).
-</p>
-<p>
-Solar installations are divided up into 4 categories:
-</p>
-<ul>
-  <li><strong>Utility</strong>: Utility Scale Solar projects built by energy utilities</li>
-  <li><strong>Community Solar (CS)</strong>: Community Solar projects whose electricity is shared by more than a single property</li>
-  <li><strong>Large Distributed Generation (Large_DG)</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size</li>
-  <li><strong>Small Distributed Generation (Small_DG)</strong>: Small Distributed Generation (DG) for systems 25 kW and below</li>
-</ul>
-
-<h2 id="top-level-solar-project-numbers" class="mt-4">Top level solar project numbers</h2>
-
 <div class="row">
-  <div class="col-md-7">
-    <table class="table">
-      <thead>
-        <tr>
-        <th>Category</th>
-        <th>KW installed</th>
-        <th>Percent</th>
-        <th>Project count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Utility</td>
-          <td>925,300 kW</td>
-          <td>57.0%</td>
-          <td>138</td>
-        </tr>
-        <tr>
-          <td>Community Solar (CS)</td>
-          <td>184,984 kW</td>
-          <td>11.4%</td>
-          <td>95</td>
-        </tr>
-        <tr>
-          <td>Large Distributed Generation (Large_DG)</td>
-          <td>263,456 kW</td>
-          <td>16.2%</td>
-          <td>987</td>
-        </tr>
-        <tr>
-          <td>Small Distributed Generation (Small_DG)</td>
-          <td>248,708 kW</td>
-          <td>15.3%</td>
-          <td>33,689</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-        <td>Grand Total</td>
-        <td>1,622,448 kW</td>
-        <td>100.0%</td>
-        <td>34,909</td>
-        </tr>
-      </tfoot>
-    </table>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h2>Illinois Solar Map</h2>
+
+        <p>As of May 2023, 1,622,000 kilowatts of operating solar capacity have been installed in the State of Illinois.</p> 
+        
+        <p>This map allows you to explore solar projects by Census Tract, Place, County, and State Congressional Districts, as well as by project category of project. <a href='/about.html'>Read more ></a></p>
+
+
+        <h4 class="mt-4">Select geography</h4>
+        <div id="geography-select" class="btn-group flex-wrap" role="group" aria-label="Geography">
+          <button value="tracts" type="button" class="btn btn-light active">Census Tracts</button>
+          <button value="places" type="button" class="btn btn-light">Places</button>
+          <button value="counties" type="button" class="btn btn-light">Counties</button>
+          <button value="il-house" type="button" class="btn btn-light">State House</button>
+          <button value="il-senate" type="button" class="btn btn-light">State Senate</button>
+        </div>
+        <br /><br />
+        <h4>Select category</h4>
+        <div id="category-select" class="btn-group flex-wrap" role="group" aria-label="Category">
+          <button value="total_kw" type="button" class="btn btn-light active">All</button>
+          <button value="utility_kw" type="button" class="btn btn-light">Utility</button>
+          <button value="cs_kw" type="button" class="btn btn-light">Community Solar</button>
+          <button value="dg_large_kw" type="button" class="btn btn-light">Large DG</button>
+          <button value="dg_small_kw" type="button" class="btn btn-light">Small DG</button>
+        </div>
+        <br /><br />
+        <hr class="mt-4"/>
+        <p class="fst-italic fs-6"><a href='/#data-sources'>Data sources:</a> Illinois Power Agency (IPA) and US Energy Information Agency (EIA). Last updated May 2023</p>
+      </div>
+    </div>
   </div>
-  <div class="col-md-5">
-    <img src="/images/solar-category-pie.png" class="img-fluid" alt="Pie chart of solar installed by category">
+  <div class="col-md-8">
+    <div id='map' style='width: 100%; height: 800px;'></div>
+
+    <div id="solar-legend" class="legend d-none d-sm-none d-md-block"></div>
   </div>
 </div>
 
-<h2 id="solar-installations-over-time" class="mt-4">Solar installations over time</h2>
-
-<p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019. Note the noticible increase in kilowatts installed starting in late 2019. There is a notable slowdown in projects starting in mid-2022.</p>
-
-<img src="/images/solar-over-time-all.png" class="img-fluid" alt="Area chart of all solar projects installed over time">
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-utility.png" class="img-fluid" alt="Area chart of utility solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-cs.png" class="img-fluid" alt="Area chart of community solar projects installed over time">
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-large-dg.png" class="img-fluid" alt="Area chart of large distributed generation solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-small-dg.png" class="img-fluid" alt="Area chart of small distributed generation solar projects installed over time">
-  </div>
-</div>
-
-<h2 id="data-sources" class="mt-4">Data sources</h2>
-<p>The raw data for this map is available to <a href="https://github.com/chihacknight/il-solar-map/tree/main/data/v2/final">view and download here</a>. The code for this website and to categorize and aggregate the project data by category and geography are open source at <a href="https://github.com/chihacknight/il-solar-map">github.com/chihacknight/il-solar-map</a>.</p>
-
-<p>Solar project sources</p>
-<ul>
-  <li><a href="https://illinoisabp.com/project-application-reports/">Illinois Adjustable Block Program Project Applications published by the Illinois Power Agency (IPA)</a> (May 2019 - May 2023)</li>
-  <li><a href="https://elevate.maps.arcgis.com/apps/webappviewer/index.html?id=c37a6a8914ec4bc5861159175f9dfbcd">Illinois Solar for All Projects administered by Elevate and IPA</a> (May 2019 - May 2023)</li>
-  <li><a href="https://www.eia.gov/electricity/data/eia860m/">Utility solar projects (US EIA-860M)</a> (December 2009 - May 2023)</li>
-</ul>
-
-<p>Boundary sources</p>
-<ul>
-  <li><a href="https://clearinghouse.isgs.illinois.edu/data/reference/illinois-county-boundaries-polygons-and-lines">Illinois Counties</a></li>
-  <li><a href="https://www.elections.il.gov/shape/">Illinois State Senate Districts (2023)</a></li>
-  <li><a href="https://www.elections.il.gov/shape/">Illinois State House Districts (2023)</a></li>
-  <li><a href="https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/17_ILLINOIS/17/">Illinois Census Tracts (2020)</a></li>
-</ul>
-
-<p>Legislator info</p>
-<ul>
-  <li><a href="https://ballotpedia.org/Illinois_State_Senate">Illinois State Senate Members</a></li>
-  <li><a href="https://ballotpedia.org/Illinois_House_of_Representatives">Illinois State House Members</a></li>
-</ul>
-
-<div class="row">
-  <div class="col-md-9">
-    <h2 id="team-and-collaborators" class="mt-4">Team and collaborators</h2>
-    <p>
-      This map and the data were created in collaboration with the <a href="https://ilcleanjobs.org/">Illinois Clean Jobs Coalition</a> Renewables Subcommittee and civic tech volunteers at <a href="https://chihacknight.org/">Chi Hack Night</a>.
-      </p>
-      <ul>
-        <li><a href="https://derekeder.com/">Derek Eder</a> - Project and development lead
-        <li><a href="https://www.linkedin.com/in/surag-nuthulapaty-a72822254/">Surag Nuthulapaty</a> - Data aggregation
-        <li><a href="https://chihacknight.org/board-of-directors/eric-sherman.html">Eric Sherman</a> - Mapping and consulting</li>
-      </ul>
-      <p>Questions? Email Derek at <a href="mailto:derek@derekeder.com">derek@derekeder.com</a> 
-
-      <p>Check out some of the other climate related projects from Chi Hack Night: <a href="https://decarbmystate.com/"">Decarb My State</a> and <a href="https://electrifychicago.net/">Electrify Chicago</a></p>
-    </p>
-  </div>
-  <div class="col-md-3">
-    <img src="/images/il_clean_jobs_logo.svg" class="img-fluid" alt="Illinois Clean Jobs Coalition" title="Illinois Clean Jobs Coalition">
-    <img src="/images/chn-logo.png" class="img-fluid" alt="Chi Hack Night" title="Chi Hack Night">
-  </div>
-</div>
-
-
+<script src="js/jenks.js"></script>
+<script src="js/map.js"></script>

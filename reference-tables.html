@@ -1,0 +1,123 @@
+---
+layout: narrow
+title: Solar projects by county
+---
+
+<h1>Reference Tables</h1>
+
+<ul>
+  <li><a href="#counties">Counties</a></li>
+  <li><a href="#places">Places</a></li>
+  <li><a href="#il-house">IL State House Districts</a></li>
+  <li><a href="#il-senate">IL State Senate Districts</a></li>
+</ul>
+
+<h2 id="counties" class="mt-4">Counties</h2>
+<div id="table-counties"></div>
+
+<h2 id="places" class="mt-4">Places</h2>
+<div id="table-places"></div>
+
+<h2 id="il-house" class="mt-4">IL State House Districts</h2>
+<div id="table-il-house"></div>
+
+<h2 id="il-senate" class="mt-4">IL State Senate Districts</h2>
+<div id="table-il-senate"></div>
+
+
+<script src="js/jquery.csv.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/csv_to_html_table.js"></script>
+
+<script>
+  function format_number(val) {
+      const parsed = parseInt(val);
+      if (isNaN(parsed)) { return 0 }
+      return parseInt(val).toLocaleString("en-US")
+  }
+  
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/solar-projects-by-county-formatted.csv",
+      element: "table-counties",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[1, 'desc']]
+      },
+      custom_formatting: [
+          [1, format_number],
+          [2, format_number],
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+      ]
+  });
+
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/solar-projects-by-place-formatted.csv",
+      element: "table-places",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[1, 'desc']]
+      },
+      custom_formatting: [
+          [1, format_number],
+          [2, format_number],
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+      ]
+  });
+
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/solar-projects-by-il-house-formatted.csv",
+      element: "table-il-house",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[3, 'desc']]
+      },
+      custom_formatting: [
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+          [6, format_number],
+          [7, format_number],
+      ]
+  });
+
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/solar-projects-by-il-senate-formatted.csv",
+      element: "table-il-senate",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[3, 'desc']]
+      },
+      custom_formatting: [
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+          [6, format_number],
+          [7, format_number],
+      ]
+  });
+</script>
