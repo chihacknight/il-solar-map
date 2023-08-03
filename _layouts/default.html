@@ -40,7 +40,7 @@
     {% if page.date %}
       <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
     {% endif %}
-    <meta content="{{ site.url }}/images/il-solar-map-x4.jpg" property="og:image">
+    <meta content="{{ site.url }}/images/il-solar-map.png" property="og:image">
     {% if page.categories %}
       {% for category in page.categories limit:1 %}
       <meta content="{{ category }}" property="article:section">
@@ -69,7 +69,7 @@
     {% else %}
       <meta name="twitter:description" content="{{ site.description }}">
     {% endif %}
-    <meta name="twitter:image:src" content="{{ site.url }}/images/il-solar-map-x4.jpg">
+    <meta name="twitter:image:src" content="{{ site.url }}/images/il-solar-map.png">
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.zephyr.min.css" rel="stylesheet">
