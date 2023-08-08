@@ -1,11 +1,31 @@
 const colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
 
 const geography_buckets = {
-  'tracts': [0, 100, 250, 500, 1000, 2000],
-  'places': [0, 300, 1200, 3000, 6000, 10000],
-  'counties': [0, 7000, 23000, 43000, 70000, 150000],
-  'il-house': [0, 6000, 20000, 40000, 80000, 150000],
-  'il-senate': [0, 9000, 20000, 40000, 70000, 130000]
+  'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 2000],
+              'utility_kw': [0, 900, 2000, 9900, 70000, 99000],
+              'cs_kw': [0, 650, 900, 2000, 4000, 6000],
+              'dg_large_kw': [0, 100, 300, 750, 1400, 2300],
+              'dg_small_kw': [0, 50, 100, 200, 300, 500] },
+  'places': { 'total_kw': [0, 300, 1200, 3000, 6000, 10000],
+              'utility_kw': [0, 300, 1100, 1500, 35000, 99000],
+              'cs_kw': [0, 650, 900, 2000, 4000, 6000],
+              'dg_large_kw': [0, 200, 700, 1350, 2200, 4000],
+              'dg_small_kw': [0, 100, 400, 900, 2200, 4000] },
+  'counties': { 'total_kw': [0, 7000, 23000, 43000, 70000, 150000],
+                'utility_kw': [0, 2900, 9300, 20000, 70000, 149000],
+                'cs_kw': [0, 2000, 4850, 8900, 14000, 17000],
+                'dg_large_kw': [0, 800, 2200, 4200, 7600, 20000],
+                'dg_small_kw': [0, 700, 2300, 6200, 12000, 21000] },
+  'il-house': { 'total_kw': [0, 6500, 20000, 40000, 80000, 150000],
+                'utility_kw': [0, 2000, 8000, 17000, 72000, 151000],
+                'cs_kw': [0, 900, 2000, 4000, 8000, 15000],
+                'dg_large_kw': [0, 900, 2400, 3900, 6100, 8500],
+                'dg_small_kw': [0, 800, 1600, 2500, 3900, 6700] },
+  'il-senate': { 'total_kw': [0, 9000, 20000, 40000, 70000, 130000],
+                  'utility_kw': [0, 4000, 12000, 25000, 74000, 206000],
+                  'cs_kw': [0, 900, 3900, 8600, 12000, 25000],
+                  'dg_large_kw': [0, 1300, 2700, 4100, 7000, 12000],
+                  'dg_small_kw': [0, 1700, 3900, 5600, 7600, 11000] },
 }
 
 const friendly_geography_names = {
@@ -90,7 +110,7 @@ function getTooltip(props){
 
 function updateLegend(layerSource, category){
   let legendText = `<strong>${friendly_category_names[category]} kW of solar installed<br />by ${friendly_geography_names[layerSource]}</strong>`
-  let buckets = geography_buckets[layerSource]
+  let buckets = geography_buckets[layerSource][category]
 
   for (var i = 0; i < buckets.length; i++) {
     if (i == buckets.length - 1) {
@@ -104,7 +124,7 @@ function updateLegend(layerSource, category){
 }
 
 function getFillColor(layerSource, category){
-  let buckets = geography_buckets[layerSource]
+  let buckets = geography_buckets[layerSource][category]
   let fillColor = ['interpolate', ['linear'], ['get', category]]
   for (var i = 0; i < buckets.length; i++) {
     fillColor.push(buckets[i], colors[i])
