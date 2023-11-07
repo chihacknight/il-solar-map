@@ -112,6 +112,22 @@ def write_geojson(geosource, key, items, geoout):
     with open(geoout, "w") as outfile:
         json.dump(out_geojson, outfile)
 
+# aggregate all projects in the state
+all_projects = {}
+with open("../final/all-projects-w-districts.csv", 'r') as csvfile:
+    projects = csv.DictReader(csvfile)
+    for cnt, row in enumerate(projects):     
+      if cnt == 0:
+          all_projects = init_aggregate(row)
+      else:
+          increment_aggregate(all_projects, row)
+
+all_projects["dg_small_pct"] = round(all_projects["dg_small_kw"] / all_projects["total_kw"] * 100, 1)
+all_projects["dg_large_pct"] = round(all_projects["dg_large_kw"] / all_projects["total_kw"] * 100, 1)
+all_projects["cs_pct"] = round(all_projects["cs_kw"] / all_projects["total_kw"] * 100, 1)
+all_projects["utility_pct"] = round(all_projects["utility_kw"] / all_projects["total_kw"] * 100, 1)
+print(all_projects)
+
 # aggregate projects by each geography
 counties = {}
 aggregate_projects(counties, "county", "county_fips")
