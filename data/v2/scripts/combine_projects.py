@@ -20,7 +20,7 @@ def get_category(size_str):
 
 
 def get_census_tract(lat, long):
-    try:      
+    try:
         r = session.get(
             f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")
 
