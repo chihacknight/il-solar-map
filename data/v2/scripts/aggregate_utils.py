@@ -133,4 +133,5 @@ def aggregate_all_projects():
         writer.writerow(["Small DG", f'{all_projects["dg_small_kw"]:,d} kW', f'{all_projects["dg_small_pct"]}%', f'{all_projects["dg_small_count"]:,d}'])
         writer.writerow(["Large DG", f'{all_projects["dg_large_kw"]:,d} kW', f'{all_projects["dg_large_pct"]}%', f'{all_projects["dg_large_count"]:,d}'])
         writer.writerow(["Community Solar", f'{all_projects["cs_kw"]:,d} kW', f'{all_projects["cs_pct"]}%', f'{all_projects["cs_count"]:,d}'])
+        writer.writerow(["Total", f'{all_projects["total_kw"]:,d} kW', '100%', f'{all_projects["total_count"]:,d}'])
         

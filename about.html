@@ -53,50 +53,7 @@ Solar installations are divided up into 4 categories:
 
 <div class="row">
   <div class="col-md-7">
-    <table class="table">
-      <thead>
-        <tr>
-        <th>Category</th>
-        <th>KW installed</th>
-        <th>Percent</th>
-        <th>Project count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Utility</td>
-          <td>925,300 kW</td>
-          <td>57.0%</td>
-          <td>138</td>
-        </tr>
-        <tr>
-          <td>Community Solar (CS)</td>
-          <td>184,984 kW</td>
-          <td>11.4%</td>
-          <td>95</td>
-        </tr>
-        <tr>
-          <td>Large Distributed Generation (Large_DG)</td>
-          <td>263,456 kW</td>
-          <td>16.2%</td>
-          <td>987</td>
-        </tr>
-        <tr>
-          <td>Small Distributed Generation (Small_DG)</td>
-          <td>248,708 kW</td>
-          <td>15.3%</td>
-          <td>33,689</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-        <td>Grand Total</td>
-        <td>1,622,448 kW</td>
-        <td>100.0%</td>
-        <td>34,909</td>
-        </tr>
-      </tfoot>
-    </table>
+    <div id="table-summary"></div>
   </div>
   <div class="col-md-5">
     <img src="/images/solar-category-pie.png" class="img-fluid" alt="Pie chart of solar installed by category">
@@ -208,4 +165,31 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
   </div>
 </div>
 
+<script src="js/jquery.csv.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/csv_to_html_table.js"></script>
 
+<script>
+  function format_number(val) {
+      const parsed = parseInt(val);
+      if (isNaN(parsed)) { return 0 }
+      return parseInt(val).toLocaleString("en-US")
+  }
+  
+  CsvToHtmlTable.init({
+      csv_path: "/data/v2/final/all_projects_summary.csv",
+      element: "table-summary",
+      allow_download: false,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          info: false,
+          searching: false,
+          ordering: false,
+      },
+  });
+</script>
