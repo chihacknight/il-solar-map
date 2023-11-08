@@ -56,7 +56,11 @@ Solar installations are divided up into 4 categories:
     <div id="table-summary"></div>
   </div>
   <div class="col-md-5">
-    <img src="/images/solar-category-pie.png" class="img-fluid" alt="Pie chart of solar installed by category">
+    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <figure class="highcharts-figure">
+      <div id="projects-chart"></div>
+    </figure>
   </div>
 </div>
 
@@ -192,4 +196,53 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
           ordering: false,
       },
   });
+
+  $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
+    function (data) {
+      var csvData = $.csv.toArrays(data)
+
+      Highcharts.chart('projects-chart', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'kW installed by category'
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+          }
+        },
+        tooltip: {
+          format: '<b>{point.name}</b>: {point.y:.1f}%',
+        },
+        series: [
+          {
+            name: 'kW installed',
+            colorByPoint: true,
+            data: [
+              {
+                name: csvData[1][0],
+                y: parseFloat(csvData[1][2])
+              },
+              {
+                name: csvData[2][0],
+                y: parseFloat(csvData[2][2])
+              },
+              {
+                name: csvData[3][0],
+                y: parseFloat(csvData[3][2])
+              },
+              {
+                name: csvData[4][0],
+                y: parseFloat(csvData[4][2])
+              }
+            ]
+          }
+        ]
+      });
+    });
+
+
 </script>
