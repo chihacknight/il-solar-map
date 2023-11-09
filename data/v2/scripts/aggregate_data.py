@@ -4,6 +4,7 @@ from aggregate_utils import *
 
 # aggregate all projects in the state
 aggregate_all_projects()
+generate_monthly_kw_time_series()
 
 # aggregate projects by each geography
 counties = {}

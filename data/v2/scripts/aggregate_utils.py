@@ -1,5 +1,6 @@
 import csv
 import json
+import pandas as pd
 
 def init_aggregate(row):
     agg = {}
@@ -135,3 +136,25 @@ def aggregate_all_projects():
         writer.writerow(["Community Solar", f'{all_projects["cs_kw"]:,d} kW', f'{all_projects["cs_pct"]}%', f'{all_projects["cs_count"]:,d}'])
         writer.writerow(["Total", f'{all_projects["total_kw"]:,d} kW', '100%', f'{all_projects["total_count"]:,d}'])
         
+def generate_monthly_kw_time_series():
+    print("Generating monthly time series...")
+    # load csv into pandas dataframe
+    df = pd.read_csv("../final/all-projects-w-districts.csv")
+
+    # set energization_date column to datetime
+    df["energization_date"] = pd.to_datetime(df["energization_date"])
+
+    # convert energization_date to first of month
+    df["energization_date"] = df["energization_date"].dt.to_period("M").dt.to_timestamp()
+    
+    # aggregate projects by month
+    monthly_aggregate = df.groupby(["energization_date"])["kw"].sum().reset_index()
+
+    # sort by date
+    monthly_aggregate = monthly_aggregate.sort_values(by=["energization_date"])
+
+    # calculate cumulative sum of kw by month
+    monthly_aggregate["kw"] = monthly_aggregate["kw"].cumsum().round(1)
+
+    # export to csv
+    monthly_aggregate.to_csv("../final/monthly-aggregate.csv", index=False)

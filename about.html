@@ -56,8 +56,6 @@ Solar installations are divided up into 4 categories:
     <div id="table-summary"></div>
   </div>
   <div class="col-md-5">
-    
-    <script src="https://code.highcharts.com/highcharts.js"></script>
     <figure class="highcharts-figure">
       <div id="projects-chart"></div>
     </figure>
@@ -68,25 +66,9 @@ Solar installations are divided up into 4 categories:
 
 <p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019. Note the noticible increase in kilowatts installed starting in late 2019. There is a notable slowdown in projects starting in mid-2022.</p>
 
-<img src="/images/solar-over-time-all.png" class="img-fluid" alt="Area chart of all solar projects installed over time">
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-utility.png" class="img-fluid" alt="Area chart of utility solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-cs.png" class="img-fluid" alt="Area chart of community solar projects installed over time">
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-large-dg.png" class="img-fluid" alt="Area chart of large distributed generation solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-small-dg.png" class="img-fluid" alt="Area chart of small distributed generation solar projects installed over time">
-  </div>
-</div>
+<figure class="highcharts-figure">
+  <div id="timeseries-chart"></div>
+</figure>
 
 <h2 id="map-explorer" class="mt-4">Advanced map explorer</h2>
 
@@ -160,7 +142,7 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
       </ul>
       <p>Questions? Email Derek at <a href="mailto:derek@derekeder.com">derek@derekeder.com</a> 
 
-      <p>Check out some of the other climate related projects from Chi Hack Night: <a href="https://decarbmystate.com/"">Decarb My State</a> and <a href="https://electrifychicago.net/">Electrify Chicago</a></p>
+      <p>Check out some of the other climate related projects from Chi Hack Night: <a href="https://decarbmystate.com/">Decarb My State</a> and <a href="https://electrifychicago.net/">Electrify Chicago</a></p>
     </p>
   </div>
   <div class="col-md-3">
@@ -173,76 +155,6 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 <script src="js/csv_to_html_table.js"></script>
-
-<script>
-  function format_number(val) {
-      const parsed = parseInt(val);
-      if (isNaN(parsed)) { return 0 }
-      return parseInt(val).toLocaleString("en-US")
-  }
-  
-  CsvToHtmlTable.init({
-      csv_path: "/data/v2/final/all_projects_summary.csv",
-      element: "table-summary",
-      allow_download: false,
-      csv_options: {
-          separator: ",",
-          delimiter: '"'
-      },
-      datatables_options: {
-          paging: false,
-          info: false,
-          searching: false,
-          ordering: false,
-      },
-  });
-
-  $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
-    function (data) {
-      var csvData = $.csv.toArrays(data)
-
-      Highcharts.chart('projects-chart', {
-        chart: {
-            type: 'pie'
-        },
-        title: {
-            text: 'kW installed by category'
-        },
-        plotOptions: {
-          series: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-          }
-        },
-        tooltip: {
-          format: '<b>{point.name}</b>: {point.y:.1f}%',
-        },
-        series: [
-          {
-            name: 'kW installed',
-            colorByPoint: true,
-            data: [
-              {
-                name: csvData[1][0],
-                y: parseFloat(csvData[1][2])
-              },
-              {
-                name: csvData[2][0],
-                y: parseFloat(csvData[2][2])
-              },
-              {
-                name: csvData[3][0],
-                y: parseFloat(csvData[3][2])
-              },
-              {
-                name: csvData[4][0],
-                y: parseFloat(csvData[4][2])
-              }
-            ]
-          }
-        ]
-      });
-    });
-
-
-</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="js/about.js"></script>
