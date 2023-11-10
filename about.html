@@ -1,5 +1,6 @@
 ---
 layout: narrow
+title: About
 ---
 
 <h1>About Illinois Solar Map</h1>
@@ -8,7 +9,7 @@ layout: narrow
   With the passage of the <a href="https://www.nrdc.org/bio/jc-kibbey/illinois-passes-nation-leading-equitable-climate-bill">Climate and Equitable Jobs Act</a> (CEJA) in 2021, Illinois is on a path to 100% carbon-free energy by 2050 and has enabled the rapid expansion of clean energy installations. This map is a first pass at creating a statewide aggregate tracking the status of the <strong>state’s rapid expansion of solar projects</strong>. 
 </p>
 <p>
-  As of May 2023, <strong>1,622,000 kilowatts</strong> of operating solar capacity have been installed in the State of Illinois. For comparison, <a href="https://prairiestateenergycampus.com/">Prairie State</a>, the State’s largest coal power plant, is 1,630,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
+  As of Sep 2023, <strong>1,823,000 kilowatts</strong> of operating solar capacity have been installed in the State of Illinois. For comparison, <a href="https://prairiestateenergycampus.com/">Prairie State</a>, the State’s largest coal power plant, is 1,630,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
 </p>
 
 <p>There are nearly 35,000 solar projects throughout the state, ranging in size from a single 0.6 kW solar panel to the 200,000 kW (200 megawatts) <a href='https://pv-magazine-usa.com/2021/12/17/prairie-wolf-solar-project-begins-operation-in-illinois/'>Prairie Wolf Solar project</a> in Coles County.</p>
@@ -52,79 +53,22 @@ Solar installations are divided up into 4 categories:
 
 <div class="row">
   <div class="col-md-7">
-    <table class="table">
-      <thead>
-        <tr>
-        <th>Category</th>
-        <th>KW installed</th>
-        <th>Percent</th>
-        <th>Project count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Utility</td>
-          <td>925,300 kW</td>
-          <td>57.0%</td>
-          <td>138</td>
-        </tr>
-        <tr>
-          <td>Community Solar (CS)</td>
-          <td>184,984 kW</td>
-          <td>11.4%</td>
-          <td>95</td>
-        </tr>
-        <tr>
-          <td>Large Distributed Generation (Large_DG)</td>
-          <td>263,456 kW</td>
-          <td>16.2%</td>
-          <td>987</td>
-        </tr>
-        <tr>
-          <td>Small Distributed Generation (Small_DG)</td>
-          <td>248,708 kW</td>
-          <td>15.3%</td>
-          <td>33,689</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-        <td>Grand Total</td>
-        <td>1,622,448 kW</td>
-        <td>100.0%</td>
-        <td>34,909</td>
-        </tr>
-      </tfoot>
-    </table>
+    <div id="table-summary"></div>
   </div>
   <div class="col-md-5">
-    <img src="/images/solar-category-pie.png" class="img-fluid" alt="Pie chart of solar installed by category">
+    <figure class="highcharts-figure">
+      <div id="projects-chart"></div>
+    </figure>
   </div>
 </div>
 
 <h2 id="solar-installations-over-time" class="mt-4">Solar installations over time</h2>
 
-<p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019. Note the noticible increase in kilowatts installed starting in late 2019. There is a notable slowdown in projects starting in mid-2022.</p>
+<p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019. Note the noticible increase in kilowatts installed starting in late 2019.</p>
 
-<img src="/images/solar-over-time-all.png" class="img-fluid" alt="Area chart of all solar projects installed over time">
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-utility.png" class="img-fluid" alt="Area chart of utility solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-cs.png" class="img-fluid" alt="Area chart of community solar projects installed over time">
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-large-dg.png" class="img-fluid" alt="Area chart of large distributed generation solar projects installed over time">
-  </div>
-  <div class="col-md-6">
-    <img src="/images/solar-over-time-small-dg.png" class="img-fluid" alt="Area chart of small distributed generation solar projects installed over time">
-  </div>
-</div>
+<figure class="highcharts-figure">
+  <div id="timeseries-chart"></div>
+</figure>
 
 <h2 id="map-explorer" class="mt-4">Advanced map explorer</h2>
 
@@ -155,9 +99,9 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
 
 <p>Solar project sources</p>
 <ul>
-  <li><a href="https://illinoisabp.com/project-application-reports/">Illinois Adjustable Block Program Project Applications published by the Illinois Power Agency (IPA)</a> (May 2019 - May 2023)</li>
-  <li><a href="https://elevate.maps.arcgis.com/apps/webappviewer/index.html?id=c37a6a8914ec4bc5861159175f9dfbcd">Illinois Solar for All Projects administered by Elevate and IPA</a> (May 2019 - May 2023)</li>
-  <li><a href="https://www.eia.gov/electricity/data/eia860m/">Utility solar projects (US EIA-860M)</a> (December 2009 - May 2023)</li>
+  <li><a href="https://illinoisabp.com/project-application-reports/">Illinois Adjustable Block Program Project Applications published by the Illinois Power Agency (IPA)</a> (May 2019 - Nov 2023)</li>
+  <li><a href="https://elevate.maps.arcgis.com/apps/webappviewer/index.html?id=c37a6a8914ec4bc5861159175f9dfbcd">Illinois Solar for All Projects administered by Elevate and IPA</a> (May 2019 - Sep 2023)</li>
+  <li><a href="https://www.eia.gov/electricity/data/eia860m/">Utility solar projects (US EIA-860M)</a> (December 2009 - Sep 2023)</li>
 </ul>
 
 <p>Boundary sources</p>
@@ -179,7 +123,7 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
 <p>This map does not represent every single solar project in Illinois. Our data does not include:</p>
 
 <ul>
-  <li>solar project that came online after May 2023</li>
+  <li>solar project that came online after October 2023</li>
   <li>small-scale solar projects that were funded before Future Energy Jobs Act (FEJA) programs were implemented (before 2018)</li>
   <li>solar projects that did not get funding from the Adjustable Block or Illinois Solar for All programs</li>
 </ul>
@@ -198,7 +142,7 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
       </ul>
       <p>Questions? Email Derek at <a href="mailto:derek@derekeder.com">derek@derekeder.com</a> 
 
-      <p>Check out some of the other climate related projects from Chi Hack Night: <a href="https://decarbmystate.com/"">Decarb My State</a> and <a href="https://electrifychicago.net/">Electrify Chicago</a></p>
+      <p>Check out some of the other climate related projects from Chi Hack Night: <a href="https://decarbmystate.com/">Decarb My State</a> and <a href="https://electrifychicago.net/">Electrify Chicago</a></p>
     </p>
   </div>
   <div class="col-md-3">
@@ -207,4 +151,10 @@ The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an op
   </div>
 </div>
 
-
+<script src="js/jquery.csv.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/csv_to_html_table.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="js/about.js"></script>

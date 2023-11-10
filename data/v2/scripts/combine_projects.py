@@ -1,7 +1,9 @@
 import csv
-import json
 import requests_cache
-import tqdm
+
+IL_ABP_FILE = "Report-3-Formatted-3-November-2023.csv"
+IL_SFA_FILE = "Part II_Approved_with_Census Data_9_19_2023.csv"
+EIA_FILE = "september_generator2023.csv"
 
 session = requests_cache.CachedSession('geocoding_cache')
 
@@ -34,18 +36,19 @@ projects = []
 
 jsonreader_eia = ""
 
-with open('../raw/report-3-census-tract-rev.csv', "r") as report_3_file:
+print("Reading ABP data...")
+with open(f"../raw/{IL_ABP_FILE}") as report_3_file:
     datareader_report_3 = csv.DictReader(report_3_file)
 
     for row in datareader_report_3:
-        if row["Census Tract"] == "N/A":
+        if row["Census Tract Code"] == "N/A":
             continue
         
         cur_project = {}
 
-        cur_project["source_file"] = "report-3-census-tract-rev.csv"
+        cur_project["source_file"] = IL_ABP_FILE
         cur_project["kw"] = float(row["Project Size AC kW"])
-        cur_project["census_tract"] = row["Census Tract"]
+        cur_project["census_tract"] = row["Census Tract Code"]
         cur_project["category"] = row["CEJA Category"]
         cur_project["energization_date"] = row["Part II Application Verification/ Energization Date"]
 
@@ -54,42 +57,48 @@ with open('../raw/report-3-census-tract-rev.csv', "r") as report_3_file:
         else:
             cur_project["category"] = get_category(row["Project Size AC kW"])
 
-        cur_project["county"] = row["County FIPS"][2:]
+        cur_project["county"] = row["Census Tract Code"][2:5]
 
         projects.append(cur_project)
 
-with open('../raw/ilsfa-2023-05-07.csv', "r") as ilsfa_file:
+print("Reading IL SFA data...")
+with open(f"../raw/{IL_SFA_FILE}") as ilsfa_file:
     datareader_ilsfa = csv.DictReader(ilsfa_file)
 
     for row in datareader_ilsfa:
         cur_project = {}
 
-        cur_project["source_file"] = "ilsfa-2023-05-07.csv"
-        cur_project["kw"] = float(row["Project Size (AC kW) (P2F)"])
+        cur_project["source_file"] = IL_SFA_FILE
+        cur_project["kw"] = float(row["Project Size (AC kW)"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["county"] = row["Census Tract"][2:5]
         cur_project["category"] = get_category(
-            row["Project Size (AC kW) (P2F)"])
+            row["Project Size (AC kW)"])
         cur_project["energization_date"] = row["Date of System Energization"]
 
         projects.append(cur_project)
 
-with open("../raw/EIA-860M-2023-may-solar-IL.csv") as eiafile:
+print("Reading EIA data...")
+with open(f"../raw/{EIA_FILE}") as eiafile:
     datareader_eia = csv.DictReader(eiafile)
 
     for row in datareader_eia:
-        cur_project = {}
+        
+        # data is for entire US, so filter to IL
+        if row["Plant State"] == "IL" and row["Technology"] == "Solar Photovoltaic":
+            cur_project = {}
 
-        cur_project["source_file"] = "EIA-860M-2023-may-solar-IL.csv"
-        cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"]) * 1000) # Convert MW to kW
-        # note that the EIA data has lat/long columns swapped
-        cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
-        cur_project["county"] = cur_project["census_tract"][2:5]
-        cur_project["category"] = "Utility"
-        cur_project["energization_date"] = f"{row['Operating Month']}/1/{row['Operating Year']}"
+            cur_project["source_file"] = EIA_FILE
+            cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"].replace(',', '')) * 1000) # Convert MW to kW
+            # note that the EIA data has lat/long columns swapped
+            cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
+            cur_project["county"] = cur_project["census_tract"][2:5]
+            cur_project["category"] = "Utility"
+            cur_project["energization_date"] = f"{row['Operating Month']}/1/{row['Operating Year']}"
 
-        projects.append(cur_project)
+            projects.append(cur_project)
 
+print('writing to all-projects.csv')
 with open("../final/all-projects.csv", "w") as projectfile:
     fields = ["source_file", "kw", "census_tract", "county", "category", "energization_date"]
     writer = csv.DictWriter(projectfile, fieldnames=fields)

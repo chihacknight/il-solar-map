@@ -1,61 +1,61 @@
 senate_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,dg_large_kw,dg_large_count,cs_kw,cs_count,utility_kw,utility_count,total_kw,total_count
-29,Julie Morrison,Democratic,2013,2554,341,5654,16,0,0,0,0,8208,357
-55,Jason Plummer,Republican,"January 11, 2023",7977,799,9148,64,7980,4,108800,6,133905,873
-50,Jil Tracy,Republican,"January 11, 2023",5169,546,10276,35,10000,5,11500,6,36945,592
-54,Steve McClure,Republican,"January 11, 2023",6536,698,7025,20,2000,1,3500,2,19061,721
-4,Kimberly Lightford,Democratic,1998,2390,403,721,6,0,0,0,0,3111,409
-47,Neil Anderson,Republican,"January 11, 2023",10247,1011,15474,138,8000,4,9400,5,43121,1158
-48,Doris Turner,Democratic,"February 6, 2021",2258,246,1365,10,0,0,0,0,3623,256
-18,Bill Cunningham,Democratic,2013,2892,453,75,1,0,0,0,0,2967,454
-37,Win Stoller,Republican,"January 13, 2021",7194,799,17926,79,25950,13,22500,13,73570,904
-57,Christopher Belt,Democratic,"January 9, 2019",3650,404,10806,24,0,0,11700,2,26156,430
-56,Erica Harriss,Republican,"January 11, 2023",2632,315,4753,22,2000,1,2000,1,11385,339
-32,Craig Wilcox,Republican,"October 1, 2018",8386,1151,7090,15,3950,2,4000,3,23426,1171
-42,Linda Holmes,Democratic,2007,5307,791,2269,4,0,0,0,0,7576,795
-44,Sally Turner,Republican,"January 25, 2021",5190,551,8547,27,2000,1,74000,3,89737,582
-58,Terri Bryant,Republican,"January 13, 2021",4721,484,4473,26,2000,1,250000,3,261194,514
-46,David Koehler,Democratic,2006,2548,291,3577,25,0,0,0,0,6125,316
-30,Adriane Johnson,Democratic,"October 11, 2020",3100,486,2048,7,0,0,0,0,5148,493
-51,Chapin Rose,Republican,2013,5441,571,14163,31,6000,3,206000,4,231604,609
-31,Mary Edly-Allen,Democratic,"January 11, 2023",6241,926,9164,19,0,0,0,0,15405,945
-9,Laura Fine,Democratic,"January 9, 2019",2944,454,1192,6,0,0,0,0,4136,460
-33,Don DeWitte,Republican,"September 3, 2018",5577,796,2632,7,900,1,0,0,9109,804
-52,Paul Faraci,Democratic,"January 11, 2023",2698,329,8580,15,2000,1,25800,9,39078,354
-41,John Curran,Republican,2017,3879,538,2707,10,0,0,0,0,6586,548
-8,Ram Villivalam,Democratic,"January 9, 2019",2827,457,527,6,0,0,0,0,3354,463
-27,Ann Gillespie,Democratic,"January 9, 2019",2960,450,3365,6,0,0,1100,1,7425,457
-49,Meg Loughran Cappel,Democratic,"December 10, 2020",11145,1558,2621,4,0,0,1900,1,15666,1563
-26,Dan McConchie,Republican,2016,7620,1039,5219,12,0,0,0,0,12839,1051
-39,Don Harmon,Democratic,2003,3357,572,3161,9,0,0,1900,1,8418,582
-14,Emil Jones,Democratic,2009,3650,569,1899,5,0,0,9000,1,14549,575
-25,Karina Villa,Democratic,"January 13, 2021",6269,993,4965,11,0,0,2000,1,13234,1005
-2,Omar Aquino,Democratic,2017,1319,214,662,3,0,0,0,0,1981,217
-10,Robert Martwick,Democratic,"June 28, 2019",2367,391,531,4,0,0,0,0,2898,395
-24,Seth Lewis,Republican,"January 11, 2023",4468,648,3192,11,0,0,0,0,7660,659
-35,Dave Syverson,Republican,1993,9455,1255,11758,35,21800,11,25400,13,68413,1314
-19,Michael Hastings,Democratic,2013,5002,668,4795,8,0,0,2000,1,11797,677
-53,Thomas Bennett,Republican,"January 12, 2023",4908,549,3235,23,11972,6,32900,8,53015,586
-59,Dale Fowler,Republican,2017,4330,437,9506,33,8650,5,11300,6,33786,481
-3,Mattie Hunter,Democratic,2003,522,82,0,0,0,0,0,0,522,82
-45,Andrew Chesney,Republican,"January 11, 2023",17987,2176,10028,54,32972,17,33000,17,93987,2264
-7,Mike Simmons,Democratic,"February 6, 2021",699,110,43,1,0,0,0,0,742,111
-23,Suzanne Glowiak Hilton,Democratic,"January 11, 2023",3645,542,3763,10,0,0,0,0,7408,552
-,,,,298,45,0,0,0,0,0,0,298,45
-36,Michael Halpin,Democratic,"January 11, 2023",1726,203,9069,36,0,0,2000,1,12795,240
-1,Javier Loera Cervantes,Democratic,"January 11, 2023",2696,470,2140,5,0,0,1000,1,5836,476
-21,Laura Ellman,Democratic,"January 9, 2019",2958,418,3249,18,0,0,1000,1,7207,437
-22,Cristina Castro,Democratic,2017,4594,764,517,2,0,0,1300,1,6411,767
-40,Patrick Joyce,Democratic,"November 8, 2019",2674,366,4088,6,8000,4,17000,9,31762,385
-34,Steve Stadelman,Democratic,2013,6016,880,4173,17,6860,4,12400,6,29449,907
-11,Mike Porfirio,Democratic,"January 11, 2023",3420,569,3798,9,0,0,1500,1,8718,579
-17,"Elgie R. Sims, Jr.",Democratic,2018,2408,379,2171,4,8000,4,8000,4,20579,391
-43,Rachel Ventura,Democratic,"January 11, 2023",5628,868,2738,6,2000,1,4000,2,14366,877
-38,Sue Rezin,Republican,2010,4812,629,5254,8,0,0,20000,1,30066,638
-20,Cristina Pacione-Zayas,Democratic,"December 21, 2020",1159,190,135,2,0,0,0,0,1294,192
-28,Laura Murphy,Democratic,"October 5, 2015",3439,532,1230,8,0,0,0,0,4669,540
-16,Willie Preston,Democratic,"January 11, 2023",2230,370,120,1,0,0,0,0,2350,371
-5,Patricia Van Pelt,Democratic,2013,380,60,1091,11,0,0,0,0,1471,71
-12,Celina Villanueva,Democratic,"January 11, 2023",636,121,3495,5,0,0,1400,1,5531,127
-15,Napoleon Harris,Democratic,2013,3762,578,1184,5,11950,6,8000,4,24896,593
-13,Robert Peters,Democratic,2019,542,95,0,0,0,0,0,0,542,95
-6,Sara Feigenholtz,Democratic,"January 21, 2020",476,70,73,2,0,0,0,0,549,72
+29,Julie Morrison,Democratic,2013,3610,459,5854,18,0,0,0,0,9464,477
+55,Jason Plummer,Republican,"January 11, 2023",10374,1007,9902,69,7980,4,108800,6,137056,1086
+50,Jil Tracy,Republican,"January 11, 2023",7587,761,10441,36,10000,5,11500,6,39528,808
+54,Steve McClure,Republican,"January 11, 2023",9040,925,7465,23,2000,1,3500,2,22005,951
+4,Kimberly Lightford,Democratic,1998,3670,562,859,8,0,0,0,0,4529,570
+47,Neil Anderson,Republican,"January 11, 2023",15221,1422,16542,146,10000,5,11400,6,53163,1579
+48,Doris Turner,Democratic,"February 6, 2021",3225,335,1417,11,0,0,0,0,4642,346
+18,Bill Cunningham,Democratic,2013,4041,604,554,4,0,0,0,0,4595,608
+37,Win Stoller,Republican,"January 13, 2021",10186,1064,18354,87,29900,15,22500,13,80940,1179
+57,Christopher Belt,Democratic,"January 9, 2019",5493,579,11474,29,0,0,11700,2,28667,610
+56,Erica Harriss,Republican,"January 11, 2023",4242,471,4967,23,2000,1,2000,1,13209,496
+32,Craig Wilcox,Republican,"October 1, 2018",11566,1534,7090,15,3950,2,4000,3,26606,1554
+42,Linda Holmes,Democratic,2007,7804,1075,2434,6,0,0,0,0,10238,1081
+44,Sally Turner,Republican,"January 25, 2021",9746,944,9316,34,7800,5,74000,3,100862,986
+58,Terri Bryant,Republican,"January 13, 2021",6602,633,4525,27,2000,1,250000,3,263127,664
+46,David Koehler,Democratic,2006,4626,490,4010,29,0,0,0,0,8636,519
+30,Adriane Johnson,Democratic,"October 11, 2020",4404,647,2148,8,0,0,0,0,6552,655
+51,Chapin Rose,Republican,2013,7275,730,16913,35,6000,3,206000,4,236188,772
+31,Mary Edly-Allen,Democratic,"January 11, 2023",9916,1358,9194,20,0,0,0,0,19110,1378
+9,Laura Fine,Democratic,"January 9, 2019",4226,622,1192,6,0,0,0,0,5418,628
+33,Don DeWitte,Republican,"September 3, 2018",8113,1089,2677,8,900,1,0,0,11690,1098
+52,Paul Faraci,Democratic,"January 11, 2023",5054,565,18745,28,2000,1,25800,9,51599,603
+41,John Curran,Republican,2017,5189,694,2707,10,0,0,0,0,7896,704
+8,Ram Villivalam,Democratic,"January 9, 2019",4298,650,527,6,0,0,0,0,4825,656
+27,Ann Gillespie,Democratic,"January 9, 2019",3857,563,3365,6,0,0,1100,1,8322,570
+49,Meg Loughran Cappel,Democratic,"December 10, 2020",15730,2104,2821,5,0,0,1900,1,20451,2110
+26,Dan McConchie,Republican,2016,10252,1354,5219,12,0,0,0,0,15471,1366
+39,Don Harmon,Democratic,2003,4958,791,3211,10,0,0,1900,1,10069,802
+14,Emil Jones,Democratic,2009,5054,753,1899,5,0,0,9000,1,15953,759
+25,Karina Villa,Democratic,"January 13, 2021",9147,1361,6286,15,0,0,2000,1,17433,1377
+2,Omar Aquino,Democratic,2017,1824,284,662,3,0,0,0,0,2486,287
+10,Robert Martwick,Democratic,"June 28, 2019",3328,531,531,4,0,0,0,0,3859,535
+24,Seth Lewis,Republican,"January 11, 2023",6075,842,3425,13,0,0,0,0,9500,855
+35,Dave Syverson,Republican,1993,13364,1687,12514,41,23800,12,25400,13,75078,1753
+19,Michael Hastings,Democratic,2013,7403,939,4932,11,0,0,2000,1,14335,951
+53,Thomas Bennett,Republican,"January 12, 2023",8113,834,5513,39,21972,11,32900,8,68498,892
+59,Dale Fowler,Republican,2017,7301,672,9650,35,8650,5,11300,6,36901,718
+3,Mattie Hunter,Democratic,2003,606,96,0,0,0,0,0,0,606,96
+45,Andrew Chesney,Republican,"January 11, 2023",24688,2853,10770,63,34922,18,37000,19,107380,2953
+7,Mike Simmons,Democratic,"February 6, 2021",1004,150,43,1,0,0,0,0,1047,151
+23,Suzanne Glowiak Hilton,Democratic,"January 11, 2023",5151,721,4987,13,0,0,0,0,10138,734
+,,,,307,45,225,1,0,0,0,0,532,46
+36,Michael Halpin,Democratic,"January 11, 2023",2221,256,9370,39,2000,1,2000,1,15591,297
+1,Javier Loera Cervantes,Democratic,"January 11, 2023",3749,616,3008,8,0,0,1000,1,7757,625
+21,Laura Ellman,Democratic,"January 9, 2019",3694,509,2500,18,0,0,1000,1,7194,528
+22,Cristina Castro,Democratic,2017,6258,999,613,4,0,0,1300,1,8171,1004
+40,Patrick Joyce,Democratic,"November 8, 2019",4625,585,9939,10,11500,6,17000,9,43064,610
+34,Steve Stadelman,Democratic,2013,8609,1210,6523,20,6860,4,12400,6,34392,1240
+11,Mike Porfirio,Democratic,"January 11, 2023",4948,776,3798,9,0,0,1500,1,10246,786
+17,"Elgie R. Sims, Jr.",Democratic,2018,4666,652,2317,6,8000,4,8000,4,22983,666
+43,Rachel Ventura,Democratic,"January 11, 2023",8268,1174,4658,7,4000,2,4000,2,20926,1185
+38,Sue Rezin,Republican,2010,7940,978,7445,12,0,0,20000,1,35385,991
+20,Cristina Pacione-Zayas,Democratic,"December 21, 2020",1657,250,335,3,0,0,0,0,1992,253
+28,Laura Murphy,Democratic,"October 5, 2015",4722,691,1383,10,0,0,0,0,6105,701
+16,Willie Preston,Democratic,"January 11, 2023",3184,507,195,2,0,0,0,0,3379,509
+5,Patricia Van Pelt,Democratic,2013,490,70,1192,13,0,0,0,0,1682,83
+12,Celina Villanueva,Democratic,"January 11, 2023",933,160,3495,5,0,0,1400,1,5828,166
+15,Napoleon Harris,Democratic,2013,6630,921,1216,6,11950,6,8000,4,27796,937
+13,Robert Peters,Democratic,2019,734,122,0,0,0,0,0,0,734,122
+6,Sara Feigenholtz,Democratic,"January 21, 2020",650,86,73,2,0,0,0,0,723,88
