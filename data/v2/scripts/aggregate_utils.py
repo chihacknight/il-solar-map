@@ -147,14 +147,17 @@ def generate_monthly_kw_time_series():
     # convert energization_date to first of month
     df["energization_date"] = df["energization_date"].dt.to_period("M").dt.to_timestamp()
     
-    # aggregate projects by month
-    monthly_aggregate = df.groupby(["energization_date"])["kw"].sum().reset_index()
+    # aggregate projects by month and category
+    monthly_aggregate = df.groupby(["energization_date", "category"]).agg({"kw": "sum"}).reset_index().sort_values(by=["energization_date"])
 
-    # sort by date
-    monthly_aggregate = monthly_aggregate.sort_values(by=["energization_date"])
+    # pivot table to get category columns
+    monthly_aggregate = monthly_aggregate.pivot(index="energization_date", columns="category", values="kw").reset_index().fillna(0)
 
     # calculate cumulative sum of kw by month
-    monthly_aggregate["kw"] = monthly_aggregate["kw"].cumsum().round(1)
+    monthly_aggregate["CS"] = monthly_aggregate["CS"].cumsum().round(1)
+    monthly_aggregate["Large_DG"] = monthly_aggregate["Large_DG"].cumsum().round(1)
+    monthly_aggregate["Small_DG"] = monthly_aggregate["Small_DG"].cumsum().round(1)
+    monthly_aggregate["Utility"] = monthly_aggregate["Utility"].cumsum().round(1)
 
     # export to csv
     monthly_aggregate.to_csv("../final/monthly-aggregate.csv", index=False)

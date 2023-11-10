@@ -20,6 +20,12 @@ CsvToHtmlTable.init({
     },
 });
 
+Highcharts.setOptions({
+  lang: {
+      thousandsSep: ','
+  }
+});
+
 $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
   function (data) {
     var csvData = $.csv.toArrays(data)
@@ -75,11 +81,21 @@ $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
       var csvData = $.csv.toArrays(data)
       csvData.shift()
 
+      var utilitySeries = []
+      var smSeries = []
+      var lgSeries = []
+      var csSeries = []
+
       // convert the first element of each array into a DateTime
+      // store each series in its own array for Highcharts
       csvData.forEach(function (row) {
         var dateparts = row[0].split('-')
         row[0] = Date.UTC(dateparts[0], dateparts[1] - 1, dateparts[2])
-        row[1] = parseInt(row[1])
+
+        csSeries.push([row[0], parseInt(row[1])])
+        lgSeries.push([row[0], parseInt(row[2])])
+        smSeries.push([row[0], parseInt(row[3])])
+        utilitySeries.push([row[0], parseInt(row[4])])
       })
 
       console.log(csvData)
@@ -108,7 +124,8 @@ $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
             }
         },
         tooltip: {
-            pointFormat: '<b>{point.y:,.0f} kW installed</b>',
+            shared: true,
+            valueSuffix: ' kW',
         },
         plotOptions: {
             area: {
@@ -126,8 +143,17 @@ $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
             }
         },
         series: [{
-          name: "kW installed",  
-          data: csvData
+          name: "Utility",  
+          data: utilitySeries
+        }, {
+          name: "Small DG",  
+          data: smSeries
+        }, {
+          name: "Large DG",  
+          data: lgSeries
+        }, {
+          name: "Community Solar",  
+          data: csSeries
         }]
     });
   });
