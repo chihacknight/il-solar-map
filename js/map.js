@@ -188,6 +188,12 @@ function addLayer(map, layerSource, visible = 'none'){
   })
 }
 
+$(window).resize(function () {
+  var h = $(window).height(),
+    offsetTop = 125; // Calculate the top offset
+
+  $('#map').css('height', (h - offsetTop));
+}).resize();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA'
 const map = new mapboxgl.Map({
