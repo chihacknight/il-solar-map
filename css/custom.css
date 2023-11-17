@@ -43,3 +43,7 @@ body, p, table {
   animation: fa-spin 6s infinite linear;
   color: #FEB52D;
 }
+
+#category-select button, #geography-select button {
+  font-size: 0.55em;
+}
