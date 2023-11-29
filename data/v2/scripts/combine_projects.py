@@ -3,7 +3,7 @@ import requests_cache
 
 IL_ABP_FILE = "Report-3-Formatted-3-November-2023.csv"
 IL_SFA_FILE = "Part II_Approved_with_Census Data_9_19_2023.csv"
-EIA_FILE = "september_generator2023.csv"
+EIA_FILE = "october_generator2023.csv"
 
 session = requests_cache.CachedSession('geocoding_cache')
 
