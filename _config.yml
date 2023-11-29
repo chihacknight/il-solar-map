@@ -5,7 +5,7 @@ title: "Illinois Solar Map"
 url: https://ilsolarmap.com
 encoding: utf-8
 timezone: America/Chicago
-description: "See how and where the 1,823,000 kilowatts of solar have been installed by zip code in the State of Illinois"
+description: "See how and where over 1,800,000 kilowatts of solar have been installed by zip code in the State of Illinois"
 permalink: none
 gems:
   - jekyll-redirect-from
