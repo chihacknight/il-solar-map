@@ -1,61 +1,61 @@
 senate_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_kw
-29,Julie Morrison,Democratic,9464,0,0,5854,3610
-55,Jason Plummer,Republican,137056,108800,7980,9902,10374
-50,Jil Tracy,Republican,39528,11500,10000,10441,7587
-54,Steve McClure,Republican,22005,3500,2000,7465,9040
-4,Kimberly Lightford,Democratic,4529,0,0,859,3670
-47,Neil Anderson,Republican,53163,11400,10000,16542,15221
-48,Doris Turner,Democratic,4642,0,0,1417,3225
-18,Bill Cunningham,Democratic,4595,0,0,554,4041
-37,Win Stoller,Republican,84940,26500,29900,18354,10186
-57,Christopher Belt,Democratic,28667,11700,0,11474,5493
-56,Erica Harriss,Republican,13209,2000,2000,4967,4242
-32,Craig Wilcox,Republican,26606,4000,3950,7090,11566
-42,Linda Holmes,Democratic,10238,0,0,2434,7804
-44,Sally Turner,Republican,100862,74000,7800,9316,9746
-58,Terri Bryant,Republican,263127,250000,2000,4525,6602
-46,David Koehler,Democratic,8636,0,0,4010,4626
-30,Adriane Johnson,Democratic,6552,0,0,2148,4404
-51,Chapin Rose,Republican,236188,206000,6000,16913,7275
-31,Mary Edly-Allen,Democratic,19110,0,0,9194,9916
-9,Laura Fine,Democratic,5418,0,0,1192,4226
-33,Don DeWitte,Republican,11690,0,900,2677,8113
-52,Paul Faraci,Democratic,51599,25800,2000,18745,5054
-41,John Curran,Republican,7896,0,0,2707,5189
-8,Ram Villivalam,Democratic,4825,0,0,527,4298
-27,Ann Gillespie,Democratic,8322,1100,0,3365,3857
-49,Meg Loughran Cappel,Democratic,20451,1900,0,2821,15730
-26,Dan McConchie,Republican,15471,0,0,5219,10252
-39,Don Harmon,Democratic,10069,1900,0,3211,4958
-14,Emil Jones,Democratic,15953,9000,0,1899,5054
-25,Karina Villa,Democratic,17433,2000,0,6286,9147
-2,Omar Aquino,Democratic,2486,0,0,662,1824
-10,Robert Martwick,Democratic,3859,0,0,531,3328
-24,Seth Lewis,Republican,9500,0,0,3425,6075
-35,Dave Syverson,Republican,75078,25400,23800,12514,13364
-19,Michael Hastings,Democratic,14335,2000,0,4932,7403
-53,Thomas Bennett,Republican,68498,32900,21972,5513,8113
-59,Dale Fowler,Republican,36901,11300,8650,9650,7301
-3,Mattie Hunter,Democratic,606,0,0,0,606
-45,Andrew Chesney,Republican,107380,37000,34922,10770,24688
-7,Mike Simmons,Democratic,1047,0,0,43,1004
-23,Suzanne Glowiak Hilton,Democratic,10138,0,0,4987,5151
-,,,532,0,0,225,307
-36,Michael Halpin,Democratic,15591,2000,2000,9370,2221
-1,Javier Loera Cervantes,Democratic,7757,1000,0,3008,3749
-21,Laura Ellman,Democratic,7194,1000,0,2500,3694
-22,Cristina Castro,Democratic,8171,1300,0,613,6258
-40,Patrick Joyce,Democratic,43064,17000,11500,9939,4625
-34,Steve Stadelman,Democratic,34392,12400,6860,6523,8609
-11,Mike Porfirio,Democratic,10246,1500,0,3798,4948
-17,"Elgie R. Sims, Jr.",Democratic,22983,8000,8000,2317,4666
-43,Rachel Ventura,Democratic,20926,4000,4000,4658,8268
-38,Sue Rezin,Republican,35385,20000,0,7445,7940
-20,Cristina Pacione-Zayas,Democratic,1992,0,0,335,1657
-28,Laura Murphy,Democratic,6105,0,0,1383,4722
-16,Willie Preston,Democratic,3379,0,0,195,3184
-5,Patricia Van Pelt,Democratic,1682,0,0,1192,490
-12,Celina Villanueva,Democratic,5828,1400,0,3495,933
-15,Napoleon Harris,Democratic,27796,8000,11950,1216,6630
-13,Robert Peters,Democratic,734,0,0,0,734
-6,Sara Feigenholtz,Democratic,723,0,0,73,650
+29,Julie Morrison,Democratic,9870,0,0,3850,6020
+55,Jason Plummer,Republican,141882,108800,11980,8243,12859
+50,Jil Tracy,Republican,72387,41500,9750,7472,13665
+54,Steve McClure,Republican,23504,3500,2000,4248,13756
+4,Kimberly Lightford,Democratic,4810,0,0,1054,3756
+47,Neil Anderson,Republican,55362,11400,10000,15167,18795
+48,Doris Turner,Democratic,7334,0,0,1417,5917
+18,Bill Cunningham,Democratic,4836,0,0,549,4287
+37,Win Stoller,Republican,86949,26500,29900,11215,19334
+57,Christopher Belt,Democratic,29421,11700,0,7103,10618
+56,Erica Harriss,Republican,13811,2000,2000,3876,5935
+32,Craig Wilcox,Republican,27882,4000,3950,3617,16315
+42,Linda Holmes,Democratic,11090,0,0,759,10331
+44,Sally Turner,Republican,103052,74000,7800,8178,13074
+58,Terri Bryant,Republican,263760,250000,2000,4617,7143
+46,David Koehler,Democratic,10355,0,0,3953,6402
+30,Adriane Johnson,Democratic,6902,0,0,2270,4632
+51,Chapin Rose,Republican,402681,371300,6000,5638,19743
+31,Mary Edly-Allen,Democratic,20403,0,0,8016,12387
+9,Laura Fine,Democratic,5763,0,0,1194,4569
+33,Don DeWitte,Republican,12199,0,900,2753,8546
+52,Paul Faraci,Democratic,52971,25800,2000,9145,16026
+41,John Curran,Republican,8499,0,0,3007,5492
+8,Ram Villivalam,Democratic,5098,0,0,527,4571
+27,Ann Gillespie,Democratic,8605,1100,0,866,6639
+49,Meg Loughran Cappel,Democratic,21699,1900,0,1272,18527
+26,Dan McConchie,Republican,16206,0,0,3207,12999
+39,Don Harmon,Democratic,10239,1900,0,1291,7048
+14,Emil Jones,Democratic,16303,9000,0,899,6404
+25,Karina Villa,Democratic,17781,2000,0,3205,12576
+2,Omar Aquino,Democratic,2650,0,0,661,1989
+10,Robert Martwick,Democratic,4064,0,0,531,3533
+24,Seth Lewis,Republican,9933,0,0,3424,6509
+35,Dave Syverson,Republican,76078,25400,23800,6599,20279
+19,Michael Hastings,Democratic,15085,2000,0,3330,9755
+53,Thomas Bennett,Republican,72304,32900,23972,5791,9641
+59,Dale Fowler,Republican,37769,11300,8650,6396,11423
+3,Mattie Hunter,Democratic,684,0,0,0,684
+45,Andrew Chesney,Republican,210075,137000,34922,9521,28632
+7,Mike Simmons,Democratic,1095,0,0,43,1052
+23,Suzanne Glowiak Hilton,Democratic,10417,0,0,4987,5430
+,,,564,0,0,225,339
+36,Michael Halpin,Democratic,16049,2000,2000,8354,3695
+1,Javier Loera Cervantes,Democratic,7872,1000,0,1948,4924
+21,Laura Ellman,Democratic,7661,1000,0,2499,4162
+22,Cristina Castro,Democratic,8523,1300,0,613,6610
+40,Patrick Joyce,Democratic,43426,17000,11500,5405,9521
+34,Steve Stadelman,Democratic,35048,12400,6860,4819,10969
+11,Mike Porfirio,Democratic,10337,1500,0,712,8125
+17,"Elgie R. Sims, Jr.",Democratic,23333,8000,8000,320,7013
+43,Rachel Ventura,Democratic,21098,4000,3850,1738,11510
+38,Sue Rezin,Republican,36568,20000,0,3694,12874
+20,Cristina Pacione-Zayas,Democratic,2086,0,0,335,1751
+28,Laura Murphy,Democratic,6294,0,0,1373,4921
+16,Willie Preston,Democratic,3557,0,0,195,3362
+5,Patricia Van Pelt,Democratic,1683,0,0,1189,494
+12,Celina Villanueva,Democratic,5898,1400,0,2125,2373
+15,Napoleon Harris,Democratic,28190,8000,11950,1216,7024
+13,Robert Peters,Democratic,787,0,0,0,787
+6,Sara Feigenholtz,Democratic,754,0,0,73,681

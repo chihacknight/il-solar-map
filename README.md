@@ -60,7 +60,7 @@ We replace part of the html header meta tags for the site for custom title, desc
         <!-— facebook open graph tags -->
         <meta property="og:url" content="http://ilsolarmap.com/" />
         <meta property="og:title" content="Illinois Solar Map - Chi Hack Night / ICJC" />
-        <meta property="og:description" content="See how and where over 1,800,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
+        <meta property="og:description" content="See how and where over 2,170,000 kilowatts of solar have been installed by zip code in the State of Illinois" />
         <meta property="og:site_name" content="Illinois Solar Map" />
         <meta property="og:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
         <meta property="og:image:type" content="image/png" />
@@ -72,7 +72,7 @@ We replace part of the html header meta tags for the site for custom title, desc
         <meta name="twitter:site" content="Illinois Solar Map">
         <meta name="twitter:creator" content="Chi Hack Night / ICJC">
         <meta name="twitter:title" content="Illinois Solar Map - Chi Hack Night / ICJC">
-        <meta name="twitter:description" content="See how and where over 1,800,000 kilowatts of solar have been installed in the State of Illinois">
+        <meta name="twitter:description" content="See how and where over 2,170,000 kilowatts of solar have been installed in the State of Illinois">
         <meta name="twitter:image" content="https://ilsolarmap.com/images/il-solar-map-x4.jpg" />
 
         <!-- Load React/Redux -->
