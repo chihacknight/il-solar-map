@@ -1,9 +1,9 @@
 import csv
 import requests_cache
 
-IL_ABP_FILE = "Report-3-Formatted-3-November-2023.csv"
-IL_SFA_FILE = "Part II_Approved_with_Census Data_9_19_2023.csv"
-EIA_FILE = "october_generator2023.csv"
+IL_ABP_FILE = "Report-3-Formatted-24-January-2024-.csv"
+IL_SFA_FILE = "Report-3-Part-II-Approved-Projects-Applications-2023-2024.csv"
+EIA_FILE = "december_generator2023.csv"
 
 session = requests_cache.CachedSession('geocoding_cache')
 
@@ -47,7 +47,7 @@ with open(f"../raw/{IL_ABP_FILE}") as report_3_file:
         cur_project = {}
 
         cur_project["source_file"] = IL_ABP_FILE
-        cur_project["kw"] = float(row["Project Size AC kW"])
+        cur_project["kw"] = float(row["Project Size AC kW"].replace(',', ''))
         cur_project["census_tract"] = row["Census Tract Code"]
         cur_project["category"] = row["CEJA Category"]
         cur_project["energization_date"] = row["Part II Application Verification/ Energization Date"]
@@ -69,11 +69,11 @@ with open(f"../raw/{IL_SFA_FILE}") as ilsfa_file:
         cur_project = {}
 
         cur_project["source_file"] = IL_SFA_FILE
-        cur_project["kw"] = float(row["Project Size (AC kW)"])
+        cur_project["kw"] = float(row["Project Size AC kW"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["county"] = row["Census Tract"][2:5]
         cur_project["category"] = get_category(
-            row["Project Size (AC kW)"])
+            row["Project Size AC kW"])
         cur_project["energization_date"] = row["Date of System Energization"]
 
         projects.append(cur_project)
