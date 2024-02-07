@@ -1,37 +1,37 @@
 senate_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_kw
 29,Julie Morrison,Democratic,9870,0,0,3850,6020
-55,Jason Plummer,Republican,141882,108800,11980,8243,12859
+55,Jason Plummer,Republican,142032,108800,11980,8393,12859
 50,Jil Tracy,Republican,72387,41500,9750,7472,13665
 54,Steve McClure,Republican,23504,3500,2000,4248,13756
 4,Kimberly Lightford,Democratic,4810,0,0,1054,3756
-47,Neil Anderson,Republican,55362,11400,10000,15167,18795
+47,Neil Anderson,Republican,55462,11400,10000,15267,18795
 48,Doris Turner,Democratic,7334,0,0,1417,5917
 18,Bill Cunningham,Democratic,4836,0,0,549,4287
 37,Win Stoller,Republican,86949,26500,29900,11215,19334
-57,Christopher Belt,Democratic,29421,11700,0,7103,10618
-56,Erica Harriss,Republican,13811,2000,2000,3876,5935
+57,Christopher Belt,Democratic,30714,11700,0,8396,10618
+56,Erica Harriss,Republican,14049,2000,2000,4114,5935
 32,Craig Wilcox,Republican,27882,4000,3950,3617,16315
-42,Linda Holmes,Democratic,11090,0,0,759,10331
+42,Linda Holmes,Democratic,11100,0,0,759,10341
 44,Sally Turner,Republican,103052,74000,7800,8178,13074
-58,Terri Bryant,Republican,263760,250000,2000,4617,7143
+58,Terri Bryant,Republican,263835,250000,2000,4692,7143
 46,David Koehler,Democratic,10355,0,0,3953,6402
 30,Adriane Johnson,Democratic,6902,0,0,2270,4632
 51,Chapin Rose,Republican,402681,371300,6000,5638,19743
 31,Mary Edly-Allen,Democratic,20403,0,0,8016,12387
 9,Laura Fine,Democratic,5763,0,0,1194,4569
-33,Don DeWitte,Republican,12199,0,900,2753,8546
+33,Don DeWitte,Republican,12204,0,900,2753,8551
 52,Paul Faraci,Democratic,52971,25800,2000,9145,16026
 41,John Curran,Republican,8499,0,0,3007,5492
 8,Ram Villivalam,Democratic,5098,0,0,527,4571
-27,Ann Gillespie,Democratic,8605,1100,0,866,6639
+27,Ann Gillespie,Democratic,8615,1100,0,866,6649
 49,Meg Loughran Cappel,Democratic,21699,1900,0,1272,18527
 26,Dan McConchie,Republican,16206,0,0,3207,12999
-39,Don Harmon,Democratic,10239,1900,0,1291,7048
-14,Emil Jones,Democratic,16303,9000,0,899,6404
-25,Karina Villa,Democratic,17781,2000,0,3205,12576
+39,Don Harmon,Democratic,10267,1900,0,1291,7076
+14,Emil Jones,Democratic,17297,9000,0,1893,6404
+25,Karina Villa,Democratic,17937,2000,0,3355,12582
 2,Omar Aquino,Democratic,2650,0,0,661,1989
 10,Robert Martwick,Democratic,4064,0,0,531,3533
-24,Seth Lewis,Republican,9933,0,0,3424,6509
+24,Seth Lewis,Republican,9938,0,0,3424,6514
 35,Dave Syverson,Republican,76078,25400,23800,6599,20279
 19,Michael Hastings,Democratic,15085,2000,0,3330,9755
 53,Thomas Bennett,Republican,72304,32900,23972,5791,9641
@@ -41,17 +41,17 @@ senate_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_
 7,Mike Simmons,Democratic,1095,0,0,43,1052
 23,Suzanne Glowiak Hilton,Democratic,10417,0,0,4987,5430
 ,,,564,0,0,225,339
-36,Michael Halpin,Democratic,16049,2000,2000,8354,3695
+36,Michael Halpin,Democratic,16924,2000,2000,9229,3695
 1,Javier Loera Cervantes,Democratic,7872,1000,0,1948,4924
 21,Laura Ellman,Democratic,7661,1000,0,2499,4162
 22,Cristina Castro,Democratic,8523,1300,0,613,6610
-40,Patrick Joyce,Democratic,43426,17000,11500,5405,9521
-34,Steve Stadelman,Democratic,35048,12400,6860,4819,10969
+40,Patrick Joyce,Democratic,43966,17000,11500,5945,9521
+34,Steve Stadelman,Democratic,35100,12400,6860,4871,10969
 11,Mike Porfirio,Democratic,10337,1500,0,712,8125
 17,"Elgie R. Sims, Jr.",Democratic,23333,8000,8000,320,7013
 43,Rachel Ventura,Democratic,21098,4000,3850,1738,11510
 38,Sue Rezin,Republican,36568,20000,0,3694,12874
-20,Cristina Pacione-Zayas,Democratic,2086,0,0,335,1751
+20,Cristina Pacione-Zayas,Democratic,2096,0,0,335,1761
 28,Laura Murphy,Democratic,6294,0,0,1373,4921
 16,Willie Preston,Democratic,3557,0,0,195,3362
 5,Patricia Van Pelt,Democratic,1683,0,0,1189,494

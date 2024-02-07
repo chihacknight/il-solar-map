@@ -4,22 +4,22 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 100,C.D. Davidsmeyer,Republican,23462,6000,5750,4610,7102
 108,Wayne Arthur Rosenthal,Republican,16198,2000,2000,2681,9517
 7,Emanuel Welch,Democratic,3563,0,0,757,2806
-93,Travis Weaver,Republican,27278,6000,4000,7792,9486
+93,Travis Weaver,Republican,27378,6000,4000,7892,9486
 95,Mike Coffey,Republican,5690,0,0,768,4922
-110,Blaine Wilhour,Republican,123886,108800,7980,1479,5627
+110,Blaine Wilhour,Republican,124036,108800,7980,1629,5627
 36,Kelly M. Burke,Democratic,2937,0,0,479,2458
 99,Randy Frese,Republican,48925,35500,4000,2862,6563
 58,Bob Morgan,Democratic,2785,0,0,1149,1636
 107,Brad Halbrook,Republican,7306,1500,0,1567,4239
 73,Ryan Spain,Republican,38691,11200,13950,4121,9420
 96,Sue Scherer,Democratic,1644,0,0,649,995
-114,Kevin Schmidt,Republican,14791,1800,0,5996,6995
+114,Kevin Schmidt,Republican,16041,1800,0,7246,6995
 112,Katie Stuart,Democratic,9052,2000,2000,1221,3831
 63,Steven Reick,Republican,17448,4000,3950,1385,8113
-113,Jay C. Hoffman,Democratic,14630,9900,0,1107,3623
-83,Matt Hanson,Democratic,6732,0,0,425,6307
+113,Jay C. Hoffman,Democratic,14673,9900,0,1150,3623
+83,Matt Hanson,Democratic,6742,0,0,425,6317
 88,Dan Caulkins,Republican,13015,2000,2000,4039,4976
-111,Amy Elik,Republican,4759,0,0,2655,2104
+111,Amy Elik,Republican,4997,0,0,2893,2104
 115,David Friess,Republican,106868,99000,0,2947,4921
 91,Sharon Chung,Democratic,6688,0,0,1930,4758
 59,Daniel Didech,Democratic,3040,0,0,792,2248
@@ -30,14 +30,14 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 104,Mike Marron,Republican,41456,22000,2000,3469,13987
 82,John Egofske,Republican,4665,0,0,2022,2643
 16,Kevin Olickal,Democratic,2452,0,0,494,1958
-54,Mary Beth Canty,Democratic,6308,1100,0,666,4542
+54,Mary Beth Canty,Democratic,6318,1100,0,666,4552
 17,Jennifer Gong-Gershowitz,Democratic,3318,0,0,205,3113
 97,Harry Benton,Democratic,10195,0,0,1072,9123
-116,Dave Severin,Republican,156892,151000,2000,1670,2222
+116,Dave Severin,Republican,156967,151000,2000,1745,2222
 51,Nabeela Syed,Democratic,9909,0,0,2579,7330
 78,Camille Y. Lilly,Democratic,3110,0,0,317,2793
-28,Robert Rita,Democratic,11869,9000,0,479,2390
-50,Barbara Hernandez,Democratic,10382,2000,0,1979,6403
+28,Robert Rita,Democratic,12096,9000,0,706,2390
+50,Barbara Hernandez,Democratic,10538,2000,0,2129,6409
 52,Martin McLaughlin,Republican,6297,0,0,628,5669
 4,Lilian Jiménez,Democratic,844,0,0,85,759
 19,Lindsey LaPointe,Democratic,2347,0,0,411,1936
@@ -52,18 +52,18 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 92,Jehan Gordon-Booth,Democratic,3667,0,0,2023,1644
 105,Dennis Tipsword Jr.,Republican,16234,4000,5972,1749,4513
 5,Kimberly du Buclet,Democratic,313,0,0,0,313
-48,Jennifer Sanalitro,Republican,5421,0,0,2169,3252
+48,Jennifer Sanalitro,Republican,5426,0,0,2169,3257
 ,,,738,0,0,225,513
 102,Adam Niemerg,Republican,378798,369300,4000,2383,3115
 118,Paul Jacobs,Republican,26608,7300,6650,4887,7771
 89,Tony McCombie,Republican,181351,127000,30922,4951,18478
 60,Rita Mayfield,Democratic,3862,0,0,1478,2384
 14,Kelly Cassidy,Democratic,391,0,0,0,391
-66,Suzanne Ness,Democratic,7610,0,900,1439,5271
+66,Suzanne Ness,Democratic,7615,0,900,1439,5276
 46,Diane Blair-Sherlock,Democratic,7667,0,0,4574,3093
 62,Laura Dias,Democratic,9012,0,0,5295,3717
 87,Bill Hauter,Republican,90037,72000,5800,4139,8098
-71,Daniel Swanson,Republican,11529,2000,2000,5705,1824
+71,Daniel Swanson,Republican,12404,2000,2000,6580,1824
 3,Eva Dina Delgado,Democratic,1806,0,0,576,1230
 2,Elizabeth Hernandez,Democratic,3696,0,0,1179,2517
 13,Hoan Huynh,Democratic,704,0,0,43,661
@@ -74,8 +74,8 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 49,Maura Hirschauer,Democratic,7399,0,0,1226,6173
 44,Fred Crespo,Democratic,4108,0,0,310,3798
 103,Carol Ammons,Democratic,11515,3800,0,5676,2039
-80,Anthony DeLuca,Democratic,3238,0,0,842,2396
-67,Maurice West II,Democratic,29682,12400,6860,4226,6196
+80,Anthony DeLuca,Democratic,3778,0,0,1382,2396
+67,Maurice West II,Democratic,29734,12400,6860,4278,6196
 74,Brad Fritts,Republican,48258,15300,15950,7094,9914
 98,Natalie Manley,Democratic,11504,1900,0,200,9404
 69,Joe Sosnowski,Republican,34126,9900,9900,2833,11493
@@ -84,7 +84,7 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 34,Nicholas Smith,Democratic,19148,8000,8000,129,3019
 85,Dagmara Avelar,Democratic,8631,0,0,1517,7114
 75,Jed Davis,Republican,11127,0,0,1428,9699
-39,Will Guzzardi,Democratic,1162,0,0,0,1162
+39,Will Guzzardi,Democratic,1172,0,0,0,1172
 33,Marcus Evans,Democratic,4185,0,0,191,3994
 56,Michelle Mussman,Democratic,3995,0,0,1017,2978
 55,Martin J. Moylan,Democratic,2299,0,0,356,1943
@@ -96,9 +96,9 @@ house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_k
 90,John M. Cabello,Republican,28724,10000,4000,4570,10154
 1,Aaron Ortiz,Democratic,4176,1000,0,769,2407
 41,Janet Yang Rohr,Democratic,3560,1000,0,647,1913
-77,Norma Hernandez,Democratic,7129,1900,0,974,4255
+77,Norma Hernandez,Democratic,7157,1900,0,974,4283
 84,Stephanie Kifowit,Democratic,4358,0,0,334,4024
-27,Justin Slaughter,Democratic,4434,0,0,420,4014
+27,Justin Slaughter,Democratic,5201,0,0,1187,4014
 15,Michael Kelly,Democratic,2646,0,0,33,2613
 40,Jaime Andrade,Democratic,921,0,0,335,586
 30,William Davis,Democratic,3081,0,0,234,2847

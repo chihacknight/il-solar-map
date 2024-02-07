@@ -4,22 +4,22 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 100,C.D. Davidsmeyer,Republican,2012,7102,524,4610,24,5750,3,6000,3,23462,554
 108,Wayne Arthur Rosenthal,Republican,"January 11, 2023",9517,768,2681,15,2000,1,2000,1,16198,785
 7,Emanuel Welch,Democratic,"January 9, 2013",2806,464,757,6,0,0,0,0,3563,470
-93,Travis Weaver,Republican,"January 11, 2023",9486,940,7792,62,4000,2,6000,3,27278,1007
+93,Travis Weaver,Republican,"January 11, 2023",9486,940,7892,63,4000,2,6000,3,27378,1008
 95,Mike Coffey,Republican,"January 10, 2023",4922,283,768,5,0,0,0,0,5690,288
-110,Blaine Wilhour,Republican,"January 11, 2023",5627,378,1479,16,7980,4,108800,6,123886,404
+110,Blaine Wilhour,Republican,"January 11, 2023",5627,378,1629,18,7980,4,108800,6,124036,406
 36,Kelly M. Burke,Democratic,2011,2458,379,479,3,0,0,0,0,2937,382
 99,Randy Frese,Republican,"January 11, 2023",6563,317,2862,13,4000,2,35500,4,48925,336
 58,Bob Morgan,Democratic,"January 9, 2019",1636,197,1149,6,0,0,0,0,2785,203
 107,Brad Halbrook,Republican,"January 11, 2023",4239,292,1567,9,0,0,1500,1,7306,302
 73,Ryan Spain,Republican,2017,9420,636,4121,34,13950,7,11200,6,38691,683
 96,Sue Scherer,Democratic,2013,995,104,649,6,0,0,0,0,1644,110
-114,Kevin Schmidt,Republican,"January 11, 2023",6995,396,5996,21,0,0,1800,1,14791,418
+114,Kevin Schmidt,Republican,"January 11, 2023",6995,396,7246,22,0,0,1800,1,16041,419
 112,Katie Stuart,Democratic,2017,3831,320,1221,9,2000,1,2000,1,9052,331
 63,Steven Reick,Republican,2017,8113,828,1385,9,3950,2,4000,3,17448,842
-113,Jay C. Hoffman,Democratic,2013,3623,287,1107,5,0,0,9900,1,14630,293
-83,Matt Hanson,Democratic,"January 11, 2023",6307,635,425,4,0,0,0,0,6732,639
+113,Jay C. Hoffman,Democratic,2013,3623,287,1150,6,0,0,9900,1,14673,294
+83,Matt Hanson,Democratic,"January 11, 2023",6317,636,425,4,0,0,0,0,6742,640
 88,Dan Caulkins,Republican,"January 11, 2023",4976,518,4039,17,2000,1,2000,1,13015,537
-111,Amy Elik,Republican,"January 13, 2021",2104,243,2655,13,0,0,0,0,4759,256
+111,Amy Elik,Republican,"January 13, 2021",2104,243,2893,16,0,0,0,0,4997,259
 115,David Friess,Republican,"January 11, 2023",4921,493,2947,14,0,0,99000,1,106868,508
 91,Sharon Chung,Democratic,"January 11, 2023",4758,537,1930,17,0,0,0,0,6688,554
 59,Daniel Didech,Democratic,"January 9, 2019",2248,330,792,4,0,0,0,0,3040,334
@@ -30,14 +30,14 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 104,Mike Marron,Republican,"September 7, 2018",13987,538,3469,10,2000,1,22000,7,41456,556
 82,John Egofske,Republican,"February 6, 2023",2643,355,2022,7,0,0,0,0,4665,362
 16,Kevin Olickal,Democratic,"January 11, 2023",1958,305,494,5,0,0,0,0,2452,310
-54,Mary Beth Canty,Democratic,"January 11, 2023",4542,298,666,3,0,0,1100,1,6308,302
+54,Mary Beth Canty,Democratic,"January 11, 2023",4552,299,666,3,0,0,1100,1,6318,303
 17,Jennifer Gong-Gershowitz,Democratic,"January 9, 2019",3113,453,205,2,0,0,0,0,3318,455
 97,Harry Benton,Democratic,"January 11, 2023",9123,1248,1072,4,0,0,0,0,10195,1252
-116,Dave Severin,Republican,"January 11, 2023",2222,204,1670,14,2000,1,151000,2,156892,221
+116,Dave Severin,Republican,"January 11, 2023",2222,204,1745,15,2000,1,151000,2,156967,222
 51,Nabeela Syed,Democratic,"January 11, 2023",7330,725,2579,6,0,0,0,0,9909,731
 78,Camille Y. Lilly,Democratic,"April 20, 2010",2793,483,317,3,0,0,0,0,3110,486
-28,Robert Rita,Democratic,2003,2390,384,479,3,0,0,9000,1,11869,388
-50,Barbara Hernandez,Democratic,"January 11, 2023",6403,733,1979,7,0,0,2000,1,10382,741
+28,Robert Rita,Democratic,2003,2390,384,706,4,0,0,9000,1,12096,389
+50,Barbara Hernandez,Democratic,"January 11, 2023",6409,734,2129,8,0,0,2000,1,10538,743
 52,Martin McLaughlin,Republican,"January 13, 2021",5669,782,628,5,0,0,0,0,6297,787
 4,Lilian Jiménez,Democratic,"January 11, 2023",759,119,85,1,0,0,0,0,844,120
 19,Lindsey LaPointe,Democratic,"July 24, 2019",1936,323,411,3,0,0,0,0,2347,326
@@ -52,18 +52,18 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 92,Jehan Gordon-Booth,Democratic,2009,1644,218,2023,12,0,0,0,0,3667,230
 105,Dennis Tipsword Jr.,Republican,"January 11, 2023",4513,468,1749,18,5972,3,4000,2,16234,491
 5,Kimberly du Buclet,Democratic,"May 15, 2023",313,47,0,0,0,0,0,0,313,47
-48,Jennifer Sanalitro,Republican,"January 11, 2023",3252,470,2169,9,0,0,0,0,5421,479
+48,Jennifer Sanalitro,Republican,"January 11, 2023",3257,471,2169,9,0,0,0,0,5426,480
 ,,,,513,78,225,1,0,0,0,0,738,79
 102,Adam Niemerg,Republican,"January 11, 2023",3115,307,2383,12,4000,2,369300,4,378798,325
 118,Paul Jacobs,Republican,"January 11, 2023",7771,437,4887,22,6650,4,7300,4,26608,467
 89,Tony McCombie,Republican,"January 11, 2023",18478,1864,4951,47,30922,16,127000,15,181351,1942
 60,Rita Mayfield,Democratic,"July 6, 2010",2384,401,1478,5,0,0,0,0,3862,406
 14,Kelly Cassidy,Democratic,"May 16, 2011",391,64,0,0,0,0,0,0,391,64
-66,Suzanne Ness,Democratic,"January 13, 2021",5271,784,1439,4,900,1,0,0,7610,789
+66,Suzanne Ness,Democratic,"January 13, 2021",5276,785,1439,4,900,1,0,0,7615,790
 46,Diane Blair-Sherlock,Democratic,"January 11, 2023",3093,483,4574,11,0,0,0,0,7667,494
 62,Laura Dias,Democratic,"January 11, 2023",3717,576,5295,14,0,0,0,0,9012,590
 87,Bill Hauter,Republican,"January 11, 2023",8098,654,4139,19,5800,4,72000,2,90037,679
-71,Daniel Swanson,Republican,"January 11, 2023",1824,206,5705,29,2000,1,2000,1,11529,237
+71,Daniel Swanson,Republican,"January 11, 2023",1824,206,6580,30,2000,1,2000,1,12404,238
 3,Eva Dina Delgado,Democratic,2019,1230,199,576,2,0,0,0,0,1806,201
 2,Elizabeth Hernandez,Democratic,"January 11, 2023",2517,440,1179,3,0,0,0,0,3696,443
 13,Hoan Huynh,Democratic,"January 11, 2023",661,96,43,1,0,0,0,0,704,97
@@ -74,8 +74,8 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 49,Maura Hirschauer,Democratic,"January 13, 2021",6173,790,1226,6,0,0,0,0,7399,796
 44,Fred Crespo,Democratic,2007,3798,638,310,2,0,0,0,0,4108,640
 103,Carol Ammons,Democratic,2015,2039,253,5676,13,0,0,3800,2,11515,268
-80,Anthony DeLuca,Democratic,2009,2396,354,842,2,0,0,0,0,3238,356
-67,Maurice West II,Democratic,"January 9, 2019",6196,638,4226,14,6860,4,12400,6,29682,662
+80,Anthony DeLuca,Democratic,2009,2396,354,1382,3,0,0,0,0,3778,357
+67,Maurice West II,Democratic,"January 9, 2019",6196,638,4278,15,6860,4,12400,6,29734,663
 74,Brad Fritts,Republican,"January 11, 2023",9914,659,7094,51,15950,8,15300,9,48258,727
 98,Natalie Manley,Democratic,2013,9404,1096,200,1,0,0,1900,1,11504,1098
 69,Joe Sosnowski,Republican,2011,11493,921,2833,14,9900,5,9900,5,34126,945
@@ -84,7 +84,7 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 34,Nicholas Smith,Democratic,"January 26, 2018",3019,457,129,2,8000,4,8000,4,19148,467
 85,Dagmara Avelar,Democratic,"January 13, 2021",7114,811,1517,4,0,0,0,0,8631,815
 75,Jed Davis,Republican,"January 11, 2023",9699,1034,1428,7,0,0,0,0,11127,1041
-39,Will Guzzardi,Democratic,2015,1162,181,0,0,0,0,0,0,1162,181
+39,Will Guzzardi,Democratic,2015,1172,182,0,0,0,0,0,0,1172,182
 33,Marcus Evans,Democratic,2012,3994,327,191,3,0,0,0,0,4185,330
 56,Michelle Mussman,Democratic,2011,2978,454,1017,6,0,0,0,0,3995,460
 55,Martin J. Moylan,Democratic,2013,1943,301,356,4,0,0,0,0,2299,305
@@ -96,9 +96,9 @@ house_district,legislator,party,date_assumed_office,dg_small_kw,dg_small_count,d
 90,John M. Cabello,Republican,"January 11, 2023",10154,1296,4570,19,4000,2,10000,5,28724,1322
 1,Aaron Ortiz,Democratic,"January 9, 2019",2407,232,769,3,0,0,1000,1,4176,236
 41,Janet Yang Rohr,Democratic,"January 13, 2021",1913,251,647,8,0,0,1000,1,3560,260
-77,Norma Hernandez,Democratic,"January 11, 2023",4255,391,974,6,0,0,1900,1,7129,398
+77,Norma Hernandez,Democratic,"January 11, 2023",4283,395,974,6,0,0,1900,1,7157,402
 84,Stephanie Kifowit,Democratic,"January 9, 2013",4024,614,334,2,0,0,0,0,4358,616
-27,Justin Slaughter,Democratic,2017,4014,477,420,1,0,0,0,0,4434,478
+27,Justin Slaughter,Democratic,2017,4014,477,1187,2,0,0,0,0,5201,479
 15,Michael Kelly,Democratic,"November 23, 2021",2613,433,33,1,0,0,0,0,2646,434
 40,Jaime Andrade,Democratic,2013,586,93,335,3,0,0,0,0,921,96
 30,William Davis,Democratic,2003,2847,444,234,3,0,0,0,0,3081,447
