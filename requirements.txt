@@ -1,3 +1,4 @@
-shapely
-requests-cache
-tqdm
+shapely==2.0.1
+requests-cache==1.1.0
+tqdm==4.65.0
+csvkit==1.4.0

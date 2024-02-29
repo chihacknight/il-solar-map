@@ -1,5 +1,14 @@
 # /bin/bash
 
+# convert data to csv
+in2csv ../raw/eia860.xlsx > ../raw/eia860_raw.csv
+sed 1,2d ../raw/eia860_raw.csv > ../raw/eia860.csv
+
+in2csv ../raw/ilabp.xlsx > ../raw/ilabp.csv
+
+in2csv ../raw/ilsfa.xlsx > ../raw/ilsfa_raw.csv
+sed 1,2d ../raw/ilsfa_raw.csv > ../raw/ilsfa.csv
+
 # combine 3 source files into one
 python combine_projects.py
 

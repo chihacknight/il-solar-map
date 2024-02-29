@@ -142,7 +142,7 @@ def generate_monthly_kw_time_series():
     df = pd.read_csv("../final/all-projects-w-districts.csv")
 
     # set energization_date column to datetime
-    df["energization_date"] = pd.to_datetime(df["energization_date"])
+    df["energization_date"] = pd.to_datetime(df["energization_date"], format='mixed')
 
     # convert energization_date to first of month
     df["energization_date"] = df["energization_date"].dt.to_period("M").dt.to_timestamp()

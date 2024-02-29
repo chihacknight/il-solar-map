@@ -1,9 +1,9 @@
 import csv
 import requests_cache
 
-IL_ABP_FILE = "Report-3-Formatted-24-January-2024-.csv"
-IL_SFA_FILE = "Report-3-Part-II-Approved-Projects-Applications-2023-2024.csv"
-EIA_FILE = "december_generator2023.csv"
+IL_ABP_FILE = "ilabp.csv"
+IL_SFA_FILE = "ilsfa.csv"
+EIA_FILE = "eia860.csv"
 
 session = requests_cache.CachedSession('geocoding_cache')
 
@@ -41,7 +41,7 @@ with open(f"../raw/{IL_ABP_FILE}") as report_3_file:
     datareader_report_3 = csv.DictReader(report_3_file)
 
     for row in datareader_report_3:
-        if row["Census Tract Code"] == "N/A":
+        if row["Census Tract Code"] == "N/A" or row["Project Size AC kW"] == "":
             continue
         
         cur_project = {}
