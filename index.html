@@ -8,7 +8,7 @@ layout: default
       <div class="card-body">
         <h2>Illinois Solar Map</h2>
 
-        <p class="fs-6">As of Jan 2024, over 2,170,000 kilowatts of operating solar capacity have been installed in the State of Illinois.</p> 
+        <p class="fs-6">As of {{ site.last_updated }}, over {{ site.total_kw }} kilowatts of operating solar capacity have been installed in the State of Illinois.</p> 
         
         <p class="fs-6">This map allows you to explore solar projects by Census Tract, Place, County, and State Congressional Districts, as well as by category of project. <a href='/about.html'>Read more ></a></p>
 
@@ -31,7 +31,7 @@ layout: default
           <button value="dg_small_kw" type="button" class="btn btn-light">Small DG</button>
         </div>
         <hr class="mt-4"/>
-        <p class="fst-italic fs-6"><a href='/#data-sources'>Data sources:</a> Illinois Power Agency (IPA) and US Energy Information Agency (EIA). Last updated Jan 2024. Although the information found in this map has been produced and processed from sources believed to be reliable, no warranty is made regarding accuracy, completeness, or usefulness of any information.</p>
+        <p class="fst-italic fs-6"><a href='/#data-sources'>Data sources:</a> Illinois Power Agency (IPA) and US Energy Information Agency (EIA). Last updated {{ site.last_updated }}. Although the information found in this map has been produced and processed from sources believed to be reliable, no warranty is made regarding accuracy, completeness, or usefulness of any information.</p>
 
         <p class="fs-6">By <a href='https://chihacknight.org'>Chi Hack Night</a> and the <a href='https://ilcleanjobs.org/'>Illinois Clean Jobs Coalition</a></p>
       </div>
