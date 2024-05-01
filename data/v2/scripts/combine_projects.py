@@ -17,6 +17,16 @@ def get_category(size_str):
         return "Small_DG"
     else:
         return "Large_DG"
+    
+
+def clean_number(num_str):
+    try:
+        num_str = num_str.replace(',', '')
+        num = float(num_str)
+    except ValueError:
+        num = 0
+
+    return num
 
 
 def get_census_tract(lat, long):
@@ -47,7 +57,7 @@ with open(f"../raw/{IL_ABP_FILE}") as report_3_file:
         cur_project = {}
 
         cur_project["source_file"] = IL_ABP_FILE
-        cur_project["kw"] = float(row["Project Size AC kW"].replace(',', ''))
+        cur_project["kw"] = clean_number(row["Project Size AC kW"])
         cur_project["census_tract"] = row["Census Tract Code"]
         cur_project["category"] = row["CEJA Category"]
         cur_project["energization_date"] = row["Part II Application Verification/ Energization Date"]
@@ -69,7 +79,7 @@ with open(f"../raw/{IL_SFA_FILE}") as ilsfa_file:
         cur_project = {}
 
         cur_project["source_file"] = IL_SFA_FILE
-        cur_project["kw"] = float(row["Project Size AC kW"])
+        cur_project["kw"] = clean_number(row["Project Size AC kW"])
         cur_project["census_tract"] = row["Census Tract"]
         cur_project["county"] = row["Census Tract"][2:5]
         cur_project["category"] = get_category(
@@ -89,7 +99,7 @@ with open(f"../raw/{EIA_FILE}") as eiafile:
             cur_project = {}
 
             cur_project["source_file"] = EIA_FILE
-            cur_project["kw"] = round(float(row["Nameplate Capacity (MW)"].replace(',', '')) * 1000) # Convert MW to kW
+            cur_project["kw"] = round(clean_number(row["Nameplate Capacity (MW)"]) * 1000) # Convert MW to kW
             # note that the EIA data has lat/long columns swapped
             cur_project["census_tract"] = get_census_tract(row['Longitude'], row['Latitude'])
             cur_project["county"] = cur_project["census_tract"][2:5]
