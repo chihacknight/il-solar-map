@@ -19,11 +19,11 @@ pip install -r requirements.txt
 To run everything:
 
 ```bash
-cd data/v2/scripts
+cd data/scripts
 bash run_all.sh
 ```
 
-You can also run each script individually from the `data/v2/scripts` folder:
+You can also run each script individually from the `data/scripts` folder:
 
 ```bash
 # combine 3 source files into one

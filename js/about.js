@@ -5,7 +5,7 @@ function format_number(val) {
 }
 
 CsvToHtmlTable.init({
-    csv_path: "/data/v2/final/all_projects_summary.csv",
+    csv_path: "/data/final/all_projects_summary.csv",
     element: "table-summary",
     allow_download: false,
     csv_options: {
@@ -26,7 +26,7 @@ Highcharts.setOptions({
   }
 });
 
-$.when($.get("/data/v2/final/all_projects_summary.csv")).then(
+$.when($.get("/data/final/all_projects_summary.csv")).then(
   function (data) {
     var csvData = $.csv.toArrays(data)
 
@@ -76,7 +76,7 @@ $.when($.get("/data/v2/final/all_projects_summary.csv")).then(
     });
   });
 
-  $.when($.get("/data/v2/final/monthly-aggregate.csv")).then(
+  $.when($.get("/data/final/monthly-aggregate.csv")).then(
   function (data) {
       var csvData = $.csv.toArrays(data)
       csvData.shift()

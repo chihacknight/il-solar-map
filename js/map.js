@@ -209,27 +209,27 @@ map.on('load', () => {
   // load our 4 main data sources
   map.addSource('tracts', {
       type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-tract.geojson'
+      data: '/data/final/solar-projects-by-tract.geojson'
   })
 
   map.addSource('places', {
     type: 'geojson',
-    data: '/data/v2/final/solar-projects-by-place.geojson'
+    data: '/data/final/solar-projects-by-place.geojson'
   })
 
   map.addSource('counties', {
       type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-county.geojson'
+      data: '/data/final/solar-projects-by-county.geojson'
   })
 
   map.addSource('il-house', {
       type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-il-house.geojson'
+      data: '/data/final/solar-projects-by-il-house.geojson'
   })
 
   map.addSource('il-senate', {
       type: 'geojson',
-      data: '/data/v2/final/solar-projects-by-il-senate.geojson'
+      data: '/data/final/solar-projects-by-il-senate.geojson'
   })
 
   addLayer(map, 'tracts', 'visible')
