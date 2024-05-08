@@ -1,6 +1,7 @@
 # /bin/bash
 
-# convert data to csv
+# convert energized project data to csv
+echo "extracting energized project data"
 in2csv ../raw/eia860.xlsx > ../raw/eia860_raw.csv
 sed 1,2d ../raw/eia860_raw.csv > ../raw/eia860.csv
 
@@ -8,6 +9,17 @@ in2csv ../raw/ilabp.xlsx > ../raw/ilabp.csv
 
 in2csv ../raw/ilsfa.xlsx > ../raw/ilsfa_raw.csv
 sed 1,2d ../raw/ilsfa_raw.csv > ../raw/ilsfa.csv
+
+# convert planned projects to csv
+echo "extracting planned project data"
+in2csv ../raw/eia860.xlsx --sheet "Planned" > ../raw/eia860_planned_raw.csv
+# chop the first 2 lines and last 8 lines (requires reversing chopping and un-reversing)
+sed 1,2d ../raw/eia860_planned_raw.csv | tail -r | sed 1,8d | tail -r > ../raw/eia860_planned.csv
+
+in2csv ../raw/ilabp_report_2.xlsx > ../raw/ilabp_planned.csv
+
+in2csv ../raw/ilsfa_report_2.xlsx > ../raw/ilsfa_planned_raw.csv
+sed 1,2d ../raw/ilsfa_planned_raw.csv > ../raw/ilsfa_planned.csv
 
 # combine 3 source files into one
 python combine_projects.py
@@ -26,3 +38,11 @@ csvcut ../final/solar-projects-by-place.csv -c "place,total_kw,utility_kw,cs_kw,
 csvcut ../final/solar-projects-by-il-house.csv -c "house_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_kw" > ../final/solar-projects-by-il-house-formatted.csv
 
 csvcut ../final/solar-projects-by-il-senate.csv -c "senate_district,legislator,party,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_kw" > ../final/solar-projects-by-il-senate-formatted.csv
+
+# cleanup
+echo "cleanup temp data"
+rm ../raw/eia860_raw.csv
+rm ../raw/eia860.csv
+rm ../raw/ilabp.csv
+rm ../raw/ilsfa_raw.csv
+rm ../raw/ilsfa.csv
