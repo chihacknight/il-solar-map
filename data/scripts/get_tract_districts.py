@@ -70,23 +70,30 @@ for centroid in centroids:
             centroid['place'] = place
             break
 
-output = []
-# write out to projects csv
-with open("../final/all-projects.csv", 'r') as csvfile:
-    projects = csv.DictReader(csvfile)
-    for row in projects:
-        tract_id = row["census_tract"]
-        for centroid in centroids:
-            if centroid['GEOID'] == tract_id:
-                o = dict(row)
-                o['house_district'] = centroid.get('house_district',None)
-                o['senate_district'] = centroid.get('senate_district',None)
-                o['place'] = centroid.get('place',None)
-                output.append(o)
-                break
+for project_type in ("energized", "planned"):
+    print("writing districts for", project_type, "projects")
 
-with open("../final/all-projects-w-districts.csv", "w") as outfile:    
-    writer = csv.writer(outfile)
-    writer.writerow(output[0].keys())
-    for r in output:
-        writer.writerow([r[field] for field in r.keys()])
+    file_suffix = ""
+    if project_type == "planned":
+        file_suffix = "_planned"
+
+    output = []
+    # write out to projects csv
+    with open(f"../final/all-projects{file_suffix}.csv", 'r') as csvfile:
+        projects = csv.DictReader(csvfile)
+        for row in projects:
+            tract_id = row["census_tract"]
+            for centroid in centroids:
+                if centroid['GEOID'] == tract_id:
+                    o = dict(row)
+                    o['house_district'] = centroid.get('house_district',None)
+                    o['senate_district'] = centroid.get('senate_district',None)
+                    o['place'] = centroid.get('place',None)
+                    output.append(o)
+                    break
+
+    with open(f"../final/all-projects{file_suffix}-w-districts.csv", "w") as outfile:    
+        writer = csv.writer(outfile)
+        writer.writerow(output[0].keys())
+        for r in output:
+            writer.writerow([r[field] for field in r.keys()])
