@@ -46,3 +46,8 @@ rm ../raw/eia860.csv
 rm ../raw/ilabp.csv
 rm ../raw/ilsfa_raw.csv
 rm ../raw/ilsfa.csv
+rm ../raw/eia860_planned_raw.csv
+rm ../raw/eia860_planned.csv
+rm ../raw/ilabp_planned.csv
+rm ../raw/ilsfa_planned_raw.csv
+rm ../raw/ilsfa_planned.csv
