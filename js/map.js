@@ -1,4 +1,5 @@
-const colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+const energized_colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+const planned_colors = ['#fcfcfc', '#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']
 
 const geography_buckets = {
   'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 2000],
@@ -74,8 +75,10 @@ function getTooltip(props){
       <thead>
         <tr>
           <th>Category</th>
-          <th><span class='float-end'>kW</span></th>
-          <th><span class='float-end'>Projects</span></th>
+          <th><span class='float-end'>Energized</span></th>
+          <th><span class='float-end'>#</span></th>
+          <th><span class='float-end'>Planned</span></th>
+          <th><span class='float-end'>#</span></th>
         </tr>
       </thead>
       <tbody>
@@ -83,26 +86,36 @@ function getTooltip(props){
           <td>Total</td>
           <td><span class='float-end'>${props.total_kw.toLocaleString()}kW</span></td>
           <td><span class='float-end'>${props.total_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_total_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_total_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Utility</td>
           <td><span class='float-end'>${props.utility_kw.toLocaleString()}kW</span></td>
           <td><span class='float-end'>${props.utility_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_utility_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_utility_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Community Solar</td>
           <td><span class='float-end'>${props.cs_kw.toLocaleString()}kW</span></td>
           <td><span class='float-end'>${props.cs_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_cs_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_cs_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Large DG</td>
           <td><span class='float-end'>${props.dg_large_kw.toLocaleString()}kW</span></td>
           <td><span class='float-end'>${props.dg_large_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_dg_large_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_large_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Small DG</td>
           <td><span class='float-end'>${props.dg_small_kw.toLocaleString()}kW</span></td>
           <td><span class='float-end'>${props.dg_small_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_dg_small_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_small_count.toLocaleString()}</span></td>
         </tr>
       </tbody>
     </table>
@@ -112,6 +125,11 @@ function getTooltip(props){
 function updateLegend(layerSource, category, status){
   let legendText = `<strong>${friendly_category_names[category]} kW of solar ${status}<br />by ${friendly_geography_names[layerSource]}</strong>`
   let buckets = geography_buckets[layerSource][category]
+
+  let colors = energized_colors
+  if (status == 'planned') {
+    colors = planned_colors
+  }
 
   for (var i = 0; i < buckets.length; i++) {
     if (i == buckets.length - 1) {
@@ -126,8 +144,10 @@ function updateLegend(layerSource, category, status){
 
 function getFillColor(layerSource, category, status){
   let var_prefix = ""
+  let colors = energized_colors
   if (status == 'planned') {
     var_prefix = "planned_"
+    colors = planned_colors
   }
 
   let buckets = geography_buckets[layerSource][category]
