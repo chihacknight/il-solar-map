@@ -65,8 +65,29 @@ with open("../raw/il_senate_2023_members.csv", "r") as senatefile:
                 senate_districts[s]["date_assumed_office"] = di['Date assumed office']
         senatefile.seek(0)
 
+common_field_names = [ "dg_small_kw",
+                       "dg_small_count", 
+                       "dg_large_kw", 
+                       "dg_large_count", 
+                       "cs_kw", 
+                       "cs_count", 
+                       "utility_kw", 
+                       "utility_count", 
+                       "total_kw", 
+                       "total_count",
+                       "planned_dg_small_kw",
+                       "planned_dg_small_count", 
+                       "planned_dg_large_kw", 
+                       "planned_dg_large_count", 
+                       "planned_cs_kw", 
+                       "planned_cs_count", 
+                       "planned_utility_kw", 
+                       "planned_utility_count", 
+                       "planned_total_kw", 
+                       "planned_total_count"]
+
 # save counties to csv
-fields = ["county_name", "county_fips", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["county_name", "county_fips"] + common_field_names
 write_csv(counties, fields, "../final/solar-projects-by-county.csv")
 print('saved counties to csv')
 
@@ -75,7 +96,7 @@ write_geojson("../raw/il_counties.geojson", "CO_FIPS", counties, "../final/solar
 print('saved counties to geojson')
 
 # save tracts to csv
-fields = ["census_tract", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["census_tract"] + common_field_names
 write_csv(tracts, fields, "../final/solar-projects-by-tract.csv")
 print('saved tracts to csv')
 
@@ -84,7 +105,7 @@ write_geojson("../raw/il_2020_census_tracts.geojson", "GEOID10", tracts, "../fin
 print('saved tracts to geojson')
 
 # save places to csv
-fields = ["place", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["place"] + common_field_names
 write_csv(places, fields, "../final/solar-projects-by-place.csv")
 print('saved places to csv')
 
@@ -93,7 +114,7 @@ write_geojson("../raw/il_places.geojson", "NAMELSAD20", places, "../final/solar-
 print('saved places to geojson')
 
 # save house to csv
-fields = ["house_district", "legislator", "party", "date_assumed_office", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["house_district", "legislator", "party", "date_assumed_office"] + common_field_names
 write_csv(house_districts, fields, "../final/solar-projects-by-il-house.csv")
 print('saved house districts to csv')
 
@@ -102,7 +123,7 @@ write_geojson("../raw/il_house_2023.geojson", "DISTRICT", house_districts, "../f
 print('saved house districts to geojson')
 
 # save senate to csv
-fields = ["senate_district", "legislator", "party", "date_assumed_office", "dg_small_kw", "dg_small_count", "dg_large_kw", "dg_large_count", "cs_kw", "cs_count", "utility_kw", "utility_count", "total_kw", "total_count"]
+fields = ["senate_district", "legislator", "party", "date_assumed_office"] + common_field_names
 write_csv(senate_districts, fields, "../final/solar-projects-by-il-senate.csv")
 print('saved senate districts to csv')
 

@@ -89,6 +89,7 @@ for project_type in ("energized", "planned"):
                     o['house_district'] = centroid.get('house_district',None)
                     o['senate_district'] = centroid.get('senate_district',None)
                     o['place'] = centroid.get('place',None)
+                    o["type"] = project_type
                     output.append(o)
                     break
 
