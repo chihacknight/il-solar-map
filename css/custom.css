@@ -44,6 +44,6 @@ body, p, table {
   color: #FEB52D;
 }
 
-#category-select button, #geography-select button {
+#category-select button, #geography-select button, #status-select button {
   font-size: 0.55em;
 }

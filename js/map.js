@@ -46,6 +46,7 @@ const friendly_category_names = {
 
 let selectedLayer = 'tracts'
 let selectedCategory = 'total_kw'
+let selectedStatus = 'energized'
 
 function getTooltip(props){
   let header = ''
@@ -108,8 +109,8 @@ function getTooltip(props){
   `
 }
 
-function updateLegend(layerSource, category){
-  let legendText = `<strong>${friendly_category_names[category]} kW of solar installed<br />by ${friendly_geography_names[layerSource]}</strong>`
+function updateLegend(layerSource, category, status){
+  let legendText = `<strong>${friendly_category_names[category]} kW of solar ${status}<br />by ${friendly_geography_names[layerSource]}</strong>`
   let buckets = geography_buckets[layerSource][category]
 
   for (var i = 0; i < buckets.length; i++) {
@@ -123,9 +124,14 @@ function updateLegend(layerSource, category){
   $('#solar-legend').html(legendText)
 }
 
-function getFillColor(layerSource, category){
+function getFillColor(layerSource, category, status){
+  let var_prefix = ""
+  if (status == 'planned') {
+    var_prefix = "planned_"
+  }
+
   let buckets = geography_buckets[layerSource][category]
-  let fillColor = ['interpolate', ['linear'], ['get', category]]
+  let fillColor = ['interpolate', ['linear'], ['get', var_prefix + category]]
   for (var i = 0; i < buckets.length; i++) {
     fillColor.push(buckets[i], colors[i])
   }
@@ -142,7 +148,7 @@ function addLayer(map, layerSource, visible = 'none'){
       'visibility': visible
       },
     'paint': {
-      'fill-color': getFillColor(layerSource, 'total_kw'),
+      'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
       'fill-opacity': 0.5,
       'fill-outline-color': [
         'case',
@@ -237,7 +243,7 @@ map.on('load', () => {
   addLayer(map, 'counties')
   addLayer(map, 'il-senate')
   addLayer(map, 'il-house')
-  updateLegend('tracts', 'total_kw')
+  updateLegend('tracts', 'total_kw', 'energized')
 
   $('#geography-select button').click(function(e){
     // reset layers
@@ -251,8 +257,8 @@ map.on('load', () => {
     selectedLayer = this.value
     this.classList.add('active')
     map.setLayoutProperty(selectedLayer + '-fills', 'visibility', 'visible')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-    updateLegend(selectedLayer, selectedCategory)
+    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
+    updateLegend(selectedLayer, selectedCategory, selectedStatus)
   })
 
   $('#category-select button').click(function(e){
@@ -260,7 +266,16 @@ map.on('load', () => {
     
     selectedCategory = this.value
     this.classList.add('active')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-    updateLegend(selectedLayer, selectedCategory)
+    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
+    updateLegend(selectedLayer, selectedCategory, selectedStatus)
+  })
+
+  $('#status-select button').click(function(e){
+    $('#status-select button').removeClass('active')
+    
+    selectedStatus = this.value
+    this.classList.add('active')
+    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
+    updateLegend(selectedLayer, selectedCategory, selectedStatus)
   })
 })
