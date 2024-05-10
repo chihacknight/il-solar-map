@@ -2,11 +2,11 @@ const energized_colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd',
 const planned_colors = ['#fcfcfc', '#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']
 
 const geography_buckets = {
-  'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 2000],
+  'tracts': { 'total_kw': [0, 100, 1000, 5000, 10000, 50000],
               'utility_kw': [0, 900, 2000, 9900, 70000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
               'dg_large_kw': [0, 100, 300, 750, 1400, 2300],
-              'dg_small_kw': [0, 50, 100, 200, 300, 500] },
+              'dg_small_kw': [0, 70, 200, 350, 600, 1500] },
   'places': { 'total_kw': [0, 300, 1200, 3000, 6000, 10000],
               'utility_kw': [0, 300, 1100, 1500, 35000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
