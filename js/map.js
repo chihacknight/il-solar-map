@@ -45,10 +45,6 @@ const friendly_category_names = {
   'dg_small_kw': 'Small DG'
 }
 
-let selectedLayer = 'tracts'
-let selectedCategory = 'total_kw'
-let selectedStatus = 'energized'
-
 function getTooltip(props){
   let header = ''
   if (props.census_tract !== undefined) {
@@ -214,6 +210,25 @@ function addLayer(map, layerSource, visible = 'none'){
   })
 }
 
+function showLayer(selectedGeography, selectedCategory, selectedStatus) {
+  map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
+  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
+  updateLegend(selectedGeography, selectedCategory, selectedStatus)
+}
+
+function loadParam(param_name, param_default){
+  let param = param_default
+  let load_val = $.address.parameter(param_name)
+  if (load_val != "") {
+    param = load_val
+  }
+  // set buttons
+  $('#' + param_name + '-select button').removeClass('active')
+  $(':button[value=' + param + ']')[0].classList.add('active')
+  
+  return param
+}
+
 $(window).resize(function () {
   var h = $(window).height(),
     offsetTop = 125; // Calculate the top offset
@@ -230,6 +245,10 @@ const map = new mapboxgl.Map({
 })
 
 let hoveredPolygonId = null
+
+let selectedGeography = loadParam('geography','tracts')
+let selectedCategory = loadParam('category','total_kw')
+let selectedStatus = loadParam('status','energized')
 
 map.on('load', () => {
   // load our 4 main data sources
@@ -258,12 +277,13 @@ map.on('load', () => {
       data: '/data/final/solar-projects-by-il-senate.geojson'
   })
 
-  addLayer(map, 'tracts', 'visible')
+  addLayer(map, 'tracts')
   addLayer(map, 'places')
   addLayer(map, 'counties')
   addLayer(map, 'il-senate')
   addLayer(map, 'il-house')
-  updateLegend('tracts', 'total_kw', 'energized')
+  showLayer(selectedGeography, selectedCategory, selectedStatus)
+  updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
   $('#geography-select button').click(function(e){
     // reset layers
@@ -274,28 +294,27 @@ map.on('load', () => {
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
     $('#geography-select button').removeClass('active')
     
-    selectedLayer = this.value
+    selectedGeography = this.value
+    $.address.parameter('geography', selectedGeography)
     this.classList.add('active')
-    map.setLayoutProperty(selectedLayer + '-fills', 'visibility', 'visible')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
-    updateLegend(selectedLayer, selectedCategory, selectedStatus)
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#category-select button').click(function(e){
     $('#category-select button').removeClass('active')
     
     selectedCategory = this.value
+    $.address.parameter('category', selectedCategory)
     this.classList.add('active')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
-    updateLegend(selectedLayer, selectedCategory, selectedStatus)
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#status-select button').click(function(e){
     $('#status-select button').removeClass('active')
     
     selectedStatus = this.value
+    $.address.parameter('status', selectedStatus)
     this.classList.add('active')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory, selectedStatus))
-    updateLegend(selectedLayer, selectedCategory, selectedStatus)
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 })
