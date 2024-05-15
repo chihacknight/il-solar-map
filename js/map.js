@@ -219,7 +219,7 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
 function loadParam(param_name, param_default){
   let param = param_default
   let load_val = $.address.parameter(param_name)
-  if (load_val != "") {
+  if (load_val != undefined) {
     param = load_val
   }
   // set buttons
