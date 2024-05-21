@@ -13,5 +13,6 @@ ilsfa_updated: "Apr 2024"
 eia860_updated: "Mar 2024"
 total_kw: "2,286,000"
 planned_kw: "5,625,083"
+total_count: "61,909"
 gems:
   - jekyll-redirect-from

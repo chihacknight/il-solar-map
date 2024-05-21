@@ -3,6 +3,7 @@ import json
 import pandas as pd
 
 def init_aggregate(row):
+    """initialize an aggregate row"""
     agg = {}
     agg["dg_small_kw"] = 0
     agg["dg_small_count"] = 0
@@ -49,7 +50,7 @@ def init_aggregate(row):
     return agg
 
 def increment_aggregate(agg, row):
-    
+    """increment values for an aggregate row"""
     prefix = ""
     if row["type"] == "planned":
         prefix = "planned_"
@@ -73,6 +74,7 @@ def increment_aggregate(agg, row):
     return agg
 
 def aggregate_projects(items, index, index_name):
+    """iterates through all projects and aggregates by a given geography"""
     projects = []
     planned_projects = []
     
@@ -103,6 +105,7 @@ def aggregate_projects(items, index, index_name):
             continue
 
 def write_csv(items, fields, filename):
+    """output aggregates as a csv file"""
     with open(filename, "w") as outfile:    
         writer = csv.writer(outfile)
         writer.writerow(fields)
@@ -110,6 +113,7 @@ def write_csv(items, fields, filename):
             writer.writerow([value[field] for field in fields])
 
 def write_geojson(geosource, key, items, geoout):
+    """output aggregates as a geojson file"""
     out_geojson = { 
         "type": "FeatureCollection",
         "features": [] }
@@ -144,6 +148,7 @@ def write_geojson(geosource, key, items, geoout):
         json.dump(out_geojson, outfile)
 
 def aggregate_all_projects():
+    """calculate totals across the entire state for about page"""
     all_projects = {}
     with open("../final/all-projects-w-districts.csv", 'r') as csvfile:
         projects = csv.DictReader(csvfile)
@@ -169,6 +174,7 @@ def aggregate_all_projects():
         writer.writerow(["Total", f'{all_projects["total_kw"]:,d} kW', '100%', f'{all_projects["total_count"]:,d}'])
         
 def generate_monthly_kw_time_series():
+    """calculate aggregated solar by category over time"""
     print("Generating monthly time series...")
     # load csv into pandas dataframe
     df = pd.read_csv("../final/all-projects-w-districts.csv")

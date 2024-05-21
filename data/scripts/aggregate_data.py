@@ -21,14 +21,17 @@ with open("../raw/il_counties.geojson", "r") as geojsonfile:
 for c in counties:
     counties[c]["county_name"] = county_fips[c]
 
+# aggregate by US Census Tract
 tracts = {}
 aggregate_projects(tracts, "census_tract", "census_tract")
 print("aggregated", len(tracts), "tracts")
 
+# aggregate by US Census Place
 places = {}
 aggregate_projects(places, "place", "place")
 print("aggregated", len(tracts), "places")
 
+# aggregate by IL House
 house_districts = {}
 aggregate_projects(house_districts, "house_district", "house_district")
 print("aggregated", len(house_districts), "house districts")
@@ -47,6 +50,7 @@ with open("../raw/il_house_2023_members.csv", "r") as housefile:
                 house_districts[h]["date_assumed_office"] = di['Date assumed office']
         housefile.seek(0)
 
+# aggregate by IL Senate
 senate_districts = {}
 aggregate_projects(senate_districts, "senate_district", "senate_district")
 print("aggregated", len(senate_districts), "senate districts")
@@ -65,6 +69,10 @@ with open("../raw/il_senate_2023_members.csv", "r") as senatefile:
                 senate_districts[s]["date_assumed_office"] = di['Date assumed office']
         senatefile.seek(0)
 
+# each aggregate shares a common set of fields including:
+# energized vs planned
+# categories (dg_small, dg_large, cs, utility, total)
+# kw totals and project counts
 common_field_names = [ "dg_small_kw",
                        "dg_small_count", 
                        "dg_large_kw", 

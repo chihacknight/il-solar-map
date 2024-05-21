@@ -80,9 +80,9 @@ function getTooltip(props){
       <tbody>
         <tr>
           <td>Total</td>
-          <td><span class='float-end'>${props.total_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.total_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.total_count.toLocaleString()}</span></td>
-          <td><span class='float-end'>${props.planned_total_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_total_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.planned_total_count.toLocaleString()}</span></td>
         </tr>
         <tr>

@@ -8,6 +8,9 @@ EIA_FILE = "eia860"
 session = requests_cache.CachedSession('geocoding_cache')
 
 def get_category(size_str):
+    """The source data categories are unreliable, so we assign a category 
+    based on the kW size of the project. 25 kW and smaller is Small 
+    Distributed Distribution."""
     try:
         size = float(size_str)
     except ValueError:
@@ -20,6 +23,7 @@ def get_category(size_str):
     
 
 def clean_number(num_str):
+    """remove number formatting and convert nulls to 0"""
     try:
         num_str = num_str.replace(',', '')
         num = float(num_str)
@@ -30,6 +34,7 @@ def clean_number(num_str):
 
 
 def get_census_tract(lat, long):
+    """use the census geocoder to find a tract based on lat/long"""
     try:
         r = session.get(
             f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")

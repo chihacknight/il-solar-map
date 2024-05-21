@@ -9,6 +9,7 @@ session = requests_cache.CachedSession('geocoding_cache')
 
 centroids = []
 
+# get gemoetries for each US Census Tract in Illinois
 with open("../raw/unique-tracts.csv", 'r') as csvfile:
     tracts = csv.DictReader(csvfile)
     for tract in tqdm.tqdm(tracts):
@@ -31,6 +32,7 @@ with open("../raw/unique-tracts.csv", 'r') as csvfile:
 
 print(len(centroids),"centroids found")
 
+# assign each tract to a house district based on centroid
 house_districts = {}
 with open("../raw/il_house_2023.geojson", "r") as geojsonfile: 
     house_geojson_src = json.load(geojsonfile)["features"]
@@ -39,6 +41,7 @@ with open("../raw/il_house_2023.geojson", "r") as geojsonfile:
 
 print(len(house_districts), "house districts found")
 
+# assign each tract to a senate district based on centroid
 senate_districts = {}
 with open("../raw/il_senate_2023.geojson", "r") as geojsonfile: 
     senate_geojson_src = json.load(geojsonfile)["features"]
@@ -47,6 +50,8 @@ with open("../raw/il_senate_2023.geojson", "r") as geojsonfile:
 
 print(len(senate_districts), "senate districts found")
 
+# assign each tract to a US Census place based on centroid
+# this is likely pretty inaccurate outside of large metro areas like Chicago
 census_places = {}
 with open("../raw/il_places.geojson", "r") as geojsonfile: 
     places_geojson_src = json.load(geojsonfile)["features"]
@@ -55,6 +60,7 @@ with open("../raw/il_places.geojson", "r") as geojsonfile:
 
 print(len(census_places), "census places found")
 
+# set geography values for each tract centroid
 for centroid in centroids:
     point = (centroid['CENTLON'], centroid['CENTLAT'])
     for district in house_districts:
@@ -70,6 +76,7 @@ for centroid in centroids:
             centroid['place'] = place
             break
 
+# for both energized and planned projects, output data appended with geographies
 for project_type in ("energized", "planned"):
     print("writing districts for", project_type, "projects")
 
