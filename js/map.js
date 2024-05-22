@@ -87,30 +87,30 @@ function getTooltip(props){
         </tr>
         <tr>
           <td>Utility</td>
-          <td><span class='float-end'>${props.utility_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.utility_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.utility_count.toLocaleString()}</span></td>
-          <td><span class='float-end'>${props.planned_utility_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_utility_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.planned_utility_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Community Solar</td>
-          <td><span class='float-end'>${props.cs_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.cs_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.cs_count.toLocaleString()}</span></td>
-          <td><span class='float-end'>${props.planned_cs_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_cs_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.planned_cs_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Large DG</td>
-          <td><span class='float-end'>${props.dg_large_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.dg_large_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.dg_large_count.toLocaleString()}</span></td>
-          <td><span class='float-end'>${props.planned_dg_large_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_large_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.planned_dg_large_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Small DG</td>
-          <td><span class='float-end'>${props.dg_small_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.dg_small_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.dg_small_count.toLocaleString()}</span></td>
-          <td><span class='float-end'>${props.planned_dg_small_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_small_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.planned_dg_small_count.toLocaleString()}</span></td>
         </tr>
       </tbody>

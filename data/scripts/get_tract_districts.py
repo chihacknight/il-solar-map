@@ -9,7 +9,7 @@ session = requests_cache.CachedSession('geocoding_cache')
 
 centroids = []
 
-# get gemoetries for each US Census Tract in Illinois
+# get geometries for each US Census Tract in Illinois
 with open("../raw/unique-tracts.csv", 'r') as csvfile:
     tracts = csv.DictReader(csvfile)
     for tract in tqdm.tqdm(tracts):
