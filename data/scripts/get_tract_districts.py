@@ -9,6 +9,7 @@ session = requests_cache.CachedSession('geocoding_cache')
 
 centroids = []
 
+# get geometries for each US Census Tract in Illinois
 with open("../raw/unique-tracts.csv", 'r') as csvfile:
     tracts = csv.DictReader(csvfile)
     for tract in tqdm.tqdm(tracts):
@@ -31,6 +32,7 @@ with open("../raw/unique-tracts.csv", 'r') as csvfile:
 
 print(len(centroids),"centroids found")
 
+# assign each tract to a house district based on centroid
 house_districts = {}
 with open("../raw/il_house_2023.geojson", "r") as geojsonfile: 
     house_geojson_src = json.load(geojsonfile)["features"]
@@ -39,6 +41,7 @@ with open("../raw/il_house_2023.geojson", "r") as geojsonfile:
 
 print(len(house_districts), "house districts found")
 
+# assign each tract to a senate district based on centroid
 senate_districts = {}
 with open("../raw/il_senate_2023.geojson", "r") as geojsonfile: 
     senate_geojson_src = json.load(geojsonfile)["features"]
@@ -47,6 +50,8 @@ with open("../raw/il_senate_2023.geojson", "r") as geojsonfile:
 
 print(len(senate_districts), "senate districts found")
 
+# assign each tract to a US Census place based on centroid
+# this is likely pretty inaccurate outside of large metro areas like Chicago
 census_places = {}
 with open("../raw/il_places.geojson", "r") as geojsonfile: 
     places_geojson_src = json.load(geojsonfile)["features"]
@@ -55,6 +60,7 @@ with open("../raw/il_places.geojson", "r") as geojsonfile:
 
 print(len(census_places), "census places found")
 
+# set geography values for each tract centroid
 for centroid in centroids:
     point = (centroid['CENTLON'], centroid['CENTLAT'])
     for district in house_districts:
@@ -70,23 +76,32 @@ for centroid in centroids:
             centroid['place'] = place
             break
 
-output = []
-# write out to projects csv
-with open("../final/all-projects.csv", 'r') as csvfile:
-    projects = csv.DictReader(csvfile)
-    for row in projects:
-        tract_id = row["census_tract"]
-        for centroid in centroids:
-            if centroid['GEOID'] == tract_id:
-                o = dict(row)
-                o['house_district'] = centroid.get('house_district',None)
-                o['senate_district'] = centroid.get('senate_district',None)
-                o['place'] = centroid.get('place',None)
-                output.append(o)
-                break
+# for both energized and planned projects, output data appended with geographies
+for project_type in ("energized", "planned"):
+    print("writing districts for", project_type, "projects")
 
-with open("../final/all-projects-w-districts.csv", "w") as outfile:    
-    writer = csv.writer(outfile)
-    writer.writerow(output[0].keys())
-    for r in output:
-        writer.writerow([r[field] for field in r.keys()])
+    file_suffix = ""
+    if project_type == "planned":
+        file_suffix = "_planned"
+
+    output = []
+    # write out to projects csv
+    with open(f"../final/all-projects{file_suffix}.csv", 'r') as csvfile:
+        projects = csv.DictReader(csvfile)
+        for row in projects:
+            tract_id = row["census_tract"]
+            for centroid in centroids:
+                if centroid['GEOID'] == tract_id:
+                    o = dict(row)
+                    o['house_district'] = centroid.get('house_district',None)
+                    o['senate_district'] = centroid.get('senate_district',None)
+                    o['place'] = centroid.get('place',None)
+                    o["type"] = project_type
+                    output.append(o)
+                    break
+
+    with open(f"../final/all-projects{file_suffix}-w-districts.csv", "w") as outfile:    
+        writer = csv.writer(outfile)
+        writer.writerow(output[0].keys())
+        for r in output:
+            writer.writerow([r[field] for field in r.keys()])

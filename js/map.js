@@ -1,11 +1,12 @@
-const colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+const energized_colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
+const planned_colors = ['#fcfcfc', '#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']
 
 const geography_buckets = {
-  'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 2000],
+  'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 5000],
               'utility_kw': [0, 900, 2000, 9900, 70000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
               'dg_large_kw': [0, 100, 300, 750, 1400, 2300],
-              'dg_small_kw': [0, 50, 100, 200, 300, 500] },
+              'dg_small_kw': [0, 70, 200, 350, 600, 1500] },
   'places': { 'total_kw': [0, 300, 1200, 3000, 6000, 10000],
               'utility_kw': [0, 300, 1100, 1500, 35000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
@@ -44,9 +45,6 @@ const friendly_category_names = {
   'dg_small_kw': 'Small DG'
 }
 
-let selectedLayer = 'tracts'
-let selectedCategory = 'total_kw'
-
 function getTooltip(props){
   let header = ''
   if (props.census_tract !== undefined) {
@@ -73,44 +71,61 @@ function getTooltip(props){
       <thead>
         <tr>
           <th>Category</th>
-          <th><span class='float-end'>kW</span></th>
-          <th><span class='float-end'>Projects</span></th>
+          <th><span class='float-end'>Energized</span></th>
+          <th><span class='float-end'>#</span></th>
+          <th><span class='float-end'>Planned</span></th>
+          <th><span class='float-end'>#</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Total</td>
-          <td><span class='float-end'>${props.total_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.total_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.total_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_total_kw.toLocaleString()} kW</span></td>
+          <td><span class='float-end'>${props.planned_total_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Utility</td>
-          <td><span class='float-end'>${props.utility_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.utility_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.utility_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_utility_kw.toLocaleString()} kW</span></td>
+          <td><span class='float-end'>${props.planned_utility_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Community Solar</td>
-          <td><span class='float-end'>${props.cs_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.cs_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.cs_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_cs_kw.toLocaleString()} kW</span></td>
+          <td><span class='float-end'>${props.planned_cs_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Large DG</td>
-          <td><span class='float-end'>${props.dg_large_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.dg_large_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.dg_large_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_dg_large_kw.toLocaleString()} kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_large_count.toLocaleString()}</span></td>
         </tr>
         <tr>
           <td>Small DG</td>
-          <td><span class='float-end'>${props.dg_small_kw.toLocaleString()}kW</span></td>
+          <td><span class='float-end'>${props.dg_small_kw.toLocaleString()} kW</span></td>
           <td><span class='float-end'>${props.dg_small_count.toLocaleString()}</span></td>
+          <td><span class='float-end'>${props.planned_dg_small_kw.toLocaleString()} kW</span></td>
+          <td><span class='float-end'>${props.planned_dg_small_count.toLocaleString()}</span></td>
         </tr>
       </tbody>
     </table>
   `
 }
 
-function updateLegend(layerSource, category){
-  let legendText = `<strong>${friendly_category_names[category]} kW of solar installed<br />by ${friendly_geography_names[layerSource]}</strong>`
+function updateLegend(layerSource, category, status){
+  let legendText = `<strong>${friendly_category_names[category]} kW of solar ${status}<br />by ${friendly_geography_names[layerSource]}</strong>`
   let buckets = geography_buckets[layerSource][category]
+
+  let colors = energized_colors
+  if (status == 'planned') {
+    colors = planned_colors
+  }
 
   for (var i = 0; i < buckets.length; i++) {
     if (i == buckets.length - 1) {
@@ -123,9 +138,16 @@ function updateLegend(layerSource, category){
   $('#solar-legend').html(legendText)
 }
 
-function getFillColor(layerSource, category){
+function getFillColor(layerSource, category, status){
+  let var_prefix = ""
+  let colors = energized_colors
+  if (status == 'planned') {
+    var_prefix = "planned_"
+    colors = planned_colors
+  }
+
   let buckets = geography_buckets[layerSource][category]
-  let fillColor = ['interpolate', ['linear'], ['get', category]]
+  let fillColor = ['interpolate', ['linear'], ['get', var_prefix + category]]
   for (var i = 0; i < buckets.length; i++) {
     fillColor.push(buckets[i], colors[i])
   }
@@ -142,7 +164,7 @@ function addLayer(map, layerSource, visible = 'none'){
       'visibility': visible
       },
     'paint': {
-      'fill-color': getFillColor(layerSource, 'total_kw'),
+      'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
       'fill-opacity': 0.5,
       'fill-outline-color': [
         'case',
@@ -188,6 +210,25 @@ function addLayer(map, layerSource, visible = 'none'){
   })
 }
 
+function showLayer(selectedGeography, selectedCategory, selectedStatus) {
+  map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
+  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
+  updateLegend(selectedGeography, selectedCategory, selectedStatus)
+}
+
+function loadParam(param_name, param_default){
+  let param = param_default
+  let load_val = $.address.parameter(param_name)
+  if (load_val != undefined) {
+    param = load_val
+  }
+  // set buttons
+  $('#' + param_name + '-select button').removeClass('active')
+  $(':button[value=' + param + ']')[0].classList.add('active')
+  
+  return param
+}
+
 $(window).resize(function () {
   var h = $(window).height(),
     offsetTop = 125; // Calculate the top offset
@@ -204,6 +245,10 @@ const map = new mapboxgl.Map({
 })
 
 let hoveredPolygonId = null
+
+let selectedGeography = loadParam('geography','tracts')
+let selectedCategory = loadParam('category','total_kw')
+let selectedStatus = loadParam('status','energized')
 
 map.on('load', () => {
   // load our 4 main data sources
@@ -232,12 +277,13 @@ map.on('load', () => {
       data: '/data/final/solar-projects-by-il-senate.geojson'
   })
 
-  addLayer(map, 'tracts', 'visible')
+  addLayer(map, 'tracts')
   addLayer(map, 'places')
   addLayer(map, 'counties')
   addLayer(map, 'il-senate')
   addLayer(map, 'il-house')
-  updateLegend('tracts', 'total_kw')
+  showLayer(selectedGeography, selectedCategory, selectedStatus)
+  updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
   $('#geography-select button').click(function(e){
     // reset layers
@@ -248,19 +294,27 @@ map.on('load', () => {
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
     $('#geography-select button').removeClass('active')
     
-    selectedLayer = this.value
+    selectedGeography = this.value
+    $.address.parameter('geography', selectedGeography)
     this.classList.add('active')
-    map.setLayoutProperty(selectedLayer + '-fills', 'visibility', 'visible')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-    updateLegend(selectedLayer, selectedCategory)
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#category-select button').click(function(e){
     $('#category-select button').removeClass('active')
     
     selectedCategory = this.value
+    $.address.parameter('category', selectedCategory)
     this.classList.add('active')
-    map.setPaintProperty(selectedLayer + '-fills', 'fill-color', getFillColor(selectedLayer, selectedCategory))
-    updateLegend(selectedLayer, selectedCategory)
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
+  })
+
+  $('#status-select button').click(function(e){
+    $('#status-select button').removeClass('active')
+    
+    selectedStatus = this.value
+    $.address.parameter('status', selectedStatus)
+    this.classList.add('active')
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 })

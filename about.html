@@ -9,10 +9,10 @@ title: About
   With the passage of the <a href="https://www.nrdc.org/bio/jc-kibbey/illinois-passes-nation-leading-equitable-climate-bill">Climate and Equitable Jobs Act</a> (CEJA) in 2021, Illinois is on a path to 100% carbon-free energy by 2050 and has enabled the rapid expansion of clean energy installations. This map is a first pass at creating a statewide aggregate tracking the status of the <strong>state’s rapid expansion of solar projects</strong>. 
 </p>
 <p>
-  As of {{ site.last_updated }}, over <strong>{{ site.total_kw }} kilowatts</strong> of operating solar capacity have been installed in the State of Illinois. For comparison, <a href="https://prairiestateenergycampus.com/">Prairie State</a>, the State’s largest coal power plant, is 1,630,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
+  As of {{ site.last_updated }}, over <strong>{{ site.total_kw }} kilowatts</strong> of operating solar capacity have been installed in the State of Illinois, with <strong>{{site.planned_kw}} kilowatts planned</strong> or under construction. For comparison, <a href="https://prairiestateenergycampus.com/">Prairie State</a>, the State’s largest coal power plant, is 1,630,000 kilowatts, illustrating just how far we've come in a few years, but still how far we have to go to reach 100% renewable energy in Illinois.
 </p>
 
-<p>There are nearly 54,000 solar projects throughout the state, ranging in size from a single 0.6 kW solar panel to the 200,000 kW (200 megawatts) <a href='https://pv-magazine-usa.com/2021/12/17/prairie-wolf-solar-project-begins-operation-in-illinois/'>Prairie Wolf Solar project</a> in Coles County.</p>
+<p>There are {{site.total_count}} solar projects throughout the state, ranging in size from a single 0.6 kW solar panel to the 200,000 kW (200 megawatts) <a href='https://pv-magazine-usa.com/2021/12/17/prairie-wolf-solar-project-begins-operation-in-illinois/'>Prairie Wolf Solar project</a> in Coles County.</p>
 
 <p class="text-center">
   <img src="/images/prarie-wolf-solar.jpg" class="img-fluid img-thumbnail" alt="The Prarie Wolf Solar Project in Coles County">
@@ -28,7 +28,7 @@ title: About
   <li><a href="#categories-of-solar-projects">Categories of solar projects</a></li>
   <li><a href="#top-level-solar-project-numbers">Top level solar project numbers</a></li>
   <li><a href="#solar-installations-over-time">Solar installations over time</a></li>
-  <li><a href="#map-explorer">Advanced map explorer</a></li>
+  <li><a href="#energized-vs-planned">Energized vs planned projects</a></li>
   <li><a href="#data-sources">Data sources</a></li>
   <li><a href="#missing-data">Missing data</a></li>
   <li><a href="#team-and-collaborators">Team and collaborators</a></li>
@@ -45,8 +45,8 @@ Solar installations are divided up into 4 categories:
 <ul>
   <li><strong>Utility</strong>: Utility Scale Solar projects built by energy utilities</li>
   <li><strong>Community Solar (CS)</strong>: Community Solar projects whose electricity is shared by more than a single property</li>
-  <li><strong>Large Distributed Generation (Large_DG)</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size</li>
-  <li><strong>Small Distributed Generation (Small_DG)</strong>: Small Distributed Generation (DG) for systems 25 kW and below</li>
+  <li><strong>Large Distributed Generation (Large DG)</strong>: Large Distributed Generation (DG) systems above 25 kW up to 2,000 kW in size</li>
+  <li><strong>Small Distributed Generation (Small DG)</strong>: Small Distributed Generation (DG) for systems 25 kW and below</li>
 </ul>
 
 <h2 id="top-level-solar-project-numbers" class="mt-4">Top level solar project numbers</h2>
@@ -72,28 +72,17 @@ Solar installations are divided up into 4 categories:
 
 </figure>
 
-<h2 id="map-explorer" class="mt-4">Advanced map explorer</h2>
+<h2 id="energized-vs-planned" class="mt-4">Energized vs planned projects</h2>
 
-<p>
-Looking to dive further into the data? In addition to the main map, you can browse all solar projects in Illinois by geography and category on our <a href="/map.html">advanced map page</a>:
-</p>
-
-<ul>
-  <li><span style="text-decoration:underline;">Geographies</span>: US Census Tracts, Counties, State Senate Districts and State House Districts
-  <li><span style="text-decoration:underline;">Categories</span>: Utility, Community Solar, Large Distributed Generation, Small Distributed Generation
-  <li><span style="text-decoration:underline;">Units</span>: Kilowatts or number of projects</li>
-</ul>
-
-<p>
-The advanced map is powered by <a href='https://kepler.gl/'>kepler.gl</a>, an open source geospatial analysis tool. This tool has a lot of features, including layer toggling, custom map shading, 3D mode and address search. Read the tutorial on using it here: <a href="https://docs.kepler.gl/docs/user-guides">https://docs.kepler.gl/docs/user-guides</a> 
+<p>An additional <strong>{{site.planned_kw}} kilowatts</strong> of solar is planned or under construction in Illinois, over double what is currently energized. You can view where and what kind of projects are planned by clicking the 'Planned' selector on the map:
 </p>
 <p>
-  <a href="/map.html">
-    <img src="/images/il-solar-map-kepler.jpg" class="img-fluid img-thumbnail" alt="IL Solar Map" title="IL Solar Map">
+  <a href="/index.html#/?status=planned&geography=counties">
+    <img src="/images/energized-vs-planned.jpg" class="img-fluid img-thumbnail" alt="Energized vs planned solar projects by County" title="Energized vs planned solar projects by County">
   </a>
 </p>
 <p class="text-center my-4">
-  <a href="/map.html" class="btn btn-primary btn-lg px-4">Open advanced map</a>
+  <a href="/index.html#/?status=planned&geography=counties" class="btn btn-primary btn-lg px-4">View planned projects</a>
 </p>
 
 <h2 id="data-sources" class="mt-4">Data sources</h2>

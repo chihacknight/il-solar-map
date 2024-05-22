@@ -1,4 +1,4 @@
-body, p, table {
+body, p {
   font-size: 1.25rem !important;
 }
 
@@ -7,7 +7,7 @@ body, p, table {
 }
 
 .mapboxgl-popup-content {
-  width: 300px !important;
+  width: 400px !important;
 }
 
 .legend {
@@ -44,6 +44,6 @@ body, p, table {
   color: #FEB52D;
 }
 
-#category-select button, #geography-select button {
+#category-select button, #geography-select button, #status-select button {
   font-size: 0.55em;
 }
