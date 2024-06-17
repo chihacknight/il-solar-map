@@ -145,16 +145,20 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
         series: [
           {
             name: "Community Solar",  
-            data: csSeries
+            data: csSeries,
+            color: "#FF6039"
           }, {
             name: "Large DG",  
-            data: lgSeries
+            data: lgSeries,
+            color: "#00DF6D"
           }, {
             name: "Small DG",  
-            data: smSeries
+            data: smSeries,
+            color: "#4D41B9"
           }, {
             name: "Utility",  
-            data: utilitySeries
+            data: utilitySeries,
+            color: "#13A3F9"
           }
       ]
     });
