@@ -35,7 +35,7 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
         type: 'pie'
       },
       title: {
-        text: 'kW installed by category'
+        text: 'Percent installed by category'
       },
       credits: {
         enabled: false
@@ -51,7 +51,7 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
       },
       series: [
         {
-          name: 'kW installed',
+          name: 'MW installed',
           colorByPoint: true,
           data: [
             {
@@ -109,7 +109,7 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
           enabled: false
         },
         title: {
-            text: 'Cumulative kW of solar installed over time'
+            text: 'Cumulative MW of solar installed over time'
         },
         xAxis: {
             type: 'datetime',
@@ -120,12 +120,12 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
         },
         yAxis: {
             title: {
-                text: 'kilowatts'
+                text: 'megawatts'
             }
         },
         tooltip: {
             shared: true,
-            valueSuffix: ' kW',
+            valueSuffix: ' MW',
         },
         plotOptions: {
             area: {
@@ -142,18 +142,24 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
                 }
             }
         },
-        series: [{
-          name: "Utility",  
-          data: utilitySeries
-        }, {
-          name: "Small DG",  
-          data: smSeries
-        }, {
-          name: "Large DG",  
-          data: lgSeries
-        }, {
-          name: "Community Solar",  
-          data: csSeries
-        }]
+        series: [
+          {
+            name: "Community Solar",  
+            data: csSeries,
+            color: "#FF6039"
+          }, {
+            name: "Large DG",  
+            data: lgSeries,
+            color: "#00DF6D"
+          }, {
+            name: "Small DG",  
+            data: smSeries,
+            color: "#4D41B9"
+          }, {
+            name: "Utility",  
+            data: utilitySeries,
+            color: "#13A3F9"
+          }
+      ]
     });
   });
