@@ -69,7 +69,6 @@ for project_type in ("energized", "planned"):
             # energized projects are not removed from the planned report, so skip them here
             if project_type == "planned":
                 if row["Application ID"] in energized_project_ids:
-                    print(f"skipping { row['Application ID'] }")
                     continue
             else:
                 energized_project_ids.add(row["Application ID"])
