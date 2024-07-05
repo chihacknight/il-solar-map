@@ -3,7 +3,8 @@ import json
 from aggregate_utils import *
 
 # aggregate all projects in the state
-aggregate_all_projects()
+aggregate_all_projects("energized")
+aggregate_all_projects("planned")
 generate_monthly_kw_time_series()
 
 # aggregate projects by each geography
