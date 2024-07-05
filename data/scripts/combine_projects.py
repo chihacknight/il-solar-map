@@ -103,6 +103,14 @@ for project_type in ("energized", "planned"):
         datareader_ilsfa = csv.DictReader(ilsfa_file)
 
         for row in datareader_ilsfa:
+            
+            # energized projects are not removed from the planned report, so skip them here
+            if project_type == "planned":
+                if row["Project ID"] in energized_project_ids:
+                    continue
+            else:
+                energized_project_ids.add(row["Project ID"])
+
             cur_project = {}
 
             cur_project["source_file"] = IL_SFA_FILE
