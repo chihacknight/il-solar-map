@@ -9,10 +9,10 @@ description: "See how and where solar projects have been installed by Census Tra
 permalink: none
 last_updated: "Jun 2024"
 ilabp_updated: "Jun 2024"
-ilsfa_updated: "Jun 2024"
-eia860_updated: "Apr 2024"
-total_mw: "2,304"
-planned_mw: "5,666"
-total_count: "63,473"
+ilsfa_updated: "Apr 2024"
+eia860_updated: "May 2024"
+total_mw: "2,337"
+planned_mw: "4,747"
+total_count: "64,538"
 gems:
   - jekyll-redirect-from
