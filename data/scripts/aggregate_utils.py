@@ -196,7 +196,8 @@ def generate_monthly_kw_time_series():
     """calculate aggregated solar by category over time"""
     print("Generating monthly time series...")
     # load csv into pandas dataframe
-    df = pd.read_csv("../final/all-projects-w-districts.csv")
+    all_files = ["../final/all-projects-w-districts.csv", "../final/all-projects_planned-w-districts.csv"]
+    df = pd.concat((pd.read_csv(f) for f in all_files), ignore_index=True)
 
     # set energization_date column to datetime
     df["energization_date"] = pd.to_datetime(df["energization_date"], format='mixed')
