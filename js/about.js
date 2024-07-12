@@ -175,14 +175,24 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
           enabled: false
         },
         title: {
-            text: 'Cumulative MW of solar installed over time'
+            text: 'Cumulative MW of solar energized and planned over time'
         },
         xAxis: {
             type: 'datetime',
             min: Date.UTC(2018, 0, 1),
             labels: {
               format: '{value:%b %Y}'
-            }
+            },
+            plotBands: [{
+              from: Date.UTC(2024, 6, 1),
+              to: Date.UTC(2028, 5, 0),
+              color: '#ccc',
+              label: {
+                  text: 'Planned',
+                  verticalAlign: 'top',
+                  style: {color: '#333', fontWeight: 'bold'}
+              }
+          }]
         },
         yAxis: {
             title: {

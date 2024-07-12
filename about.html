@@ -28,7 +28,7 @@ title: About
   <li><a href="#categories-of-solar-projects">Categories of solar projects</a></li>
   <li><a href="#projects-by-category">Projects by category</a></li>
   <li><a href="#solar-installations-over-time">Solar installations over time</a></li>
-  <li><a href="#energized-vs-planned">Energized vs planned projects</a></li>
+  <li><a href="#planned">Planned projects</a></li>
   <li><a href="#data-sources">Data sources</a></li>
   <li><a href="#missing-data">Missing data</a></li>
   <li><a href="#team-and-collaborators">Team and collaborators</a></li>
@@ -49,7 +49,7 @@ Solar installations are divided up into 4 categories:
   <li><strong>Small Distributed Generation (Small DG)</strong>: Small Distributed Generation (DG) for systems 25 kW and below</li>
 </ul>
 
-<h2 id="projects-by-category" class="mt-4">Energized projects by category</h3>
+<h2 id="projects-by-category" class="mt-4">Energized projects by category</h2>
 <div class="row">
   <div class="col-md-7">
     <div id="table-summary"></div>
@@ -61,7 +61,23 @@ Solar installations are divided up into 4 categories:
   </div>
 </div>
 
-<h2 id="planned-projects-by-category" class="mt-4">Planned projects by category</h3>
+<h2 id="solar-installations-over-time" class="mt-4">Solar installations over time</h2>
+
+<p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019.</p>
+
+<p>Planned projects are based on scheduled energization dates, which can be delayed. All planned projects have recieved official approval and, based on our research, have a >95% chance of being built.</p>
+
+<figure class="highcharts-figure">
+  <div id="timeseries-chart"></div>
+  <p class="highcharts-description"><strong>Description:</strong> Area chart showing the cumulative megawatts of Utility, Small Distributed Generation, Large Distributed Generation and Community solar energized and planned in Illinois. There is a notable increase in megawatts installed starting in late 2019.</p>
+
+</figure>
+
+<h2 id="planned" class="mt-4">Planned projects</h2>
+
+<p>An additional <strong>{{site.planned_mw}} megawatts</strong> of solar is planned or under construction in Illinois, over double what is currently energized.
+</p>
+
 <div class="row">
   <div class="col-md-7">
     <div id="table-summary-planned"></div>
@@ -72,23 +88,11 @@ Solar installations are divided up into 4 categories:
     </figure>
   </div>
 </div>
+  
+<p><em>** Note: our source data does not show planned community solar projects. They are likely grouped with Large DG.</em></p>
 
-<em>** Note: our source data does not show planned community solar projects. They are likely grouped with Large DG.</em>
+<p>You can view where and what kind of projects are planned by clicking the 'Planned' selector on the map:</p>
 
-<h2 id="solar-installations-over-time" class="mt-4">Solar installations over time</h2>
-
-<p>Our data covers utility solar projects starting in December 2009. Data from the Adjustable Block Program and Illinois Solar for All start in 2019. </p>
-
-<figure class="highcharts-figure">
-  <div id="timeseries-chart"></div>
-  <p class="highcharts-description"><strong>Description:</strong> Area chart showing the cumulative megawatts of Utility, Small Distributed Generation, Large Distributed Generation and Community solar installed in Illinois. There is a notable increase in megawatts installed starting in late 2019.</p>
-
-</figure>
-
-<h2 id="energized-vs-planned" class="mt-4">Energized vs planned projects</h2>
-
-<p>An additional <strong>{{site.planned_mw}} megawatts</strong> of solar is planned or under construction in Illinois, over double what is currently energized. You can view where and what kind of projects are planned by clicking the 'Planned' selector on the map:
-</p>
 <p class="text-center">
   <a href="/index.html#/?status=planned&geography=counties">
     <img src="/images/energized-vs-planned.jpg" class="img-fluid img-thumbnail" alt="Energized vs planned solar projects by County" title="Energized vs planned solar projects by County">
