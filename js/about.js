@@ -20,6 +20,22 @@ CsvToHtmlTable.init({
     },
 });
 
+CsvToHtmlTable.init({
+  csv_path: "/data/final/all_projects_planned_summary.csv",
+  element: "table-summary-planned",
+  allow_download: false,
+  csv_options: {
+      separator: ",",
+      delimiter: '"'
+  },
+  datatables_options: {
+      paging: false,
+      info: false,
+      searching: false,
+      ordering: false,
+  },
+});
+
 Highcharts.setOptions({
   lang: {
       thousandsSep: ','
@@ -35,7 +51,7 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
         type: 'pie'
       },
       title: {
-        text: 'Percent installed by category'
+        text: 'Percent energized by category'
       },
       credits: {
         enabled: false
@@ -75,6 +91,56 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
       ]
     });
   });
+
+  $.when($.get("/data/final/all_projects_planned_summary.csv")).then(
+    function (data) {
+      var csvData = $.csv.toArrays(data)
+  
+      Highcharts.chart('projects-chart-planned', {
+        chart: {
+          type: 'pie'
+        },
+        title: {
+          text: 'Percent planned by category'
+        },
+        credits: {
+          enabled: false
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+          }
+        },
+        tooltip: {
+          format: '<b>{point.name}</b>: {point.y:.1f}%',
+        },
+        series: [
+          {
+            name: 'MW planned',
+            colorByPoint: true,
+            data: [
+              {
+                name: csvData[1][0],
+                y: parseFloat(csvData[1][2])
+              },
+              {
+                name: csvData[2][0],
+                y: parseFloat(csvData[2][2])
+              },
+              {
+                name: csvData[3][0],
+                y: parseFloat(csvData[3][2])
+              },
+              {
+                name: csvData[4][0],
+                y: parseFloat(csvData[4][2])
+              }
+            ]
+          }
+        ]
+      });
+    });
 
   $.when($.get("/data/final/monthly-aggregate.csv")).then(
   function (data) {

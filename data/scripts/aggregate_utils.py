@@ -147,38 +147,50 @@ def write_geojson(geosource, key, items, geoout):
     with open(geoout, "w") as outfile:
         json.dump(out_geojson, outfile)
 
-def aggregate_all_projects():
+def aggregate_all_projects(type):
     """calculate totals across the entire state for about page"""
+
+    prefix = ""
+    file_prefix = ""
+    if type == "planned":
+        prefix = "planned_"
+        file_prefix = "_planned"
+
     all_projects = {}
-    with open("../final/all-projects-w-districts.csv", 'r') as csvfile:
+    with open(f"../final/all-projects{file_prefix}-w-districts.csv", 'r') as csvfile:
         projects = csv.DictReader(csvfile)
         for cnt, row in enumerate(projects):
-          row["type"] = "energized"  
+          row["type"] = type  
           if cnt == 0:
               all_projects = init_aggregate(row)
           else:
               increment_aggregate(all_projects, row)
 
-    all_projects["dg_small_pct"] = round(all_projects["dg_small_kw"] / all_projects["total_kw"] * 100, 1)
-    all_projects["dg_large_pct"] = round(all_projects["dg_large_kw"] / all_projects["total_kw"] * 100, 1)
-    all_projects["cs_pct"] = round(all_projects["cs_kw"] / all_projects["total_kw"] * 100, 1)
-    all_projects["utility_pct"] = round(all_projects["utility_kw"] / all_projects["total_kw"] * 100, 1)
+    print(all_projects)
+
+    all_projects[f"{prefix}dg_small_pct"] = round(all_projects[f"{prefix}dg_small_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
+    all_projects[f"{prefix}dg_large_pct"] = round(all_projects[f"{prefix}dg_large_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
+    all_projects[f"{prefix}cs_pct"] = round(all_projects[f"{prefix}cs_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
+    all_projects[f"{prefix}utility_pct"] = round(all_projects[f"{prefix}utility_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
 
     # convert to MW
-    all_projects["dg_small_mw"] = int(str(round(all_projects["dg_small_kw"],-3))[:-3])
-    all_projects["dg_large_mw"] = int(str(round(all_projects["dg_large_kw"],-3))[:-3])
-    all_projects["cs_mw"] = int(str(round(all_projects["cs_kw"],-3))[:-3])
-    all_projects["utility_mw"] = int(str(round(all_projects["utility_kw"],-3))[:-3])
-    all_projects["total_mw"] = int(str(round(all_projects["total_kw"],-3))[:-3])
+    all_projects[f"{prefix}dg_small_mw"] = int(str(round(all_projects[f"{prefix}dg_small_kw"],-3))[:-3])
+    all_projects[f"{prefix}dg_large_mw"] = int(str(round(all_projects[f"{prefix}dg_large_kw"],-3))[:-3])
+    if all_projects[f"{prefix}cs_kw"] > 0:
+      all_projects[f"{prefix}cs_mw"] = int(str(round(all_projects[f"{prefix}cs_kw"],-3))[:-3])
+    else:
+        all_projects[f"{prefix}cs_mw"] = 0
+    all_projects[f"{prefix}utility_mw"] = int(str(round(all_projects[f"{prefix}utility_kw"],-3))[:-3])
+    all_projects[f"{prefix}total_mw"] = int(str(round(all_projects[f"{prefix}total_kw"],-3))[:-3])
 
-    with open("../final/all_projects_summary.csv", "w") as outfile:    
+    with open(f"../final/all_projects{file_prefix}_summary.csv", "w") as outfile:    
         writer = csv.writer(outfile)
-        writer.writerow(["Category", "MW installed", "Percent", "Project count"])
-        writer.writerow(["Utility", f'{all_projects["utility_mw"]:,d} MW', f'{all_projects["utility_pct"]}%', f'{all_projects["utility_count"]:,d}'])
-        writer.writerow(["Small DG", f'{all_projects["dg_small_mw"]:,d} MW', f'{all_projects["dg_small_pct"]}%', f'{all_projects["dg_small_count"]:,d}'])
-        writer.writerow(["Large DG", f'{all_projects["dg_large_mw"]:,d} MW', f'{all_projects["dg_large_pct"]}%', f'{all_projects["dg_large_count"]:,d}'])
-        writer.writerow(["Community Solar", f'{all_projects["cs_mw"]:,d} MW', f'{all_projects["cs_pct"]}%', f'{all_projects["cs_count"]:,d}'])
-        writer.writerow(["Total", f'{all_projects["total_mw"]:,d} MW', '100%', f'{all_projects["total_count"]:,d}'])
+        writer.writerow(["Category", f"MW {type}", "Percent", "Project count"])
+        writer.writerow(["Utility", f'{all_projects[f"{prefix}utility_mw"]:,d} MW', f'{all_projects[f"{prefix}utility_pct"]}%', f'{all_projects[f"{prefix}utility_count"]:,d}'])
+        writer.writerow(["Small DG", f'{all_projects[f"{prefix}dg_small_mw"]:,d} MW', f'{all_projects[f"{prefix}dg_small_pct"]}%', f'{all_projects[f"{prefix}dg_small_count"]:,d}'])
+        writer.writerow(["Large DG", f'{all_projects[f"{prefix}dg_large_mw"]:,d} MW', f'{all_projects[f"{prefix}dg_large_pct"]}%', f'{all_projects[f"{prefix}dg_large_count"]:,d}'])
+        writer.writerow(["Community Solar", f'{all_projects[f"{prefix}cs_mw"]:,d} MW', f'{all_projects[f"{prefix}cs_pct"]}%', f'{all_projects[f"{prefix}cs_count"]:,d}'])
+        writer.writerow(["Total", f'{all_projects[f"{prefix}total_mw"]:,d} MW', '100%', f'{all_projects[f"{prefix}total_count"]:,d}'])
         
 def generate_monthly_kw_time_series():
     """calculate aggregated solar by category over time"""

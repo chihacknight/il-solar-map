@@ -48,6 +48,7 @@ def get_census_tract(lat, long):
 
 
 projects = []
+energized_project_ids = set()
 planned_projects = []
 
 jsonreader_eia = ""
@@ -64,6 +65,14 @@ for project_type in ("energized", "planned"):
         datareader_report_3 = csv.DictReader(report_3_file)
 
         for row in datareader_report_3:
+            
+            # energized projects are not removed from the planned report, so skip them here
+            if project_type == "planned":
+                if row["Application ID"] in energized_project_ids:
+                    continue
+            else:
+                energized_project_ids.add(row["Application ID"])
+
             if row["Census Tract Code"] == "N/A" or row["Project Size AC kW"] == "":
                 continue
             
@@ -94,6 +103,14 @@ for project_type in ("energized", "planned"):
         datareader_ilsfa = csv.DictReader(ilsfa_file)
 
         for row in datareader_ilsfa:
+            
+            # energized projects are not removed from the planned report, so skip them here
+            if project_type == "planned":
+                if row["Project ID"] in energized_project_ids:
+                    continue
+            else:
+                energized_project_ids.add(row["Project ID"])
+
             cur_project = {}
 
             cur_project["source_file"] = IL_SFA_FILE
