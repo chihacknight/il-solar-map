@@ -216,6 +216,15 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 }
 
+// This function takes in a button as an element, sets the class 'active' to the element
+// adds the aria-pressed value as "true" to the element, then returns the element
+function toggleActive(e){
+  e.classList.add('active')
+  e.setAttribute('aria-pressed', true)
+
+  return e
+}
+
 function loadParam(param_name, param_default){
   let param = param_default
   let load_val = $.address.parameter(param_name)
@@ -285,6 +294,17 @@ map.on('load', () => {
   showLayer(selectedGeography, selectedCategory, selectedStatus)
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
+  // Makes it so the screenreader says that all the buttons support being 
+  // pressed but are not currently pressed
+  $('#geography-select button').attr('aria-pressed', false)
+  $('#category-select button').attr('aria-pressed', false)
+  $('#status-select button').attr('aria-pressed', false)
+
+  // Sets the aria-pressed to true for the buttons that start out
+  $('#geography-select button')[0].setAttribute('aria-pressed', true)
+  $('#category-select button')[0].setAttribute('aria-pressed', true)
+  $('#status-select button')[0].setAttribute('aria-pressed', true)
+
   $('#geography-select button').click(function(e){
     // reset layers
     map.setLayoutProperty('tracts-fills', 'visibility', 'none')
@@ -294,27 +314,42 @@ map.on('load', () => {
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
     $('#geography-select button').removeClass('active')
     
+    // Resets all of the buttons under category-select to be false again
+    // meaning that they support being pressed but are not currently pressed
+    $('#geography-select button').attr('aria-pressed', false)
+
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
-    this.classList.add('active')
+    
+    //calls the toggleActive function
+    toggleActive(this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#category-select button').click(function(e){
     $('#category-select button').removeClass('active')
     
+    $('#category-select button').attr('aria-pressed', false)
+
     selectedCategory = this.value
     $.address.parameter('category', selectedCategory)
-    this.classList.add('active')
+    
+    toggleActive(this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#status-select button').click(function(e){
     $('#status-select button').removeClass('active')
     
+    $('#status-select button').attr('aria-pressed', false)
+
     selectedStatus = this.value
     $.address.parameter('status', selectedStatus)
-    this.classList.add('active')
+    
+    toggleActive(this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 })
