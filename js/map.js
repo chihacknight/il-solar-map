@@ -220,7 +220,7 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 }
 
-function toggleActive (activeButton, selectorForSiblings){
+function toggleActive (selectorForSiblings, activeButton){
   $(selectorForSiblings).removeClass('active')
   $(selectorForSiblings).attr('aria-pressed', false)
   activeButton.classList.add('active')
@@ -233,10 +233,10 @@ function loadParam(param_name, param_default){
   if (load_val != undefined) {
     param = load_val
   }
-  // set buttons
-  $('#' + param_name + '-select button').removeClass('active')
-  $(':button[value=' + param + ']')[0].classList.add('active')
   
+  // sets the active and aria to the parameter
+  toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
+
   return param
 }
 
@@ -296,11 +296,6 @@ map.on('load', () => {
   showLayer(selectedGeography, selectedCategory, selectedStatus)
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
-  // calls the toggleActive function on the initial states
-  toggleActive($(geoButtonsSelector)[0],geoButtonsSelector)
-  toggleActive($(catButtonsSelector)[0],catButtonsSelector)
-  toggleActive($(statButtonsSelector)[0],statButtonsSelector)
-
   $('#geography-select button').click(function(e){
     // reset layers
     map.setLayoutProperty('tracts-fills', 'visibility', 'none')
@@ -312,7 +307,7 @@ map.on('load', () => {
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
     
-    toggleActive(this, geoButtonsSelector)
+    toggleActive(geoButtonsSelector, this)
 
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
@@ -322,7 +317,7 @@ map.on('load', () => {
     selectedCategory = this.value
     $.address.parameter('category', selectedCategory)
     
-    toggleActive(this, catButtonsSelector)
+    toggleActive(catButtonsSelector, this)
 
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
@@ -332,7 +327,7 @@ map.on('load', () => {
     selectedStatus = this.value
     $.address.parameter('status', selectedStatus)
     
-    toggleActive(this,statButtonsSelector)
+    toggleActive(statButtonsSelector, this)
 
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
