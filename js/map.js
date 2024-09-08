@@ -45,6 +45,10 @@ const friendly_category_names = {
   'dg_small_kw': 'Small DG'
 }
 
+const geoButtonsSelector = '#geography-select button'
+const catButtonsSelector = '#category-select button'
+const statButtonsSelector = '#status-select button'
+
 function getTooltip(props){
   let header = ''
   if (props.census_tract !== undefined) {
@@ -216,16 +220,23 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 }
 
+function toggleActive (selectorForSiblings, activeButton){
+  $(selectorForSiblings).removeClass('active')
+  $(selectorForSiblings).attr('aria-pressed', false)
+  activeButton.classList.add('active')
+  activeButton.setAttribute('aria-pressed', true)
+}
+
 function loadParam(param_name, param_default){
   let param = param_default
   let load_val = $.address.parameter(param_name)
   if (load_val != undefined) {
     param = load_val
   }
-  // set buttons
-  $('#' + param_name + '-select button').removeClass('active')
-  $(':button[value=' + param + ']')[0].classList.add('active')
   
+  // sets the active and aria to the parameter
+  toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
+
   return param
 }
 
@@ -292,29 +303,32 @@ map.on('load', () => {
     map.setLayoutProperty('counties-fills', 'visibility', 'none')
     map.setLayoutProperty('il-senate-fills', 'visibility', 'none')
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
-    $('#geography-select button').removeClass('active')
     
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
-    this.classList.add('active')
+    
+    toggleActive(geoButtonsSelector, this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#category-select button').click(function(e){
-    $('#category-select button').removeClass('active')
     
     selectedCategory = this.value
     $.address.parameter('category', selectedCategory)
-    this.classList.add('active')
+    
+    toggleActive(catButtonsSelector, this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
   $('#status-select button').click(function(e){
-    $('#status-select button').removeClass('active')
     
     selectedStatus = this.value
     $.address.parameter('status', selectedStatus)
-    this.classList.add('active')
+    
+    toggleActive(statButtonsSelector, this)
+
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 })
