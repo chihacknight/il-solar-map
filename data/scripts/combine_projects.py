@@ -133,7 +133,37 @@ for project_type in ("energized", "planned"):
     with open(f"../raw/{EIA_FILE}{file_suffix}.csv") as eiafile:
         datareader_eia = csv.DictReader(eiafile)
 
-        for row in datareader_eia:
+        # print out top 10 largest by KW
+        eia_list = list(datareader_eia)
+        sorted_eia_list = sorted(eia_list, key=lambda x: clean_number(x['Nameplate Capacity (MW)']), reverse=True)
+        cnt = 1
+        top_entries = []
+        for r in sorted_eia_list:
+            if r["Plant State"] == "IL" and r["Technology"] == "Solar Photovoltaic" and cnt <= 10:
+                te = {
+                    "Entity Name": r["Entity Name"],
+                    "Plant Name": r["Plant Name"],
+                    "County": r["County"],
+                    "Nameplate Capacity (MW)": clean_number(r["Nameplate Capacity (MW)"]),
+                    "Energization Date": "",
+                }
+                if project_type == "planned":
+                    te["Energization Date"] = f"{r['Planned Operation Month']}/1/{r['Planned Operation Year']}"
+                else:
+                    te["Energization Date"] = f"{r['Operating Month']}/1/{r['Operating Year']}"
+
+                top_entries.append(te)
+                cnt += 1
+
+        print(f'writing to top-10-projects{file_suffix}.csv')
+        with open(f"../final/top-10-projects{file_suffix}.csv", "w") as projectfile:
+            fieldnames = ["Plant Name", "Entity Name", "County", "Nameplate Capacity (MW)", "Energization Date"]
+            writer = csv.DictWriter(projectfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for vals in top_entries:
+                writer.writerow(vals)
+
+        for row in eia_list:
             
             # data is for entire US, so filter to IL
             if row["Plant State"] == "IL" and row["Technology"] == "Solar Photovoltaic":

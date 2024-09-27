@@ -6,11 +6,19 @@ title: Solar projects by county
 <h1>Reference Tables</h1>
 
 <ul>
+  <li><a href="#largest">Top 10 Largest Solar Projects</a></li>
+  <li><a href="#largest-planned">Top 10 Largest Planned Solar Projects</a></li>
   <li><a href="#counties">Counties</a></li>
   <li><a href="#places">Places</a></li>
   <li><a href="#il-house">IL State House Districts</a></li>
   <li><a href="#il-senate">IL State Senate Districts</a></li>
 </ul>
+
+<h2 id="largest" class="mt-4">Top 10 Largest Solar Projects</h2>
+<div id="table-largest-energized"></div>
+
+<h2 id="largest-planned" class="mt-4">Top 10 Largest Planned Solar Projects</h2>
+<div id="table-largest-planned"></div>
 
 <p>Note, all values are in kilowatts (kW). Columns with a <code>PL_</code> prefix are planned and not yet energized projects.</p>
 
@@ -38,6 +46,40 @@ title: Solar projects by county
       if (isNaN(parsed)) { return 0 }
       return parseInt(val).toLocaleString("en-US")
   }
+
+  CsvToHtmlTable.init({
+      csv_path: "/data/final/top-10-projects.csv",
+      element: "table-largest-energized",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[3, 'desc']]
+      },
+      custom_formatting: [
+          [3, format_number],
+      ]
+  });
+
+  CsvToHtmlTable.init({
+      csv_path: "/data/final/top-10-projects_planned.csv",
+      element: "table-largest-planned",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[3, 'desc']]
+      },
+      custom_formatting: [
+          [3, format_number],
+      ]
+  });
   
   CsvToHtmlTable.init({
       csv_path: "/data/final/solar-projects-by-county-formatted.csv",
