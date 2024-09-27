@@ -50,13 +50,6 @@ sed '1 s/^/senate_district,legislator,party,total,utility,cs,dg_large,dg_small,p
 # cleanup
 echo "cleanup temp data"
 rm tmp.txt
-rm ../raw/eia860_raw.csv
-rm ../raw/eia860.csv
-rm ../raw/ilabp.csv
-rm ../raw/ilsfa_raw.csv
-rm ../raw/ilsfa.csv
-rm ../raw/eia860_planned_raw.csv
-rm ../raw/eia860_planned.csv
-rm ../raw/ilabp_planned.csv
-rm ../raw/ilsfa_planned_raw.csv
-rm ../raw/ilsfa_planned.csv
+rm ../raw/eia860*.csv
+rm ../raw/ilabp*.csv
+rm ../raw/ilsfa*.csv
