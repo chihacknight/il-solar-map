@@ -1,0 +1,26 @@
+---
+layout: narrow
+title: Updates
+---
+
+<h1>Updates</h1>
+<p>Keep track of recent changes we have made to Illinois Solar Map.</p>
+
+{% for post in site.categories['update'] %}
+  <div class='row'>
+    <div class='col-sm-3'>
+      <a href='{{post.url}}'>
+        <img alt="{{post.title}}" class="img-thumbnail" src="{{post.image}}" />
+      </a>
+    </div>
+    <div class='col-sm-7'>
+      <h2>
+        <a href='{{post.url}}'>{{ post.date | date: "%b %d, %Y" }} - {{ post.title }}</a>
+      </h2>
+      <p>
+        {{ post.description | markdownify }} <a href='{{post.url}}'>Read&nbsp;more&nbsp;&raquo;</a>
+      </p>
+      <br />
+    </div>
+  </div>
+{% endfor %}
