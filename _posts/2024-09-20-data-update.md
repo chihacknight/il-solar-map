@@ -36,3 +36,9 @@ As of Sept 20, 2024, an additional 136 megawatts (MW) of solar have been energiz
     </tr>
   </tbody>
 </table>
+
+Data from our 3 primary sources are updated at different intervals, so the above data is valid as of the following the dates:
+
+* Illinois Adjustable Block Program (ABP) **September 2024**
+* Illinois Solar for All (ILSFA) **September 2024**
+* US EIA-860M (Utility scale projects) **July 2024**
