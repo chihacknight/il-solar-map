@@ -10,7 +10,7 @@ layout: narrow
       {{ page.title }}
     </h1>
 
-    <p class='muted'>Published on {{ page.date | date: "%b %d, %Y" }}</p>
+    <p><em>Published on {{ page.date | date: "%b %d, %Y" }} by {{page.author}}</em></p>
 
     {{ content }}
 

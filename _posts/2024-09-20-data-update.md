@@ -5,7 +5,7 @@ categories:
 title: "Data update"
 description: "As of Sept 20, 2024, an additional 136 megawatts (MW) of solar have been energized in the State of Illinois. An additional 393 megawatts have been added to the planned queue."
 image: "/images/il-solar-map.png"
-image_caption: ""
+author: "Derek Eder"
 date: 2024-09-20
 published: true
 ---
