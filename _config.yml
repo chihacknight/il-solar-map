@@ -10,9 +10,9 @@ permalink: none
 last_updated: "Nov 2024"
 ilabp_updated: "Nov 2024"
 ilsfa_updated: "Nov 2024"
-eia860_updated: "Sep 2024"
-total_mw: "2,499"
-planned_mw: "5,645"
-total_count: "70,437"
+eia860_updated: "Oct 2024"
+total_mw: "2,599"
+planned_mw: "6,143"
+total_count: "72,462"
 gems:
   - jekyll-redirect-from
