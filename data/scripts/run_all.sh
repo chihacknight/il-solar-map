@@ -1,5 +1,9 @@
 # /bin/bash
 
+# cleanup final
+echo "cleanup final data"
+rm ../final/*.*
+
 # convert energized project data to csv
 echo "extracting energized project data"
 in2csv ../raw/eia860.xlsx > ../raw/eia860_raw.csv
