@@ -11,7 +11,7 @@ Once you have virtualenvwrapper set up, do this:
 
 ```bash
 mkvirtualenv il-solar-map -p /path/to/your/python3
-pip install -r requirements.txt
+pip install -r data/requirements.txt
 ```
 
 ## Running the data aggregation scripts
