@@ -185,7 +185,7 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
             },
             plotBands: [{
               from: Date.UTC(2025, 0, 1),
-              to: Date.UTC(2028, 5, 0),
+              to: Date.UTC(2029, 11, 0),
               color: '#ccc',
               label: {
                   text: 'Planned',
