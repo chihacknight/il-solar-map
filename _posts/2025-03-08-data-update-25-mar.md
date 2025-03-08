@@ -3,14 +3,14 @@ layout: update
 categories:
   - update
 title: "Data update"
-description: "Congratulations to Illinois for energizing over 4 gigawatts of solar! As of Mar 8, 2025, an additional 4,235 megawatts (MW) of solar have been energized in the State of Illinois. One large utility-scale solar project came online in January 2024: Eldorado Solar I in Saline County (150 MW)."
+description: "Congratulations to Illinois for energizing over 4 gigawatts of solar! As of Mar 8, 2025, 4,235 megawatts (MW) of solar have been energized in the State of Illinois. One large utility-scale solar project came online in January 2024: Eldorado Solar I in Saline County (150 MW)."
 image: "/images/il-solar-map.png"
 author: "Derek Eder"
 date: 2025-03-08
 published: true
 ---
 
-Congratulations to Illinois for energizing over 4 gigawatts of solar! As of Mar 8, 2025, an additional 4,235 megawatts (MW) of solar have been energized in the State of Illinois. 
+Congratulations to Illinois for energizing over 4 gigawatts of solar! As of Mar 8, 2025, 4,235 megawatts (MW) of solar have been energized in the State of Illinois. 
 
 One large utility-scale solar project came online in January 2024: [Eldorado Solar I in Saline County](https://www.solsystems.com/landowners/eldorado-solar-project/) (150 MW).
 
