@@ -30,7 +30,7 @@ This site uses Jekyll to serve several static pages and images. The site is publ
 
 * [Jekyll](http://jekyllrb.com/) - Static site generator built in Ruby
 * [Bootstrap 5](http://getbootstrap.com) - HTML and CSS layouts
-* [mapbox-gl-js 2.15](https://docs.mapbox.com/mapbox-gl-js/guides)
+* [maplibre-gl-js](https://maplibre.org/maplibre-gl-js/docs/)
 * [jQuery 3.7](https://jquery.com/)
 * [DataTables](http://datatables.net) - for searching and sorting tables
 * [CSV to HTML Table](https://github.com/derekeder/csv-to-html-table) - for sortable rollup tables
