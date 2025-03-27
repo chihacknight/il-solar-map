@@ -158,6 +158,25 @@ function getFillColor(layerSource, category, status){
   return fillColor
 }
 
+async function loadSourceFromGzip(url, map, layerSource) {
+  const response = await fetch(url)
+  const arrayBuffer = await response.arrayBuffer()
+  const decompressedData = pako.inflate(new Uint8Array(arrayBuffer), { to: 'string' })
+  const geojson = JSON.parse(decompressedData)
+
+  map.addSource(layerSource, {
+    type: 'geojson',
+    data: geojson
+  })
+
+  addLayer(map, layerSource)
+
+  if (selectedGeography == layerSource) {
+    showLayer(selectedGeography, selectedCategory, selectedStatus)
+    updateLegend(selectedGeography, selectedCategory, selectedStatus)
+  }
+}
+
 function addLayer(map, layerSource, visible = 'none'){
   map.addLayer({
     'id': `${layerSource}-fills`,
@@ -261,39 +280,12 @@ let selectedCategory = loadParam('category','total_kw')
 let selectedStatus = loadParam('status','energized')
 
 map.on('load', () => {
-  // load our 4 main data sources
-  map.addSource('tracts', {
-      type: 'geojson',
-      data: '/data/final/solar-projects-by-tract.geojson'
-  })
-
-  map.addSource('places', {
-    type: 'geojson',
-    data: '/data/final/solar-projects-by-place.geojson'
-  })
-
-  map.addSource('counties', {
-      type: 'geojson',
-      data: '/data/final/solar-projects-by-county.geojson'
-  })
-
-  map.addSource('il-house', {
-      type: 'geojson',
-      data: '/data/final/solar-projects-by-il-house.geojson'
-  })
-
-  map.addSource('il-senate', {
-      type: 'geojson',
-      data: '/data/final/solar-projects-by-il-senate.geojson'
-  })
-
-  addLayer(map, 'tracts')
-  addLayer(map, 'places')
-  addLayer(map, 'counties')
-  addLayer(map, 'il-senate')
-  addLayer(map, 'il-house')
-  showLayer(selectedGeography, selectedCategory, selectedStatus)
-  updateLegend(selectedGeography, selectedCategory, selectedStatus)
+  // load our 5 main data sources
+  loadSourceFromGzip('/data/final/solar-projects-by-tract.geojson.gz', map, 'tracts')
+  loadSourceFromGzip('/data/final/solar-projects-by-place.geojson.gz', map, 'places')
+  loadSourceFromGzip('/data/final/solar-projects-by-county.geojson.gz', map, 'counties')
+  loadSourceFromGzip('/data/final/solar-projects-by-il-house.geojson.gz', map, 'il-senate')
+  loadSourceFromGzip('/data/final/solar-projects-by-il-senate.geojson.gz', map, 'il-house')
 
   $('#geography-select button').click(function(e){
     // reset layers
