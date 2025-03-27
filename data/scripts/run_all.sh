@@ -34,6 +34,13 @@ python get_tract_districts.py
 # aggregate data by county, tract and legilsative districts
 python aggregate_data.py
 
+# gzip geojson files
+gzip -k --best ../final/solar-projects-by-tract.geojson
+gzip -k --best ../final/solar-projects-by-place.geojson
+gzip -k --best ../final/solar-projects-by-county.geojson
+gzip -k --best ../final/solar-projects-by-il-house.geojson
+gzip -k --best ../final/solar-projects-by-il-senate.geojson
+
 # format the csv files
 csvcut ../final/solar-projects-by-county.csv -c "county_name,total_kw,utility_kw,cs_kw,dg_large_kw,dg_small_kw,planned_total_kw,planned_utility_kw,planned_cs_kw,planned_dg_large_kw,planned_dg_small_kw" > ../final/solar-projects-by-county-formatted.csv
 sed 1d ../final/solar-projects-by-county-formatted.csv > tmp.txt
