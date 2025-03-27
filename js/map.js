@@ -179,7 +179,7 @@ function addLayer(map, layerSource, visible = 'none'){
     }
   })
 
-  const popup = new mapboxgl.Popup({
+  const popup = new maplibregl.Popup({
     closeButton: false,
     closeOnClick: false
   })
@@ -247,10 +247,9 @@ $(window).resize(function () {
   $('#map').css('height', (h - offsetTop));
 }).resize();
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YW1hZGUiLCJhIjoiaXhhVGNrayJ9.0yaccougI3vSAnrKaB00vA'
-const map = new mapboxgl.Map({
+const map = new maplibregl.Map({
     container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/light-v11', // style URL
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // style URL
     center: [-89.189799, 40.166281], // starting position [lng, lat]
     zoom: 6, // starting zoom
 })
