@@ -9,9 +9,9 @@ echo "extracting energized project data"
 in2csv ../raw/eia860.xlsx > ../raw/eia860_raw.csv
 sed 1,2d ../raw/eia860_raw.csv > ../raw/eia860.csv
 
-in2csv ../raw/ilabp.xlsx > ../raw/ilabp.csv
+in2csv ../raw/ilabp_report_3.xlsx > ../raw/ilabp.csv
 
-in2csv ../raw/ilsfa.xlsx > ../raw/ilsfa_raw.csv
+in2csv ../raw/ilsfa_report_3.xlsx > ../raw/ilsfa_raw.csv
 sed 1,2d ../raw/ilsfa_raw.csv > ../raw/ilsfa.csv
 
 # convert planned projects to csv
