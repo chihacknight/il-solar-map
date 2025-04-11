@@ -3,14 +3,14 @@ layout: update
 categories:
   - update
 title: "Data update"
-description: "As of Apr 11, 2025, an additional 86 megawatts (MW) of solar have been energized in the State of Illinois."
+description: "As of Apr 11, 2025, an additional 86 megawatts (MW) of solar have been energized in the State of Illinois, bringing the total to 4,321 MW."
 image: "/images/il-solar-map.png"
 author: "Derek Eder"
 date: 2025-04-11
 published: true
 ---
 
-As of Apr 11, 2025, an additional 86 megawatts (MW) of solar have been energized in the State of Illinois. There are now over 80,000 solar projects energized in our state.
+As of Apr 11, 2025, an additional 86 megawatts (MW) of solar have been energized in the State of Illinois, bringing the total to 4,321 MW. There are now over 80,000 solar projects energized in our state.
 
 <table class='table'>
   <thead>
