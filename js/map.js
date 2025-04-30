@@ -49,28 +49,59 @@ const geoButtonsSelector = '#geography-select button'
 const catButtonsSelector = '#category-select button'
 const statButtonsSelector = '#status-select button'
 
-function getTooltip(props){
-  let header = ''
-  if (props.census_tract !== undefined) {
-    header = `<strong>Tract ${props.census_tract}</strong><br />`
-  } else if (props.place !== undefined) {
-    header = `<strong>${props.place}</strong><br />`
-  } else if (props.county_name !== undefined) {
-    header = `<strong>${props.county_name} County</strong><br />`
-  } else if (props.house_district !== undefined) {
-    header = `
-    <strong>IL House District ${props.house_district}</strong><br />
-      <strong>Rep. ${props.legislator} (${props.party})</strong><br />
-      `
-  } else if (props.senate_district !== undefined) {
-    header = `
-      <strong>IL Senate District ${props.senate_district}</strong><br />
-      <strong>Sen. ${props.legislator} (${props.party})</strong><br />
-      `
+class InfoControl {
+  constructor() {
+    this.container = document.createElement('div')
+    this.container.className = 'info'
+    this.container.innerHTML = 'Hover over a feature to see details'
   }
 
+  onAdd(map) {
+    this.map = map
+    return this.container
+  }
+
+  onRemove() {
+    this.container.parentNode.removeChild(this.container)
+    this.map = undefined
+  }
+
+  updateInfo(content) {
+    this.container.style.display = content ? 'block' : 'none'
+    this.container.innerHTML = content
+  }
+}
+
+function getTooltipHeader(props){
+  let header = ''
+  if (props.census_tract !== undefined) {
+    header = `Tract ${props.census_tract}`
+  } else if (props.place !== undefined) {
+    header = `${props.place}`
+  } else if (props.county_name !== undefined) {
+    header = `${props.county_name} County`
+  } else if (props.house_district !== undefined) {
+    header = `IL House District ${props.house_district}
+      <small><br />Rep. ${props.legislator} (${props.party})</small>`
+  } else if (props.senate_district !== undefined) {
+    header = `IL Senate District ${props.senate_district}
+      <small><br />Sen. ${props.legislator} (${props.party})</small>`
+  }
+  return header
+}
+
+function getHoverTooltip(props){
   return `
-    ${header}
+    <strong>${getTooltipHeader(props)}</strong><br />
+    Energized: ${props.total_kw.toLocaleString()} kW<br />
+    Planned: ${props.planned_total_kw.toLocaleString()} kW
+    `
+}
+
+function getTooltip(props){
+
+  return `
+    <h4>${getTooltipHeader(props)}</h4>
     <table class='table table-sm map-tooltip'>
       <thead>
         <tr>
@@ -197,17 +228,18 @@ function addLayer(map, layerSource, visible = 'none'){
       ]
     }
   })
-
-  const popup = new maplibregl.Popup({
-    closeButton: false,
-    closeOnClick: false
-  })
   
   map.on('mousemove', `${layerSource}-fills`, (e) => {
     // populate tooltip
     map.getCanvas().style.cursor = 'pointer'
-    const coordinates = e.lngLat
-    popup.setLngLat(coordinates).setHTML(getTooltip(e.features[0].properties)).addTo(map)
+
+    if (e.features.length > 0) {
+      const feature = e.features[0]
+      const content = getHoverTooltip(feature.properties)
+      infoControl.updateInfo(content)
+    } else {
+      infoControl.updateInfo('Hover over a feature to see details')
+    }
 
     // highlight tract
     if (e.features.length > 0) {
@@ -229,7 +261,38 @@ function addLayer(map, layerSource, visible = 'none'){
   
   map.on('mouseleave', `${layerSource}-fills`, () => {
     map.getCanvas().style.cursor = ''
-    popup.remove()
+    infoControl.updateInfo('Hover over a feature to see details')
+  })
+
+  map.on('click', `${layerSource}-fills`, (e) => {
+    const feature = e.features[0]
+
+    if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+      const coordinates = feature.geometry.coordinates
+  
+      // Flatten all coordinates from all rings (and all polygons if MultiPolygon)
+      let allCoords = []
+      if (feature.geometry.type === 'Polygon') {
+        allCoords = coordinates.flat()  // One polygon with rings
+      } else {
+        allCoords = coordinates.flat(2) // MultiPolygon
+      }
+  
+      const bounds = allCoords.reduce((b, coord) => b.extend(coord), new maplibregl.LngLatBounds(allCoords[0], allCoords[0]))
+  
+      // Fit to bounds
+      map.fitBounds(bounds, {
+        padding: 300,
+        duration: 500,
+        easing: t => t
+      })
+    }
+
+    // Display info popup
+    new maplibregl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(getTooltip(feature.properties))
+      .addTo(map)
   })
 }
 
@@ -272,6 +335,9 @@ const map = new maplibregl.Map({
     center: [-89.189799, 40.166281], // starting position [lng, lat]
     zoom: 6, // starting zoom
 })
+
+const infoControl = new InfoControl()
+map.addControl(infoControl, 'bottom-left')
 
 let hoveredPolygonId = null
 
