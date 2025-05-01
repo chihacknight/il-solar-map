@@ -189,6 +189,39 @@ function getFillColor(layerSource, category, status){
   return fillColor
 }
 
+function featureClicked(feature, lngLat=null){
+  if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+    const coordinates = feature.geometry.coordinates
+
+    // Flatten all coordinates from all rings (and all polygons if MultiPolygon)
+    let allCoords = []
+    if (feature.geometry.type === 'Polygon') {
+      allCoords = coordinates.flat()  // One polygon with rings
+    } else {
+      allCoords = coordinates.flat(2) // MultiPolygon
+    }
+
+    const bounds = allCoords.reduce((b, coord) => b.extend(coord), new maplibregl.LngLatBounds(allCoords[0], allCoords[0]))
+
+    if (lngLat == null) {
+      lngLat = bounds.getCenter()
+    }
+
+    // Fit to bounds
+    map.fitBounds(bounds, {
+      padding: 300,
+      duration: 500,
+      easing: t => t
+    })
+  }
+
+  // Display info popup
+  popup = new maplibregl.Popup()
+    .setLngLat(lngLat)
+    .setHTML(getTooltip(feature.properties))
+    .addTo(map)
+}
+
 async function loadSourceFromGzip(url, map, layerSource) {
   const response = await fetch(url)
   const arrayBuffer = await response.arrayBuffer()
@@ -232,26 +265,23 @@ function addLayer(map, layerSource, visible = 'none'){
   map.on('mousemove', `${layerSource}-fills`, (e) => {
     // populate tooltip
     map.getCanvas().style.cursor = 'pointer'
+    const feature = e.features[0]
 
-    if (e.features.length > 0) {
-      const feature = e.features[0]
+    if (feature) {
       const content = getHoverTooltip(feature.properties)
       infoControl.updateInfo(content)
-    } else {
-      infoControl.updateInfo('Hover over a feature to see details')
-    }
-
-    // highlight tract
-    if (e.features.length > 0) {
+      
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
           { source: layerSource, id: hoveredPolygonId },
           { hover: false }
         )
+      } else {
+        infoControl.updateInfo('Hover over a feature to see details')
       }
 
       // geojson data must have a unique id property (outside of properties)
-      hoveredPolygonId = e.features[0].id
+      hoveredPolygonId = feature.id
       map.setFeatureState(
         { source: layerSource, id: hoveredPolygonId },
         { hover: true }
@@ -265,34 +295,9 @@ function addLayer(map, layerSource, visible = 'none'){
   })
 
   map.on('click', `${layerSource}-fills`, (e) => {
-    const feature = e.features[0]
-
-    if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
-      const coordinates = feature.geometry.coordinates
-  
-      // Flatten all coordinates from all rings (and all polygons if MultiPolygon)
-      let allCoords = []
-      if (feature.geometry.type === 'Polygon') {
-        allCoords = coordinates.flat()  // One polygon with rings
-      } else {
-        allCoords = coordinates.flat(2) // MultiPolygon
-      }
-  
-      const bounds = allCoords.reduce((b, coord) => b.extend(coord), new maplibregl.LngLatBounds(allCoords[0], allCoords[0]))
-  
-      // Fit to bounds
-      map.fitBounds(bounds, {
-        padding: 300,
-        duration: 500,
-        easing: t => t
-      })
-    }
-
-    // Display info popup
-    new maplibregl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML(getTooltip(feature.properties))
-      .addTo(map)
+    const feat = e.features[0]
+    $.address.parameter('id', feat.id)
+    featureClicked(feat, e.lngLat)
   })
 }
 
@@ -300,6 +305,11 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
   map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
+
+  if (popup) {
+    popup.remove()
+    $.address.parameter('id', null)
+  }
 }
 
 function toggleActive (selectorForSiblings, activeButton){
@@ -316,9 +326,10 @@ function loadParam(param_name, param_default){
     param = load_val
   }
   
-  // sets the active and aria to the parameter
-  toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
-
+  if (param_default) {
+    // sets the active and aria to the parameter
+    toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
+  }
   return param
 }
 
@@ -344,6 +355,9 @@ let hoveredPolygonId = null
 let selectedGeography = loadParam('geography','tracts')
 let selectedCategory = loadParam('category','total_kw')
 let selectedStatus = loadParam('status','energized')
+let selectedId = loadParam('id', 0)
+let selectedFeatureLoaded = false
+let popup = null
 
 map.on('load', () => {
   // load our 5 main data sources
@@ -388,4 +402,23 @@ map.on('load', () => {
 
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
+
+  // if an ID is in the URL, load it
+  map.on('sourcedata', function (e) {
+    if (
+      !selectedFeatureLoaded &&
+      selectedId &&
+      e.sourceId === selectedGeography &&
+      e.isSourceLoaded
+    ) {
+      selectedId = Number(selectedId)
+      const features = map.querySourceFeatures(selectedGeography)
+      const feat = features.find(f => f.id === selectedId)
+      featureClicked(feat)
+
+      // ensure this is only done once. sourcedata events are fired often
+      selectedFeatureLoaded = true
+    }
+  })
+
 })
