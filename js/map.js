@@ -214,7 +214,6 @@ function featureClicked(feature, lngLat=null){
       easing: t => t
     })
   }
-
   // Display info popup
   popup = new maplibregl.Popup()
     .setLngLat(lngLat)
@@ -252,13 +251,33 @@ function addLayer(map, layerSource, visible = 'none'){
       },
     'paint': {
       'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
-      'fill-opacity': 0.5,
-      'fill-outline-color': [
+      'fill-opacity': 0.5
+    }
+  })
+
+  // polygon line styles
+  map.addLayer({
+    'id': `${layerSource}-outline`,
+    'type': 'line',
+    'source': layerSource, // reference the data source
+    'layout': {
+      // Make the layer not visible by default.
+      'visibility': visible
+    },
+    'paint': {
+      'line-color': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
         '#000000',
         '#CCCCCC'
-      ]
+      ],
+      'line-width': [
+        'case',
+        ['boolean', ['feature-state', 'hover'], false],
+        2,
+        0.5
+      ],
+      'line-opacity': 1,
     }
   })
   
@@ -291,6 +310,10 @@ function addLayer(map, layerSource, visible = 'none'){
   
   map.on('mouseleave', `${layerSource}-fills`, () => {
     map.getCanvas().style.cursor = ''
+    map.setFeatureState(
+      { source: layerSource, id: hoveredPolygonId },
+      { hover: false }
+    )
     infoControl.updateInfo('Hover over a feature to see details')
   })
 
@@ -303,6 +326,7 @@ function addLayer(map, layerSource, visible = 'none'){
 
 function showLayer(selectedGeography, selectedCategory, selectedStatus) {
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
+  map.setLayoutProperty(selectedGeography + '-outline', 'visibility', 'visible')
   map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
@@ -374,6 +398,12 @@ map.on('load', () => {
     map.setLayoutProperty('counties-fills', 'visibility', 'none')
     map.setLayoutProperty('il-senate-fills', 'visibility', 'none')
     map.setLayoutProperty('il-house-fills', 'visibility', 'none')
+
+    map.setLayoutProperty('tracts-outline', 'visibility', 'none')
+    map.setLayoutProperty('places-outline', 'visibility', 'none')
+    map.setLayoutProperty('counties-outline', 'visibility', 'none')
+    map.setLayoutProperty('il-senate-outline', 'visibility', 'none')
+    map.setLayoutProperty('il-house-outline', 'visibility', 'none')
     
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
@@ -414,6 +444,12 @@ map.on('load', () => {
       selectedId = Number(selectedId)
       const features = map.querySourceFeatures(selectedGeography)
       const feat = features.find(f => f.id === selectedId)
+
+      // highlight the feature
+      map.setFeatureState(
+        { source: selectedGeography, id: selectedId },
+        { hover: true }
+      )
       featureClicked(feat)
 
       // ensure this is only done once. sourcedata events are fired often
