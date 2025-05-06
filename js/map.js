@@ -174,6 +174,14 @@ function updateLegend(layerSource, category, status){
   $('#solar-legend').html(legendText)
 }
 
+function resetClickedState(){
+  // reset the previous clicked feature
+  map.setFeatureState(
+    { source: selectedGeography, id: selectedId },
+    { clicked: false }
+  )
+}
+
 function getFillColor(layerSource, category, status){
   let var_prefix = ""
   let colors = energized_colors
@@ -331,25 +339,20 @@ function addLayer(map, layerSource, visible = 'none'){
 
   map.on('click', `${layerSource}-fills`, (e) => {
     const feat = e.features[0]
-
-    // reset the previous clicked feature
-    map.setFeatureState(
-      { source: layerSource, id: selectedId },
-      { clicked: false }
-    )
-
+    resetClickedState()
     selectedId = feat.id
     $.address.parameter('id', selectedId)
     featureClicked(feat, e.lngLat)
   })
 }
 
-function showLayer(selectedGeography, selectedCategory, selectedStatus) {
+function showLayer(selectedGeography, selectedCategory, selectedStatus) {  
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
   map.setLayoutProperty(selectedGeography + '-outline', 'visibility', 'visible')
   map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
+  // remove previous popup
   if (popup) {
     popup.remove()
     $.address.parameter('id', null)
@@ -422,6 +425,7 @@ map.on('load', () => {
     hideLayers(['tracts-fills','places-fills','counties-fills','il-senate-fills','il-house-fills'])
     hideLayers(['tracts-outline','places-outline','counties-outline','il-senate-outline','il-house-outline'])
     
+    resetClickedState()
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
     
