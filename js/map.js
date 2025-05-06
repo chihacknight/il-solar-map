@@ -48,12 +48,13 @@ const friendly_category_names = {
 const geoButtonsSelector = '#geography-select button'
 const catButtonsSelector = '#category-select button'
 const statButtonsSelector = '#status-select button'
+const hoverMsgDefault = 'Hover over a feature to see details'
 
 class InfoControl {
   constructor() {
     this.container = document.createElement('div')
     this.container.className = 'info'
-    this.container.innerHTML = 'Hover over a feature to see details'
+    this.container.innerHTML = hoverMsgDefault
   }
 
   onAdd(map) {
@@ -190,6 +191,13 @@ function getFillColor(layerSource, category, status){
 }
 
 function featureClicked(feature, lngLat=null){
+
+  map.setFeatureState(
+    { source: selectedGeography, id: feature.id },
+    { clicked: true }
+  )
+  
+  // collapse all coordinates to calculate bounds
   if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
     const coordinates = feature.geometry.coordinates
 
@@ -251,7 +259,12 @@ function addLayer(map, layerSource, visible = 'none'){
       },
     'paint': {
       'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
-      'fill-opacity': 0.5
+      'fill-opacity': [
+        'case',
+        ['boolean', ['feature-state', 'hover'], false],
+        0.7,
+        0.5
+      ]
     }
   })
 
@@ -267,13 +280,13 @@ function addLayer(map, layerSource, visible = 'none'){
     'paint': {
       'line-color': [
         'case',
-        ['boolean', ['feature-state', 'hover'], false],
+        ['boolean', ['feature-state', 'clicked'], false],
         '#000000',
         '#CCCCCC'
       ],
       'line-width': [
         'case',
-        ['boolean', ['feature-state', 'hover'], false],
+        ['boolean', ['feature-state', 'clicked'], false],
         2,
         0.5
       ],
@@ -287,8 +300,7 @@ function addLayer(map, layerSource, visible = 'none'){
     const feature = e.features[0]
 
     if (feature) {
-      const content = getHoverTooltip(feature.properties)
-      infoControl.updateInfo(content)
+      infoControl.updateInfo(getHoverTooltip(feature.properties))
       
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
@@ -296,7 +308,7 @@ function addLayer(map, layerSource, visible = 'none'){
           { hover: false }
         )
       } else {
-        infoControl.updateInfo('Hover over a feature to see details')
+        infoControl.updateInfo(hoverMsgDefault)
       }
 
       // geojson data must have a unique id property (outside of properties)
@@ -314,12 +326,20 @@ function addLayer(map, layerSource, visible = 'none'){
       { source: layerSource, id: hoveredPolygonId },
       { hover: false }
     )
-    infoControl.updateInfo('Hover over a feature to see details')
+    infoControl.updateInfo(hoverMsgDefault)
   })
 
   map.on('click', `${layerSource}-fills`, (e) => {
     const feat = e.features[0]
-    $.address.parameter('id', feat.id)
+
+    // reset the previous clicked feature
+    map.setFeatureState(
+      { source: layerSource, id: selectedId },
+      { clicked: false }
+    )
+
+    selectedId = feat.id
+    $.address.parameter('id', selectedId)
     featureClicked(feat, e.lngLat)
   })
 }
@@ -334,6 +354,12 @@ function showLayer(selectedGeography, selectedCategory, selectedStatus) {
     popup.remove()
     $.address.parameter('id', null)
   }
+}
+
+function hideLayers(layerIds) {
+  layerIds.forEach(layerId => {
+    map.setLayoutProperty(layerId, 'visibility', 'none')
+  })
 }
 
 function toggleActive (selectorForSiblings, activeButton){
@@ -393,17 +419,8 @@ map.on('load', () => {
 
   $('#geography-select button').click(function(e){
     // reset layers
-    map.setLayoutProperty('tracts-fills', 'visibility', 'none')
-    map.setLayoutProperty('places-fills', 'visibility', 'none')
-    map.setLayoutProperty('counties-fills', 'visibility', 'none')
-    map.setLayoutProperty('il-senate-fills', 'visibility', 'none')
-    map.setLayoutProperty('il-house-fills', 'visibility', 'none')
-
-    map.setLayoutProperty('tracts-outline', 'visibility', 'none')
-    map.setLayoutProperty('places-outline', 'visibility', 'none')
-    map.setLayoutProperty('counties-outline', 'visibility', 'none')
-    map.setLayoutProperty('il-senate-outline', 'visibility', 'none')
-    map.setLayoutProperty('il-house-outline', 'visibility', 'none')
+    hideLayers(['tracts-fills','places-fills','counties-fills','il-senate-fills','il-house-fills'])
+    hideLayers(['tracts-outline','places-outline','counties-outline','il-senate-outline','il-house-outline'])
     
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
@@ -433,7 +450,8 @@ map.on('load', () => {
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
 
-  // if an ID is in the URL, load it
+  // if an ID is in the URL, load it. 
+  // waiting for sourcedata event to trigger before we can access features
   map.on('sourcedata', function (e) {
     if (
       !selectedFeatureLoaded &&
@@ -445,11 +463,6 @@ map.on('load', () => {
       const features = map.querySourceFeatures(selectedGeography)
       const feat = features.find(f => f.id === selectedId)
 
-      // highlight the feature
-      map.setFeatureState(
-        { source: selectedGeography, id: selectedId },
-        { hover: true }
-      )
       featureClicked(feat)
 
       // ensure this is only done once. sourcedata events are fired often
