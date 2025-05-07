@@ -417,8 +417,8 @@ map.on('load', () => {
   loadSourceFromGzip('/data/final/solar-projects-by-tract.geojson.gz', map, 'tracts')
   loadSourceFromGzip('/data/final/solar-projects-by-place.geojson.gz', map, 'places')
   loadSourceFromGzip('/data/final/solar-projects-by-county.geojson.gz', map, 'counties')
-  loadSourceFromGzip('/data/final/solar-projects-by-il-house.geojson.gz', map, 'il-senate')
-  loadSourceFromGzip('/data/final/solar-projects-by-il-senate.geojson.gz', map, 'il-house')
+  loadSourceFromGzip('/data/final/solar-projects-by-il-senate.geojson.gz', map, 'il-senate')
+  loadSourceFromGzip('/data/final/solar-projects-by-il-house.geojson.gz', map, 'il-house')
 
   $('#geography-select button').click(function(e){
     // reset layers
