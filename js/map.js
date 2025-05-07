@@ -48,29 +48,61 @@ const friendly_category_names = {
 const geoButtonsSelector = '#geography-select button'
 const catButtonsSelector = '#category-select button'
 const statButtonsSelector = '#status-select button'
+const hoverMsgDefault = 'Hover over a feature to see details'
 
-function getTooltip(props){
-  let header = ''
-  if (props.census_tract !== undefined) {
-    header = `<strong>Tract ${props.census_tract}</strong><br />`
-  } else if (props.place !== undefined) {
-    header = `<strong>${props.place}</strong><br />`
-  } else if (props.county_name !== undefined) {
-    header = `<strong>${props.county_name} County</strong><br />`
-  } else if (props.house_district !== undefined) {
-    header = `
-    <strong>IL House District ${props.house_district}</strong><br />
-      <strong>Rep. ${props.legislator} (${props.party})</strong><br />
-      `
-  } else if (props.senate_district !== undefined) {
-    header = `
-      <strong>IL Senate District ${props.senate_district}</strong><br />
-      <strong>Sen. ${props.legislator} (${props.party})</strong><br />
-      `
+class InfoControl {
+  constructor() {
+    this.container = document.createElement('div')
+    this.container.className = 'info'
+    this.container.innerHTML = hoverMsgDefault
   }
 
+  onAdd(map) {
+    this.map = map
+    return this.container
+  }
+
+  onRemove() {
+    this.container.parentNode.removeChild(this.container)
+    this.map = undefined
+  }
+
+  updateInfo(content) {
+    this.container.style.display = content ? 'block' : 'none'
+    this.container.innerHTML = content
+  }
+}
+
+function getTooltipHeader(props){
+  let header = ''
+  if (props.census_tract !== undefined) {
+    header = `Tract ${props.census_tract}`
+  } else if (props.place !== undefined) {
+    header = `${props.place}`
+  } else if (props.county_name !== undefined) {
+    header = `${props.county_name} County`
+  } else if (props.house_district !== undefined) {
+    header = `IL House District ${props.house_district}
+      <small><br />Rep. ${props.legislator} (${props.party})</small>`
+  } else if (props.senate_district !== undefined) {
+    header = `IL Senate District ${props.senate_district}
+      <small><br />Sen. ${props.legislator} (${props.party})</small>`
+  }
+  return header
+}
+
+function getHoverTooltip(props){
   return `
-    ${header}
+    <strong>${getTooltipHeader(props)}</strong><br />
+    Energized: ${props.total_kw.toLocaleString()} kW<br />
+    Planned: ${props.planned_total_kw.toLocaleString()} kW
+    `
+}
+
+function getTooltip(props){
+
+  return `
+    <h4>${getTooltipHeader(props)}</h4>
     <table class='table table-sm map-tooltip'>
       <thead>
         <tr>
@@ -142,6 +174,14 @@ function updateLegend(layerSource, category, status){
   $('#solar-legend').html(legendText)
 }
 
+function resetClickedState(){
+  // reset the previous clicked feature
+  map.setFeatureState(
+    { source: selectedGeography, id: selectedId },
+    { clicked: false }
+  )
+}
+
 function getFillColor(layerSource, category, status){
   let var_prefix = ""
   let colors = energized_colors
@@ -156,6 +196,45 @@ function getFillColor(layerSource, category, status){
     fillColor.push(buckets[i], colors[i])
   }
   return fillColor
+}
+
+function featureClicked(feature, lngLat=null){
+
+  map.setFeatureState(
+    { source: selectedGeography, id: feature.id },
+    { clicked: true }
+  )
+  
+  // collapse all coordinates to calculate bounds
+  if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+    const coordinates = feature.geometry.coordinates
+
+    // Flatten all coordinates from all rings (and all polygons if MultiPolygon)
+    let allCoords = []
+    if (feature.geometry.type === 'Polygon') {
+      allCoords = coordinates.flat()  // One polygon with rings
+    } else {
+      allCoords = coordinates.flat(2) // MultiPolygon
+    }
+
+    const bounds = allCoords.reduce((b, coord) => b.extend(coord), new maplibregl.LngLatBounds(allCoords[0], allCoords[0]))
+
+    if (lngLat == null) {
+      lngLat = bounds.getCenter()
+    }
+
+    // Fit to bounds
+    map.fitBounds(bounds, {
+      padding: 300,
+      duration: 500,
+      easing: t => t
+    })
+  }
+  // Display info popup
+  popup = new maplibregl.Popup()
+    .setLngLat(lngLat)
+    .setHTML(getTooltip(feature.properties))
+    .addTo(map)
 }
 
 async function loadSourceFromGzip(url, map, layerSource) {
@@ -188,38 +267,60 @@ function addLayer(map, layerSource, visible = 'none'){
       },
     'paint': {
       'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
-      'fill-opacity': 0.5,
-      'fill-outline-color': [
+      'fill-opacity': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
-        '#000000',
-        '#CCCCCC'
+        0.7,
+        0.5
       ]
     }
   })
 
-  const popup = new maplibregl.Popup({
-    closeButton: false,
-    closeOnClick: false
+  // polygon line styles
+  map.addLayer({
+    'id': `${layerSource}-outline`,
+    'type': 'line',
+    'source': layerSource, // reference the data source
+    'layout': {
+      // Make the layer not visible by default.
+      'visibility': visible
+    },
+    'paint': {
+      'line-color': [
+        'case',
+        ['boolean', ['feature-state', 'clicked'], false],
+        '#000000',
+        '#CCCCCC'
+      ],
+      'line-width': [
+        'case',
+        ['boolean', ['feature-state', 'clicked'], false],
+        2,
+        0.5
+      ],
+      'line-opacity': 1,
+    }
   })
   
   map.on('mousemove', `${layerSource}-fills`, (e) => {
     // populate tooltip
     map.getCanvas().style.cursor = 'pointer'
-    const coordinates = e.lngLat
-    popup.setLngLat(coordinates).setHTML(getTooltip(e.features[0].properties)).addTo(map)
+    const feature = e.features[0]
 
-    // highlight tract
-    if (e.features.length > 0) {
+    if (feature) {
+      infoControl.updateInfo(getHoverTooltip(feature.properties))
+      
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
           { source: layerSource, id: hoveredPolygonId },
           { hover: false }
         )
+      } else {
+        infoControl.updateInfo(hoverMsgDefault)
       }
 
       // geojson data must have a unique id property (outside of properties)
-      hoveredPolygonId = e.features[0].id
+      hoveredPolygonId = feature.id
       map.setFeatureState(
         { source: layerSource, id: hoveredPolygonId },
         { hover: true }
@@ -229,14 +330,39 @@ function addLayer(map, layerSource, visible = 'none'){
   
   map.on('mouseleave', `${layerSource}-fills`, () => {
     map.getCanvas().style.cursor = ''
-    popup.remove()
+    map.setFeatureState(
+      { source: layerSource, id: hoveredPolygonId },
+      { hover: false }
+    )
+    infoControl.updateInfo(hoverMsgDefault)
+  })
+
+  map.on('click', `${layerSource}-fills`, (e) => {
+    const feat = e.features[0]
+    resetClickedState()
+    selectedId = feat.id
+    $.address.parameter('id', selectedId)
+    featureClicked(feat, e.lngLat)
   })
 }
 
-function showLayer(selectedGeography, selectedCategory, selectedStatus) {
+function showLayer(selectedGeography, selectedCategory, selectedStatus) {  
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
+  map.setLayoutProperty(selectedGeography + '-outline', 'visibility', 'visible')
   map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
+
+  // remove previous popup
+  if (popup) {
+    popup.remove()
+    $.address.parameter('id', null)
+  }
+}
+
+function hideLayers(layerIds) {
+  layerIds.forEach(layerId => {
+    map.setLayoutProperty(layerId, 'visibility', 'none')
+  })
 }
 
 function toggleActive (selectorForSiblings, activeButton){
@@ -253,9 +379,10 @@ function loadParam(param_name, param_default){
     param = load_val
   }
   
-  // sets the active and aria to the parameter
-  toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
-
+  if (param_default) {
+    // sets the active and aria to the parameter
+    toggleActive('#' + param_name + '-select button',$(':button[value=' + param + ']')[0])
+  }
   return param
 }
 
@@ -273,11 +400,17 @@ const map = new maplibregl.Map({
     zoom: 6, // starting zoom
 })
 
+const infoControl = new InfoControl()
+map.addControl(infoControl, 'bottom-left')
+
 let hoveredPolygonId = null
 
 let selectedGeography = loadParam('geography','tracts')
 let selectedCategory = loadParam('category','total_kw')
 let selectedStatus = loadParam('status','energized')
+let selectedId = loadParam('id', 0)
+let selectedFeatureLoaded = false
+let popup = null
 
 map.on('load', () => {
   // load our 5 main data sources
@@ -289,12 +422,10 @@ map.on('load', () => {
 
   $('#geography-select button').click(function(e){
     // reset layers
-    map.setLayoutProperty('tracts-fills', 'visibility', 'none')
-    map.setLayoutProperty('places-fills', 'visibility', 'none')
-    map.setLayoutProperty('counties-fills', 'visibility', 'none')
-    map.setLayoutProperty('il-senate-fills', 'visibility', 'none')
-    map.setLayoutProperty('il-house-fills', 'visibility', 'none')
+    hideLayers(['tracts-fills','places-fills','counties-fills','il-senate-fills','il-house-fills'])
+    hideLayers(['tracts-outline','places-outline','counties-outline','il-senate-outline','il-house-outline'])
     
+    resetClickedState()
     selectedGeography = this.value
     $.address.parameter('geography', selectedGeography)
     
@@ -322,4 +453,25 @@ map.on('load', () => {
 
     showLayer(selectedGeography, selectedCategory, selectedStatus)
   })
+
+  // if an ID is in the URL, load it. 
+  // waiting for sourcedata event to trigger before we can access features
+  map.on('sourcedata', function (e) {
+    if (
+      !selectedFeatureLoaded &&
+      selectedId &&
+      e.sourceId === selectedGeography &&
+      e.isSourceLoaded
+    ) {
+      selectedId = Number(selectedId)
+      const features = map.querySourceFeatures(selectedGeography)
+      const feat = features.find(f => f.id === selectedId)
+
+      featureClicked(feat)
+
+      // ensure this is only done once. sourcedata events are fired often
+      selectedFeatureLoaded = true
+    }
+  })
+
 })
