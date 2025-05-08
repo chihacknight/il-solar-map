@@ -2,11 +2,11 @@ const energized_colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd',
 const planned_colors = ['#fcfcfc', '#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']
 
 const geography_buckets = {
-  'tracts': { 'total_kw': [0, 100, 250, 500, 1000, 5000],
+  'tracts': { 'total_kw': [0, 100, 1000, 5000, 10000, 50000],
               'utility_kw': [0, 900, 2000, 9900, 70000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
               'dg_large_kw': [0, 100, 300, 750, 1400, 2300],
-              'dg_small_kw': [0, 70, 200, 350, 600, 1500] },
+              'dg_small_kw': [0, 100, 250, 500, 1000, 2000] },
   'places': { 'total_kw': [0, 300, 1200, 3000, 6000, 10000],
               'utility_kw': [0, 300, 1100, 1500, 35000, 99000],
               'cs_kw': [0, 650, 900, 2000, 4000, 6000],
@@ -17,16 +17,16 @@ const geography_buckets = {
                 'cs_kw': [0, 2000, 4850, 8900, 14000, 17000],
                 'dg_large_kw': [0, 800, 2200, 4200, 7600, 20000],
                 'dg_small_kw': [0, 700, 2300, 6200, 12000, 21000] },
-  'il-house': { 'total_kw': [0, 6500, 20000, 40000, 80000, 150000],
-                'utility_kw': [0, 2000, 8000, 17000, 72000, 151000],
-                'cs_kw': [0, 900, 2000, 4000, 8000, 15000],
-                'dg_large_kw': [0, 900, 2400, 3900, 6100, 8500],
-                'dg_small_kw': [0, 800, 1600, 2500, 3900, 6700] },
-  'il-senate': { 'total_kw': [0, 9000, 20000, 40000, 70000, 130000],
-                  'utility_kw': [0, 4000, 12000, 25000, 74000, 206000],
-                  'cs_kw': [0, 900, 3900, 8600, 12000, 25000],
-                  'dg_large_kw': [0, 1300, 2700, 4100, 7000, 12000],
-                  'dg_small_kw': [0, 1700, 3900, 5600, 7600, 11000] },
+  'il-house': { 'total_kw': [0, 20000, 40000, 80000, 150000, 300000],
+                'utility_kw': [0, 10000, 50000, 100000, 200000, 300000],
+                'cs_kw': [0, 2000, 6000, 10000, 15000, 20000],
+                'dg_large_kw': [0, 1500, 5000, 10000, 15000, 20000],
+                'dg_small_kw': [0, 100, 2000, 5000, 10000, 15000] },
+  'il-senate': { 'total_kw': [0, 1000, 20000, 50000, 200000, 400000],
+                  'utility_kw': [0, 25000, 50000, 100000, 200000, 400000],
+                  'cs_kw': [0, 4000, 10000, 15000, 20000, 30000],
+                  'dg_large_kw': [0, 2000, 5000, 10000, 15000, 20000],
+                  'dg_small_kw': [0, 500, 2500, 10000, 15000, 20000] },
 }
 
 const friendly_geography_names = {
@@ -94,8 +94,8 @@ function getTooltipHeader(props){
 function getHoverTooltip(props){
   return `
     <strong>${getTooltipHeader(props)}</strong><br />
-    Energized: ${props.total_kw.toLocaleString()} kW<br />
-    Planned: ${props.planned_total_kw.toLocaleString()} kW
+    ${friendly_category_names[selectedCategory]} Energized: ${props[selectedCategory].toLocaleString()} kW<br />
+    ${friendly_category_names[selectedCategory]} Planned: ${props['planned_'+selectedCategory].toLocaleString()} kW
     `
 }
 
