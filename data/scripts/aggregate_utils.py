@@ -1,6 +1,7 @@
 import csv
 import json
 import pandas as pd
+import hashlib
 
 def init_aggregate(row):
     """initialize an aggregate row"""
@@ -112,6 +113,13 @@ def write_csv(items, fields, filename):
         for key, value in items.items():
             writer.writerow([value[field] for field in fields])
 
+def text_to_int(text):
+    # Use SHA-256 hash to ensure a deterministic and stable hash value
+    hash_object = hashlib.sha256(text.encode('utf-8'))
+    hash_hex = hash_object.hexdigest()
+    # Convert the hexadecimal hash to an integer
+    return int(hash_hex, 16) % 100000
+
 def write_geojson(geosource, key, items, geoout):
     """output aggregates as a geojson file"""
     out_geojson = { 
@@ -125,8 +133,9 @@ def write_geojson(geosource, key, items, geoout):
             item = g["properties"][key]
             id_key = item
             # for places, convert the NAMELSAD20 field to a number id
+            # todo - make this deterministic
             if key == "NAMELSAD20":
-                id_key = abs(hash(item)) % (10 ** 8)
+                id_key = text_to_int(item)
 
             if item in items:
                 item_data = items[item]
