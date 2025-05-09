@@ -164,8 +164,6 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
         utilitySeries.push([row[0], parseInt(row[4])])
       })
 
-      console.log(csvData)
-
       Highcharts.chart('timeseries-chart', {
         chart: {
             type: 'area',

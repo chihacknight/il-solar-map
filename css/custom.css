@@ -64,3 +64,24 @@ body, p {
 #category-select button, #geography-select button, #status-select button {
   font-size: 0.55em;
 }
+
+.post, .post p, .post li {
+  font-size: 20px;
+  line-height: 1.55em;
+}
+
+.post p {
+  margin-bottom: 28px;
+}
+
+.post ul {
+  margin-bottom: 28px;
+}
+
+.post h2 {
+  font-size: 22px;
+}
+
+.post h3 {
+  font-size: 20px;
+}

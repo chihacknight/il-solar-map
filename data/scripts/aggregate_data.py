@@ -30,7 +30,7 @@ print("aggregated", len(tracts), "tracts")
 # aggregate by US Census Place
 places = {}
 aggregate_projects(places, "place", "place")
-print("aggregated", len(tracts), "places")
+print("aggregated", len(places), "places")
 
 # aggregate by IL House
 house_districts = {}

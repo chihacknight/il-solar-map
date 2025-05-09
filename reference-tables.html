@@ -46,6 +46,30 @@ title: Solar projects by county
       if (isNaN(parsed)) { return 0 }
       return parseInt(val).toLocaleString("en-US")
   }
+  
+  function format_district_link(id, type){
+    let district = 'IL Senate District'
+    if (type == 'house') {
+      district = 'IL House District'
+    }
+    
+    if (id)
+      return `<a 
+                href='https://ilsolarmap.com/#/?geography=il-${type}&id=${id}' 
+                target='_blank'>
+                ${district} ${id}
+              </a>`;
+    else
+      return "";
+  }
+
+  function format_senate_district_link(id){
+    return format_district_link(id, 'senate')
+  }
+
+  function format_house_district_link(id){
+    return format_district_link(id, 'house')
+  }
 
   CsvToHtmlTable.init({
       csv_path: "/data/final/top-10-projects.csv",
@@ -146,6 +170,7 @@ title: Solar projects by county
           order: [[3, 'desc']]
       },
       custom_formatting: [
+          [0, format_house_district_link],
           [3, format_number],
           [4, format_number],
           [5, format_number],
@@ -174,6 +199,7 @@ title: Solar projects by county
           order: [[3, 'desc']]
       },
       custom_formatting: [
+          [0, format_senate_district_link],
           [3, format_number],
           [4, format_number],
           [5, format_number],
