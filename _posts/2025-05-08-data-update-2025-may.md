@@ -50,7 +50,7 @@ Data from our 3 primary sources are updated at different intervals, so the above
 You can now link directly to places in the IL Solar Map. Every time you click on a map feature, the URL will update. You can then share this link around to point people to specific locations. Here's a few examples of geographies with the most energized solar in Illinois:
 
 * [Tract 17167003400](https://ilsolarmap.com/#/?geography=tracts&id=17167003400) (593,136 kW, location of the Double Black Diamond Solar Farm)
-* [City of Chicago](https://ilsolarmap.com/#/?geography=places&id=67452880) (58,240 kW)
+* [City of Chicago](https://ilsolarmap.com/#/?geography=places&id=7343) (58,240 kW)
 * [Sangamon County](https://ilsolarmap.com/#/?geography=counties&id=167) (606,678 kW)
 * [House District 108](https://ilsolarmap.com/#/?geography=il-house&id=108) (660,259 kW)
 * [Senate District 54](https://ilsolarmap.com/#/?geography=il-senate&id=54) (680,891 kW)
