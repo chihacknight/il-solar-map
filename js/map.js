@@ -340,7 +340,15 @@ function addLayer(map, layerSource, visible = 'none'){
   map.on('click', `${layerSource}-fills`, (e) => {
     const feat = e.features[0]
     resetClickedState()
-    selectedId = feat.id
+    
+    if (layerSource == 'counties') {
+      selectedId = feat.properties.county_name
+    } else if (layerSource == 'places') {
+      selectedId = feat.properties.place
+    } else {
+      selectedId = feat.id
+    }
+    
     $.address.parameter('id', selectedId)
     featureClicked(feat, e.lngLat)
   })
@@ -463,11 +471,31 @@ map.on('load', () => {
       e.sourceId === selectedGeography &&
       e.isSourceLoaded
     ) {
-      selectedId = Number(selectedId)
-      const features = map.querySourceFeatures(selectedGeography)
-      const feat = features.find(f => f.id === selectedId)
+      
+      // for places and counties, load in a string value and look up the id
+      // from a table
+      if (selectedGeography == 'places' || selectedGeography == 'counties') {      
+        $.when($.get(`/data/raw/il-${selectedGeography}.csv`)).then(
+          function (data) {
+            let csvData = $.csv.toArrays(data)
+            let placeIds = {}
+            csvData.forEach(row => {
+              placeIds[row[0]] = Number(row[1])
+            })
+            selectedId = placeIds[decodeURI(selectedId)]
 
-      featureClicked(feat)
+            const features = map.querySourceFeatures(selectedGeography)
+            const feat = features.find(f => f.id === selectedId)
+            featureClicked(feat)
+          }
+        )
+      } else {
+        // otherwise lookup using the Id
+        selectedId = Number(selectedId)
+        const features = map.querySourceFeatures(selectedGeography)
+        const feat = features.find(f => f.id === selectedId)
+        featureClicked(feat)
+      }
 
       // ensure this is only done once. sourcedata events are fired often
       selectedFeatureLoaded = true
