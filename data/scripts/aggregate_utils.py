@@ -90,7 +90,7 @@ def aggregate_projects(items, index, index_name):
     for row in all_projects:
         if index == "county":
             try:
-                idx = int(row["county"])
+                idx = int(row[index])
             except ValueError:
                 continue
         else:
@@ -113,13 +113,6 @@ def write_csv(items, fields, filename):
         for key, value in items.items():
             writer.writerow([value[field] for field in fields])
 
-def text_to_int(text):
-    # Use SHA-256 hash to ensure a deterministic and stable hash value
-    hash_object = hashlib.sha256(text.encode('utf-8'))
-    hash_hex = hash_object.hexdigest()
-    # Convert the hexadecimal hash to an integer
-    return int(hash_hex, 16) % 100000
-
 def write_geojson(geosource, key, items, geoout):
     """output aggregates as a geojson file"""
     out_geojson = { 
@@ -132,10 +125,9 @@ def write_geojson(geosource, key, items, geoout):
         for g in geojson_src:
             item = g["properties"][key]
             id_key = item
-            # for places, convert the NAMELSAD20 field to a number id
-            # todo - make this deterministic
+
             if key == "NAMELSAD20":
-                id_key = text_to_int(item)
+                id_key = g["properties"]["PLACEFP20"]
 
             if item in items:
                 item_data = items[item]
@@ -174,8 +166,6 @@ def aggregate_all_projects(type):
               all_projects = init_aggregate(row)
           else:
               increment_aggregate(all_projects, row)
-
-    print(all_projects)
 
     all_projects[f"{prefix}dg_small_pct"] = round(all_projects[f"{prefix}dg_small_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
     all_projects[f"{prefix}dg_large_pct"] = round(all_projects[f"{prefix}dg_large_kw"] / all_projects[f"{prefix}total_kw"] * 100, 1)
