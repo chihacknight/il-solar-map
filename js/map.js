@@ -235,6 +235,9 @@ function featureClicked(feature, lngLat=null){
     .setLngLat(lngLat)
     .setHTML(getTooltip(feature.properties))
     .addTo(map)
+
+  const featTitle = getTooltipHeader(feature.properties).replace(/<[^>]*>?/gm, '')
+  document.title = `${featTitle} - Illinois Solar Map`
 }
 
 async function loadSourceFromGzip(url, map, layerSource) {
