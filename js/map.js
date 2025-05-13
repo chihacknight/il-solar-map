@@ -176,10 +176,12 @@ function updateLegend(layerSource, category, status){
 
 function resetClickedState(){
   // reset the previous clicked feature
-  map.setFeatureState(
-    { source: selectedGeography, id: selectedId },
-    { clicked: false }
-  )
+  if (selectedIdNumeric) {
+    map.setFeatureState(
+      { source: selectedGeography, id: selectedIdNumeric },
+      { clicked: false }
+    )
+  }
 }
 
 function getFillColor(layerSource, category, status){
@@ -352,6 +354,9 @@ function addLayer(map, layerSource, visible = 'none'){
       selectedId = feat.id
     }
     
+    // store the number internally
+    selectedIdNumeric = feat.id
+    
     $.address.parameter('id', selectedId)
     featureClicked(feat, e.lngLat)
   })
@@ -420,6 +425,7 @@ let selectedGeography = loadParam('geography','tracts')
 let selectedCategory = loadParam('category','total_kw')
 let selectedStatus = loadParam('status','energized')
 let selectedId = loadParam('id', 0)
+let selectedIdNumeric = 0
 let selectedFeatureLoaded = false
 let popup = null
 
@@ -485,18 +491,18 @@ map.on('load', () => {
             csvData.forEach(row => {
               placeIds[row[0]] = Number(row[1])
             })
-            selectedId = placeIds[decodeURI(selectedId)]
+            selectedIdNumeric = placeIds[decodeURI(selectedId)]
 
             const features = map.querySourceFeatures(selectedGeography)
-            const feat = features.find(f => f.id === selectedId)
+            const feat = features.find(f => f.id === selectedIdNumeric)
             featureClicked(feat)
           }
         )
       } else {
         // otherwise lookup using the Id
-        selectedId = Number(selectedId)
+        selectedIdNumeric = Number(selectedId)
         const features = map.querySourceFeatures(selectedGeography)
-        const feat = features.find(f => f.id === selectedId)
+        const feat = features.find(f => f.id === selectedIdNumeric)
         featureClicked(feat)
       }
 
