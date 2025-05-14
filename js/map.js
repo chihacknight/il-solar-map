@@ -271,12 +271,12 @@ function addLayer(map, layerSource, visible = 'none'){
       'visibility': visible
       },
     'paint': {
-      'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
-      'fill-opacity': [
+      'fill-opacity': 0.5,
+      'fill-color': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
-        0.7,
-        0.5
+        '#FEAC28',
+        getFillColor(layerSource, 'total_kw', "energized"),
       ]
     }
   })
@@ -365,7 +365,12 @@ function addLayer(map, layerSource, visible = 'none'){
 function showLayer(selectedGeography, selectedCategory, selectedStatus) {  
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
   map.setLayoutProperty(selectedGeography + '-outline', 'visibility', 'visible')
-  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
+  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', [
+    'case',
+    ['boolean', ['feature-state', 'hover'], false],
+    '#FEAC28',
+    getFillColor(selectedGeography, selectedCategory, selectedStatus),
+  ])
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
   // remove previous popup
