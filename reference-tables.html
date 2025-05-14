@@ -58,7 +58,7 @@ title: Reference tables
   }
 
   function format_place_link(name){
-    return format_link(`${name}`, 'places', name)
+    return format_link(`${name}`, 'places', name.toLowerCase())
   }
 
   function format_county_link(name){
