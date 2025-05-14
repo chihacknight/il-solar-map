@@ -165,9 +165,9 @@ function updateLegend(layerSource, category, status){
 
   for (var i = 0; i < buckets.length; i++) {
     if (i == buckets.length - 1) {
-      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()}+ kW</div>`
+      legendText += `<div><span style="background-color: ${colors[i]}; opacity: 0.5;"></span>${buckets[i].toLocaleString()}+ kW</div>`
     } else {
-      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()} - ${(buckets[i+1] - 1).toLocaleString()} kW</div>`
+      legendText += `<div><span style="background-color: ${colors[i]}; opacity: 0.5;"></span>${buckets[i].toLocaleString()} - ${(buckets[i+1] - 1).toLocaleString()} kW</div>`
     }
   }
 
