@@ -41,7 +41,7 @@ title: Reference tables
 
 <script>
   function format_number(val) {
-      const parsed = parseInt(val);
+      const parsed = parseInt(val)
       if (isNaN(parsed)) { return 0 }
       return parseInt(val).toLocaleString("en-US")
   }
@@ -52,9 +52,9 @@ title: Reference tables
                 href='/#/?geography=${type}&id=${id}' 
                 target='_blank'>
                 ${text}
-              </a>`;
+              </a>`
     else
-      return "";
+      return ""
   }
 
   function format_place_link(name){
@@ -62,7 +62,7 @@ title: Reference tables
   }
 
   function format_county_link(name){
-    return format_link(`${name} County`, 'counties', name)
+    return format_link(`${titleCaseMc(name)} County`, 'counties', name.toLowerCase())
   }
 
   function format_senate_district_link(id){

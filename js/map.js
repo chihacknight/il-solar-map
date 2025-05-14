@@ -80,7 +80,7 @@ function getTooltipHeader(props){
   } else if (props.place !== undefined) {
     header = `${props.place}`
   } else if (props.county_name !== undefined) {
-    header = `${props.county_name} County`
+    header = `${titleCaseMc(props.county_name)} County`
   } else if (props.house_district !== undefined) {
     header = `IL House District ${props.house_district}
       <small><br />Rep. ${props.legislator} (${props.party})</small>`
@@ -347,9 +347,9 @@ function addLayer(map, layerSource, visible = 'none'){
     resetClickedState()
     
     if (layerSource == 'counties') {
-      selectedId = feat.properties.county_name
+      selectedId = feat.properties.county_name.toLowerCase()
     } else if (layerSource == 'places') {
-      selectedId = feat.properties.place
+      selectedId = feat.properties.place.toLowerCase()
     } else {
       selectedId = feat.id
     }
@@ -489,7 +489,7 @@ map.on('load', () => {
             let csvData = $.csv.toArrays(data)
             let placeIds = {}
             csvData.forEach(row => {
-              placeIds[row[0]] = Number(row[1])
+              placeIds[row[0].toLowerCase()] = Number(row[1])
             })
             selectedIdNumeric = placeIds[decodeURI(selectedId)]
 
