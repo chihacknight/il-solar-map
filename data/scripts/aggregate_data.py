@@ -32,6 +32,19 @@ places = {}
 aggregate_projects(places, "place", "place")
 print("aggregated", len(places), "places")
 
+# create list of Place / ID lookups and add them to places
+places_ids = {}
+with open("../raw/il_places.geojson", "r") as geojsonfile: 
+    geojson_src = json.load(geojsonfile)["features"]
+    for g in geojson_src:
+        places_ids[g["properties"]["NAMELSAD20"]] = g["properties"]["PLACEFP20"]
+
+for p in places:
+    if p != '':
+        places[p]["place_id"] = places_ids[p]
+    else:
+        places[p]["place_id"] = ''
+
 # aggregate by IL House
 house_districts = {}
 aggregate_projects(house_districts, "house_district", "house_district")
@@ -114,7 +127,7 @@ write_geojson("../raw/il_2020_census_tracts.geojson", "GEOID10", tracts, "../fin
 print('saved tracts to geojson')
 
 # save places to csv
-fields = ["place"] + common_field_names
+fields = ["place", "place_id"] + common_field_names
 write_csv(places, fields, "../final/solar-projects-by-place.csv")
 print('saved places to csv')
 

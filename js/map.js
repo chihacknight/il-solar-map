@@ -80,7 +80,7 @@ function getTooltipHeader(props){
   } else if (props.place !== undefined) {
     header = `${props.place}`
   } else if (props.county_name !== undefined) {
-    header = `${props.county_name} County`
+    header = `${titleCaseMc(props.county_name)} County`
   } else if (props.house_district !== undefined) {
     header = `IL House District ${props.house_district}
       <small><br />Rep. ${props.legislator} (${props.party})</small>`
@@ -165,9 +165,9 @@ function updateLegend(layerSource, category, status){
 
   for (var i = 0; i < buckets.length; i++) {
     if (i == buckets.length - 1) {
-      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()}+ kW</div>`
+      legendText += `<div><span style="background-color: ${colors[i]}; opacity: 0.5;"></span>${buckets[i].toLocaleString()}+ kW</div>`
     } else {
-      legendText += `<div><span style="background-color: ${colors[i]}"></span>${buckets[i].toLocaleString()} - ${(buckets[i+1] - 1).toLocaleString()} kW</div>`
+      legendText += `<div><span style="background-color: ${colors[i]}; opacity: 0.5;"></span>${buckets[i].toLocaleString()} - ${(buckets[i+1] - 1).toLocaleString()} kW</div>`
     }
   }
 
@@ -176,10 +176,12 @@ function updateLegend(layerSource, category, status){
 
 function resetClickedState(){
   // reset the previous clicked feature
-  map.setFeatureState(
-    { source: selectedGeography, id: selectedId },
-    { clicked: false }
-  )
+  if (selectedIdNumeric) {
+    map.setFeatureState(
+      { source: selectedGeography, id: selectedIdNumeric },
+      { clicked: false }
+    )
+  }
 }
 
 function getFillColor(layerSource, category, status){
@@ -235,6 +237,9 @@ function featureClicked(feature, lngLat=null){
     .setLngLat(lngLat)
     .setHTML(getTooltip(feature.properties))
     .addTo(map)
+
+  const featTitle = getTooltipHeader(feature.properties).replace(/<[^>]*>?/gm, '')
+  document.title = `${featTitle} - Illinois Solar Map`
 }
 
 async function loadSourceFromGzip(url, map, layerSource) {
@@ -266,12 +271,12 @@ function addLayer(map, layerSource, visible = 'none'){
       'visibility': visible
       },
     'paint': {
-      'fill-color': getFillColor(layerSource, 'total_kw', "energized"),
-      'fill-opacity': [
+      'fill-opacity': 0.5,
+      'fill-color': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
-        0.7,
-        0.5
+        '#FEAC28',
+        getFillColor(layerSource, 'total_kw', "energized"),
       ]
     }
   })
@@ -340,7 +345,18 @@ function addLayer(map, layerSource, visible = 'none'){
   map.on('click', `${layerSource}-fills`, (e) => {
     const feat = e.features[0]
     resetClickedState()
-    selectedId = feat.id
+    
+    if (layerSource == 'counties') {
+      selectedId = feat.properties.county_name.toLowerCase()
+    } else if (layerSource == 'places') {
+      selectedId = feat.properties.place.toLowerCase()
+    } else {
+      selectedId = feat.id
+    }
+    
+    // store the number internally
+    selectedIdNumeric = feat.id
+    
     $.address.parameter('id', selectedId)
     featureClicked(feat, e.lngLat)
   })
@@ -349,7 +365,12 @@ function addLayer(map, layerSource, visible = 'none'){
 function showLayer(selectedGeography, selectedCategory, selectedStatus) {  
   map.setLayoutProperty(selectedGeography + '-fills', 'visibility', 'visible')
   map.setLayoutProperty(selectedGeography + '-outline', 'visibility', 'visible')
-  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', getFillColor(selectedGeography, selectedCategory, selectedStatus))
+  map.setPaintProperty(selectedGeography + '-fills', 'fill-color', [
+    'case',
+    ['boolean', ['feature-state', 'hover'], false],
+    '#FEAC28',
+    getFillColor(selectedGeography, selectedCategory, selectedStatus),
+  ])
   updateLegend(selectedGeography, selectedCategory, selectedStatus)
 
   // remove previous popup
@@ -409,6 +430,7 @@ let selectedGeography = loadParam('geography','tracts')
 let selectedCategory = loadParam('category','total_kw')
 let selectedStatus = loadParam('status','energized')
 let selectedId = loadParam('id', 0)
+let selectedIdNumeric = 0
 let selectedFeatureLoaded = false
 let popup = null
 
@@ -463,11 +485,31 @@ map.on('load', () => {
       e.sourceId === selectedGeography &&
       e.isSourceLoaded
     ) {
-      selectedId = Number(selectedId)
-      const features = map.querySourceFeatures(selectedGeography)
-      const feat = features.find(f => f.id === selectedId)
+      
+      // for places and counties, load in a string value and look up the id
+      // from a table
+      if (selectedGeography == 'places' || selectedGeography == 'counties') {      
+        $.when($.get(`/data/raw/il-${selectedGeography}.csv`)).then(
+          function (data) {
+            let csvData = $.csv.toArrays(data)
+            let placeIds = {}
+            csvData.forEach(row => {
+              placeIds[row[0].toLowerCase()] = Number(row[1])
+            })
+            selectedIdNumeric = placeIds[decodeURI(selectedId)]
 
-      featureClicked(feat)
+            const features = map.querySourceFeatures(selectedGeography)
+            const feat = features.find(f => f.id === selectedIdNumeric)
+            featureClicked(feat)
+          }
+        )
+      } else {
+        // otherwise lookup using the Id
+        selectedIdNumeric = Number(selectedId)
+        const features = map.querySourceFeatures(selectedGeography)
+        const feat = features.find(f => f.id === selectedIdNumeric)
+        featureClicked(feat)
+      }
 
       // ensure this is only done once. sourcedata events are fired often
       selectedFeatureLoaded = true

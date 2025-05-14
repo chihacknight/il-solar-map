@@ -1,6 +1,6 @@
 ---
 layout: narrow
-title: Solar projects by county
+title: Reference tables
 ---
 
 <h1>Reference Tables</h1>
@@ -8,8 +8,8 @@ title: Solar projects by county
 <ul>
   <li><a href="#largest">Top 10 Largest Solar Projects</a></li>
   <li><a href="#largest-planned">Top 10 Largest Planned Solar Projects</a></li>
-  <li><a href="#counties">Counties</a></li>
   <li><a href="#places">Places</a></li>
+  <li><a href="#counties">Counties</a></li>
   <li><a href="#il-house">IL State House Districts</a></li>
   <li><a href="#il-senate">IL State Senate Districts</a></li>
 </ul>
@@ -22,11 +22,11 @@ title: Solar projects by county
 
 <p>Note, all values are in kilowatts (kW). Columns with a <code>PL_</code> prefix are planned and not yet energized projects.</p>
 
-<h2 id="counties" class="mt-4">Counties</h2>
-<div id="table-counties"></div>
-
 <h2 id="places" class="mt-4">Places</h2>
 <div id="table-places"></div>
+
+<h2 id="counties" class="mt-4">Counties</h2>
+<div id="table-counties"></div>
 
 <h2 id="il-house" class="mt-4">IL State House Districts</h2>
 <div id="table-il-house"></div>
@@ -35,40 +35,42 @@ title: Solar projects by county
 <div id="table-il-senate"></div>
 
 
-<script src="/js/jquery.csv.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/dataTables.bootstrap5.min.js"></script>
 <script src="/js/csv_to_html_table.js"></script>
 
 <script>
   function format_number(val) {
-      const parsed = parseInt(val);
+      const parsed = parseInt(val)
       if (isNaN(parsed)) { return 0 }
       return parseInt(val).toLocaleString("en-US")
   }
   
-  function format_district_link(id, type){
-    let district = 'IL Senate District'
-    if (type == 'house') {
-      district = 'IL House District'
-    }
-    
+  function format_link(text, type, id){   
     if (id)
       return `<a 
-                href='https://ilsolarmap.com/#/?geography=il-${type}&id=${id}' 
+                href='/#/?geography=${type}&id=${id}' 
                 target='_blank'>
-                ${district} ${id}
-              </a>`;
+                ${text}
+              </a>`
     else
-      return "";
+      return ""
+  }
+
+  function format_place_link(name){
+    return format_link(`${name}`, 'places', name.toLowerCase())
+  }
+
+  function format_county_link(name){
+    return format_link(`${titleCaseMc(name)} County`, 'counties', name.toLowerCase())
   }
 
   function format_senate_district_link(id){
-    return format_district_link(id, 'senate')
+    return format_link(`IL Senate District ${id}`, 'il-senate', id)
   }
 
   function format_house_district_link(id){
-    return format_district_link(id, 'house')
+    return format_link(`IL House District ${id}`, 'il-house', id)
   }
 
   CsvToHtmlTable.init({
@@ -104,32 +106,6 @@ title: Solar projects by county
           [3, format_number],
       ]
   });
-  
-  CsvToHtmlTable.init({
-      csv_path: "/data/final/solar-projects-by-county-formatted.csv",
-      element: "table-counties",
-      allow_download: true,
-      csv_options: {
-          separator: ",",
-          delimiter: '"'
-      },
-      datatables_options: {
-          paging: false,
-          order: [[1, 'desc']]
-      },
-      custom_formatting: [
-          [1, format_number],
-          [2, format_number],
-          [3, format_number],
-          [4, format_number],
-          [5, format_number],
-          [6, format_number],
-          [7, format_number],
-          [8, format_number],
-          [9, format_number],
-          [10, format_number],
-      ]
-  });
 
   CsvToHtmlTable.init({
       csv_path: "/data/final/solar-projects-by-place-formatted.csv",
@@ -144,6 +120,34 @@ title: Solar projects by county
           order: [[1, 'desc']]
       },
       custom_formatting: [
+          [0, format_place_link],
+          [1, format_number],
+          [2, format_number],
+          [3, format_number],
+          [4, format_number],
+          [5, format_number],
+          [6, format_number],
+          [7, format_number],
+          [8, format_number],
+          [9, format_number],
+          [10, format_number],
+      ]
+  });
+  
+  CsvToHtmlTable.init({
+      csv_path: "/data/final/solar-projects-by-county-formatted.csv",
+      element: "table-counties",
+      allow_download: true,
+      csv_options: {
+          separator: ",",
+          delimiter: '"'
+      },
+      datatables_options: {
+          paging: false,
+          order: [[1, 'desc']]
+      },
+      custom_formatting: [
+          [0, format_county_link],
           [1, format_number],
           [2, format_number],
           [3, format_number],
