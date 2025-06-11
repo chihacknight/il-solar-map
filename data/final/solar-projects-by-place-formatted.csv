@@ -1,418 +1,418 @@
 place,total,utility,cs,dg_large,dg_small,pl_total,pl_utility,pl_cs,pl_dg_large,pl_dg_small
-Glencoe village,114,0,0,0,114,20,0,0,0,20
-,3819692,2990800,332368,206688,289836,5066760,3010300,0,1981432,75028
-Westchester village,766,0,0,0,766,148,0,0,0,148
-Curran village,750,0,0,0,750,178,0,0,0,178
-Palos Hills city,205,0,0,0,205,2718,0,0,2640,78
-Mount Sterling city,116,0,0,0,116,50,0,0,0,50
-Deerfield village,442,0,0,0,442,2640,0,0,2568,72
-Peoria city,9403,0,0,4422,4981,4729,0,0,3224,1505
-Decatur city,688,0,0,103,585,9032,0,0,8780,252
-Greenville city,1962,0,0,1598,364,158,0,0,0,158
-Scott AFB CDP,4794,0,0,4203,591,1498,0,0,1376,122
-Edwardsville city,8258,2000,3946,1267,1045,412,0,0,70,342
-Woodstock city,949,0,0,0,949,10008,0,0,9900,108
-Swansea village,1434,0,0,72,1362,920,0,0,422,498
-Geneva city,350,0,0,48,302,126,0,0,0,126
-Kincaid village,420,0,0,0,420,902,0,0,700,202
+Glencoe village,124,0,0,0,124,0,0,0,0,0
+,3849120,2994800,343618,212200,298502,4192744,3159400,0,998838,34506
+Westchester village,786,0,0,0,786,84,0,0,0,84
+Curran village,801,0,0,0,801,44,0,0,0,44
+Palos Hills city,237,0,0,0,237,40,0,0,0,40
+Mount Sterling city,120,0,0,0,120,21,0,0,0,21
+Deerfield village,488,0,0,34,454,1280,0,0,1250,30
+Peoria city,9734,0,0,4422,5312,2205,0,0,1612,593
+Decatur city,741,0,0,103,638,4870,0,0,4780,90
+Greenville city,1976,0,0,1598,378,65,0,0,0,65
+Scott AFB CDP,4812,0,0,4203,609,741,0,0,688,53
+Edwardsville city,8274,2000,3946,1267,1061,284,0,0,106,178
+Woodstock city,982,0,0,0,982,4982,0,0,4950,32
+Swansea village,1458,0,0,72,1386,489,0,0,211,278
+Geneva city,358,0,0,48,310,59,0,0,0,59
+Kincaid village,440,0,0,0,440,431,0,0,350,81
 Bannockburn village,329,0,0,133,196,0,0,0,0,0
-Coffeen city,44983,44200,0,0,783,78,0,0,0,78
-Wood River city,864,0,0,449,415,118,0,0,0,118
-Galva city,1005,0,0,713,292,17832,0,0,17750,82
-Springfield city,3152,0,0,788,2364,1010,0,0,564,446
-East Peoria city,2506,0,0,696,1810,11335,1000,0,9998,337
-Jacksonville city,2675,0,0,1914,761,682,0,0,200,482
-Vernon Hills village,3639,0,0,2164,1475,1638,0,0,1376,262
-Wadsworth village,1388,0,0,434,954,10116,0,0,9980,136
-Wilmette village,671,0,0,0,671,150,0,0,0,150
-Buffalo Grove village,1866,0,0,0,1866,320,0,0,0,320
-St. Charles city,2967,0,0,2744,223,1296,0,0,1250,46
-Beach Park village,1063,0,0,0,1063,80,0,0,0,80
-Lemont village,739,0,0,300,439,74,0,0,0,74
-Lincolnwood village,926,0,0,248,678,1943,0,0,1870,73
-Arlington Heights village,6855,1100,0,3403,2352,3803,0,0,3185,618
-Skokie village,3425,0,0,265,3160,2830,0,0,2504,326
-Aurora city,10924,0,0,2003,8921,12000,1900,0,8030,2070
-Plainfield village,4638,0,1620,532,2486,346,0,0,0,346
-Oak Park village,2680,0,0,200,2480,398,0,0,0,398
-Burr Ridge village,2046,0,0,1470,576,302,0,0,0,302
-Crestwood village,583,0,0,502,81,1800,0,0,1800,0
-Fairview Heights city,582,0,0,0,582,1776,0,0,1520,256
-Taylorville city,11181,5000,4999,522,660,512,0,0,0,512
-Chicago city,58240,12400,0,11190,34650,91025,13800,0,66863,10362
-Carol Stream village,2674,0,0,647,2027,4162,0,0,3764,398
-Forsyth village,340,0,0,0,340,1524,0,0,1376,148
-Huntley village,2381,0,0,1250,1131,5559,0,0,5500,59
-Godfrey village,2143,0,0,665,1478,2090,0,0,1418,672
-Forest Park village,605,0,0,67,538,106,0,0,0,106
-Kewanee city,685,0,0,451,234,114,0,0,0,114
-New Lenox village,1990,0,0,880,1110,1884,0,0,1600,284
-Mettawa village,506,0,0,99,407,10270,0,0,10190,80
-Caseyville village,579,0,0,0,579,236,0,0,0,236
-Algonquin village,5483,1500,0,2160,1823,239,0,0,0,239
-Gages Lake CDP,3363,0,0,2580,783,132,0,0,0,132
-Paris city,1418,0,0,1011,407,4068,0,0,4000,68
-Herrin city,8805,4000,4000,53,752,226,0,0,0,226
-Glenview village,2924,0,0,1583,1341,3428,0,0,3096,332
-Marquette Heights city,731,0,0,0,731,190,0,0,0,190
-Bloomingdale village,917,0,0,100,817,254,0,0,0,254
-Flora city,127,0,0,0,127,8,0,0,0,8
-Zion city,2256,0,0,0,2256,465,0,0,0,465
-Elburn village,624,0,0,33,591,10008,0,0,9980,28
-Sycamore city,1261,0,0,600,661,26,0,0,0,26
-Galesburg city,4392,0,2000,1771,621,6300,0,0,5850,450
-Lake Zurich village,4461,0,0,3417,1044,300,0,0,92,208
-Grayslake village,5871,0,0,3689,2182,14618,0,0,14250,368
-Marion city,1122,0,0,424,698,3666,0,0,3488,178
-Gurnee village,4140,0,0,2381,1759,395,0,0,0,395
-Germantown Hills village,1927,0,0,600,1327,884,0,0,720,164
-Brookfield village,1624,0,0,985,639,156,0,0,0,156
-Granite City city,6467,2000,0,3339,1128,16610,0,0,16000,610
-Pontoon Beach village,747,0,0,448,299,1432,0,0,1200,232
-Downers Grove village,3537,0,0,1593,1944,629,0,0,324,305
-Farmington city,350,0,0,182,168,166,0,0,84,82
-Glen Ellyn village,653,0,0,0,653,114,0,0,0,114
-Petersburg city,224,0,0,0,224,34,0,0,0,34
-West City village,688,0,0,581,107,1512,0,0,1496,16
-Hinsdale village,586,0,0,225,361,110,0,0,0,110
-Bartonville village,698,0,0,81,617,4276,0,0,4070,206
-Mount Prospect village,1146,0,0,0,1146,138,0,0,0,138
-Elgin city,4728,0,0,615,4113,3425,0,0,2260,1165
-Antioch village,669,0,0,0,669,9366,0,0,9250,116
-Streamwood village,2210,0,0,43,2167,1048,0,0,600,448
-Collinsville city,1051,0,0,720,331,1224,0,0,1080,144
-Urbana city,2282,0,0,95,2187,2230,0,0,1610,620
-Savoy village,1093,0,0,150,943,196,0,0,0,196
-Evanston city,3016,0,0,1039,1977,2281,0,0,2000,281
-Channahon village,2197,0,0,28,2169,4712,0,0,4400,312
-Crystal Lake city,2987,0,0,920,2067,830,0,0,600,230
-Washington city,1416,0,0,179,1237,464,0,0,280,184
-Inverness village,461,0,0,0,461,92,0,0,0,92
-Canton city,1256,0,0,351,905,365,0,0,45,320
+Coffeen city,44993,44200,0,0,793,38,0,0,0,38
+Wood River city,879,0,0,449,430,51,0,0,0,51
+Galva city,1019,0,0,713,306,8902,0,0,8875,27
+Springfield city,3164,0,0,788,2376,794,0,0,537,257
+East Peoria city,2579,0,0,696,1883,6139,1000,0,4999,140
+Jacksonville city,2782,0,0,1914,868,242,0,0,100,142
+Vernon Hills village,3669,0,0,2164,1505,810,0,0,688,122
+Wadsworth village,1414,0,0,434,980,5039,0,0,4990,49
+Wilmette village,704,0,0,0,704,65,0,0,0,65
+Buffalo Grove village,1937,0,0,0,1937,208,0,0,0,208
+St. Charles city,2967,0,0,2744,223,655,0,0,625,30
+Beach Park village,1073,0,0,0,1073,30,0,0,0,30
+Lemont village,751,0,0,300,451,43,0,0,0,43
+Lincolnwood village,949,0,0,248,701,977,0,0,935,42
+Arlington Heights village,6906,1100,0,3403,2403,2122,0,0,1780,342
+Skokie village,3507,0,0,265,3242,1941,0,0,1749,192
+Aurora city,11207,0,0,2003,9204,6927,1900,0,4030,997
+Plainfield village,4691,0,1620,532,2539,216,0,0,0,216
+Oak Park village,2730,0,0,200,2530,215,0,0,0,215
+Burr Ridge village,2079,0,0,1470,609,166,0,0,0,166
+Crestwood village,583,0,0,502,81,912,0,0,900,12
+Fairview Heights city,602,0,0,0,602,897,0,0,760,137
+Taylorville city,11281,5000,4999,522,760,156,0,0,0,156
+Chicago city,61040,12400,0,11790,36850,53765,13800,0,35456,4509
+Carol Stream village,2759,0,0,647,2112,2071,0,0,1882,189
+Forsyth village,356,0,0,0,356,746,0,0,688,58
+Huntley village,2387,0,0,1250,1137,2808,0,0,2750,58
+Godfrey village,2706,0,0,1152,1554,533,0,0,222,311
+Forest Park village,615,0,0,67,548,54,0,0,0,54
+Kewanee city,700,0,0,451,249,42,0,0,0,42
+New Lenox village,2038,0,0,880,1158,893,0,0,800,93
+Mettawa village,541,0,0,134,407,5104,0,0,5060,44
+Caseyville village,618,0,0,0,618,103,0,0,0,103
+Algonquin village,5536,1500,0,2160,1876,79,0,0,0,79
+Gages Lake CDP,3371,0,0,2580,791,70,0,0,0,70
+Paris city,1428,0,0,1011,417,2028,0,0,2000,28
+Herrin city,8819,4000,4000,53,766,108,0,0,0,108
+Glenview village,3125,0,0,1733,1392,1561,0,0,1398,163
+Marquette Heights city,762,0,0,0,762,113,0,0,0,113
+Bloomingdale village,967,0,0,100,867,106,0,0,0,106
+Flora city,127,0,0,0,127,4,0,0,0,4
+Zion city,2410,0,0,0,2410,119,0,0,0,119
+Elburn village,624,0,0,33,591,5104,0,0,5090,14
+Sycamore city,1261,0,0,600,661,33,0,0,0,33
+Galesburg city,4416,0,2000,1771,645,3297,0,0,3055,242
+Lake Zurich village,4509,0,0,3417,1092,77,0,0,0,77
+Grayslake village,5919,0,0,3689,2230,7327,0,0,7125,202
+Marion city,1122,0,0,424,698,1929,0,0,1832,97
+Gurnee village,4229,0,0,2381,1848,123,0,0,0,123
+Germantown Hills village,1941,0,0,600,1341,436,0,0,360,76
+Brookfield village,1678,0,0,985,693,24,0,0,0,24
+Granite City city,6506,2000,0,3339,1167,8312,0,0,8000,312
+Pontoon Beach village,784,0,0,448,336,729,0,0,640,89
+Downers Grove village,3578,0,0,1593,1985,316,0,0,162,154
+Farmington city,363,0,0,182,181,82,0,0,42,40
+Glen Ellyn village,664,0,0,0,664,57,0,0,0,57
+Petersburg city,224,0,0,0,224,17,0,0,0,17
+West City village,1388,0,0,1281,107,56,0,0,48,8
+Hinsdale village,608,0,0,225,383,41,0,0,0,41
+Bartonville village,744,0,0,81,663,2109,0,0,2035,74
+Mount Prospect village,1194,0,0,0,1194,175,0,0,0,175
+Elgin city,4922,0,0,615,4307,1598,0,0,1130,468
+Antioch village,686,0,0,0,686,4689,0,0,4625,64
+Streamwood village,2249,0,0,43,2206,572,0,0,300,272
+Collinsville city,1064,0,0,720,344,599,0,0,540,59
+Urbana city,2431,0,0,95,2336,1018,0,0,805,213
+Savoy village,1104,0,0,150,954,100,0,0,0,100
+Evanston city,3043,0,0,1039,2004,1236,0,0,1085,151
+Channahon village,2256,0,0,28,2228,2300,0,0,2200,100
+Crystal Lake city,3039,0,0,920,2119,412,0,0,300,112
+Washington city,1434,0,0,179,1255,251,0,0,170,81
+Inverness village,478,0,0,0,478,56,0,0,0,56
+Canton city,1313,0,0,351,962,176,0,0,45,131
 Cahokia village,4551,1800,0,2620,131,16,0,0,0,16
-Rockford city,18299,4000,0,7427,6872,68923,4600,0,62479,1844
-Metamora village,1086,0,0,120,966,10192,0,0,10000,192
-Champaign city,7641,0,0,2331,5310,11879,0,0,10680,1199
-Tuscola city,549,0,0,0,549,104,0,0,0,104
-Joliet city,19745,8900,1850,1731,7264,29446,4000,0,24180,1266
-Lake in the Hills village,1336,0,0,0,1336,1630,0,0,1500,130
-Chicago Heights city,2255,0,0,1231,1024,3317,0,0,2930,387
-Rome CDP,527,0,0,0,527,156,0,0,0,156
-Cortland town,7154,2000,4000,506,648,10022,0,0,9980,42
-Naperville city,6721,1000,0,1251,4470,2792,0,0,1480,1312
-Westmont village,956,0,0,300,656,152,0,0,0,152
-Bolingbrook village,12180,1900,0,2139,8141,14571,0,0,12772,1799
-Hawthorn Woods village,2375,0,0,1560,815,138,0,0,0,138
-Elk Grove Village village,3256,0,0,1776,1480,12853,3100,0,9540,213
-Cicero town,2343,0,0,319,2024,6211,1900,0,3840,471
-Carbondale city,794,0,0,200,594,38,0,0,0,38
-Highland Park city,1994,0,0,988,1006,2054,0,0,1824,230
-North Aurora village,1198,0,0,166,1032,1228,0,0,1008,220
-Des Plaines city,2646,0,0,237,2409,10779,3000,0,7262,517
-Waukegan city,5037,0,0,2050,2987,10718,7000,0,2950,768
-Campton Hills village,1166,0,0,230,936,626,0,0,0,626
-Wayne village,339,0,0,0,339,128,0,0,0,128
-Spring Grove village,183,0,0,0,183,20,0,0,0,20
-West Chicago city,1335,0,0,600,735,324,0,0,124,200
-Justice village,202,0,0,0,202,71,0,0,0,71
-Crest Hill city,947,0,0,231,716,80,0,0,0,80
-Palos Park village,481,0,0,0,481,650,0,0,480,170
-Barrington Hills village,1668,0,0,483,1185,80,0,0,0,80
-Lockport city,1141,0,0,0,1141,214,0,0,0,214
-Roselle village,978,0,0,334,644,158,0,0,0,158
-Harwood Heights village,233,0,0,0,233,44,0,0,0,44
-Oswego village,3214,0,0,300,2914,2442,0,0,1996,446
-Northfield village,2472,0,0,2169,303,98,0,0,0,98
-Deer Park village,373,0,0,0,373,32,0,0,0,32
-Northlake city,1363,0,0,700,663,16354,7100,0,9120,134
-Hanover Park village,2162,0,0,625,1537,298,0,0,0,298
-Romeoville village,8407,0,0,5150,3257,15175,3200,0,11520,455
-Harrisburg city,1213,0,0,691,522,708,0,0,672,36
-Eldorado city,1072,0,0,935,137,100,0,0,80,20
-White Hall city,116,0,0,0,116,0,0,0,0,0
-Hillside village,499,0,0,195,304,1216,0,0,1000,216
-Hampshire village,939,0,0,300,639,10328,0,0,10140,188
-Olney city,260,0,0,60,200,88,0,0,0,88
-Lombard village,1485,0,0,80,1405,504,0,0,101,403
-Wheaton city,1514,0,0,510,1004,238,0,0,0,238
-Addison village,3143,0,0,1955,1188,524,0,0,300,224
-Normal town,2710,0,0,859,1851,391,0,0,0,391
-Orland Park village,2406,0,0,420,1986,2194,0,0,1624,570
-Libertyville village,1447,0,0,1185,262,34,0,0,0,34
-Berwyn city,1985,0,0,101,1884,605,0,0,140,465
-Knoxville city,896,0,0,630,266,200,0,0,0,200
-Maywood village,965,0,0,72,893,360,0,0,0,360
-Menominee village,1268,0,0,458,810,170,0,0,0,170
-Palatine village,3007,0,0,909,2098,368,0,0,0,368
-Shorewood village,2537,0,0,540,1997,400,0,0,0,400
-Glendale Heights village,4296,0,0,2655,1641,20824,2900,0,17640,284
-Schaumburg village,4076,0,0,704,3372,2873,0,0,2218,655
-Mundelein village,2940,0,0,1166,1774,451,0,0,200,251
-Homewood village,1035,0,0,480,555,4168,0,0,3900,268
-Morrison city,4508,2000,2000,279,229,10014,0,0,10000,14
-Morton Grove village,1969,0,0,0,1969,2154,0,0,1920,234
-Sleepy Hollow village,1224,0,900,0,324,4102,0,0,4000,102
-Bedford Park village,3681,1500,0,2016,165,27367,4000,0,23360,7
-Tinley Park village,1838,0,0,332,1506,1147,0,0,800,347
-Kankakee city,11277,2000,4000,5000,277,102,0,0,0,102
-Hoffman Estates village,2806,0,0,397,2409,1345,0,0,1000,345
-Lake Villa village,1841,0,0,0,1841,367,0,0,0,367
-Oak Lawn village,2072,0,0,0,2072,536,0,0,134,402
-Prospect Heights city,245,0,0,0,245,76,0,0,0,76
-Hazel Crest village,1121,0,0,400,721,333,0,0,0,333
-Carpentersville village,1860,1300,0,0,560,86,0,0,0,86
-Elmhurst city,1586,0,0,188,1398,1478,0,0,1080,398
-River Forest village,430,0,0,67,363,24,0,0,0,24
-University Park village,761,0,0,0,761,4298,0,0,3996,302
-Machesney Park village,9452,1700,1660,3002,3090,10799,0,0,10250,549
-Belleville city,14220,11900,0,1493,827,14317,0,0,14000,317
-Western Springs village,299,0,0,0,299,44,0,0,0,44
-Mokena village,1293,0,0,420,873,88,0,0,0,88
-Lisle village,561,0,0,0,561,69,0,0,0,69
-Chester city,340,0,0,280,60,0,0,0,0,0
-Charleston city,147,0,0,0,147,156,0,0,100,56
-Carbon Cliff village,99,0,0,50,49,18,0,0,0,18
-Galena city,1148,0,0,285,863,368,0,0,0,368
-Winfield village,171,0,0,0,171,24,0,0,0,24
-Pekin city,3210,0,0,229,2981,1509,0,0,800,709
-Alton city,939,0,0,415,524,10981,0,0,10700,281
-Vandalia city,214,0,0,0,214,4018,0,0,4000,18
-Woodridge village,2858,0,0,949,1909,337,0,0,0,337
-Sugar Grove village,1125,0,0,630,495,11022,0,0,10900,122
-Moline city,608,0,0,336,272,4842,0,0,4730,112
-Glenwood village,6374,2000,2000,2000,374,178,0,0,0,178
-Lakemoor village,1407,0,0,965,442,52,0,0,0,52
-Northbrook village,1986,0,0,980,1006,382,0,0,160,222
-Riverwoods village,708,0,0,462,246,3776,0,0,3678,98
-Gibson City city,1013,0,0,550,463,10694,0,0,10600,94
-Clinton city,847,0,0,552,295,196,0,0,120,76
-Bloomington city,6240,2000,1999,326,1915,2036,0,0,1426,610
-Morton village,890,0,0,311,579,72,0,0,0,72
-Matteson village,6227,2000,0,2605,1622,1270,0,0,850,420
-Sterling city,6769,0,4999,1540,230,220,0,0,0,220
-Cary village,921,0,0,0,921,124,0,0,0,124
-East Alton village,989,0,0,729,260,262,0,0,200,62
-Round Lake village,1778,0,0,966,812,212,0,0,0,212
-Freeport city,9728,2000,4000,2197,1531,24406,2000,0,21979,427
-Evergreen Park village,681,0,0,0,681,209,0,0,0,209
-Warrenville city,292,0,0,0,292,50,0,0,0,50
-Rolling Meadows city,861,0,0,0,861,166,0,0,0,166
-McHenry city,1159,0,0,300,859,152,0,0,0,152
-Candlewick Lake CDP,495,0,0,0,495,108,0,0,0,108
-Darien city,3485,0,0,2248,1237,272,0,0,0,272
-Frankfort village,1208,0,0,474,734,206,0,0,0,206
-Wheeling village,2921,0,0,2040,881,640,0,0,400,240
-South Roxana village,695,0,0,286,409,150,0,0,30,120
-Villa Park village,595,0,0,0,595,188,0,0,0,188
-Mount Vernon city,2217,0,0,1757,460,9428,0,0,9370,58
-South Barrington village,517,0,0,0,517,165,0,0,0,165
-Country Club Hills city,1447,0,0,36,1411,415,0,0,0,415
-Long Grove village,799,0,0,93,706,192,0,0,0,192
-Litchfield city,395,0,0,130,265,88,0,0,0,88
-Bradley village,141,0,0,0,141,34,0,0,0,34
-Homer Glen village,1296,0,0,0,1296,206,0,0,0,206
-Carlinville city,301,0,0,0,301,90,0,0,0,90
-Staunton city,723,0,0,265,458,34,0,0,0,34
-North Chicago city,485,0,0,0,485,230,0,0,0,230
-Oak Forest city,1203,0,0,0,1203,262,0,0,0,262
-Beecher village,8371,6000,2000,46,325,6054,0,0,6000,54
-Belvidere city,1547,0,0,68,1479,350,0,0,0,350
-Anna city,141,0,0,0,141,22,0,0,0,22
-Oak Brook village,564,0,0,45,519,246,0,0,0,246
-Pittsfield city,284,0,0,67,217,234,0,0,0,234
-Berkeley village,443,0,0,93,350,18,0,0,0,18
-Loves Park city,2366,0,0,820,1546,650,0,0,174,476
-La Grange village,557,0,0,230,327,1032,0,0,960,72
-Midlothian village,759,0,0,144,615,76,0,0,0,76
-West Peoria city,233,0,0,67,166,84,0,0,50,34
-Alsip village,2778,0,0,1797,981,3594,0,0,3420,174
-Hickory Hills city,650,0,0,0,650,1086,0,0,1000,86
-Franklin Park village,6354,3100,0,2518,736,49004,1200,0,47634,170
-Park Ridge city,1205,0,0,206,999,52,0,0,0,52
-Granville village,4143,2000,1992,0,151,8082,0,0,8000,82
-Fisher village,1032,0,0,60,972,126,0,0,0,126
-Hodgkins village,2045,0,0,1987,58,7440,2000,0,5440,0
-Melrose Park village,629,0,0,0,629,310,0,0,186,124
-Mahomet village,1517,0,0,0,1517,351,0,0,0,351
-Maryville village,491,0,0,0,491,174,0,0,0,174
-Monticello city,975,0,0,30,945,174,0,0,0,174
-Coal Valley village,100,0,0,0,100,20,0,0,0,20
-Mascoutah city,211,0,0,0,211,74,0,0,0,74
-Glen Carbon village,802,0,0,43,759,456,0,0,0,456
-Riverside village,357,0,0,0,357,74,0,0,0,74
-Carthage city,510,0,0,260,250,749,0,0,444,305
-South Elgin village,1965,0,0,67,1898,350,0,0,0,350
-Gilberts village,471,0,0,0,471,72,0,0,0,72
-Wonder Lake village,554,0,0,0,554,10130,0,0,10000,130
-O'Fallon city,4515,0,0,2191,2324,2110,0,0,1408,702
-Sparta city,1177,0,0,1053,124,112,0,0,72,40
-Bartlett village,2451,0,0,0,2451,502,0,0,0,502
-Rock Falls city,147,0,0,133,14,0,0,0,0,0
-Fulton city,4100,2000,2000,40,60,16,0,0,0,16
+Rockford city,18835,4000,0,7527,7308,39497,4600,0,34113,784
+Metamora village,1132,0,0,120,1012,5079,0,0,5000,79
+Champaign city,7739,0,0,2331,5408,6072,0,0,5475,597
+Tuscola city,549,0,0,0,549,60,0,0,0,60
+Joliet city,20056,8900,1850,1831,7475,20578,4000,0,15990,588
+Lake in the Hills village,1380,0,0,0,1380,791,0,0,750,41
+Chicago Heights city,2372,0,0,1231,1141,1581,0,0,1465,116
+Rome CDP,562,0,0,0,562,43,0,0,0,43
+Cortland town,7169,2000,4000,506,663,5008,0,0,4990,18
+Naperville city,6767,1000,0,1251,4516,1501,0,0,740,761
+Westmont village,987,0,0,300,687,58,0,0,0,58
+Bolingbrook village,12575,1900,0,2139,8536,7115,0,0,6386,729
+Hawthorn Woods village,2401,0,0,1560,841,43,0,0,0,43
+Elk Grove Village village,3384,0,0,1876,1508,8437,3100,0,5244,93
+Cicero town,2417,0,0,319,2098,4006,1900,0,1920,186
+Carbondale city,800,0,0,200,600,19,0,0,0,19
+Highland Park city,2023,0,0,988,1035,1049,0,0,912,137
+North Aurora village,1405,0,0,310,1095,433,0,0,360,73
+Des Plaines city,2749,0,0,237,2512,6933,3000,0,3662,271
+Waukegan city,5243,0,0,2050,3193,8756,7000,0,1505,251
+Campton Hills village,1249,0,0,230,1019,279,0,0,0,279
+Wayne village,367,0,0,0,367,52,0,0,0,52
+Spring Grove village,183,0,0,0,183,10,0,0,0,10
+West Chicago city,1365,0,0,600,765,154,0,0,62,92
+Justice village,222,0,0,0,222,27,0,0,0,27
+Crest Hill city,959,0,0,231,728,40,0,0,0,40
+Palos Park village,487,0,0,0,487,327,0,0,240,87
+Barrington Hills village,1696,0,0,483,1213,44,0,0,0,44
+Lockport city,1171,0,0,0,1171,105,0,0,0,105
+Roselle village,1002,0,0,334,668,80,0,0,0,80
+Harwood Heights village,250,0,0,0,250,8,0,0,0,8
+Oswego village,3291,0,0,300,2991,1192,0,0,998,194
+Northfield village,2487,0,0,2169,318,103,0,0,69,34
+Deer Park village,387,0,0,0,387,8,0,0,0,8
+Northlake city,1395,0,0,700,695,11698,7100,0,4560,38
+Hanover Park village,2248,0,0,625,1623,337,0,0,186,151
+Romeoville village,8495,0,0,5150,3345,9160,3200,0,5760,200
+Harrisburg city,1513,0,0,991,522,123,0,0,105,18
+Eldorado city,1072,0,0,935,137,61,0,0,40,21
+White Hall city,116,0,0,0,116,9,0,0,0,9
+Hillside village,525,0,0,195,330,588,0,0,500,88
+Hampshire village,983,0,0,300,683,5143,0,0,5070,73
+Olney city,269,0,0,60,209,45,0,0,0,45
+Lombard village,1542,0,0,80,1462,216,0,0,34,182
+Wheaton city,1551,0,0,510,1041,1145,0,0,1045,100
+Addison village,3165,0,0,1955,1210,270,0,0,150,120
+Normal town,2801,0,0,859,1942,177,0,0,0,177
+Orland Park village,2522,0,0,420,2102,1101,0,0,812,289
+Libertyville village,1457,0,0,1185,272,16,0,0,0,16
+Berwyn city,2051,0,0,101,1950,252,0,0,70,182
+Knoxville city,916,0,0,630,286,80,0,0,0,80
+Maywood village,1057,0,0,72,985,154,0,0,0,154
+Menominee village,1268,0,0,458,810,85,0,0,0,85
+Palatine village,3040,0,0,909,2131,204,0,0,0,204
+Shorewood village,2588,0,0,540,2048,204,0,0,0,204
+Glendale Heights village,4359,0,0,2655,1704,11912,2900,0,8880,132
+Schaumburg village,4229,0,0,738,3491,1391,0,0,1075,316
+Mundelein village,3014,0,0,1166,1848,175,0,0,100,75
+Homewood village,1099,0,0,480,619,2056,0,0,1950,106
+Morrison city,4511,2000,2000,279,232,5004,0,0,5000,4
+Morton Grove village,2019,0,0,0,2019,1135,0,0,960,175
+Sleepy Hollow village,1234,0,900,0,334,2053,0,0,2000,53
+Bedford Park village,3681,1500,0,2016,165,15687,4000,0,11680,7
+Tinley Park village,1932,0,0,332,1600,546,0,0,400,146
+Kankakee city,11301,2000,4000,5000,301,41,0,0,0,41
+Hoffman Estates village,2860,0,0,397,2463,676,0,0,500,176
+Lake Villa village,1883,0,0,0,1883,215,0,0,0,215
+Oak Lawn village,2210,0,0,0,2210,618,0,0,387,231
+Prospect Heights city,267,0,0,0,267,16,0,0,0,16
+Hazel Crest village,1189,0,0,400,789,161,0,0,0,161
+Carpentersville village,1871,1300,0,0,571,42,0,0,0,42
+Elmhurst city,1649,0,0,188,1461,668,0,0,540,128
+River Forest village,430,0,0,67,363,12,0,0,0,12
+University Park village,831,0,0,0,831,4107,2000,0,1998,109
+Machesney Park village,9534,1700,1660,3002,3172,5351,0,0,5125,226
+Belleville city,14234,11900,0,1493,841,7207,0,0,7000,207
+Western Springs village,310,0,0,0,310,11,0,0,0,11
+Mokena village,1321,0,0,420,901,52,0,0,0,52
+Lisle village,582,0,0,0,582,164,0,0,135,29
+Chester city,340,0,0,280,60,13,0,0,0,13
+Charleston city,207,0,0,50,157,37,0,0,0,37
+Carbon Cliff village,104,0,0,50,54,4,0,0,0,4
+Galena city,1181,0,0,285,896,151,0,0,0,151
+Winfield village,179,0,0,0,179,29,0,0,0,29
+Pekin city,3356,0,0,229,3127,1061,0,0,800,261
+Alton city,944,0,0,415,529,5523,0,0,5350,173
+Vandalia city,220,0,0,0,220,2003,0,0,2000,3
+Woodridge village,2928,0,0,949,1979,203,0,0,0,203
+Sugar Grove village,1160,0,0,630,530,5494,0,0,5450,44
+Moline city,611,0,0,336,275,2058,0,0,2005,53
+Glenwood village,6438,2000,2000,2000,438,59,0,0,0,59
+Lakemoor village,1407,0,0,965,442,36,0,0,0,36
+Northbrook village,2095,0,0,1060,1035,98,0,0,0,98
+Riverwoods village,1564,0,0,1302,262,1032,0,0,999,33
+Gibson City city,1313,0,0,850,463,5047,0,0,5000,47
+Clinton city,863,0,0,552,311,82,0,0,60,22
+Bloomington city,6393,2000,1999,376,2018,910,0,0,688,222
+Morton village,890,0,0,311,579,56,0,0,0,56
+Matteson village,6321,2000,0,2605,1716,696,0,0,475,221
+Sterling city,6816,0,4999,1540,277,73,0,0,0,73
+Cary village,947,0,0,0,947,60,0,0,0,60
+East Alton village,997,0,0,729,268,233,0,0,200,33
+Round Lake village,1838,0,0,966,872,64,0,0,0,64
+Freeport city,9832,2000,4000,2197,1635,13265,2000,0,11106,159
+Evergreen Park village,744,0,0,0,744,150,0,0,0,150
+Warrenville city,300,0,0,0,300,29,0,0,0,29
+Rolling Meadows city,901,0,0,0,901,71,0,0,0,71
+McHenry city,1185,0,0,300,885,80,0,0,0,80
+Candlewick Lake CDP,515,0,0,0,515,37,0,0,0,37
+Darien city,3551,0,0,2248,1303,117,0,0,0,117
+Frankfort village,1264,0,0,474,790,79,0,0,0,79
+Wheeling village,2951,0,0,2040,911,347,0,0,200,147
+South Roxana village,712,0,0,286,426,73,0,0,30,43
+Villa Park village,628,0,0,0,628,106,0,0,0,106
+Mount Vernon city,2277,0,0,1817,460,4820,0,0,4775,45
+South Barrington village,548,0,0,0,548,70,0,0,0,70
+Country Club Hills city,1598,0,0,36,1562,115,0,0,0,115
+Long Grove village,831,0,0,93,738,118,0,0,0,118
+Litchfield city,403,0,0,130,273,36,0,0,0,36
+Bradley village,163,0,0,0,163,0,0,0,0,0
+Homer Glen village,1317,0,0,0,1317,108,0,0,0,108
+Carlinville city,316,0,0,0,316,39,0,0,0,39
+Staunton city,731,0,0,265,466,9,0,0,0,9
+North Chicago city,549,0,0,0,549,59,0,0,0,59
+Oak Forest city,1255,0,0,0,1255,117,0,0,0,117
+Beecher village,8371,6000,2000,46,325,3027,0,0,3000,27
+Belvidere city,1619,0,0,68,1551,183,0,0,0,183
+Anna city,141,0,0,0,141,11,0,0,0,11
+Oak Brook village,582,0,0,45,537,152,0,0,0,152
+Pittsfield city,306,0,0,67,239,95,0,0,0,95
+Berkeley village,443,0,0,93,350,9,0,0,0,9
+Loves Park city,2473,0,0,849,1624,2013,0,0,1752,261
+La Grange village,585,0,0,230,355,508,0,0,480,28
+Midlothian village,767,0,0,144,623,30,0,0,0,30
+West Peoria city,243,0,0,67,176,57,0,0,50,7
+Alsip village,2839,0,0,1797,1042,1779,0,0,1710,69
+Hickory Hills city,704,0,0,0,704,517,0,0,500,17
+Franklin Park village,6372,3100,0,2518,754,25135,1200,0,23817,118
+Park Ridge city,1228,0,0,206,1022,73,0,0,0,73
+Granville village,6147,4000,1992,0,155,4037,0,0,4000,37
+Fisher village,1043,0,0,60,983,59,0,0,0,59
+Hodgkins village,2045,0,0,1987,58,4720,2000,0,2720,0
+Melrose Park village,639,0,0,0,639,223,0,0,143,80
+Mahomet village,1561,0,0,0,1561,181,0,0,0,181
+Maryville village,532,0,0,0,532,91,0,0,0,91
+Monticello city,983,0,0,30,953,117,0,0,30,87
+Coal Valley village,100,0,0,0,100,10,0,0,0,10
+Mascoutah city,235,0,0,0,235,21,0,0,0,21
+Glen Carbon village,843,0,0,43,800,194,0,0,0,194
+Riverside village,357,0,0,0,357,62,0,0,0,62
+Carthage city,523,0,0,260,263,370,0,0,222,148
+South Elgin village,2065,0,0,67,1998,333,0,0,216,117
+Gilberts village,489,0,0,0,489,18,0,0,0,18
+Wonder Lake village,572,0,0,0,572,5067,0,0,5000,67
+O'Fallon city,5087,0,0,2695,2392,747,0,0,390,357
+Sparta city,1225,0,0,1089,136,48,0,0,40,8
+Bartlett village,2536,0,0,0,2536,259,0,0,0,259
+Rock Falls city,48,0,0,34,14,0,0,0,0,0
+Fulton city,4100,2000,2000,40,60,558,0,0,531,27
 Geneseo city,290,0,0,154,136,0,0,0,0,0
-Marengo city,2474,0,1950,0,524,90,0,0,0,90
-Columbia city,584,0,0,38,546,280,0,0,0,280
-Winthrop Harbor village,363,0,0,0,363,4024,0,0,3984,40
-Plano city,2091,0,0,852,1239,280,0,0,0,280
-Rock Island city,864,0,0,620,244,68,0,0,0,68
-Wood Dale city,1007,0,0,628,379,40,0,0,0,40
-Watseka city,2593,0,2000,533,60,16,0,0,0,16
-Silvis city,170,0,0,125,45,82,0,0,70,12
-Burbank city,788,0,0,0,788,441,0,0,0,441
-Quincy city,3744,0,0,2051,1693,1143,0,0,120,1023
-Bensenville village,430,0,0,0,430,2729,0,0,2640,89
-Paxton city,1287,0,0,990,297,28,0,0,0,28
-Markham city,739,0,0,208,531,2356,0,0,2160,196
-Long Lake CDP,115,0,0,52,63,74,0,0,0,74
-Harvey city,688,0,0,299,389,4133,0,0,3956,177
-Island Lake village,291,0,0,0,291,34,0,0,0,34
-Willowbrook village,209,0,0,0,209,68,0,0,0,68
-East Moline city,410,0,0,250,160,8,0,0,0,8
-Milan village,2242,0,0,2178,64,416,0,0,394,22
-Centralia city,793,0,0,642,151,1350,0,0,1200,150
-La Grange Park village,537,0,0,173,364,38,0,0,0,38
-Bull Valley village,516,0,0,0,516,180,0,0,0,180
-Merrionette Park village,196,0,0,0,196,1799,0,0,1680,119
-Montgomery village,2002,0,0,105,1897,215,0,0,0,215
-Bridgeport city,4097,0,4000,38,59,62,0,0,0,62
-Bellwood village,603,0,0,86,517,961,0,0,780,181
-Summit village,288,0,0,0,288,34,0,0,0,34
-Highland city,121,0,0,0,121,526,0,0,500,26
-Carterville city,3983,1300,650,1342,691,174,0,0,0,174
-Du Quoin city,375,0,0,180,195,10,0,0,0,10
-Yorkville city,1147,0,0,0,1147,132,0,0,0,132
-Shiloh village,1701,0,0,26,1675,552,0,0,0,552
-DeKalb city,1075,0,0,300,775,16363,4900,0,11250,213
-Aledo city,754,0,0,499,255,18,0,0,0,18
-Peoria Heights village,757,0,0,393,364,174,0,0,0,174
-West Frankfort city,4113,2000,2000,45,68,54,0,0,0,54
-Monee village,9432,3500,0,5674,258,28456,2300,0,25980,176
-Madison city,990,0,0,599,391,10122,0,0,10000,122
-Lakewood village,227,0,0,0,227,64,0,0,0,64
-Lincoln city,357,0,0,75,282,568,0,0,400,168
-Indian Head Park village,326,0,0,0,326,17,0,0,0,17
-Prairie Grove village,717,0,0,0,717,10064,0,0,9980,84
-Venetian Village CDP,305,0,0,0,305,18,0,0,0,18
-Colona city,316,0,0,240,76,82,0,0,0,82
-Lansing village,1186,0,0,0,1186,522,0,0,0,522
-Orland Hills village,355,0,0,38,317,874,0,0,800,74
-Broadview village,1155,0,0,780,375,2614,0,0,2470,144
-Lake Holiday CDP,178,0,0,0,178,26,0,0,0,26
-Niles village,683,0,0,0,683,6607,0,0,6480,127
-Richton Park village,506,0,0,0,506,102,0,0,0,102
-Cherry Valley village,612,0,0,347,265,872,0,0,800,72
-North Barrington village,124,0,0,0,124,12,0,0,0,12
-Round Lake Beach village,883,0,0,28,855,291,0,0,0,291
-Lyons village,492,0,0,100,392,8142,0,0,8080,62
-Stickney village,271,0,0,0,271,48,0,0,0,48
-Creve Coeur village,274,0,0,0,274,182,0,0,0,182
-Boulder Hill CDP,840,0,0,0,840,108,0,0,0,108
-Dwight village,67,0,0,0,67,118,0,0,0,118
-Burnham village,127,0,0,0,127,6,0,0,0,6
-Clarendon Hills village,234,0,0,0,234,48,0,0,0,48
-Elmwood Park village,527,0,0,0,527,5098,0,0,5040,58
-Round Lake Park village,302,0,0,0,302,78,0,0,0,78
-Hamilton city,462,0,0,0,462,201,0,0,0,201
-Bay View Gardens village,372,0,0,33,339,164,0,0,0,164
-Itasca village,319,0,0,133,186,72,0,0,72,0
-Park Forest village,974,0,0,442,532,80,0,0,0,80
-Lindenhurst village,829,0,0,0,829,222,0,0,0,222
-Posen village,292,0,0,0,292,3350,0,0,3230,120
-Hometown city,106,0,0,0,106,52,0,0,0,52
+Marengo city,2482,0,1950,0,532,37,0,0,0,37
+Columbia city,626,0,0,38,588,224,0,0,99,125
+Winthrop Harbor village,383,0,0,0,383,1992,0,0,1992,0
+Plano city,2128,0,0,852,1276,134,0,0,0,134
+Rock Island city,864,0,0,620,244,34,0,0,0,34
+Wood Dale city,1012,0,0,628,384,29,0,0,0,29
+Watseka city,2593,0,2000,533,60,8,0,0,0,8
+Silvis city,170,0,0,125,45,46,0,0,35,11
+Burbank city,886,0,0,0,886,223,0,0,0,223
+Quincy city,3933,0,0,2051,1882,399,0,0,60,339
+Bensenville village,449,0,0,0,449,1352,0,0,1320,32
+Paxton city,1287,0,0,990,297,14,0,0,0,14
+Markham city,777,0,0,208,569,1196,0,0,1113,83
+Long Lake CDP,115,0,0,52,63,51,0,0,0,51
+Harvey city,716,0,0,299,417,2074,0,0,1978,96
+Island Lake village,297,0,0,0,297,27,0,0,0,27
+Willowbrook village,221,0,0,0,221,24,0,0,0,24
+East Moline city,410,0,0,250,160,4,0,0,0,4
+Milan village,2242,0,0,2178,64,208,0,0,197,11
+Centralia city,793,0,0,642,151,1285,0,0,1200,85
+La Grange Park village,537,0,0,173,364,27,0,0,0,27
+Bull Valley village,526,0,0,0,526,80,0,0,0,80
+Merrionette Park village,234,0,0,0,234,864,0,0,840,24
+Montgomery village,2042,0,0,105,1937,120,0,0,0,120
+Bridgeport city,4097,0,4000,38,59,31,0,0,0,31
+Bellwood village,615,0,0,86,529,504,0,0,390,114
+Summit village,296,0,0,0,296,20,0,0,0,20
+Highland city,139,0,0,0,139,250,0,0,250,0
+Carterville city,3983,1300,650,1342,691,87,0,0,0,87
+Du Quoin city,375,0,0,180,195,12,0,0,0,12
+Yorkville city,1176,0,0,0,1176,84,0,0,0,84
+Shiloh village,1776,0,0,26,1750,257,0,0,0,257
+DeKalb city,1141,0,0,300,841,10600,4900,0,5625,75
+Aledo city,754,0,0,499,255,9,0,0,0,9
+Peoria Heights village,800,0,0,393,407,52,0,0,0,52
+West Frankfort city,4113,2000,2000,45,68,27,0,0,0,27
+Monee village,9479,3500,0,5674,305,15357,2300,0,12990,67
+Madison city,990,0,0,599,391,5075,0,0,5000,75
+Lakewood village,227,0,0,0,227,24,0,0,0,24
+Lincoln city,574,0,0,275,299,255,0,0,180,75
+Indian Head Park village,326,0,0,0,326,42,0,0,0,42
+Prairie Grove village,743,0,0,0,743,5012,0,0,4990,22
+Venetian Village CDP,314,0,0,0,314,38,0,0,0,38
+Colona city,324,0,0,240,84,43,0,0,0,43
+Lansing village,1297,0,0,0,1297,191,0,0,0,191
+Orland Hills village,395,0,0,38,357,427,0,0,400,27
+Broadview village,1165,0,0,780,385,1330,0,0,1235,95
+Lake Holiday CDP,194,0,0,0,194,0,0,0,0,0
+Niles village,722,0,0,0,722,3289,0,0,3240,49
+Richton Park village,554,0,0,0,554,54,0,0,0,54
+Cherry Valley village,638,0,0,347,291,410,0,0,400,10
+North Barrington village,124,0,0,0,124,6,0,0,0,6
+Round Lake Beach village,980,0,0,28,952,73,0,0,0,73
+Lyons village,526,0,0,100,426,4049,0,0,4040,9
+Stickney village,291,0,0,0,291,4,0,0,0,4
+Creve Coeur village,307,0,0,0,307,62,0,0,0,62
+Boulder Hill CDP,890,0,0,0,890,47,0,0,0,47
+Dwight village,100,0,0,0,100,26,0,0,0,26
+Burnham village,133,0,0,0,133,0,0,0,0,0
+Clarendon Hills village,234,0,0,0,234,24,0,0,0,24
+Elmwood Park village,535,0,0,0,535,2591,0,0,2520,71
+Round Lake Park village,326,0,0,0,326,18,0,0,0,18
+Hamilton city,477,0,0,0,477,97,0,0,0,97
+Bay View Gardens village,380,0,0,33,347,69,0,0,0,69
+Itasca village,319,0,0,133,186,36,0,0,36,0
+Park Forest village,1006,0,0,442,564,25,0,0,0,25
+Lindenhurst village,864,0,0,0,864,100,0,0,0,100
+Posen village,330,0,0,0,330,3024,0,0,2990,34
+Hometown city,138,0,0,0,138,14,0,0,0,14
 Wauconda village,153,0,0,0,153,0,0,0,0,0
-Schiller Park village,583,0,0,276,307,820,0,0,720,100
-Green Oaks village,102,0,0,0,102,54,0,0,0,54
+Schiller Park village,593,0,0,276,317,423,0,0,360,63
+Green Oaks village,115,0,0,0,115,14,0,0,0,14
 North Riverside village,230,0,0,0,230,0,0,0,0,0
-Flossmoor village,873,0,0,0,873,204,0,0,0,204
+Flossmoor village,921,0,0,0,921,59,0,0,0,59
 Highwood city,57,0,0,0,57,0,0,0,0,0
-Worth village,290,0,0,0,290,103,0,0,0,103
-Dolton village,1062,0,0,0,1062,333,0,0,0,333
-Olympia Fields village,146,0,0,0,146,88,0,0,0,88
-Harvard city,4233,4000,0,0,233,81,0,0,33,48
-Bethalto village,678,0,0,0,678,290,0,0,0,290
-Wilmington city,109,0,0,0,109,44,0,0,0,44
-Braidwood city,284,0,0,0,284,4020,0,0,4000,20
-Norridge village,285,0,0,0,285,110,0,0,0,110
-Thornton village,133,0,0,0,133,1284,0,0,1200,84
-Bridgeview village,806,0,0,445,361,1104,0,0,1000,104
-Chicago Ridge village,553,0,0,279,274,72,0,0,0,72
-Pistakee Highlands CDP,141,0,0,0,141,42,0,0,0,42
-Calumet City city,3478,0,0,1980,1498,6996,0,0,6490,506
-Fairmont CDP,41,0,0,0,41,12,0,0,0,12
-Macomb city,2189,2000,0,97,92,110,0,0,0,110
+Worth village,321,0,0,0,321,29,0,0,0,29
+Dolton village,1166,0,0,0,1166,111,0,0,0,111
+Olympia Fields village,156,0,0,0,156,34,0,0,0,34
+Harvard city,4239,4000,0,0,239,51,0,0,33,18
+Bethalto village,704,0,0,0,704,157,0,0,0,157
+Wilmington city,125,0,0,0,125,6,0,0,0,6
+Braidwood city,294,0,0,0,294,2016,0,0,2000,16
+Norridge village,315,0,0,0,315,34,0,0,0,34
+Thornton village,160,0,0,0,160,615,0,0,600,15
+Bridgeview village,826,0,0,445,381,566,0,0,500,66
+Chicago Ridge village,573,0,0,279,294,27,0,0,0,27
+Pistakee Highlands CDP,147,0,0,0,147,15,0,0,0,15
+Calumet City city,3599,0,0,1980,1619,6022,0,0,5745,277
+Fairmont CDP,45,0,0,0,45,4,0,0,0,4
+Macomb city,2209,2000,0,97,112,210,0,0,175,35
 Rockton village,1703,0,0,1500,203,0,0,0,0,0
-Lake Forest city,189,0,0,0,189,112,0,0,0,112
-Chillicothe city,716,0,0,100,616,4195,0,0,4000,195
-River Grove village,327,0,0,110,217,2920,0,0,2860,60
-Havana city,177,0,0,0,177,2624,0,0,2600,24
-Countryside city,126,0,0,0,126,22,0,0,0,22
-Manhattan village,433,0,0,0,433,132,0,0,0,132
-Rockdale village,27,0,0,0,27,128,0,0,120,8
-Stone Park village,249,0,0,83,166,6031,0,0,6000,31
-Lake Bluff village,122,0,0,0,122,60,0,0,0,60
+Lake Forest city,199,0,0,0,199,42,0,0,0,42
+Chillicothe city,739,0,0,100,639,2089,0,0,2000,89
+River Grove village,337,0,0,110,227,1460,0,0,1430,30
+Havana city,183,0,0,0,183,1330,0,0,1300,30
+Countryside city,137,0,0,0,137,12,0,0,0,12
+Manhattan village,444,0,0,0,444,76,0,0,0,76
+Rockdale village,31,0,0,0,31,60,0,0,60,0
+Stone Park village,256,0,0,83,173,3010,0,0,3000,10
+Lake Bluff village,122,0,0,0,122,44,0,0,0,44
 Rochelle city,323,300,0,0,23,0,0,0,0,0
-South Holland village,2401,0,0,500,1901,3140,0,0,2708,432
-Calumet Park village,321,0,0,0,321,531,0,0,400,131
-Ingalls Park CDP,72,0,0,0,72,20,0,0,0,20
-Frankfort Square CDP,183,0,0,0,183,28,0,0,0,28
-Roscoe village,3730,1500,0,490,1740,4458,0,0,4000,458
-Lewistown city,127,0,0,0,127,22,0,0,0,22
-Fairfield city,67,0,0,40,27,654,0,0,638,16
-Blue Island city,379,0,0,72,307,55,0,0,0,55
-Bourbonnais village,1063,0,0,1000,63,16,0,0,0,16
-Monmouth city,35563,35000,0,280,283,426,0,0,240,186
-Fox Lake village,455,0,0,180,275,46,0,0,0,46
-Sandwich city,210,0,0,0,210,64,0,0,0,64
-LaSalle city,65,0,0,0,65,34,0,0,0,34
-Riverdale village,156,0,0,0,156,8,0,0,0,8
+South Holland village,2549,0,0,500,2049,1634,0,0,1354,280
+Calumet Park village,366,0,0,0,366,444,0,0,400,44
+Ingalls Park CDP,82,0,0,0,82,0,0,0,0,0
+Frankfort Square CDP,191,0,0,0,191,16,0,0,0,16
+Roscoe village,3781,1500,0,490,1791,2233,0,0,2000,233
+Lewistown city,133,0,0,0,133,11,0,0,0,11
+Fairfield city,67,0,0,40,27,327,0,0,319,8
+Blue Island city,390,0,0,72,318,32,0,0,0,32
+Bourbonnais village,1071,0,0,1000,71,0,0,0,0,0
+Monmouth city,35824,35000,0,520,304,88,0,0,0,88
+Fox Lake village,455,0,0,180,275,28,0,0,0,28
+Sandwich city,230,0,0,0,230,20,0,0,0,20
+LaSalle city,71,0,0,0,71,11,0,0,0,11
+Riverdale village,156,0,0,0,156,4,0,0,0,4
 Golf village,82,0,0,0,82,0,0,0,0,0
-Pana city,174,0,0,0,174,54,0,0,0,54
-Phoenix village,149,0,0,0,149,292,0,0,250,42
+Pana city,181,0,0,0,181,20,0,0,0,20
+Phoenix village,155,0,0,0,155,132,0,0,125,7
 Winnetka village,61,0,0,0,61,0,0,0,0,0
-Sauk Village village,6580,4000,0,2091,489,170,0,0,0,170
+Sauk Village village,6627,4000,0,2091,536,50,0,0,0,50
 Rosemont village,5,0,0,0,5,3000,3000,0,0,0
-Oakbrook Terrace city,180,0,0,0,180,112,0,0,60,52
-Virden city,164,0,0,0,164,124,0,0,0,124
+Oakbrook Terrace city,192,0,0,0,192,54,0,0,30,24
+Virden city,170,0,0,0,170,56,0,0,0,56
 Oglesby city,43,0,0,0,43,0,0,0,0,0
-Dixon city,374,0,0,96,278,1192,0,0,960,232
-Crete village,525,0,0,32,493,10036,0,0,9980,56
-South Chicago Heights village,123,0,0,0,123,100,0,0,0,100
-Batavia city,157,0,0,0,157,68,0,0,0,68
-Henry city,116,0,0,0,116,5160,0,0,5100,60
-Shelbyville city,85,0,0,0,85,38,0,0,0,38
-Mossville CDP,4388,2000,0,2000,388,110,0,0,0,110
-St. Joseph village,1117,0,0,675,442,52,0,0,0,52
-East St. Louis city,764,0,0,702,62,38,0,0,0,38
-Robbins village,86,0,0,0,86,20,0,0,0,20
-North City village,155,0,0,0,155,20,0,0,0,20
-Lake Barrington village,72,0,0,0,72,18,0,0,0,18
-South Beloit city,128,0,0,0,128,30,0,0,0,30
-Roxana village,145,0,0,72,73,10110,0,0,10000,110
-Southern View village,256,0,0,200,56,8,0,0,0,8
-Christopher city,151,0,0,0,151,234,0,0,0,234
-Jonesboro city,389,0,0,300,89,60,0,0,0,60
-Streator city,323,0,0,0,323,127,0,0,0,127
+Dixon city,390,0,0,96,294,585,0,0,480,105
+Crete village,525,0,0,32,493,5026,0,0,4990,36
+South Chicago Heights village,147,0,0,0,147,38,0,0,0,38
+Batavia city,178,0,0,0,178,23,0,0,0,23
+Henry city,116,0,0,0,116,2599,0,0,2550,49
+Shelbyville city,90,0,0,0,90,14,0,0,0,14
+Mossville CDP,4415,2000,0,2000,415,40,0,0,0,40
+St. Joseph village,1117,0,0,675,442,43,0,0,0,43
+East St. Louis city,778,0,0,702,76,5,0,0,0,5
+Robbins village,96,0,0,0,96,5,0,0,0,5
+North City village,155,0,0,0,155,10,0,0,0,10
+Lake Barrington village,72,0,0,0,72,21,0,0,0,21
+South Beloit city,128,0,0,0,128,15,0,0,0,15
+Roxana village,161,0,0,72,89,5085,0,0,5000,85
+Southern View village,256,0,0,200,56,4,0,0,0,4
+Christopher city,202,0,0,0,202,66,0,0,0,66
+Jonesboro city,389,0,0,300,89,30,0,0,0,30
+Streator city,362,0,0,0,362,33,0,0,0,33
 East Dundee village,335,0,0,250,85,0,0,0,0,0
-Murphysboro city,72,0,0,0,72,24,0,0,0,24
-Palos Heights city,310,0,0,0,310,63,0,0,0,63
+Murphysboro city,80,0,0,0,80,8,0,0,0,8
+Palos Heights city,327,0,0,0,327,19,0,0,0,19
 Washington Park village,66,0,0,61,5,0,0,0,0,0
-Centreville city,1260,0,0,1250,10,62,0,0,0,62
-Dixmoor village,102,0,0,0,102,24,0,0,0,24
-Hoopeston city,99,0,0,0,99,60,0,0,0,60
-Spring Valley city,97,0,0,0,97,68,0,0,0,68
-Roodhouse city,6,0,0,0,6,10,0,0,0,10
-Beardstown city,102,0,0,0,102,16,0,0,0,16
-Rosewood Heights CDP,426,0,0,107,319,715,0,0,530,185
+Centreville city,1283,0,0,1250,33,8,0,0,0,8
+Dixmoor village,114,0,0,0,114,6,0,0,0,6
+Hoopeston city,99,0,0,0,99,36,0,0,0,36
+Spring Valley city,108,0,0,0,108,23,0,0,0,23
+Roodhouse city,6,0,0,0,6,5,0,0,0,5
+Beardstown city,102,0,0,0,102,8,0,0,0,8
+Rosewood Heights CDP,456,0,0,107,349,355,0,0,265,90
 Rock Island Arsenal CDP,750,0,0,750,0,0,0,0,0,0
-Steger village,153,0,0,0,153,66,0,0,0,66
-Morris city,168,0,0,0,168,4114,0,0,4000,114
-Princeton city,113,0,0,0,113,104,0,0,104,0
-Leland Grove city,104,0,0,0,104,26,0,0,0,26
-Ottawa city,241,0,0,30,211,148,0,0,0,148
-Danville city,2111,2000,0,96,15,16,0,0,0,16
-Peru city,10,0,0,0,10,10,0,0,0,10
+Steger village,175,0,0,0,175,17,0,0,0,17
+Morris city,168,0,0,0,168,2065,0,0,2000,65
+Princeton city,113,0,0,0,113,52,0,0,52,0
+Leland Grove city,104,0,0,0,104,22,0,0,0,22
+Ottawa city,253,0,0,30,223,68,0,0,0,68
+Danville city,2111,2000,0,96,15,8,0,0,0,8
+Peru city,10,0,0,0,10,5,0,0,0,5
 Newton city,28,0,0,0,28,0,0,0,0,0
 Kenilworth village,30,0,0,0,30,0,0,0,0,0
 Lincolnshire village,136,0,0,100,36,0,0,0,0,0
 Pontiac city,106,0,0,0,106,12,0,0,0,12
-Rantoul village,2000,2000,0,0,0,48,0,0,0,48
+Rantoul village,2000,2000,0,0,0,24,0,0,0,24
