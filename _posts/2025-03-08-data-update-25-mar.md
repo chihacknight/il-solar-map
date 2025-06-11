@@ -43,4 +43,4 @@ Data from our 3 primary sources are updated at different intervals, so the above
 
 * Illinois Adjustable Block Program (ABP) **March 2025**
 * Illinois Solar for All (ILSFA) **March 2025**
-* US EIA-860M (Utility scale projects) **January 2024**
+* US EIA-860M (Utility scale projects) **January 2025**
