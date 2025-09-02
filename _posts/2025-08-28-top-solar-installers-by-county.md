@@ -18,7 +18,9 @@ To help navigate this chaotic time, we are publishing the top solar contractors 
 
 This data comes from data published by the Illinois Power Agency (IPA) on [Illinois Adjustable Block Program Project Applications](https://illinoisabp.com/project-application-reports/), which we use to power the IL Solar Map.
 
-After a bit of data cleanup, here are the top 25 solar installers in Illinois: 
+After a bit of data cleanup, below are the top 25 solar installers in Illinois based on projects completed.
+
+_Note: Before selecting a solar installer, you should do your research on them. Illinois Shines has a [useful guide for picking a reliable vendor](/docs/Homeowner-Handbook-Flyer-v250224.pdf)._
 
 <h2 id="installers" class="mt-4">Top 25 solar installers in Illinois</h2>
 <div id="installers-table"></div>
