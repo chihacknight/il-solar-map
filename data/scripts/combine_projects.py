@@ -1,4 +1,5 @@
 import csv
+import time
 import requests_cache
 
 IL_ABP_FILE = "ilabp"
@@ -35,16 +36,24 @@ def clean_number(num_str):
 
 def get_census_tract(lat, long):
     """use the census geocoder to find a tract based on lat/long"""
-    try:
-        r = session.get(
-            f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}")
 
-        json_val = r.json()
-        return json_val["result"]["geographies"]["Census Tracts"][0]["GEOID"]
+    max_retries = 5
+    delay_seconds = 2
+    for attempt in range(1, max_retries + 1):
+        try:
+            r = session.get(
+                f"https://geocoding.geo.census.gov/geocoder/geographies/coordinates?benchmark=4&format=json&vintage=4&x={lat}&y={long}", timeout=10)
 
-    except KeyError:
-        print("Failed to find census tract", lat, long)
-        return "00000"
+            json_val = r.json()
+            return json_val["result"]["geographies"]["Census Tracts"][0]["GEOID"]
+
+        except KeyError:
+            print("Failed to find census tract", lat, long)
+            print(f"trying {attempt +1 } of {max_retries}...")
+            if attempt == max_retries:
+                return "00000"
+            else:
+                time.sleep(delay_seconds)
 
 
 projects = []
@@ -80,7 +89,7 @@ for project_type in ("energized", "planned"):
 
             cur_project["source_file"] = IL_ABP_FILE
             cur_project["kw"] = clean_number(row["Project Size AC kW"])
-            cur_project["census_tract"] = row["Census Tract Code"]
+            cur_project["census_tract"] = row["Census Tract Code"].replace(".0","")
             if project_type == "planned":
                 cur_project["energization_date"] = row["Scheduled Energization Date"]
             else:
