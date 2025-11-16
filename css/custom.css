@@ -61,6 +61,18 @@ body, p {
   color: #FEB52D;
 }
 
+.btn-energized.active {
+  background-color: #08519c;
+}
+
+.btn-planned.active {
+  background-color: #54278f;
+}
+
+.btn-future.active {
+  background-color: #006d2c;
+}
+
 #category-select button, #geography-select button, #status-select button {
   font-size: 0.55em;
 }
