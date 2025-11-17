@@ -1,32 +1,26 @@
 import csv
 import json
 import pandas as pd
-import hashlib
+
+field_set = [ "dg_small_kw",
+              "dg_small_count",
+              "dg_large_kw",
+              "dg_large_count",
+              "cs_kw",
+              "cs_count", 
+              "utility_kw", 
+              "utility_count", 
+              "total_kw", 
+              "total_count"]
 
 def init_aggregate(row):
     """initialize an aggregate row"""
     agg = {}
-    agg["dg_small_kw"] = 0
-    agg["dg_small_count"] = 0
-    agg["dg_large_kw"] = 0
-    agg["dg_large_count"] = 0
-    agg["cs_kw"] = 0
-    agg["cs_count"] = 0
-    agg["utility_kw"] = 0
-    agg["utility_count"] = 0
-    agg["total_kw"] = 0
-    agg["total_count"] = 0
-
-    agg["planned_dg_small_kw"] = 0
-    agg["planned_dg_small_count"] = 0
-    agg["planned_dg_large_kw"] = 0
-    agg["planned_dg_large_count"] = 0
-    agg["planned_cs_kw"] = 0
-    agg["planned_cs_count"] = 0
-    agg["planned_utility_kw"] = 0
-    agg["planned_utility_count"] = 0
-    agg["planned_total_kw"] = 0
-    agg["planned_total_count"] = 0
+    
+    for field in field_set:
+        agg[field] = 0
+        agg[f"planned_{field}"] = 0
+        agg[f"future_{field}"] = 0
     
     prefix = ""
     if row["type"] == "planned":
@@ -104,6 +98,11 @@ def aggregate_projects(items, index, index_name):
             i = items[idx]
             i = increment_aggregate(i, row)
             continue
+
+    # as a last step, add energized and planned into the future aggregate
+    for k in items:
+        for field in field_set:
+            items[k][f"future_{field}"] = items[k][field] + items[k][f"planned_{field}"]
 
 def write_csv(items, fields, filename):
     """output aggregates as a csv file"""

@@ -1,5 +1,6 @@
 const energized_colors = ['#fcfcfc', '#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']
 const planned_colors = ['#fcfcfc', '#f2f0f7', '#cbc9e2', '#9e9ac8', '#756bb1', '#54278f']
+const future_colors = ['#edf8e9', '#c7e9c0', '#a1d99b', '#74c476', '#31a354', '#006d2c']
 
 const geography_buckets = {
   'tracts': { 'total_kw': [0, 100, 1000, 5000, 10000, 50000],
@@ -95,7 +96,8 @@ function getHoverTooltip(props){
   return `
     <strong>${getTooltipHeader(props)}</strong><br />
     ${friendly_category_names[selectedCategory]} Energized: ${props[selectedCategory].toLocaleString()} kW<br />
-    ${friendly_category_names[selectedCategory]} Planned: ${props['planned_'+selectedCategory].toLocaleString()} kW
+    ${friendly_category_names[selectedCategory]} Planned: ${props['planned_'+selectedCategory].toLocaleString()} kW<br />
+    ${friendly_category_names[selectedCategory]} Energized + Planned: ${props['future_'+selectedCategory].toLocaleString()} kW<br />
     `
 }
 
@@ -161,6 +163,8 @@ function updateLegend(layerSource, category, status){
   let colors = energized_colors
   if (status == 'planned') {
     colors = planned_colors
+  } else if (status == 'future') {
+    colors = future_colors
   }
 
   for (var i = 0; i < buckets.length; i++) {
@@ -190,6 +194,9 @@ function getFillColor(layerSource, category, status){
   if (status == 'planned') {
     var_prefix = "planned_"
     colors = planned_colors
+  } else if (status == 'future') {
+    var_prefix = "future_"
+    colors = future_colors
   }
 
   let buckets = geography_buckets[layerSource][category]

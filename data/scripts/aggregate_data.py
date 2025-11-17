@@ -106,7 +106,17 @@ common_field_names = [ "dg_small_kw",
                        "planned_utility_kw", 
                        "planned_utility_count", 
                        "planned_total_kw", 
-                       "planned_total_count"]
+                       "planned_total_count",
+                       "future_dg_small_kw",
+                       "future_dg_small_count", 
+                       "future_dg_large_kw", 
+                       "future_dg_large_count", 
+                       "future_cs_kw", 
+                       "future_cs_count", 
+                       "future_utility_kw", 
+                       "future_utility_count", 
+                       "future_total_kw", 
+                       "future_total_count"]
 
 # save counties to csv
 fields = ["county_name", "county_fips"] + common_field_names
