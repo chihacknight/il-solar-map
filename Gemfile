@@ -1,6 +1,5 @@
 source "http://rubygems.org"
 
 # web
-gem 'jekyll', '3.1.6'
-gem 'github-pages'
-gem 'jekyll-redirect-from'
+gem "webrick", "~> 1.7"
+gem "jekyll", "~> 4.3"
