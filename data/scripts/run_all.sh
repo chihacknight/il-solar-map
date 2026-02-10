@@ -11,8 +11,7 @@ sed 1,2d ../raw/eia860_raw.csv > ../raw/eia860.csv
 
 in2csv ../raw/ilabp_report_3.xlsx > ../raw/ilabp.csv
 
-in2csv ../raw/ilsfa_report_3.xlsx > ../raw/ilsfa_raw.csv
-sed 1,2d ../raw/ilsfa_raw.csv > ../raw/ilsfa.csv
+in2csv ../raw/ilsfa_report_3.xlsx > ../raw/ilsfa.csv
 
 # convert planned projects to csv
 echo "extracting planned project data"
@@ -21,9 +20,7 @@ in2csv ../raw/eia860.xlsx --sheet "Planned" > ../raw/eia860_planned_raw.csv
 sed 1,2d ../raw/eia860_planned_raw.csv | tail -r | sed 1,8d | tail -r > ../raw/eia860_planned.csv
 
 in2csv ../raw/ilabp_report_2.xlsx > ../raw/ilabp_planned.csv
-
-in2csv ../raw/ilsfa_report_2.xlsx > ../raw/ilsfa_planned_raw.csv
-sed 1,2d ../raw/ilsfa_planned_raw.csv > ../raw/ilsfa_planned.csv
+in2csv ../raw/ilsfa_report_2.xlsx > ../raw/ilsfa_planned.csv
 
 # combine 3 source files into one
 python combine_projects.py

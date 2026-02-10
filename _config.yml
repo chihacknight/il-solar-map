@@ -8,12 +8,12 @@ encoding: utf-8
 timezone: America/Chicago
 description: "See how and where solar projects have been installed by Census Tract, Place, County, and State Congressional Districts in the State of Illinois"
 permalink: none
-last_updated: "Nov 2025"
-ilabp_updated: "Nov 2025"
-ilsfa_updated: "Nov 2025"
-eia860_updated: "Sep 2025"
-total_mw: "4,944"
-planned_mw: "5,318"
-total_count: "94,167"
+last_updated: "Feb 2026"
+ilabp_updated: "Feb 2026"
+ilsfa_updated: "Feb 2026"
+eia860_updated: "Dec 2026"
+total_mw: "5,665"
+planned_mw: "5,259"
+total_count: "99,037"
 gems:
   - jekyll-redirect-from
