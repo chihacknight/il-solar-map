@@ -179,10 +179,10 @@ $.when($.get("/data/final/all_projects_summary.csv")).then(
             type: 'datetime',
             min: Date.UTC(2018, 0, 1),
             labels: {
-              format: '{value:%b %Y}'
+              format: '{value:%Y}'
             },
             plotBands: [{
-              from: Date.UTC(2025, 9, 1),
+              from: Date.UTC(2025, 11, 1),
               to: Date.UTC(2029, 11, 0),
               color: '#ccc',
               label: {
