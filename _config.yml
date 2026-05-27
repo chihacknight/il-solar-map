@@ -15,5 +15,3 @@ eia860_updated: "April 2026"
 total_mw: "6,557"
 planned_mw: "5,259"
 total_count: "103,715"
-gems:
-  - jekyll-redirect-from
