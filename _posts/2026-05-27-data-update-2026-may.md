@@ -3,7 +3,7 @@ layout: update
 categories:
   - update
 title: "Data update"
-description: ""
+description: "In the last 3 months, an additional 892 megawatts (MW) of solar across 4,768 projects have been energized in the State of Illinois, bringing the total to 6,557 MW. Despite the expiration of the 30% Residential Clean Energy Tax Credit in 2025, solar projects continue to be deployed across the state at a record pace."
 image: "/images/il-solar-map.png"
 author: "Derek Eder"
 date: 2026-05-27
